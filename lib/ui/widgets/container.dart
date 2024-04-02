@@ -208,65 +208,63 @@ listTile({
   bool hasLine = false,
   Color titleColor = AppColors.black,
   Color lineColor = AppColors.gray,
-  EdgeInsetsGeometry padding = const EdgeInsets.all(0),
-  EdgeInsetsGeometry margin = const EdgeInsets.all(20),
+  EdgeInsetsGeometry padding = const EdgeInsets.all(20),
+  EdgeInsetsGeometry margin = const EdgeInsets.all(10),
   TextStyle? textStyle,
 }) {
   return cardBox(
     padding: EdgeInsets.zero,
+    margin: margin,
     child: MaterialButton(
-      padding: margin,
       onPressed: onTap,
-      child: Container(
-        padding: padding,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            if (leading != null)
-              Container(
-                padding: const EdgeInsets.only(left: 10),
-                alignment: Alignment.centerRight,
-                child: leading,
-              ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          title,
-                          style: textStyle ??
-                              AppTextStyles.bodyTextLargeDark
-                                  .copyWith(color: titleColor),
-                        ),
-                      ),
-                    ],
-                  ),
-                  if (subtitle != null)
-                    Text(subtitle,
-                        style: AppTextStyles.bodyText3
-                            .apply(color: AppColors.gray)),
-                  if (hasLine)
-                    Padding(
-                      padding: const EdgeInsets.only(top: 15),
-                      child: CustomDivider(
-                        height: 1,
-                        color: lineColor,
+      padding: padding,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          if (leading != null)
+            Container(
+              padding: const EdgeInsets.only(left: 10),
+              alignment: Alignment.centerRight,
+              child: leading,
+            ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        title,
+                        style: textStyle ??
+                            AppTextStyles.bodyTextLargeDark
+                                .copyWith(color: titleColor),
                       ),
                     ),
-                ],
-              ),
+                  ],
+                ),
+                if (subtitle != null)
+                  Text(subtitle,
+                      style: AppTextStyles.bodyText3
+                          .apply(color: AppColors.gray)),
+                if (hasLine)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: CustomDivider(
+                      height: 1,
+                      color: lineColor,
+                    ),
+                  ),
+              ],
             ),
-            if (trailing != null)
-              Container(
-                alignment: Alignment.center,
-                child: trailing,
-              ),
-          ],
-        ),
+          ),
+          if (trailing != null)
+            Container(
+              alignment: Alignment.center,
+              child: trailing,
+            ),
+        ],
       ),
     ),
   );

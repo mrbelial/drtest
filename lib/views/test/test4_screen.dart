@@ -17,6 +17,16 @@ class Test4Screen extends StatelessWidget {
       body: ListView(
         padding: AppConst.defaultPadding,
         children: [
+          testTitle(_controller.model.q4Title),
+          testButton("Yes", () {
+            testMessage(_controller.model.q4Yes, toMain);
+          }),
+          testButton("No", () {
+            testMessage(_controller.model.q4No, () {
+              Get.back();
+              Get.toNamed("/test_page", arguments: _controller.model.pages);
+            });
+          }),
         ],
       ),
     );

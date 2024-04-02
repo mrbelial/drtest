@@ -51,7 +51,7 @@ Widget textField({
   focusNode ??= FocusNode();
   textDirection ??= [TextInputType.number, TextInputType.phone].contains(type)
       ? TextDirection.ltr
-      : TextDirection.rtl;
+      : TextDirection.ltr;
 
   var child = TextField(
     keyboardType: type,
@@ -82,7 +82,7 @@ Widget textField({
       focusColor: AppColors.primary,
       focusedBorder: AppThemes.inputBorder,
       hintText: hint,
-      hintTextDirection: hintTextDirection ?? TextDirection.rtl,
+      hintTextDirection: hintTextDirection ?? TextDirection.ltr,
       suffixIcon: icon,
       hintStyle: const TextStyle(color: AppColors.gray),
       contentPadding: contentPadding,
@@ -227,12 +227,12 @@ Widget textField2({
       onChanged: onChanged,
       textDirection: [TextInputType.number, TextInputType.phone].contains(type)
           ? TextDirection.ltr
-          : TextDirection.rtl,
+          : TextDirection.ltr,
       decoration: InputDecoration(
         counterText: '',
         fillColor: Colors.transparent,
         hintText: hint,
-        hintTextDirection: hintTextDirection ?? TextDirection.rtl,
+        hintTextDirection: hintTextDirection ?? TextDirection.ltr,
         suffixIcon: icon == null ? null : Icon(icon, color: AppColors.primary),
         hintStyle: const TextStyle(color: AppColors.gray),
         border: InputBorder.none,
@@ -316,14 +316,14 @@ Widget textField3({
           textDirection:
               [TextInputType.number, TextInputType.phone].contains(type)
                   ? TextDirection.ltr
-                  : TextDirection.rtl,
+                  : TextDirection.ltr,
           textAlign: textAlign,
           decoration: InputDecoration(
             filled: true,
             counterText: '',
             fillColor: Colors.transparent,
             hintText: hint,
-            hintTextDirection: hintTextDirection ?? TextDirection.rtl,
+            hintTextDirection: hintTextDirection ?? TextDirection.ltr,
             suffixIcon: icon,
             hintStyle: const TextStyle(color: AppColors.gray),
             contentPadding:

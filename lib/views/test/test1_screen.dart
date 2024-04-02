@@ -29,10 +29,10 @@ class TestScreen extends StatelessWidget {
             }),
             testButton("No", () {
               _controller.qa1 = false;
-              testMessage("Test Finished", 'End Test', () {
+              testMessage('End Test', () {
                 Get.back();
                 toMain();
-              });
+              }, "Test Finished");
             }),
           ],
         ),

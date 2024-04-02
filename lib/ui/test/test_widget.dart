@@ -1,9 +1,10 @@
+import 'package:drtest/models/question/question_model.dart';
 import 'package:drtest/tools/core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 Widget testTitle(String title) {
-  return Container(padding: AppConst.defaultPadding, child: Text(title));
+  return Container(padding: AppConst.widgetPadding, child: Text(title));
 }
 
 Widget testButton(String title, void Function() onTap,
@@ -23,13 +24,17 @@ Widget testButton(String title, void Function() onTap,
       ),
     ),
   );
-  // return appButton(
-  //     title: title, onTap: onTap, margin: const EdgeInsets.only(bottom: 10));
 }
 
-void testMessage(String title, String message, void Function() ontap) {
+void testMessage(String message, void Function() ontap,
+    [String title = "Message"]) {
   Get.defaultDialog(
       title: title,
       middleText: message,
       actions: [textButton(title: "Ok", onTap: ontap)]);
+}
+
+Widget testDrug(TestDrugModel item) {
+  return listTile(
+      title: item.name, margin: const EdgeInsets.symmetric(vertical: 10));
 }

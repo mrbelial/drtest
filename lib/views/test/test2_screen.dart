@@ -13,7 +13,7 @@ class Test2Screen extends StatelessWidget {
     if (id == 7) {
       Get.toNamed("/test3");
     } else {
-      testMessage("title", "Anticoagulation should be considered.", () {
+      testMessage("Anticoagulation should be considered.", () {
         Get.back();
         Get.toNamed("/test3");
       });

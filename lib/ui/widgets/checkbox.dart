@@ -22,7 +22,7 @@ Widget checkBox({
               splashRadius: 0,
             ),
           ),
-          Text(title)
+          Flexible(child: Text(title))
         ],
       ),
     ),
