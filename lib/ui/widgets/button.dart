@@ -23,6 +23,8 @@ Widget appButton({
             Text(
               title,
               style: AppTextStyles.bodyText1.apply(color: AppColors.white),
+              maxLines: 10,
+              softWrap: true,
             ),
             if (trailing != null) trailing,
           ],

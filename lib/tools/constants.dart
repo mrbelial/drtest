@@ -56,6 +56,7 @@ String iconPath(String image) => "assets/icons/$image";
 class AppConst {
   static const EdgeInsets defaultPadding =
       EdgeInsets.symmetric(horizontal: 15, vertical: 10);
+  static const EdgeInsets widgetPadding = EdgeInsets.only(bottom: 10);
   static const EdgeInsetsGeometry buttonPadding =
       EdgeInsets.only(top: 10, bottom: 10, left: 10, right: 10);
   static final ShapeBorder buttonShape1 = RoundedRectangleBorder(
