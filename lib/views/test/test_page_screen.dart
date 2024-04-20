@@ -1,3 +1,4 @@
+import 'package:drtest/controllers/test_controller.dart';
 import 'package:drtest/models/question/question_model.dart';
 import 'package:drtest/tools/core.dart';
 import 'package:drtest/ui/test/test_widget.dart';
@@ -6,8 +7,38 @@ import 'package:get/get.dart';
 
 class TestPageScreen extends StatelessWidget {
   TestPageScreen({super.key});
-  // final TestController _controller = Get.find();
+  final TestController _controller = Get.find();
   final TestPageModel model = Get.arguments;
+
+  Future<bool> itemClicked(TestPageModel item) async {
+    switch (item.type) {
+      case TestPageTypeEnum.drug:
+        _controller.addToDrugs(item);
+        _controller.selectedStackIndex += 1;
+        //await Get.toNamed("/drugs", arguments: item.drugs);
+
+        await Get.toNamed("/test_page", arguments: _controller.selectedStack);
+        _controller.selectedStackIndex -= 1;
+
+        return true;
+      case TestPageTypeEnum.link:
+        launchURL(item.title);
+        return false;
+      case TestPageTypeEnum.message:
+        testMessage(item.title, toMain);
+        return false;
+      case TestPageTypeEnum.page:
+        print("${item.value}: ${item.type.toString()}");
+        await Get.toNamed("/test_page",
+            arguments: item, preventDuplicates: false);
+        return false;
+      case TestPageTypeEnum.toPage:
+        await Get.toNamed(item.page, arguments: item);
+        return true;
+      default:
+        return false;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,27 +58,12 @@ class TestPageScreen extends StatelessWidget {
                 var item = model.pages[i];
                 return testButton(
                   item.value,
-                  () {
-                    switch (item.type) {
-                      case TestPageTyoeEnum.drug:
-                        Get.toNamed("/drugs", arguments: item.drugs);
-                        break;
-                      case TestPageTyoeEnum.link:
-                        launchURL(item.title);
-                        break;
-                      case TestPageTyoeEnum.message:
-                        testMessage(item.title, toMain);
-                        break;
-                      case TestPageTyoeEnum.page:
-                        print("${item.value}: ${item.type.toString()}");
-                        Get.toNamed("test_page",
-                            arguments: item, preventDuplicates: false);
-                        break;
-                      case TestPageTyoeEnum.toPage:
-                        Get.toNamed(item.page, arguments: item);
-                        break;
-                      default:
-                        break;
+                  () async {
+                    var isDrug = await itemClicked(item);
+                    print(isDrug);
+
+                    if (isDrug) {
+                      _controller.removeFromDrugs(item);
                     }
                   },
                 );

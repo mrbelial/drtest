@@ -24,7 +24,7 @@ class Test4Screen extends StatelessWidget {
           testButton("No", () {
             testMessage(_controller.model.q4No, () {
               Get.back();
-              Get.toNamed("/test_page", arguments: _controller.model.pages);
+              Get.toNamed("/test_situations_page");
             });
           }),
         ],

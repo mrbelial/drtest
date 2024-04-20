@@ -12,6 +12,7 @@ import 'package:drtest/views/test/test1_screen.dart';
 import 'package:drtest/views/test/test4_screen.dart';
 import 'package:drtest/views/test/test5_screen.dart';
 import 'package:drtest/views/test/test_page_screen.dart';
+import 'package:drtest/views/test/test_situations_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -88,6 +89,10 @@ class MyApp extends StatelessWidget {
 
         //Drug
         GetPage(name: '/drugs', page: () => DrugsScreen()),
+
+        //test_situations_page
+        GetPage(
+            name: "/test_situations_page", page: () => TestSituationsScreen()),
       ],
       theme: AppThemes.defaultTheme,
       home: SplashScreen(),

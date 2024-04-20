@@ -98,40 +98,45 @@ mechanical heart valve, DOACs are recommended over Warfarin.
 (ESC 2020 1A)
 (AHA/ACC/HRS AF 2019 1 A)""";
 
+  //Selected Test Page Model
+  List<TestPageModel> selectedDrugs = [];
+  List<TestPageModel> stacks = [];
+  int selectedStack = 0;
+
   //Test Page Model
   TestPageModel pages = TestPageModel(
       title: "Any of the following situations present?",
       value: "",
-      type: TestPageTyoeEnum.page,
+      type: TestPageTypeEnum.page,
       pages: [
         TestPageModel(
           title: "",
           value: "CKD",
           page: "/ckd",
-          type: TestPageTyoeEnum.toPage,
+          type: TestPageTypeEnum.toPage,
         ),
         TestPageModel(
             title: "",
             value: "Liver disease",
             page: "/ld",
-            type: TestPageTyoeEnum.page,
+            type: TestPageTypeEnum.page,
             pages: []),
         TestPageModel(
           title: "",
           value: "BMI",
           page: "/bmi",
-          type: TestPageTyoeEnum.toPage,
+          type: TestPageTypeEnum.toPage,
         ),
         TestPageModel(
           title: "",
           value: "Thrombocytopenia",
           page: "/Thrombocytopenia",
-          type: TestPageTyoeEnum.toPage,
+          type: TestPageTypeEnum.toPage,
         ),
         TestPageModel(
           title: "",
           value: "Lactation",
-          type: TestPageTyoeEnum.drug,
+          type: TestPageTypeEnum.drug,
           drugs: [
             TestDrugPageModel("""All NOACs are secreted into the breast milk.
 NOACs should not be used in breastfeeding women, and LMWH should be used 
@@ -141,7 +146,7 @@ instead. (ESC 2020 AF)""", [2, 3])
         TestPageModel(
           title: "",
           value: "AKI",
-          type: TestPageTyoeEnum.drug,
+          type: TestPageTypeEnum.drug,
           drugs: [
             TestDrugPageModel(
                 """NOACs need to be stopped and switched to unfractionated heparin before resumption after stabilization.
@@ -151,7 +156,7 @@ instead. (ESC 2020 AF)""", [2, 3])
         TestPageModel(
           title: "",
           value: "Cancer",
-          type: TestPageTyoeEnum.drug,
+          type: TestPageTypeEnum.drug,
           drugs: [
             TestDrugPageModel(
                 """In most patients with AF and cancer (remote history or receiving active cancer treatment),
@@ -162,7 +167,7 @@ instead. (ESC 2020 AF)""", [2, 3])
         TestPageModel(
           title: "",
           value: "History of GI bleeding",
-          type: TestPageTyoeEnum.drug,
+          type: TestPageTypeEnum.drug,
           drugs: [
             TestDrugPageModel(
                 """After correction of the bleeding source, OAC should be restarted.
@@ -174,7 +179,7 @@ dabigatran 110 mg the risk is similar to warfarin.
         TestPageModel(
           title: "",
           value: "Bariatric surgery",
-          type: TestPageTyoeEnum.drug,
+          type: TestPageTypeEnum.drug,
           drugs: [
             TestDrugPageModel(
                 "Warfarin may be reasonable to choose over DOACs for stroke risk reduction in view of concerns about DOAC drug absorption.\n(AHA/ACC/ACCP/HRS AF 2023, 2b  C-LD)",
@@ -184,7 +189,7 @@ dabigatran 110 mg the risk is similar to warfarin.
         TestPageModel(
           title: "",
           value: "History of PCI",
-          type: TestPageTyoeEnum.drug,
+          type: TestPageTypeEnum.drug,
           drugs: [
             TestDrugPageModel(
                 "DOACs are preferred over VKAs.\n(AHA/ACC/ACCP/HRS AF 2023, 1 A)",
@@ -194,13 +199,13 @@ dabigatran 110 mg the risk is similar to warfarin.
         TestPageModel(
             title: "",
             value: "AF + Valve Disease",
-            type: TestPageTyoeEnum.page,
+            type: TestPageTypeEnum.page,
             pages: [
               TestPageModel(
                   title: "",
                   value:
                       "Native valve heart (Including aortic stenosis, aortic regurgitation, mitral regurgitation)",
-                  type: TestPageTyoeEnum.drug,
+                  type: TestPageTypeEnum.drug,
                   drugs: [
                     TestDrugPageModel(
                         """NOAC is an effective alternative to VKA anticoagulation and should be administered on the basis of the patient’s CHA2DS2VASc score. (ACC/AHA VHD 2020 1 A)
@@ -211,7 +216,7 @@ In patients with AF and valve disease other than moderate or greater mitral sten
               TestPageModel(
                   title: "",
                   value: "Rheumatic Mitral Stenosis",
-                  type: TestPageTyoeEnum.drug,
+                  type: TestPageTypeEnum.drug,
                   drugs: [
                     TestDrugPageModel(
                         """For patients with AF and rheumatic MS, long-term VKA oral anticoagulation is recommended. (ACC/AHA VHD 2020 1 C-EO)
@@ -223,7 +228,7 @@ In patients with rheumatic mitral stenosis or mitral stenosis of moderate or gre
               TestPageModel(
                   title: "",
                   value: "Mechanical Heart Valves",
-                  type: TestPageTyoeEnum.drug,
+                  type: TestPageTypeEnum.drug,
                   drugs: [
                     TestDrugPageModel(
                       """OAC using a VKA is recommended lifelong for all patients with an MHV prosthesis. (ESC VHD 2021  I B)
@@ -242,14 +247,14 @@ In patients with rheumatic mitral stenosis or mitral stenosis of moderate or gre
                         title: "",
                         value: "What is the target INR?",
                         page: "/targetINR",
-                        type: TestPageTyoeEnum.toPage,
+                        type: TestPageTypeEnum.toPage,
                       ),
                     ),
                   ]),
               TestPageModel(
                   title: "",
                   value: "Surgical valve repair",
-                  type: TestPageTyoeEnum.drug,
+                  type: TestPageTypeEnum.drug,
                   drugs: [
                     TestDrugPageModel(
                         """OAC with VKA should be considered during the
@@ -259,12 +264,12 @@ first 3 months after mitral and tricuspid repair.
               TestPageModel(
                   title: "Bioprosthetic valve",
                   value: "Bioprosthetic valve",
-                  type: TestPageTyoeEnum.page,
+                  type: TestPageTypeEnum.page,
                   pages: [
                     TestPageModel(
                         title: "",
                         value: ">3 months",
-                        type: TestPageTyoeEnum.drug,
+                        type: TestPageTypeEnum.drug,
                         drugs: [
                           TestDrugPageModel(
                               """NOAC is an effective alternative to VKA. (ACC/AHA VHD 2020)
@@ -276,7 +281,7 @@ NOACs are recommended in preference to VKAs in patients with aortic stenosis, ao
                     TestPageModel(
                         title: "",
                         value: "≤3 months",
-                        type: TestPageTyoeEnum.drug,
+                        type: TestPageTypeEnum.drug,
                         drugs: [
                           TestDrugPageModel(
                             """For patients with new-onset AF ≤3 months after surgical or transcatheter bioprosthetic valve replacement, anticoagulation with a VKA 
@@ -288,7 +293,7 @@ OAC using a VKA should be considered for the first 3 months after surgical impla
                                 title: "",
                                 value:
                                     "Case of surgical implantation of a BHV in mitral position in patient with AF?",
-                                type: TestPageTyoeEnum.drug,
+                                type: TestPageTypeEnum.drug,
                                 drugs: [
                                   TestDrugPageModel(
                                     """NOACs may be considered over VKA within 3\nmonths following surgical implantation of a BHV in mitral position in patients with AF.\n(ESC VHD 2021 IIb C)""",
@@ -302,23 +307,23 @@ OAC using a VKA should be considered for the first 3 months after surgical impla
         TestPageModel(
             title: "",
             value: "Pregnancy",
-            type: TestPageTyoeEnum.page,
+            type: TestPageTypeEnum.page,
             pages: [
               TestPageModel(
                   title: "Warfarin dose >5 mg/day?",
                   value: "More than one week to delivery?",
-                  type: TestPageTyoeEnum.page,
+                  type: TestPageTypeEnum.page,
                   pages: [
                     TestPageModel(
                         title:
                             "Dose adjusted LMWH with monitoring of Xa levels avaiable?",
                         value: "Yes",
-                        type: TestPageTyoeEnum.page,
+                        type: TestPageTypeEnum.page,
                         pages: [
                           TestPageModel(
                               title: "",
                               value: "Yes",
-                              type: TestPageTyoeEnum.drug,
+                              type: TestPageTypeEnum.drug,
                               drugs: [
                                 TestDrugPageModel(
                                     "Dose adjusted LMWH for 1st  trimester followed by warfarin for 2th and 3th trimesters.\n(ACC/AHA VHD 2020 2a B-NR)",
@@ -330,7 +335,7 @@ OAC using a VKA should be considered for the first 3 months after surgical impla
                           TestPageModel(
                               title: "",
                               value: "No",
-                              type: TestPageTyoeEnum.drug,
+                              type: TestPageTypeEnum.drug,
                               drugs: [
                                 TestDrugPageModel(
                                     "Continuous dose adjusted UFH for the 1st trimester followed by warfarin for the 2th and 3th trimesters.\n(ACC/AHA VHD 2020 2a B-NR)",
@@ -340,7 +345,7 @@ OAC using a VKA should be considered for the first 3 months after surgical impla
                     TestPageModel(
                         title: "",
                         value: "No",
-                        type: TestPageTyoeEnum.drug,
+                        type: TestPageTypeEnum.drug,
                         drugs: [
                           TestDrugPageModel(
                               "Continue warfarin for all trimesters.\n(ACC/AHA VHD 2020 2a B-NR)",
@@ -350,7 +355,7 @@ OAC using a VKA should be considered for the first 3 months after surgical impla
               TestPageModel(
                   title: "",
                   value: "At least One week before delivery?",
-                  type: TestPageTyoeEnum.drug,
+                  type: TestPageTypeEnum.drug,
                   drugs: [
                     TestDrugPageModel(
                         "Discontinue warfarin, switch to IV UFH or dose-adjusted LMWH.\n(ACC/AHA VHD 2020 1 C-LD)",
@@ -359,7 +364,7 @@ OAC using a VKA should be considered for the first 3 months after surgical impla
               TestPageModel(
                   title: "",
                   value: "At least 36 hr. before delivery?",
-                  type: TestPageTyoeEnum.drug,
+                  type: TestPageTypeEnum.drug,
                   drugs: [
                     TestDrugPageModel(
                         "Switch to continuous IV UFH (with an aPTT 2 times control)\n(ACC/AHA VHD 2020 1 C-LD)",
@@ -368,13 +373,13 @@ OAC using a VKA should be considered for the first 3 months after surgical impla
               TestPageModel(
                 title: "Stop IV UFH.\n(ACC/AHA VHD 2020 1 C-LD)",
                 value: "4-6 hr. before planned delivery?",
-                type: TestPageTyoeEnum.message,
+                type: TestPageTypeEnum.message,
               ),
             ]),
         TestPageModel(
           title: "",
           value: "Undergoing Cardioversion",
-          type: TestPageTyoeEnum.drug,
+          type: TestPageTypeEnum.drug,
           drugs: [
             TestDrugPageModel(
                 "NOACs are recommended with at least similar efficacy and safety as warfarin.\n(ESC 2020 AF I A)",
@@ -385,12 +390,12 @@ OAC using a VKA should be considered for the first 3 months after surgical impla
           title: "",
           value:
               "Is there contraindication for DOAC due to drug-drug interactions?",
-          type: TestPageTyoeEnum.page,
+          type: TestPageTypeEnum.page,
           pages: [
             TestPageModel(
               title: "",
               value: "Yes",
-              type: TestPageTyoeEnum.drug,
+              type: TestPageTypeEnum.drug,
               drugs: [
                 TestDrugPageModel("", [1, 2, 3])
               ],
@@ -398,7 +403,7 @@ OAC using a VKA should be considered for the first 3 months after surgical impla
             TestPageModel(
               title: "",
               value: "No",
-              type: TestPageTyoeEnum.drug,
+              type: TestPageTypeEnum.drug,
               drugs: [
                 TestDrugPageModel("", [1, 2, 3, 4, 5, 6, 7])
               ],
@@ -406,14 +411,14 @@ OAC using a VKA should be considered for the first 3 months after surgical impla
             TestPageModel(
               title: "",
               value: "Consider drug list",
-              type: TestPageTyoeEnum.link,
+              type: TestPageTypeEnum.link,
             ),
           ],
         ),
       ]);
 }
 
-enum TestPageTyoeEnum { toPage, page, drug, message, link }
+enum TestPageTypeEnum { toPage, page, drug, message, link }
 
 class TestPageModel {
   TestPageModel({
@@ -424,10 +429,11 @@ class TestPageModel {
     this.drugs = const [],
     this.pages = const [],
   });
+
   String title;
   String value;
   String page;
-  TestPageTyoeEnum type;
+  TestPageTypeEnum type;
   List<TestDrugPageModel> drugs;
   List<TestPageModel> pages;
 }

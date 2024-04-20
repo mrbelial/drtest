@@ -71,7 +71,45 @@ class TestController extends GetxController {
     return model.drugs.where((e) => names.contains(e.name)).toList();
   }
 
-  void doTestPage(TestPageModel item){
+  void doTestPage(TestPageModel item) {
     //
   }
+
+  //stacks
+  List<TestPageModel> get stacks => model.stacks;
+  TestPageModel get selectedStack => model.stacks[model.selectedStack];
+
+  int get selectedStackIndex => model.selectedStack;
+  set selectedStackIndex(int v) =>
+      _responseObs.update((val) => val!.content!.selectedStack = v);
+
+  void addToStack(TestPageModel item) {
+    if (!isItemStacked(item)) {
+      _responseObs.update((val) => val!.content!.stacks.add(item));
+    }
+  }
+
+  void removeFromStack(TestPageModel item) {
+    _responseObs
+        .update((val) => val!.content!.stacks.removeWhere((e) => e == item));
+  }
+
+  bool isItemStacked(TestPageModel item) =>
+      stacks.indexWhere((e) => e == item) > -1;
+
+  //Drugs
+  List<TestPageModel> get selectedDrugs => model.selectedDrugs;
+  void addToDrugs(TestPageModel item) {
+    if (!isItemDrugs(item)) {
+      _responseObs.update((val) => val!.content!.selectedDrugs.add(item));
+    }
+  }
+
+  void removeFromDrugs(TestPageModel item) {
+    _responseObs.update(
+        (val) => val!.content!.selectedDrugs.removeWhere((e) => e == item));
+  }
+
+  bool isItemDrugs(TestPageModel item) =>
+      selectedDrugs.indexWhere((e) => e == item) > -1;
 }
