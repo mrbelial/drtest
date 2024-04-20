@@ -11,6 +11,7 @@ class TestPageScreen extends StatelessWidget {
   final TestPageModel model = Get.arguments;
 
   Future<bool> itemClicked(TestPageModel item) async {
+    print(item.type);
     switch (item.type) {
       case TestPageTypeEnum.drug:
         _controller.addToDrugs(item);
