@@ -113,26 +113,132 @@ mechanical heart valve, DOACs are recommended over Warfarin.
           title: "",
           value: "CKD",
           page: "/ckd",
-          type: TestPageTypeEnum.toPage,
+          type: TestPageTypeEnum.page,
+          pages: [
+            TestPageModel(
+                title: "",
+                value: "Stage 3 (CrCl 30-59 mL/min)",
+                type: TestPageTypeEnum.drug,
+                drugs: [
+                  TestDrugPageModel("""Treatment with warfarin or, preferably,
+evidence-based doses of direct thrombin or factor Xa inhibitors is recommended.
+(AHA/ACC/ACCP/HRS AF 2023, 1 B-R)""", [1, 2, 3, 4, 5, 6, 7]),
+                ]),
+            TestPageModel(
+                title: "",
+                value: "Stage 4 (CrCl 15-29 mL/min)",
+                type: TestPageTypeEnum.drug,
+                drugs: [
+                  TestDrugPageModel("""Treatment with warfarin or labeled doses
+of DOACs is reasonable to reduce the risk of stroke. 
+(AHA/ACC/ACCP/HRS AF 2023, 2a B-NR)""", [1, 2, 3, 4, 5, 6, 7]),
+                ]),
+            TestPageModel(
+                title: "",
+                value: "End-stage CKD (CrCl <15 mL/min) or on dialysis",
+                type: TestPageTypeEnum.drug,
+                drugs: [
+                  TestDrugPageModel(
+                      """It might be reasonable to prescribe warfarin (INR 2.0-3.0) or an evidence-based dose of apixaban for oral anticoagulation to reduce the risk of stroke.(AHA/ACC/ACCP/HRS AF 2023, 2b B-NR),(AHA/ACC/HRS AF 2019 IIb B-NR).
+ NOACs have not been approved in Europe for patients with CrCl <_15 mL/min or on dialysis. (ESC 2020 AF)
+Dabigatran, rivaroxaban or edoxaban are not recommended because of the lack of evidence from clinical trials that benefit exceeds risk.
+(AHA/ACC/HRS AF 2019 No Benefit C-EO)""", [1, 2, 3]),
+                ]),
+          ],
         ),
         TestPageModel(
             title: "",
             value: "Liver disease",
             page: "/ld",
             type: TestPageTypeEnum.page,
-            pages: []),
+            pages: [
+              TestPageModel(
+                  title: "",
+                  value: "Child A",
+                  type: TestPageTypeEnum.drug,
+                  drugs: [
+                    TestDrugPageModel(
+                        """It is reasonable to prescribe any DOACs over warfarin.
+(AHA/ACC/ACCP/HRS AF 2023, 2a B-NR)""", [1, 2, 3, 4, 5, 6, 7]),
+                  ]),
+              TestPageModel(
+                  title: "",
+                  value: "Child B",
+                  type: TestPageTypeEnum.drug,
+                  drugs: [
+                    TestDrugPageModel(
+                        """It is reasonable to prescribe DOACs (apixaban, dabigatran, or edoxaban) over warfarin.(AHA/ACC/ACCP/HRS AF 2023, 2a  B-NR)
+Rivaroxaban is contraindicated due to the potentially increased risk of bleeding.(AHA/ACC/ACCP/HRS AF 2023, Harm C-LD)(ESC 2020 AF)""",
+                        [1, 2, 3, 4, 5, 6]),
+                  ]),
+              TestPageModel(
+                  title: "",
+                  value: "Child C",
+                  type: TestPageTypeEnum.drug,
+                  drugs: [
+                    TestDrugPageModel(
+                        """All DOACs are contraindicated.\n(ESC 2020 AF)""",
+                        [1, 2, 3]),
+                  ]),
+            ]),
         TestPageModel(
-          title: "",
-          value: "BMI",
-          page: "/bmi",
-          type: TestPageTypeEnum.toPage,
-        ),
+            title: "",
+            value: "BMI",
+            page: "/bmi",
+            type: TestPageTypeEnum.page,
+            pages: [
+              TestPageModel(
+                  title: "",
+                  value: "BMI≥ 40",
+                  type: TestPageTypeEnum.drug,
+                  drugs: [
+                    TestDrugPageModel(
+                        """Use NOACs with caution, consider NOAC plasma level measurements, or consider VKA. (EHRA NOAC AF 2021)
+In patients with AF and class III obesity (BMI ± 40 kg/m2), DOACs are reasonable to choose over warfarin for stroke risk reduction.(AHA/ACC/ACCP/HRS AF 2023, 2a B-NR)""",
+                        [1, 2, 3, 4, 5, 6, 7]),
+                  ]),
+              TestPageModel(
+                  title: "",
+                  value: "BMI 17.5-40",
+                  type: TestPageTypeEnum.drug,
+                  drugs: [
+                    TestDrugPageModel(
+                        """NOACs standard dose is recommended.\n(EHRA NOAC AF 2021)""",
+                        [1, 2, 3, 4, 5, 6, 7]),
+                  ]),
+              TestPageModel(
+                  title: "",
+                  value: "BMI<17.5",
+                  type: TestPageTypeEnum.drug,
+                  drugs: [
+                    TestDrugPageModel(
+                        """Consider Apixaban or edoxaban (with dedicated dose-reduction criteria) can be used.(EHRA NOAC AF 2021)
+Consider dabigatran / rivaroxaban with plasma level measurement.(EHRA NOAC AF 2021)
+Consider VKA (EHRA NOAC AF 2021)""", [1, 2, 3, 4, 5, 6, 7]),
+                  ]),
+            ]),
         TestPageModel(
-          title: "",
-          value: "Thrombocytopenia",
-          page: "/Thrombocytopenia",
-          type: TestPageTypeEnum.toPage,
-        ),
+            title: "",
+            value: "Thrombocytopenia",
+            page: "/Thrombocytopenia",
+            type: TestPageTypeEnum.page,
+            pages: [
+              TestPageModel(
+                title:
+                    "Avoid anticoagulation therapy due to high risk of spontaneous Bleeding.\n(EHRA NOAC AF 2021)",
+                value: "< 25'000 / µl",
+                type: TestPageTypeEnum.message,
+              ),
+              TestPageModel(
+                  title: "",
+                  value: "25'000-50'000 / µl",
+                  type: TestPageTypeEnum.drug,
+                  drugs: [
+                    TestDrugPageModel(
+                        """Consider half-dose NOAC.\nConsider half-dose LMWH.\n(EHRA NOAC AF 2021)""",
+                        [2, 3, 4, 5, 6, 7]),
+                  ]),
+            ]),
         TestPageModel(
           title: "",
           value: "Lactation",

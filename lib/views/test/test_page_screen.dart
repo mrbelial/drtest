@@ -60,12 +60,14 @@ class TestPageScreen extends StatelessWidget {
                 return testButton(
                   item.value,
                   () async {
+                    print(_controller.selectedStackIndex);
                     var isDrug = await itemClicked(item);
                     print(isDrug);
 
                     if (isDrug) {
                       _controller.removeFromDrugs(item);
                     }
+                    print(_controller.selectedStackIndex);
                   },
                 );
               }),
