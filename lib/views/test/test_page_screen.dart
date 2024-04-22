@@ -10,34 +10,34 @@ class TestPageScreen extends StatelessWidget {
   final TestController _controller = Get.find();
   final TestPageModel model = Get.arguments;
 
-  Future<bool> itemClicked(TestPageModel item) async {
-    print(item.type);
+  void itemClicked(TestPageModel item) async {
     switch (item.type) {
       case TestPageTypeEnum.drug:
         _controller.addToDrugs(item);
         _controller.selectedStackIndex += 1;
+        itemClicked(_controller.selectedStack);
+
         //await Get.toNamed("/drugs", arguments: item.drugs);
+        // await Get.offAndToNamed("/test_page",
+        //     arguments: _controller.selectedStack);
+        // _controller.selectedStackIndex -= 1;
 
-        await Get.toNamed("/test_page", arguments: _controller.selectedStack);
-        _controller.selectedStackIndex -= 1;
-
-        return true;
-      case TestPageTypeEnum.link:
-        launchURL(item.title);
-        return false;
+        break;
+      // case TestPageTypeEnum.link:
+      //   launchURL(item.title);
+      //   break;
       case TestPageTypeEnum.message:
-        testMessage(item.title, toMain);
-        return false;
+        testMessage(item.title, () {});
+        _controller.selectedStackIndex += 1;
+        itemClicked(_controller.selectedStack);
+        break;
       case TestPageTypeEnum.page:
         print("${item.value}: ${item.type.toString()}");
-        await Get.toNamed("/test_page",
-            arguments: item, preventDuplicates: false);
-        return false;
-      case TestPageTypeEnum.toPage:
-        await Get.toNamed(item.page, arguments: item);
-        return true;
-      default:
-        return false;
+        await Get.offAndToNamed("/test_page", arguments: item);
+        break;
+      case TestPageTypeEnum.result:
+        await Get.offAndToNamed("/drugs");
+        break;
     }
   }
 
@@ -59,16 +59,7 @@ class TestPageScreen extends StatelessWidget {
                 var item = model.pages[i];
                 return testButton(
                   item.value,
-                  () async {
-                    print(_controller.selectedStackIndex);
-                    var isDrug = await itemClicked(item);
-                    print(isDrug);
-
-                    if (isDrug) {
-                      _controller.removeFromDrugs(item);
-                    }
-                    print(_controller.selectedStackIndex);
-                  },
+                  () => itemClicked(item),
                 );
               }),
         ],

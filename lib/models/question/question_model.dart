@@ -99,7 +99,7 @@ mechanical heart valve, DOACs are recommended over Warfarin.
 (AHA/ACC/HRS AF 2019 1 A)""";
 
   //Selected Test Page Model
-  List<TestPageModel> selectedDrugs = [];
+  // List<TestPageModel> selectedDrugs = [];
   List<TestPageModel> stacks = [];
   int selectedStack = 0;
 
@@ -352,8 +352,61 @@ In patients with rheumatic mitral stenosis or mitral stenosis of moderate or gre
                       TestPageModel(
                         title: "",
                         value: "What is the target INR?",
-                        page: "/targetINR",
-                        type: TestPageTypeEnum.toPage,
+                        type: TestPageTypeEnum.page,
+                        pages: [
+                          TestPageModel(
+                            title: "",
+                            value: "ACC/AHA VHD 2020",
+                            type: TestPageTypeEnum.page,
+                            pages: [
+                              TestPageModel(
+                                title:
+                                    "Anticoagulation with a VKA is indicated to achieve an INR of 3.0.1 B-NR",
+                                value:
+                                    "Mechanical aortic valve replacement  + AF ?",
+                                type: TestPageTypeEnum.message,
+                              ),
+                              TestPageModel(
+                                title:
+                                    "Anticoagulation with a VKA is indicated to achieve an INR of 3.0.1 B-NR",
+                                value: "Mechanical mitral valve Replacement?",
+                                type: TestPageTypeEnum.message,
+                              ),
+                              TestPageModel(
+                                title:
+                                    "Anticoagulation with a VKA is indicated to achieve an INR of 3.0.1 B-NR",
+                                value:
+                                    "Mechanical bileaflet or current-generation single-tilting disk aortic valve replacement?",
+                                type: TestPageTypeEnum.message,
+                              ),
+                            ],
+                          ),
+                          TestPageModel(
+                            title: "",
+                            value: "(ESC VHD 2021)",
+                            type: TestPageTypeEnum.page,
+                            pages: [
+                              TestPageModel(
+                                title: "Target INR is 3.",
+                                value:
+                                    "Carbomedics, Medtronic Hall, ATS, Medtronic Open-Pivot, St Jude Medical,Sorin BicarboN?",
+                                type: TestPageTypeEnum.message,
+                              ),
+                              TestPageModel(
+                                title: "Target INR is 4.",
+                                value:
+                                    "Lillehei-Kaster, Omniscience, Starr-Edwards (ball-cage), Bjork-Shiley and other tilting-disc valves?",
+                                type: TestPageTypeEnum.message,
+                              ),
+                              TestPageModel(
+                                title: "Target INR is 3.5.",
+                                value:
+                                    "Other bileaflet valves with insufficient data?",
+                                type: TestPageTypeEnum.message,
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   ]),
@@ -517,14 +570,15 @@ OAC using a VKA should be considered for the first 3 months after surgical impla
             TestPageModel(
               title: "",
               value: "Consider drug list",
-              type: TestPageTypeEnum.link,
+              type: TestPageTypeEnum.page,
+              pages: [],
             ),
           ],
         ),
       ]);
 }
 
-enum TestPageTypeEnum { toPage, page, drug, message, link }
+enum TestPageTypeEnum { page, drug, message, result }
 
 class TestPageModel {
   TestPageModel({

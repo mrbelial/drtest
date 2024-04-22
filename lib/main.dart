@@ -12,6 +12,7 @@ import 'package:drtest/views/test/test1_screen.dart';
 import 'package:drtest/views/test/test4_screen.dart';
 import 'package:drtest/views/test/test5_screen.dart';
 import 'package:drtest/views/test/test_page_screen.dart';
+import 'package:drtest/views/test/test_result_screen.dart';
 import 'package:drtest/views/test/test_situations_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -89,6 +90,7 @@ class MyApp extends StatelessWidget {
 
         //Drug
         GetPage(name: '/drugs', page: () => DrugsScreen()),
+        // GetPage(name: '/test_result', page: () => TestResultScreen()),
 
         //test_situations_page
         GetPage(

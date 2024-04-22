@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 class DrugsScreen extends StatelessWidget {
   DrugsScreen({super.key});
   final TestController _controller = Get.find();
-  final List<TestDrugPageModel> drugs = Get.arguments;
+   List<TestDrugPageModel> get drugs => _controller.selectedDrugs;
 
   @override
   Widget build(BuildContext context) {

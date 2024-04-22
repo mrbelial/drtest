@@ -98,18 +98,19 @@ class TestController extends GetxController {
       stacks.indexWhere((e) => e == item) > -1;
 
   //Drugs
-  List<TestPageModel> get selectedDrugs => model.selectedDrugs;
+  List<TestDrugPageModel> get selectedDrugs => stacks.last.drugs;
+  // List<TestDrugPageModel> get selectedDrugsModel =>
+  // model.selectedDrugs.map((x) => x.drugs);
+
   void addToDrugs(TestPageModel item) {
-    if (!isItemDrugs(item)) {
-      _responseObs.update((val) => val!.content!.selectedDrugs.add(item));
-    }
+    stacks.last.drugs.addAll(item.drugs);
   }
 
-  void removeFromDrugs(TestPageModel item) {
-    _responseObs.update(
-        (val) => val!.content!.selectedDrugs.removeWhere((e) => e == item));
-  }
+  // void removeFromDrugs(TestPageModel item) {
+  //   _responseObs.update(
+  //       (val) => val!.content!.selectedDrugs.removeWhere((e) => e == item));
+  // }
 
-  bool isItemDrugs(TestPageModel item) =>
-      selectedDrugs.indexWhere((e) => e == item) > -1;
+  // bool isItemDrugs(TestPageModel item) =>
+  //     selectedDrugs.indexWhere((e) => e == item) > -1;
 }
