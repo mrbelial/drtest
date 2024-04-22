@@ -13,7 +13,7 @@ part of 'core.dart';
 String get appName => _getAppName();
 
 String _getAppName() {
-  return "GymTrainer";
+  return "DR Test";
   // switch (_currentApp) {
   //   case AppConfig.ryanex:
   //     return "رایانکس";
