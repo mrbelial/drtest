@@ -98,7 +98,7 @@ class CockcroftGaultScreen extends StatelessWidget {
             );
           }),
           testButton("Done", () {
-            var result = _controller.calcCG();
+            _controller.calcCG();
 
             if (_controller.age == 0) {
               ShowMSG.error("Error", "Please Enter Age.");
@@ -116,7 +116,7 @@ class CockcroftGaultScreen extends StatelessWidget {
               return;
             }
 
-            testMessage(result.desc, () {
+            testMessage("Point: ${_controller.model.cgAnswer} (mL/min)", () {
               Get.back();
               Get.toNamed("/child_pugh");
             });

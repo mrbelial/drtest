@@ -21,12 +21,27 @@ class TestController extends GetxController {
   set age(int v) => _responseObs.update((val) => val!.content!.age = v);
   int get age => model.age;
 
-  set weight(int v) => _responseObs.update((val) => val!.content!.weight = v);
+  set weight(int v) => _responseObs.update((val) {
+        val!.content!.weight = v;
+        val.content!.bmi = calcBMI();
+      });
   int get weight => model.weight;
+
+  set height(int v) => _responseObs.update((val) {
+        val!.content!.height = v;
+        val.content!.bmi = calcBMI();
+      });
+  int get height => model.height;
+
+  set bmi(double v) => _responseObs.update((val) => val!.content!.bmi = v);
+  double get bmi => model.bmi;
 
   set serumCreatinine(int v) =>
       _responseObs.update((val) => val!.content!.serumCreatinine = v);
   int get serumCreatinine => model.serumCreatinine;
+
+  set ul(int? v) => _responseObs.update((val) => val!.content!.ul = v);
+  int? get ul => model.ul;
 
   //Question 1
   set qa1(bool v) => _responseObs.update((val) => val!.content!.q1Answer = v);
@@ -122,6 +137,32 @@ Bleeding risk is dynamic, and attention to the change in bleeding risk profile i
     model.cgAnswer = double.tryParse(v.toStringAsFixed(5)) ?? 0;
 
     return IDTitleModel(0, "$v (mL/min)");
+  }
+
+  //Child Pugh Calculator
+  void cpAnswer(int i, int v, int p) {
+    _responseObs.update((val) {
+      val!.content!.cpQuestions[i].selectedID = v;
+      val.content!.cpQuestions[i].point = p;
+      calcCP();
+    });
+  }
+
+  IDTitleModel calcCP() {
+    var p = 0;
+    for (var item in model.cpQuestions) {
+      p += item.point;
+    }
+    model.cpPoint = p;
+    return IDTitleModel(p, model.cpAnswer());
+  }
+
+  //Platelet Count
+
+  //BMI
+  double calcBMI() {
+    var h = height / 100;
+    return double.tryParse((weight / (h * h)).toStringAsFixed(2)) ?? 0;
   }
 
   List<TestDrugModel> getDrugsByIDs(List<int> ids) {

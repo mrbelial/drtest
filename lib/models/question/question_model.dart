@@ -8,7 +8,10 @@ class TestModel {
   bool isFemale = false;
   int age = 0;
   int weight = 0;
+  int height = 0;
   int serumCreatinine = 0;
+  int? ul;
+  double bmi = 0;
 
   List<TestDrugModel> drugs = [
     TestDrugModel(1, "Warfarin"),
@@ -203,7 +206,73 @@ mechanical heart valve, DOACs are recommended over Warfarin.
   double cgAnswer = 0;
 
   //Child Pugh
-  List<RadioBoxModel> cpQuestions = [];
+  int cpPoint = 0;
+  String cpAnswer() {
+    if (cpPoint < 5) {
+      return "point: $cpPoint";
+    }
+    if (cpPoint < 7) {
+      return "5 to 6 points: Child class A";
+    }
+    if (cpPoint < 10) {
+      return "7 to 9 points: Child class B";
+    }
+    return "10 to 15 points: Child class C";
+  }
+
+  List<RadioGroupModel> cpQuestions = [
+    RadioGroupModel(
+        id: 1,
+        title: "Encephalopathy",
+        selectedID: 0,
+        point: 0,
+        radios: [
+          RadioBoxModel(1, "None (1 point)", 1),
+          RadioBoxModel(2, "Grade 1: Altered mood/confusion (2 points)", 2),
+          RadioBoxModel(
+              3,
+              "Grade 2: Inappropriate behavior, impending stupor, somnolence (2 points)",
+              2),
+          RadioBoxModel(
+              4,
+              "Grade 3: Markedly confused, stupors but arousable (3 points)",
+              3),
+          RadioBoxModel(5, "Grade 4: Comatose/unresponsive (3 points)", 3),
+        ]),
+    RadioGroupModel(id: 2, title: "Ascites", selectedID: 0, point: 0, radios: [
+      RadioBoxModel(1, "Absent (1 point)", 1),
+      RadioBoxModel(2, "Slight (2 points)", 2),
+      RadioBoxModel(3, "Moderate (3 points)", 3),
+    ]),
+    RadioGroupModel(
+        id: 3,
+        title: "Bilirubin",
+        selectedID: 0,
+        point: 0,
+        radios: [
+          RadioBoxModel(1, "<2 mg/dL (1 point)", 1),
+          RadioBoxModel(2, "2 to 3 mg/dL (2 points)", 2),
+          RadioBoxModel(3, ">3 mg/dL (3 points)", 3),
+        ]),
+    RadioGroupModel(id: 4, title: "Albumin", selectedID: 0, point: 0, radios: [
+      RadioBoxModel(1, ">3.5 g/dL (1 point)", 1),
+      RadioBoxModel(2, "2.8 to 3.5 g/dL (2 points)", 2),
+      RadioBoxModel(3, "<2.8 g/dL (3 points)", 3),
+    ]),
+    RadioGroupModel(
+        id: 4,
+        title: "Prothrombin time prolongation",
+        selectedID: 0,
+        point: 0,
+        radios: [
+          RadioBoxModel(
+              1, "Less than 4 seconds above control/INR <1.7 (1 point)", 1),
+          RadioBoxModel(
+              2, "4 to 6 seconds above control/INR 1.7 to 2.3 (2 points)", 2),
+          RadioBoxModel(
+              3, "More than 6 seconds above control/INR >2.3 (3 points)", 3),
+        ]),
+  ];
 
   //Selected Test Page Model
   // List<TestPageModel> selectedDrugs = [];

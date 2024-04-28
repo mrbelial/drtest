@@ -1,9 +1,11 @@
 import 'package:drtest/controllers/main_controller.dart';
 import 'package:drtest/tools/core.dart';
+import 'package:drtest/views/calc/bmi_calculator_screen.dart';
 import 'package:drtest/views/calc/child_pugh_screen.dart';
 import 'package:drtest/views/calc/cockcroft_gault_screen.dart';
 import 'package:drtest/views/calc/cha2ds2_screen.dart';
 import 'package:drtest/views/calc/has_bled_screen.dart';
+import 'package:drtest/views/calc/platelet_count_screen.dart';
 import 'package:drtest/views/drug/drugs_screen.dart';
 import 'package:drtest/views/test/endtest_screen.dart';
 import 'package:drtest/views/test/test2_screen.dart';
@@ -81,6 +83,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/has_bled', page: () => HasBledScreen()),
         GetPage(name: '/cockcroft_gault', page: () => CockcroftGaultScreen()),
         GetPage(name: '/child_pugh', page: () => ChildPughScreen()),
+        GetPage(name: '/platelet_count', page: () => PlateletCountScreen()),
+        GetPage(name: '/bmi_calculator', page: () => BMICalculatorScreen()),
 
         //Drug
         GetPage(name: '/drugs', page: () => DrugsScreen()),
