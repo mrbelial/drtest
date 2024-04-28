@@ -10,13 +10,10 @@ class Test2Screen extends StatelessWidget {
 
   void answer(int id) {
     _controller.qa2 = id;
-    if (id == 7) {
-      Get.toNamed("/test3");
+    if (id == 9) {
+      Get.toNamed("/cha2ds2");
     } else {
-      testMessage("Anticoagulation should be considered.", () {
-        Get.back();
-        Get.toNamed("/test3");
-      });
+      Get.toNamed("/test3");
     }
     //Get.toNamed("/");
   }
@@ -37,10 +34,28 @@ class Test2Screen extends StatelessWidget {
               itemCount: _controller.model.qa2.length,
               itemBuilder: (c, i) {
                 var item = _controller.model.qa2[i];
-                return testButton(
-                  item.title,
-                  () => answer(item.id),
-                  Alignment.centerLeft,
+                return Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      flex: 3,
+                      child: testButton(
+                        item.title,
+                        () => answer(item.id),
+                        textAlign: Alignment.centerLeft,
+                        color: item.id == 9 ? AppColors.red : AppColors.primary,
+                      ),
+                    ),
+                    if (item.desc.isNotEmpty) ...[
+                      const SizedBox(width: 10),
+                      IconButton(
+                        icon: const Icon(Icons.question_mark_rounded),
+                        style: IconButton.styleFrom(
+                            backgroundColor: AppColors.primary),
+                        onPressed: () => testMessage(item.desc, Get.back),
+                      ),
+                    ]
+                  ],
                 );
               }),
         ],

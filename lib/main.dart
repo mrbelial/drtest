@@ -1,18 +1,15 @@
 import 'package:drtest/controllers/main_controller.dart';
 import 'package:drtest/tools/core.dart';
+import 'package:drtest/views/calc/child_pugh_screen.dart';
+import 'package:drtest/views/calc/cockcroft_gault_screen.dart';
+import 'package:drtest/views/calc/cha2ds2_screen.dart';
+import 'package:drtest/views/calc/has_bled_screen.dart';
 import 'package:drtest/views/drug/drugs_screen.dart';
-import 'package:drtest/views/situations/bmi_screen.dart';
-import 'package:drtest/views/situations/ckd_screen.dart';
-import 'package:drtest/views/situations/ld_screen.dart';
-import 'package:drtest/views/situations/thrombocytopenia_screen.dart';
 import 'package:drtest/views/test/endtest_screen.dart';
 import 'package:drtest/views/test/test2_screen.dart';
 import 'package:drtest/views/test/test3_screen.dart';
 import 'package:drtest/views/test/test1_screen.dart';
-import 'package:drtest/views/test/test4_screen.dart';
-import 'package:drtest/views/test/test5_screen.dart';
 import 'package:drtest/views/test/test_page_screen.dart';
-import 'package:drtest/views/test/test_result_screen.dart';
 import 'package:drtest/views/test/test_situations_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -74,19 +71,16 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/test', page: () => TestScreen()),
         GetPage(name: '/test2', page: () => Test2Screen()),
         GetPage(name: '/test3', page: () => Test3Screen()),
-        GetPage(name: '/test4', page: () => Test4Screen()),
-        GetPage(name: '/test5', page: () => Test5Screen()),
         GetPage(name: '/endtest', page: () => EndTestScreen()),
 
         //Test Page
         GetPage(name: '/test_page', page: () => TestPageScreen()),
 
-        //situations
-        GetPage(name: '/ckd', page: () => CKDScreen()),
-        GetPage(name: '/ld', page: () => LDScreen()),
-        GetPage(name: '/bmi', page: () => BMIScreen()),
-        GetPage(
-            name: '/Thrombocytopenia', page: () => ThrombocytopeniaScreen()),
+        //Test Calc
+        GetPage(name: '/cha2ds2', page: () => CHA2DS2Screen()),
+        GetPage(name: '/has_bled', page: () => HasBledScreen()),
+        GetPage(name: '/cockcroft_gault', page: () => CockcroftGaultScreen()),
+        GetPage(name: '/child_pugh', page: () => ChildPughScreen()),
 
         //Drug
         GetPage(name: '/drugs', page: () => DrugsScreen()),

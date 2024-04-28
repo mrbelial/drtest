@@ -8,11 +8,11 @@ Widget testTitle(String title) {
 }
 
 Widget testButton(String title, void Function() onTap,
-    [Alignment textAlign = Alignment.center]) {
+    {Alignment textAlign = Alignment.center, Color color = AppColors.primary}) {
   return Container(
     padding: const EdgeInsets.only(bottom: 10),
     child: MaterialButton(
-      color: AppColors.primary,
+      color: color,
       onPressed: onTap,
       padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
       child: Container(
@@ -30,7 +30,14 @@ void testMessage(String message, void Function() ontap,
     [String title = "Message"]) {
   Get.defaultDialog(
       title: title,
-      middleText: message,
+      content: Container(
+        width: Get.size.width - 50,
+        height: Get.size.height - 150,
+        child: ListView(
+          shrinkWrap: true,
+          children: [Text(message)],
+        ),
+      ),
       actions: [textButton(title: "Ok", onTap: ontap)]);
 }
 

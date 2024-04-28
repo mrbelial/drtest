@@ -1,11 +1,14 @@
 import 'package:drtest/models/public/checkbox_model.dart';
 import 'package:drtest/models/public/idtitle_model.dart';
+import 'package:drtest/models/public/radiobox_model.dart';
 
 class TestModel {
   int id = 0;
 
   bool isFemale = false;
   int age = 0;
+  int weight = 0;
+  int serumCreatinine = 0;
 
   List<TestDrugModel> drugs = [
     TestDrugModel(1, "Warfarin"),
@@ -26,26 +29,96 @@ class TestModel {
   String q2Title = "Any of the following indication for OACs present?";
   int q2Answer = 0;
   List<IDTitleModel> qa2 = [
-    IDTitleModel(0,
-        "Moderate to severe mitral stenosis(AHA/ACC/ACCP/HRS AF 2023, 1 B-R),(ESC VHD 2021)"),
-    IDTitleModel(1, "Mechanical heart valve implementation(ESC VHD 2021)"),
-    IDTitleModel(2,
-        "Hypertrophic Cardiomyopathy (AHA/ACC/ACCP/HRS AF 2023),(EHRA AF 2021)"),
-    IDTitleModel(3,
-        "First 3 months after bioprosthetic heart valve implementation(ESC VHD 2021)"),
+    IDTitleModel(
+        0,
+        "Moderate to severe mitral stenosis(AHA/ACC/ACCP/HRS AF 2023, 1 B-R)",
+        "● In patients with mitral stenosis of moderate or greater severity and history of AF, long-term anticoagulation with warfarin is recommended over DOACs, independent of the CHA2DS2- VASc score to prevent cardiovascular events, including stroke or death. (AHA/ACC/ACCP/HRS AF 2023, 1 B-R)"),
+    IDTitleModel(
+        1,
+        "Mechanical heart valve implementation (ESC VHD 2021) (1A ESC VHD 2020)",
+        "● OAC using a VKA is recommended lifelong for all patients with an MHV prosthesis. \n(ESC VHD 2021  I B)\n● In patients with a mechanical prosthetic valve, anticoagulation with a VKA is recommended.\n(1A ESC VHD 2020)"),
+    IDTitleModel(
+        2,
+        "Hypertrophic Cardiomyopathy (AHA/ACC/ACCP/HRS AF 2023),(EHRA AF 2021)",
+        "● In hypertrophic cardiomyopathy, the risk of stroke is high enough independent of risk score to indicate anticoagulation.\n● Hypertrophic cardiomyopathy  have roughly an equivalent risk to a CHADsVASc of 3.\n(AHA/ACC/ACCP/HRS AF 2023)\n● In both obstructive and non-obstructive hypertrophic cardiomyopathy, AF is associated with a high rate of thromboembolism.\n(EHRA AF 2021)"),
+    IDTitleModel(
+        3,
+        "First 3 months after bioprosthetic heart valve implementation (ESC VHD 2021) (ACC/AHA VHD 2020)",
+        "● For patients with new-onset AF ≤3 months after surgical or transcatheter bioprosthetic valve replacement, anticoagulation with a VKA is reasonable.\n(ACC/AHA VHD 2020 2a B-NR)\n● OAC using a VKA should be considered for the first 3 months after surgical implantation of a bio prosthesis in the mitral or tricuspid position.\n(ESC VHD 2021 IIa B)"),
     IDTitleModel(4, """Congenital heart disease
 Moderate or severe forms of congenital heart disease including: 
 low-flow states such as Fontan circulation, blind-ending cardiac chambers, and cyanosis. (AHA/ACC/ACCP/HRS AF 2023, 2b C-LD)
-Intracardiac repair, cyanosis, Fontan palliation, or systemic right ventricle and a history of AF, AFL, or intra-atrial re-entrant tachycardia. (ESC 2020 AF IIa C)"""),
+Intracardiac repair, cyanosis, Fontan palliation, or systemic right ventricle and a history of AF, AFL, or intra-atrial re-entrant tachycardia. (ESC 2020 AF IIa C)""",
+        """● It may be reasonable to treat with anticoagulation independent of conventional risk score to reduce risk of thromboembolic events.
+(AHA/ACC/ACCP/HRS AF 2023, 2b C-LD)
+● Oral anticoagulation should be considered in
+all adult patients with intracardiac repair, cyanosis, Fontan palliation, or systemic right ventricle and a history of AF, AFL, or intra-atrial
+re-entrant tachycardia.
+(ESC 2020 AF IIa C)"""),
     IDTitleModel(5, """Cardioversion
 3 weeks before elective cardioversion when AF duration is ≥ 48 hours or unknown without imaging evaluation. (AHA/ACC/ACCP/HRS AF 2023, 1 B-R) (AHA/ACC/HRS 2019 I B-R) (EHRA NOAC 2021).
-Cardioversion during the last 4 weeks when AF duration of ≥24 hours (ESC 2020 AF IIa B), or ≥ 48 hours (AHA/ACC/HRS 2019 I B-R), or regardless of duration (AHA/ACC/ACCP/HRS AF 2023, 1 B-NR)."""),
+Cardioversion during the last 4 weeks when AF duration of ≥24 hours (ESC 2020 AF IIa B), or ≥ 48 hours (AHA/ACC/HRS 2019 I B-R), or regardless of duration (AHA/ACC/ACCP/HRS AF 2023, 1 B-NR).""",
+        """● In patients with AFL who undergo successful cardioversion or ablation resulting in restoration of sinus
+rhythm, anticoagulation should be continued for at least 4 weeks post-procedure.
+(AHA/ACC/ACCP/HRS AF 2023, 1 C-LD)
+● In patients with AF duration of ‡48 hours, a 3-week duration of uninterrupted therapeutic anticoagulation
+or imaging evaluation to exclude intracardiac thrombus is recommended before elective cardioversion.
+(AHA/ACC/ACCP/HRS AF 2023, 1 B-R) 
+● In patients with AF undergoing cardioversion, therapeutic anticoagulation should be established before
+cardioversion and continued for at least 4 weeks afterwards without interruption to prevent thromboembolism.
+(AHA/ACC/ACCP/HRS AF 2023, 1 B-NR)
+● For patients with AF or atrial flutter of 48 
+hours’ duration or longer, or when the 
+duration of AF is unknown, anticoagulation 
+with warfarin (INR 2.0 to 3.0), a factor Xa 
+inhibitor, or direct thrombin inhibitor is 
+recommended for at least 3 weeks before 
+and at least 4 weeks after cardioversion, 
+regardless of the
+ CHA2DS2-VASc score or the 
+method (electrical or pharmacological) used 
+to restore sinus rhythm.
+(AHA/ACC/HRS 2019 I B-R)
+●  For patients with AF or atrial flutter 
+of more than 48 hours’ duration or 
+unknown duration that requires immediate 
+cardioversion for hemodynamic instability, 
+anticoagulation should be initiated as 
+soon as possible and continued for at 
+least 4 weeks after cardioversion unless 
+contraindicated.
+(AHA/ACC/HRS 2019 I C)
+● In patients with AF of >48 h (or unknown) duration undergoing electrical or pharmacological cardioversion, effective oral anticoagulation needs to be established for 
+at least 3 weeks prior to cardioversion or a pre-cardioversion transesophageal echocardiography 
+ needs to rule out left atrial thrombi, irrespective of CHA2DS2-VASc score.
+(EHRA NOAC 2021).
+● In patients with AF duration of >24 h undergoing cardioversion, therapeutic anticoagulation should be continued for at least 4 weeks even after successful cardioversion to sinus rhythm.
+(ESC 2020 AF IIa B)"""),
     IDTitleModel(6, """Ablation
 Catheter ablation during the last 3 months. (AHA/ACC/ACCP/HRS AF 2023, 1 B-NR)
 Surgical ablation during the last 3 months. (AHA/ACC/ACCP/HRS AF 2023, 2a B-NR)
 Catheter ablation during the last 2 months.(ESC 2020 AF I C)
-Planning for catheter ablation in the next 3 weeks without imaging. (ESC 2020 AF I C)"""),
-    IDTitleModel(7, "No"),
+Planning for catheter ablation in the next 3 weeks without imaging. (ESC 2020 AF I C)""",
+        """ In patients who have undergone catheter ablation of AF, oral anticoagulation should be continued for at
+least 3 months after the procedure with a longer duration determined by underlying risk.
+(AHA/ACC/ACCP/HRS AF 2023, 1 B-NR)
+In patients undergoing surgical ablation, anticoagulation therapy is reasonable for at least 3 months after
+the procedure to reduce the risk of stroke or systemic embolism.
+(AHA/ACC/ACCP/HRS AF 2023, 2a B-NR)
+In AF patients with stroke risk factors not taking OAC before ablation, it is recommended that pre-procedural management of stroke risk includes initiation of anticoagulation and preferably, therapeutic OAC for at least 3 weeks before ablation (I C), or alternatively, the use of TOE to exclude LA thrombus before ablation ( IIa C).
+(ESC 2020 AF )"""),
+    IDTitleModel(7, "CHA2DS2-VASc Score of ≥ 2 in men and ≥ 3 in women",
+        """Anticoagulation is recommended to prevent stroke and systemic thromboembolism.
+(AHA/ACC/ACCP/HRS AF 2023, 1 A)
+(ESC 2020 AF 1A)
+(AHA/ACC/HRS AF 2019 1 A)"""),
+    IDTitleModel(
+        8,
+        "CHA2DS2-VASc of 1 point in male or 2 points in female (2a A 2023) (2a B)esc 2020/ 2B C-LD",
+        """Anticoagulation is reasonable to prevent stroke and systemic thromboembolism.
+(AHA/ACC/ACCP/HRS AF 2023, 2a  A), (ESC 2020 AF IIa B)
+Prescribing an oral anticoagulant to reduce thromboembolic stroke risk may be considered. (AHA/ACC/HRS AF 2019 IIb C-LD)"""),
+    IDTitleModel(9, "Don’t know the CHA2DS2-VASc Score?"),
   ];
 
   //Question 3
@@ -97,6 +170,40 @@ mechanical heart valve, DOACs are recommended over Warfarin.
 (AHA/ACC/ACCP/HRS AF 2023, 1 A)
 (ESC 2020 1A)
 (AHA/ACC/HRS AF 2019 1 A)""";
+
+  //Has_Bled
+  int hbPoint = 0;
+  List<CheckBoxModel> hbAnswer = [
+    CheckBoxModel(
+        "Uncontrolled hypertension (SBP >160 mmHg) [1 point]", 1, false),
+    CheckBoxModel(
+        "Abnormal renal function (Dialysis, transplant, serum creatinine >200 mmol/L) [1 point]",
+        1,
+        false),
+    CheckBoxModel(
+        "Abnormal hepatic function (Cirrhosis, bilirubin >  2 upper limit of normal, AST/ALT/ALP >3  upper limit of normal) [1 point]",
+        1,
+        false),
+    CheckBoxModel(
+        "Stroke (Previous ischemic or hemorrhagic stroke) [1 point]", 1, false),
+    CheckBoxModel(
+        "Bleeding history or predisposition (Previous major hemorrhage or anemia or severe thrombocytopenia) [1 point]",
+        1,
+        false),
+    CheckBoxModel(
+        "Labile INR (TTR <60% in patient receiving VKA) [1 point]", 1, false),
+    CheckBoxModel(
+        "Elderly (Aged >65 years or extreme frailty) [1 point]", 1, false),
+    CheckBoxModel("Excessive alcohol drinking [1 point]", 1, false),
+    CheckBoxModel(
+        "Concomitant use of antiplatelet or NSAID [1 point]", 1, false),
+  ];
+
+  //Cockcroft-Gault
+  double cgAnswer = 0;
+
+  //Child Pugh
+  List<RadioBoxModel> cpQuestions = [];
 
   //Selected Test Page Model
   // List<TestPageModel> selectedDrugs = [];
