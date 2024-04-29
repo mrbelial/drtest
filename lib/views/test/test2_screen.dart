@@ -14,7 +14,7 @@ class Test2Screen extends StatelessWidget {
     if (item.id == 9) {
       Get.toNamed("/cha2ds2");
     } else {
-      testMessage(item.desc, () {
+      testMessage("Consider Anticoagulation", () {
         Get.back();
         Get.toNamed("/test3");
       });
