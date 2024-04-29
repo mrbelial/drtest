@@ -10,9 +10,12 @@ class CockcroftGaultScreen extends StatelessWidget {
   final FocusNode _ageFocusNode = FocusNode();
   final FocusNode _scFocusNode = FocusNode();
   final FocusNode _weightFocusNode = FocusNode();
+  final TextEditingController _ageController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    _ageController.text = _controller.age.toString();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Cockcroft-Gault Calculator"),
@@ -55,6 +58,7 @@ class CockcroftGaultScreen extends StatelessWidget {
             hint: "Year",
             label: "Age",
             focusNode: _ageFocusNode,
+            controller: _ageController,
             onChanged: (age) {
               _controller.age = int.tryParse(age) ?? 0;
               _controller.calcCG();

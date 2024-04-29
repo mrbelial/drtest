@@ -1,4 +1,5 @@
 import 'package:drtest/controllers/test_controller.dart';
+import 'package:drtest/models/public/idtitle_model.dart';
 import 'package:drtest/tools/core.dart';
 import 'package:drtest/ui/test/test_widget.dart';
 import 'package:flutter/material.dart';
@@ -8,14 +9,16 @@ class Test2Screen extends StatelessWidget {
   Test2Screen({super.key});
   final TestController _controller = Get.find();
 
-  void answer(int id) {
-    _controller.qa2 = id;
-    if (id == 9) {
+  void answer(IDTitleModel item) {
+    _controller.qa2 = item.id;
+    if (item.id == 9) {
       Get.toNamed("/cha2ds2");
     } else {
-      Get.toNamed("/test3");
+      testMessage(item.desc, () {
+        Get.back();
+        Get.toNamed("/test3");
+      });
     }
-    //Get.toNamed("/");
   }
 
   @override
@@ -41,7 +44,7 @@ class Test2Screen extends StatelessWidget {
                       flex: 3,
                       child: testButton(
                         item.title,
-                        () => answer(item.id),
+                        () => answer(item),
                         textAlign: Alignment.centerLeft,
                         color: item.id == 9 ? AppColors.red : AppColors.primary,
                       ),

@@ -12,7 +12,7 @@ class ChildPughScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Cockcroft-Gault Calculator"),
+        title: const Text("Child Pugh Calculator"),
       ),
       body: ListView(
         padding: AppConst.defaultPadding,
@@ -26,8 +26,17 @@ class ChildPughScreen extends StatelessWidget {
                 itemBuilder: (c, i) {
                   var item = _controller.model.cpQuestions[i];
                   return Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Text("${item.title} (point ${item.point})"),
+                      Container(
+                        color: AppColors.blue,
+                        padding: const EdgeInsets.all(10),
+                        child: Text(
+                          item.title,
+                          style: AppTextStyles.headline2,
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
                       for (var r in item.radios)
                         radioButton(
                             title: r.title,

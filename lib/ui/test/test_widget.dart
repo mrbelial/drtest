@@ -30,7 +30,7 @@ void testMessage(String message, void Function() ontap,
     [String title = "Message"]) {
   Get.defaultDialog(
       title: title,
-      content: Container(
+      content: SizedBox(
         width: Get.size.width - 50,
         height: Get.size.height - 150,
         child: ListView(
