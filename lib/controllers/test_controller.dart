@@ -36,9 +36,9 @@ class TestController extends GetxController {
   set bmi(double v) => _responseObs.update((val) => val!.content!.bmi = v);
   double get bmi => model.bmi;
 
-  set serumCreatinine(int v) =>
+  set serumCreatinine(double v) =>
       _responseObs.update((val) => val!.content!.serumCreatinine = v);
-  int get serumCreatinine => model.serumCreatinine;
+  double get serumCreatinine => model.serumCreatinine;
 
   set ul(int? v) => _responseObs.update((val) => val!.content!.ul = v);
   int? get ul => model.ul;

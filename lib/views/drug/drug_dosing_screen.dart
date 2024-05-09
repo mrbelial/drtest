@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 class DrugDosingScreen extends StatelessWidget {
   DrugDosingScreen({super.key});
+  // ignore: unused_field
   final _controller = Get.put(DurgDosingController());
   final TestDrugModel item = Get.arguments;
 

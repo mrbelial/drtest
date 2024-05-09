@@ -68,12 +68,18 @@ class CockcroftGaultScreen extends StatelessWidget {
           textField(
             maxLength: 5,
             type: TextInputType.number,
-            formatter: [NumericalRangeFormatter(min: 0, max: 50000)],
+            formatter: [
+              NumericalRangeFormatter(
+                min: 0,
+                max: 50000,
+                decimalDigits: 3,
+              )
+            ],
             hint: "mg/dL",
             label: "Serum creatinine",
             focusNode: _scFocusNode,
             onChanged: (sc) {
-              _controller.serumCreatinine = int.tryParse(sc) ?? 0;
+              _controller.serumCreatinine = double.tryParse(sc) ?? 0;
               _controller.calcCG();
             },
           ),

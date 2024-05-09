@@ -9,7 +9,7 @@ class TestModel {
   int age = 0;
   int weight = 0;
   int height = 0;
-  int serumCreatinine = 0;
+  double serumCreatinine = 0;
   int? ul;
   int get ulValue => ul ?? 0;
   double bmi = 0;
