@@ -208,6 +208,33 @@ Bleeding risk is dynamic, and attention to the change in bleeding risk profile i
     stacks.last.drugs.addAll(item.drugs);
   }
 
+  void initStack() {
+    stacks.clear();
+    model.initPages();
+
+    if (model.cgAnswer > -1) {
+      stacks.add(model.pages.pages.firstWhere((x) => x.id == 1));
+    }
+    if (model.cpPoint > 0) {
+      stacks.add(model.pages.pages.firstWhere((x) => x.id == 2));
+    }
+    if (model.bmi > 0) {
+      stacks.add(model.pages.pages.firstWhere((x) => x.id == 3));
+    }
+    if (model.ulValue > 0) {
+      stacks.add(model.pages.pages.firstWhere((x) => x.id == 4));
+    }
+    if (model.q2Answer == 2) {
+      stacks.add(model.pages.pages.firstWhere((x) => x.id == 15));
+    }
+    if (model.q2Answer == 4) {
+      stacks.add(model.pages.pages.firstWhere((x) => x.id == 16));
+    }
+    if (model.q2Answer == 6) {
+      stacks.add(model.pages.pages.firstWhere((x) => x.id == 17));
+    }
+  }
+
   // void removeFromDrugs(TestPageModel item) {
   //   _responseObs.update(
   //       (val) => val!.content!.selectedDrugs.removeWhere((e) => e == item));

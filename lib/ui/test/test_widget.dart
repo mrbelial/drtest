@@ -43,5 +43,7 @@ void testMessage(String message, void Function() ontap,
 
 Widget testDrug(TestDrugModel item) {
   return listTile(
-      title: item.name, margin: const EdgeInsets.symmetric(vertical: 10));
+      title: item.name,
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      onTap: () => Get.toNamed("/drug_dosing", arguments: item));
 }

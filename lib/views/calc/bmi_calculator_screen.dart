@@ -28,6 +28,7 @@ class BMICalculatorScreen extends StatelessWidget {
             testTitle(
                 "BMI calculator (ESC NOAC 2021) (AHA/ACC/ACCP/HRS AF 2023)"),
             textField(
+              autofocus: true,
               maxLength: 15,
               type: TextInputType.number,
               hint: "Height (cm)",

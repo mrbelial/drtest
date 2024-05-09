@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 class DashboardScreen extends StatelessWidget {
   DashboardScreen({super.key});
+  // ignore: unused_field
   final MainController _controller = Get.find();
 
   @override

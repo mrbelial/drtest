@@ -32,7 +32,7 @@ class TestPageScreen extends StatelessWidget {
         itemClicked(_controller.selectedStack);
         break;
       case TestPageTypeEnum.page:
-        print("${item.value}: ${item.type.toString()}");
+        // print("${item.value}: ${item.type.toString()}");
         await Get.offAndToNamed("/test_page", arguments: item);
         break;
       case TestPageTypeEnum.result:
@@ -57,10 +57,9 @@ class TestPageScreen extends StatelessWidget {
               itemCount: model.pages.length,
               itemBuilder: (c, i) {
                 var item = model.pages[i];
-                return testButton(
-                  item.value,
-                  () => itemClicked(item),
-                );
+                return testButton(item.value, () => itemClicked(item),
+                    color:
+                        item.isMarked ? AppColors.primary : AppColors.darkGray);
               }),
         ],
       ),

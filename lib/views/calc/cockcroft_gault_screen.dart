@@ -52,6 +52,7 @@ class CockcroftGaultScreen extends StatelessWidget {
             );
           }),
           textField(
+            autofocus: true,
             maxLength: 3,
             type: TextInputType.number,
             formatter: [NumericalRangeFormatter(min: 0, max: 150)],

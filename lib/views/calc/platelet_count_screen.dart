@@ -21,6 +21,7 @@ class PlateletCountScreen extends StatelessWidget {
           children: [
             testTitle("Platelet Count (µL) (ESC NOAC 2021)"),
             textField(
+              autofocus: true,
               maxLength: 15,
               type: TextInputType.number,
               hint: "µL",

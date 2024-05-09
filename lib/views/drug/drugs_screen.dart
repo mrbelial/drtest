@@ -8,27 +8,44 @@ import 'package:get/get.dart';
 class DrugsScreen extends StatelessWidget {
   DrugsScreen({super.key});
   final TestController _controller = Get.find();
-   List<TestDrugPageModel> get drugs => _controller.selectedDrugs;
+
+  TestFilteredDrugModel filteredDrugs() {
+    TestFilteredDrugModel model = TestFilteredDrugModel();
+
+    for (var item in _controller.selectedDrugs) {
+      model.titles.add(item.title);
+
+      for (var drug in item.drugIds) {
+        if (!model.drugIds.contains(drug)) {
+          model.drugIds.add(drug);
+        }
+      }
+    }
+
+    model.drugs = _controller.getDrugsByIDs(model.drugIds.toList());
+
+    return model;
+  }
 
   @override
   Widget build(BuildContext context) {
+    var model = filteredDrugs();
     return Scaffold(
       appBar: AppBar(
         title: const Text("Drugs"),
       ),
-      body: ListView.builder(
+      body: ListView(
         padding: AppConst.defaultPadding,
-        itemCount: drugs.length,
-        itemBuilder: (context, index) {
-          var item = drugs[index];
-          item.drugs = _controller.getDrugsByIDs(item.drugIds);
-          return Column(
-            children: [
-              testTitle(item.title),
-              ...item.drugs.map((e) => testDrug(e)),
-            ],
-          );
-        },
+        children: [
+          ...model.titles.map((e) => cardBox(
+                  child: Text(
+                e,
+                style: AppTextStyles.bodyTextLargeDark,
+              ))),
+          ...model.drugs.map((e) => testButton(e.name, () {
+                Get.toNamed("/drug_dosing", arguments: e);
+              })),
+        ],
       ),
     );
   }

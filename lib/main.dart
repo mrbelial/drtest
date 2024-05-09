@@ -1,22 +1,11 @@
 import 'package:drtest/controllers/main_controller.dart';
 import 'package:drtest/tools/core.dart';
-import 'package:drtest/views/calc/bmi_calculator_screen.dart';
-import 'package:drtest/views/calc/child_pugh_screen.dart';
-import 'package:drtest/views/calc/cockcroft_gault_screen.dart';
-import 'package:drtest/views/calc/cha2ds2_screen.dart';
-import 'package:drtest/views/calc/has_bled_screen.dart';
-import 'package:drtest/views/calc/platelet_count_screen.dart';
-import 'package:drtest/views/drug/drugs_screen.dart';
-import 'package:drtest/views/test/endtest_screen.dart';
-import 'package:drtest/views/test/test2_screen.dart';
-import 'package:drtest/views/test/test3_screen.dart';
-import 'package:drtest/views/test/test1_screen.dart';
-import 'package:drtest/views/test/test_page_screen.dart';
-import 'package:drtest/views/test/test_situations_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+
+import 'views/drug/drug_dosing_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -88,7 +77,7 @@ class MyApp extends StatelessWidget {
 
         //Drug
         GetPage(name: '/drugs', page: () => DrugsScreen()),
-        // GetPage(name: '/test_result', page: () => TestResultScreen()),
+        GetPage(name: '/drug_dosing', page: () => DrugDosingScreen()),
 
         //test_situations_page
         GetPage(

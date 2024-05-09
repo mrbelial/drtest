@@ -10,8 +10,15 @@ class TestSituationsScreen extends StatelessWidget {
   final TestController _controller = Get.find();
   TestPageModel get model => _controller.model.pages;
 
+  final tempResult = TestPageModel(
+      title: "Result",
+      value: "Result",
+      type: TestPageTypeEnum.result,
+      drugs: []);
+
   @override
   Widget build(BuildContext context) {
+    _controller.initStack();
     return Scaffold(
       appBar: AppBar(
         title: Text(model.value),
@@ -21,13 +28,7 @@ class TestSituationsScreen extends StatelessWidget {
               return textButton(
                   title: "Next",
                   onTap: () {
-                    _controller.stacks.add(
-                      TestPageModel(
-                          title: "Result",
-                          value: "Result",
-                          type: TestPageTypeEnum.result,
-                          drugs: []),
-                    );
+                    _controller.addToStack(tempResult);
 
                     Get.toNamed("/test_page",
                         arguments: _controller.stacks.first);
@@ -52,9 +53,14 @@ class TestSituationsScreen extends StatelessWidget {
                     id: 0,
                     title: item.value,
                     checked: _controller.isItemStacked(item),
-                    onChange: (i, b) => b
-                        ? _controller.addToStack(item)
-                        : _controller.removeFromStack(item),
+                    onChange: (i, b) {
+                      _controller.removeFromStack(tempResult);
+                      if (b) {
+                        _controller.addToStack(item);
+                      } else {
+                        _controller.removeFromStack(item);
+                      }
+                    },
                   );
                 });
               }),

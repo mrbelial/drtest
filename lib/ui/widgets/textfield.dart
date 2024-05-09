@@ -47,13 +47,26 @@ Widget textField({
   List<TextInputFormatter>? formatter,
   Color bgColor = AppColors.white,
   TextDirection? textDirection,
+  bool autofocus = false,
 }) {
   focusNode ??= FocusNode();
+  controller ??= TextEditingController();
+  
+  focusNode.addListener(() {
+    if (focusNode!.hasFocus) {
+      controller!.selection = TextSelection(
+        baseOffset: 0,
+        extentOffset: controller.text.length,
+      );
+    }
+  });
+
   textDirection ??= [TextInputType.number, TextInputType.phone].contains(type)
       ? TextDirection.ltr
       : TextDirection.ltr;
 
   var child = TextField(
+    autofocus: autofocus,
     keyboardType: type,
     maxLines: maxLines,
     focusNode: focusNode,
