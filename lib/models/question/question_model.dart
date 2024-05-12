@@ -1,6 +1,7 @@
 import 'package:drtest/models/public/checkbox_model.dart';
 import 'package:drtest/models/public/idtitle_model.dart';
 import 'package:drtest/models/public/radiobox_model.dart';
+import 'package:drtest/models/question/drug_interaction_model.dart';
 
 class TestModel {
   int id = 0;
@@ -508,7 +509,7 @@ dabigatran 110 mg the risk is similar to warfarin.
               title: "",
               value: "AF + Valve Disease",
               type: TestPageTypeEnum.page,
-            id: 11,
+              id: 11,
               pages: [
                 TestPageModel(
                     title: "",
@@ -670,7 +671,7 @@ OAC using a VKA should be considered for the first 3 months after surgical impla
               title: "",
               value: "Pregnancy",
               type: TestPageTypeEnum.page,
-            id: 12,
+              id: 12,
               pages: [
                 TestPageModel(
                     title: "Warfarin dose >5 mg/day?",
@@ -829,6 +830,8 @@ In AF patients with stroke risk factors not taking OAC before ablation, it is re
           ),
         ]);
   }
+
+  DrugInteractionModel? drugInteractions;
 }
 
 enum TestPageTypeEnum { page, drug, message, result }
@@ -859,7 +862,7 @@ class TestDrugModel {
   TestDrugModel(this.id, this.name);
   int id;
   String name;
-  List<int> druginteractions = [];
+  // List<int> druginteractions = [];
 }
 
 class TestDrugPageModel {

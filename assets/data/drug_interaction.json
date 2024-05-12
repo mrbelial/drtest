@@ -1,0 +1,534 @@
+[
+  {
+    "drugName": "Dronedarone",
+    "interactionDrugs": [
+      {
+        "type": 6,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 4,
+        "interactionType": 1,
+        "dose": null
+      },
+      {
+        "type": 7,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 5,
+        "interactionType": 3,
+        "dose": "30 mg QD"
+      }
+    ],
+    "calcType": null,
+    "value": null
+  },
+  {
+    "drugName": "HIV protease inhibitors (e.g., ritonavir)",
+    "interactionDrugs": [
+      {
+        "type": 6,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 4,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 7,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 5,
+        "interactionType": 2,
+        "dose": null
+      }
+    ],
+    "calcType": null,
+    "value": null
+  },
+  {
+    "drugName": "Itraconazole",
+    "interactionDrugs": [
+      {
+        "type": 6,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 4,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 7,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 5,
+        "interactionType": 4,
+        "dose": "30 mg QD"
+      }
+    ],
+    "calcType": null,
+    "value": null
+  },
+  {
+    "drugName": "Ketoconazole",
+    "interactionDrugs": [
+      {
+        "type": 6,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 4,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 7,
+        "interactionType": 2,
+        "dose": null
+      }
+    ],
+    "calcType": null,
+    "value": null
+  },
+  {
+    "drugName": "Imatinib, Crizotinib",
+    "interactionDrugs": [
+      {
+        "type": 6,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 4,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 7,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 5,
+        "interactionType": 2,
+        "dose": null
+      }
+    ],
+    "calcType": null,
+    "value": null
+  },
+  {
+    "drugName": "Vandetanib, Sunitinib",
+    "interactionDrugs": [
+      {
+        "type": 6,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 4,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 7,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 5,
+        "interactionType": 2,
+        "dose": null
+      }
+    ],
+    "calcType": null,
+    "value": null
+  },
+  {
+    "drugName": "Abiraterone",
+    "interactionDrugs": [
+      {
+        "type": 6,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 4,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 7,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 5,
+        "interactionType": 2,
+        "dose": null
+      }
+    ],
+    "calcType": null,
+    "value": null
+  },
+  {
+    "drugName": "Enzalutamide",
+    "interactionDrugs": [
+      {
+        "type": 6,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 4,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 7,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 5,
+        "interactionType": 2,
+        "dose": null
+      }
+    ],
+    "calcType": null,
+    "value": null
+  },
+  {
+    "drugName": "Cyclosporine",
+    "interactionDrugs": [
+      {
+        "type": 6,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 4,
+        "interactionType": 1,
+        "dose": null
+      },
+      {
+        "type": 7,
+        "interactionType": 1,
+        "dose": null
+      },
+      {
+        "type": 5,
+        "interactionType": 4,
+        "dose": "30 mg QD"
+      }
+    ],
+    "calcType": null,
+    "value": null
+  },
+  {
+    "drugName": "Tacrolimus",
+    "interactionDrugs": [
+      {
+        "type": 6,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 4,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 7,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 5,
+        "interactionType": 2,
+        "dose": null
+      }
+    ],
+    "calcType": null,
+    "value": null
+  },
+  {
+    "drugName": "Darunavir / Cobicistat",
+    "interactionDrugs": [
+      {
+        "type": 6,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 4,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 7,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 5,
+        "interactionType": 2,
+        "dose": null
+      }
+    ],
+    "calcType": null,
+    "value": null
+  },
+  {
+    "drugName": "Lopinavir / Ritonavir",
+    "interactionDrugs": [
+      {
+        "type": 6,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 4,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 7,
+        "interactionType": 2,
+        "dose": null
+      },
+      {
+        "type": 5,
+        "interactionType": 2,
+        "dose": null
+      }
+    ],
+    "calcType": null,
+    "value": null
+  },
+  {
+    "drugName": "Rifampicin",
+    "interactionDrugs": [
+      {
+        "type": 6,
+        "interactionType": 3,
+        "dose": null
+      },
+      {
+        "type": 4,
+        "interactionType": 3,
+        "dose": null
+      },
+      {
+        "type": 7,
+        "interactionType": 3,
+        "dose": null
+      },
+      {
+        "type": 5,
+        "interactionType": 4,
+        "dose": null
+      }
+    ],
+    "calcType": null,
+    "value": null
+  },
+  {
+    "drugName": "St. John’s wort",
+    "interactionDrugs": [
+      {
+        "type": 6,
+        "interactionType": 3,
+        "dose": null
+      },
+      {
+        "type": 4,
+        "interactionType": 3,
+        "dose": null
+      },
+      {
+        "type": 7,
+        "interactionType": 3,
+        "dose": null
+      },
+      {
+        "type": 5,
+        "interactionType": 3,
+        "dose": null
+      }
+    ],
+    "calcType": null,
+    "value": null
+  },
+  {
+    "drugName": "Vinblastine",
+    "interactionDrugs": [
+      {
+        "type": 6,
+        "interactionType": 3,
+        "dose": null
+      },
+      {
+        "type": 4,
+        "interactionType": 3,
+        "dose": null
+      },
+      {
+        "type": 7,
+        "interactionType": 3,
+        "dose": null
+      },
+      {
+        "type": 5,
+        "interactionType": 3,
+        "dose": null
+      }
+    ],
+    "calcType": null,
+    "value": null
+  },
+  {
+    "drugName": "Doxorubicin",
+    "interactionDrugs": [
+      {
+        "type": 6,
+        "interactionType": 3,
+        "dose": null
+      },
+      {
+        "type": 4,
+        "interactionType": 3,
+        "dose": null
+      },
+      {
+        "type": 7,
+        "interactionType": 3,
+        "dose": null
+      },
+      {
+        "type": 5,
+        "interactionType": 3,
+        "dose": null
+      }
+    ],
+    "calcType": null,
+    "value": null
+  },
+  {
+    "drugName": "Carbamazepine",
+    "interactionDrugs": [
+      {
+        "type": 6,
+        "interactionType": 3,
+        "dose": null
+      },
+      {
+        "type": 4,
+        "interactionType": 3,
+        "dose": null
+      },
+      {
+        "type": 7,
+        "interactionType": 3,
+        "dose": null
+      },
+      {
+        "type": 5,
+        "interactionType": 3,
+        "dose": null
+      }
+    ],
+    "calcType": null,
+    "value": null
+  },
+  {
+    "drugName": "Phenytoin",
+    "interactionDrugs": [
+      {
+        "type": 6,
+        "interactionType": 3,
+        "dose": null
+      },
+      {
+        "type": 4,
+        "interactionType": 3,
+        "dose": null
+      },
+      {
+        "type": 7,
+        "interactionType": 3,
+        "dose": null
+      },
+      {
+        "type": 5,
+        "interactionType": 4,
+        "dose": null
+      }
+    ],
+    "calcType": null,
+    "value": null
+  },
+  {
+    "drugName": "Valproic acid",
+    "interactionDrugs": [
+      {
+        "type": 6,
+        "interactionType": 3,
+        "dose": null
+      },
+      {
+        "type": 4,
+        "interactionType": 3,
+        "dose": null
+      },
+      {
+        "type": 7,
+        "interactionType": 3,
+        "dose": null
+      },
+      {
+        "type": 5,
+        "interactionType": 3,
+        "dose": null
+      }
+    ],
+    "calcType": null,
+    "value": null
+  },
+  {
+    "drugName": "Weight ≥ 120 kg",
+    "interactionDrugs": [
+      {
+        "type": 6,
+        "interactionType": 4,
+        "dose": null
+      }
+    ],
+    "calcType": "weightMore",
+    "value": 120
+  },
+  {
+    "drugName": " age ≥ 75 years",
+    "interactionDrugs": [
+      {
+        "type": 6,
+        "interactionType": 4,
+        "dose": null
+      }
+    ],
+    "calcType": "ageMore",
+    "value": 75
+  }
+]

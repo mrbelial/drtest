@@ -13,7 +13,9 @@ class SplashScreen extends StatelessWidget {
       const Duration(seconds: 1),
       () {
         _controller.updateToken("ss");
-        toMain();
+        // toMain();
+
+        Get.offAndToNamed("/drug_interaction", arguments: []);
       },
     );
     return;

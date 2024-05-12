@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:drtest/models/public/idtitle_model.dart';
+import 'package:drtest/models/question/drug_interaction_model.dart';
 import 'package:drtest/models/question/question_model.dart';
 import 'package:drtest/response/question/question_response.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class TestController extends GetxController {
@@ -235,11 +239,30 @@ Bleeding risk is dynamic, and attention to the change in bleeding risk profile i
     }
   }
 
-  // void removeFromDrugs(TestPageModel item) {
-  //   _responseObs.update(
-  //       (val) => val!.content!.selectedDrugs.removeWhere((e) => e == item));
-  // }
+  //DrugsInteraction
+  List<DrugInteractionRowModel> get drugsInteraction =>
+      model.drugInteractions?.drugs ?? [];
+  List<DrugInteractionRowModel> filteredDrugs = [];
 
-  // bool isItemDrugs(TestPageModel item) =>
-  //     selectedDrugs.indexWhere((e) => e == item) > -1;
+  initDrugInteraction() async {
+    if (model.drugInteractions == null) {
+      List<dynamic> drugsJson = jsonDecode(
+          await rootBundle.loadString('assets/data/drug_interaction.json'));
+      model.drugInteractions = DrugInteractionModel.fromJson(drugsJson);
+      update();
+    }
+  }
+
+  void filterDrugsInteraction(String query) {
+    filteredDrugs = drugsInteraction
+        .where(
+            (drug) => drug.drugName.toLowerCase().contains(query.toLowerCase()))
+        .toList();
+    update();
+  }
+
+  void toggleDrugInteraction(int index) {
+    filteredDrugs[index].isChecked = !filteredDrugs[index].isChecked;
+    update();
+  }
 }

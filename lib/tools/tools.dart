@@ -20,22 +20,23 @@ pop([dynamic data]) {
 }
 
 toMain({bool isIntro = false, bool isForce = false}) {
-  var p = "/home";
+  var page = "/home";
+  
   // if (!isForce) {
-  try {
-    final MainController mainController = Get.find();
-    // if (isIntro) mainController.doneIntro();
-    // if (!mainController.showIntro()) {
-    //   p = "/intro";
-    // } else
-    if (!mainController.isUserLogin()) {
-      // p = "/login";
-    }
-  } catch (e) {
-    p = "/login";
-  }
+  // try {
+  // final MainController mainController = Get.find();
+  // if (isIntro) mainController.doneIntro();
+  // if (!mainController.showIntro()) {
+  //   page = "/intro";
+  // } else
+  // if (!mainController.isUserLogin()) {
+  // page = "/login";
   // }
-  toCPage(p);
+  // } catch (e) {
+  // page = "/login";
+  // }
+  // }
+  Get.offAndToNamed(page);
 }
 
 bool isPhone(String tel) {
@@ -464,9 +465,9 @@ int selectionIndexFromTheRight(int nvLength, int nvOffset, int nsLength) =>
 
 TextSelection getTextSelection(int p) => TextSelection.collapsed(offset: p);
 
-printError(dynamic val) {
-  loggerNoStack.e(val);
-}
+// printError(dynamic val) {
+//   loggerNoStack.e(val);
+// }
 
 Color colorByState(int state) {
   switch (state) {
