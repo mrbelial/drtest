@@ -208,6 +208,7 @@ listTile({
   bool hasLine = false,
   Color titleColor = AppColors.black,
   Color lineColor = AppColors.gray,
+  Color backgroundColor = Colors.transparent,
   EdgeInsetsGeometry padding = const EdgeInsets.all(20),
   EdgeInsetsGeometry margin = const EdgeInsets.all(10),
   TextStyle? textStyle,
@@ -246,8 +247,8 @@ listTile({
                 ),
                 if (subtitle != null)
                   Text(subtitle,
-                      style: AppTextStyles.bodyText3
-                          .apply(color: AppColors.gray)),
+                      style:
+                          AppTextStyles.bodyText3.apply(color: AppColors.gray)),
                 if (hasLine)
                   Padding(
                     padding: const EdgeInsets.only(top: 15),

@@ -2,6 +2,23 @@ import 'package:flutter/material.dart';
 
 import '../../tools/core.dart';
 
+Widget checkBox2({
+  required int id,
+  required String title,
+  required bool checked,
+  required Function(int, bool) onChange,
+}) {
+  return Transform.scale(
+    scale: 1.3,
+    child: Checkbox(
+      value: checked,
+      onChanged: (b) => onChange(id, b!),
+      side: AlwaysActiveBorderSide(checked),
+      splashRadius: 0,
+    ),
+  );
+}
+
 Widget checkBox({
   required int id,
   required String title,
@@ -28,16 +45,6 @@ Widget checkBox({
     ),
     onTap: () => onChange(id, !checked),
   );
-  // return Padding(
-  //   padding: const EdgeInsets.only(top: 10),
-  //   child: CheckboxListTile(
-  //     controlAffinity: ListTileControlAffinity.leading,
-  //     value: checked,
-  //     title: Text(title),
-  //     onChanged: (b) => onChange(id, b!),
-  //     side: AlwaysActiveBorderSide(checked),
-  //   ),
-  // );
 }
 
 class AlwaysActiveBorderSide extends MaterialStateBorderSide {

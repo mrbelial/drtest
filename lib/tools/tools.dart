@@ -21,7 +21,7 @@ pop([dynamic data]) {
 
 toMain({bool isIntro = false, bool isForce = false}) {
   var page = "/home";
-  
+
   // if (!isForce) {
   // try {
   // final MainController mainController = Get.find();

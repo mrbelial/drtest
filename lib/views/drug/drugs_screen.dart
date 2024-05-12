@@ -45,6 +45,11 @@ class DrugsScreen extends StatelessWidget {
           ...model.drugs.map((e) => testButton(e.name, () {
                 Get.toNamed("/drug_dosing", arguments: e);
               })),
+          appButton(
+              title: "Drug Interaction",
+              onTap: () {
+                Get.toNamed("/drug_interaction");
+              }),
         ],
       ),
     );

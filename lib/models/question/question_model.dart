@@ -2,6 +2,7 @@ import 'package:drtest/models/public/checkbox_model.dart';
 import 'package:drtest/models/public/idtitle_model.dart';
 import 'package:drtest/models/public/radiobox_model.dart';
 import 'package:drtest/models/question/drug_interaction_model.dart';
+import 'package:drtest/models/question/drug_interaction_data.dart';
 
 class TestModel {
   int id = 0;
@@ -831,7 +832,8 @@ In AF patients with stroke risk factors not taking OAC before ablation, it is re
         ]);
   }
 
-  DrugInteractionModel? drugInteractions;
+  DrugInteractionModel drugInteractions =
+      DrugInteractionModel.fromList(drugInteractionData);
 }
 
 enum TestPageTypeEnum { page, drug, message, result }

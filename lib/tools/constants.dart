@@ -87,12 +87,13 @@ class AppColors {
       Color.fromRGBO(164, 189, 214, 0.30196078431372547);
   static const Color warning = Color(0xffFBA63C);
   static const Color success = Color(0xff46BD84);
-  static const Color blue = Color(0xff17c1e8);
+  static const Color blue = Color.fromARGB(255, 33, 97, 216);
   static const Color red = Color(0xffea0606);
   static const Color secondary = Color(0xff000000);
   static const Color green2 = Color(0xff0d4b28);
   static const purple = Color(0xffA784FF);
-  static const blue2 = Color(0xff0CC9DA);
+  static const yellow = Color(0xffA784FF);
+  static const blue2 = Color.fromARGB(255, 169, 14, 216);
 }
 
 class AppThemes {

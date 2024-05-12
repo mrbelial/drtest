@@ -1,10 +1,7 @@
-import 'dart:convert';
-
 import 'package:drtest/models/public/idtitle_model.dart';
 import 'package:drtest/models/question/drug_interaction_model.dart';
 import 'package:drtest/models/question/question_model.dart';
 import 'package:drtest/response/question/question_response.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class TestController extends GetxController {
@@ -177,9 +174,12 @@ Bleeding risk is dynamic, and attention to the change in bleeding risk profile i
     return model.drugs.where((e) => names.contains(e.name)).toList();
   }
 
-  void doTestPage(TestPageModel item) {
-    //
+  TestDrugModel getDrugById(int ids) {
+    return model.drugs.firstWhere((e) => ids.isEqual(e.id));
   }
+  // void doTestPage(TestPageModel item) {
+  //   //
+  // }
 
   //stacks
   List<TestPageModel> get stacks => model.stacks;
@@ -241,28 +241,25 @@ Bleeding risk is dynamic, and attention to the change in bleeding risk profile i
 
   //DrugsInteraction
   List<DrugInteractionRowModel> get drugsInteraction =>
-      model.drugInteractions?.drugs ?? [];
-  List<DrugInteractionRowModel> filteredDrugs = [];
-
-  initDrugInteraction() async {
-    if (model.drugInteractions == null) {
-      List<dynamic> drugsJson = jsonDecode(
-          await rootBundle.loadString('assets/data/drug_interaction.json'));
-      model.drugInteractions = DrugInteractionModel.fromJson(drugsJson);
-      update();
-    }
-  }
+      model.drugInteractions.drugs;
+  var drugInteractionQuery = "".obs;
+  var drugInteractionOnlySelected = false.obs;
 
   void filterDrugsInteraction(String query) {
-    filteredDrugs = drugsInteraction
-        .where(
-            (drug) => drug.drugName.toLowerCase().contains(query.toLowerCase()))
-        .toList();
-    update();
+    drugInteractionQuery.value = query;
   }
 
-  void toggleDrugInteraction(int index) {
+  List<DrugInteractionRowModel> get filteredDrugs => drugsInteraction
+      .where((drug) =>
+          drug.drugName
+              .toLowerCase()
+              .contains(drugInteractionQuery.toLowerCase()) &&
+          (!drugInteractionOnlySelected.value ||
+              drug.isChecked == drugInteractionOnlySelected.value))
+      .toList();
+
+  void toggleDrugInteraction(int index, _) {
     filteredDrugs[index].isChecked = !filteredDrugs[index].isChecked;
-    update();
+    isloading = false;
   }
 }

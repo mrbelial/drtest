@@ -4,22 +4,22 @@
     "interactionDrugs": [
       {
         "type": 6,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 4,
-        "interactionType": 1,
+        "drugId": 1,
         "dose": null
       },
       {
         "type": 7,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 5,
-        "interactionType": 3,
+        "drugId": 3,
         "dose": "30 mg QD"
       }
     ],
@@ -31,22 +31,22 @@
     "interactionDrugs": [
       {
         "type": 6,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 4,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 7,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 5,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       }
     ],
@@ -58,22 +58,22 @@
     "interactionDrugs": [
       {
         "type": 6,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 4,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 7,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 5,
-        "interactionType": 4,
+        "drugId": 4,
         "dose": "30 mg QD"
       }
     ],
@@ -85,17 +85,17 @@
     "interactionDrugs": [
       {
         "type": 6,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 4,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 7,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       }
     ],
@@ -107,22 +107,22 @@
     "interactionDrugs": [
       {
         "type": 6,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 4,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 7,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 5,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       }
     ],
@@ -134,22 +134,22 @@
     "interactionDrugs": [
       {
         "type": 6,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 4,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 7,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 5,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       }
     ],
@@ -161,22 +161,22 @@
     "interactionDrugs": [
       {
         "type": 6,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 4,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 7,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 5,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       }
     ],
@@ -188,22 +188,22 @@
     "interactionDrugs": [
       {
         "type": 6,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 4,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 7,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 5,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       }
     ],
@@ -215,22 +215,22 @@
     "interactionDrugs": [
       {
         "type": 6,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 4,
-        "interactionType": 1,
+        "drugId": 1,
         "dose": null
       },
       {
         "type": 7,
-        "interactionType": 1,
+        "drugId": 1,
         "dose": null
       },
       {
         "type": 5,
-        "interactionType": 4,
+        "drugId": 4,
         "dose": "30 mg QD"
       }
     ],
@@ -242,22 +242,22 @@
     "interactionDrugs": [
       {
         "type": 6,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 4,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 7,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 5,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       }
     ],
@@ -269,22 +269,22 @@
     "interactionDrugs": [
       {
         "type": 6,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 4,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 7,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 5,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       }
     ],
@@ -296,22 +296,22 @@
     "interactionDrugs": [
       {
         "type": 6,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 4,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 7,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       },
       {
         "type": 5,
-        "interactionType": 2,
+        "drugId": 2,
         "dose": null
       }
     ],
@@ -323,22 +323,22 @@
     "interactionDrugs": [
       {
         "type": 6,
-        "interactionType": 3,
+        "drugId": 3,
         "dose": null
       },
       {
         "type": 4,
-        "interactionType": 3,
+        "drugId": 3,
         "dose": null
       },
       {
         "type": 7,
-        "interactionType": 3,
+        "drugId": 3,
         "dose": null
       },
       {
         "type": 5,
-        "interactionType": 4,
+        "drugId": 4,
         "dose": null
       }
     ],
@@ -350,22 +350,22 @@
     "interactionDrugs": [
       {
         "type": 6,
-        "interactionType": 3,
+        "drugId": 3,
         "dose": null
       },
       {
         "type": 4,
-        "interactionType": 3,
+        "drugId": 3,
         "dose": null
       },
       {
         "type": 7,
-        "interactionType": 3,
+        "drugId": 3,
         "dose": null
       },
       {
         "type": 5,
-        "interactionType": 3,
+        "drugId": 3,
         "dose": null
       }
     ],
@@ -377,22 +377,22 @@
     "interactionDrugs": [
       {
         "type": 6,
-        "interactionType": 3,
+        "drugId": 3,
         "dose": null
       },
       {
         "type": 4,
-        "interactionType": 3,
+        "drugId": 3,
         "dose": null
       },
       {
         "type": 7,
-        "interactionType": 3,
+        "drugId": 3,
         "dose": null
       },
       {
         "type": 5,
-        "interactionType": 3,
+        "drugId": 3,
         "dose": null
       }
     ],
@@ -404,22 +404,22 @@
     "interactionDrugs": [
       {
         "type": 6,
-        "interactionType": 3,
+        "drugId": 3,
         "dose": null
       },
       {
         "type": 4,
-        "interactionType": 3,
+        "drugId": 3,
         "dose": null
       },
       {
         "type": 7,
-        "interactionType": 3,
+        "drugId": 3,
         "dose": null
       },
       {
         "type": 5,
-        "interactionType": 3,
+        "drugId": 3,
         "dose": null
       }
     ],
@@ -431,22 +431,22 @@
     "interactionDrugs": [
       {
         "type": 6,
-        "interactionType": 3,
+        "drugId": 3,
         "dose": null
       },
       {
         "type": 4,
-        "interactionType": 3,
+        "drugId": 3,
         "dose": null
       },
       {
         "type": 7,
-        "interactionType": 3,
+        "drugId": 3,
         "dose": null
       },
       {
         "type": 5,
-        "interactionType": 3,
+        "drugId": 3,
         "dose": null
       }
     ],
@@ -458,22 +458,22 @@
     "interactionDrugs": [
       {
         "type": 6,
-        "interactionType": 3,
+        "drugId": 3,
         "dose": null
       },
       {
         "type": 4,
-        "interactionType": 3,
+        "drugId": 3,
         "dose": null
       },
       {
         "type": 7,
-        "interactionType": 3,
+        "drugId": 3,
         "dose": null
       },
       {
         "type": 5,
-        "interactionType": 4,
+        "drugId": 4,
         "dose": null
       }
     ],
@@ -485,22 +485,22 @@
     "interactionDrugs": [
       {
         "type": 6,
-        "interactionType": 3,
+        "drugId": 3,
         "dose": null
       },
       {
         "type": 4,
-        "interactionType": 3,
+        "drugId": 3,
         "dose": null
       },
       {
         "type": 7,
-        "interactionType": 3,
+        "drugId": 3,
         "dose": null
       },
       {
         "type": 5,
-        "interactionType": 3,
+        "drugId": 3,
         "dose": null
       }
     ],
@@ -512,7 +512,7 @@
     "interactionDrugs": [
       {
         "type": 6,
-        "interactionType": 4,
+        "drugId": 4,
         "dose": null
       }
     ],
@@ -524,7 +524,7 @@
     "interactionDrugs": [
       {
         "type": 6,
-        "interactionType": 4,
+        "drugId": 4,
         "dose": null
       }
     ],

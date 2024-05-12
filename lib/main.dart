@@ -1,6 +1,7 @@
 import 'package:drtest/controllers/main_controller.dart';
 import 'package:drtest/tools/core.dart';
 import 'package:drtest/views/drug/drug_interaction_screen.dart';
+import 'package:drtest/views/home/dashboard_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -54,7 +55,7 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(name: '/', page: () => SplashScreen()),
         // GetPage(name: '/login', page: () => LoginScreen()),
-        // GetPage(name: '/home', page: () => HomeScreen()),
+        GetPage(name: '/home', page: () => DashboardScreen()),
         GetPage(name: '/profile', page: () => ProfileScreen()),
         GetPage(name: '/aboutus', page: () => AboutUsScreen()),
         GetPage(name: '/aboutapp', page: () => const AboutAppScreen()),
