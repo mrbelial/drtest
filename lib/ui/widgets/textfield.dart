@@ -51,7 +51,7 @@ Widget textField({
 }) {
   focusNode ??= FocusNode();
   controller ??= TextEditingController();
-  
+
   focusNode.addListener(() {
     if (focusNode!.hasFocus) {
       controller!.selection = TextSelection(
