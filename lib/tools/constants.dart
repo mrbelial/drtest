@@ -91,9 +91,9 @@ class AppColors {
   static const Color red = Color(0xffea0606);
   static const Color secondary = Color(0xff000000);
   static const Color green2 = Color(0xff0d4b28);
-  static const purple = Color(0xffA784FF);
-  static const yellow = Color(0xffA784FF);
-  static const blue2 = Color.fromARGB(255, 169, 14, 216);
+  static const purple = Color.fromARGB(255, 169, 14, 216);
+  static const yellow = Color.fromARGB(255, 221, 241, 106);
+  static const blue2 = Color.fromARGB(255, 69, 207, 241);
 }
 
 class AppThemes {

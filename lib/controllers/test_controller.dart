@@ -2,6 +2,7 @@ import 'package:drtest/models/public/idtitle_model.dart';
 import 'package:drtest/models/question/drug_interaction_model.dart';
 import 'package:drtest/models/question/question_model.dart';
 import 'package:drtest/response/question/question_response.dart';
+import 'package:drtest/tools/core.dart';
 import 'package:get/get.dart';
 
 class TestController extends GetxController {
@@ -204,7 +205,7 @@ Bleeding risk is dynamic, and attention to the change in bleeding risk profile i
       stacks.indexWhere((e) => e == item) > -1;
 
   //Drugs
-  List<TestDrugPageModel> get selectedDrugs => stacks.last.drugs;
+  List<TestDrugPageModel> get selectedStackDrugs => stacks.last.drugs;
   // List<TestDrugPageModel> get selectedDrugsModel =>
   // model.selectedDrugs.map((x) => x.drugs);
 
@@ -217,26 +218,118 @@ Bleeding risk is dynamic, and attention to the change in bleeding risk profile i
     model.initPages();
 
     if (model.cgAnswer > -1) {
-      stacks.add(model.pages.pages.firstWhere((x) => x.id == 1));
+      model.pages.pages.firstWhere((x) => x.id == 1).isMarked = true;
+      // stacks.add(model.pages.pages.firstWhere((x) => x.id == 1));
     }
     if (model.cpPoint > 0) {
-      stacks.add(model.pages.pages.firstWhere((x) => x.id == 2));
+      model.pages.pages.firstWhere((x) => x.id == 2).isMarked = true;
+      // stacks.add(model.pages.pages.firstWhere((x) => x.id == 2));
     }
     if (model.bmi > 0) {
-      stacks.add(model.pages.pages.firstWhere((x) => x.id == 3));
+      model.pages.pages.firstWhere((x) => x.id == 3).isMarked = true;
+      // stacks.add(model.pages.pages.firstWhere((x) => x.id == 3));
     }
     if (model.ulValue > 0) {
-      stacks.add(model.pages.pages.firstWhere((x) => x.id == 4));
+      model.pages.pages.firstWhere((x) => x.id == 4).isMarked = true;
+      // stacks.add(model.pages.pages.firstWhere((x) => x.id == 4));
     }
     if (model.q2Answer == 2) {
-      stacks.add(model.pages.pages.firstWhere((x) => x.id == 15));
+      model.pages.pages.firstWhere((x) => x.id == 15).isMarked = true;
+      // stacks.add(model.pages.pages.firstWhere((x) => x.id == 15));
     }
     if (model.q2Answer == 4) {
-      stacks.add(model.pages.pages.firstWhere((x) => x.id == 16));
+      model.pages.pages.firstWhere((x) => x.id == 16).isMarked = true;
+      // stacks.add(model.pages.pages.firstWhere((x) => x.id == 16));
     }
     if (model.q2Answer == 6) {
-      stacks.add(model.pages.pages.firstWhere((x) => x.id == 17));
+      model.pages.pages.firstWhere((x) => x.id == 17).isMarked = true;
+      // stacks.add(model.pages.pages.firstWhere((x) => x.id == 17));
     }
+  }
+
+  void fillStack() {
+    stacks.clear();
+    stacks.addAll(model.pages.pages.where((e) => e.isMarked).toList());
+
+    stacks.add(TestPageModel(
+        title: "Result",
+        value: "Result",
+        type: TestPageTypeEnum.result,
+        drugs: []));
+  }
+
+  int get stackCount => model.pages.pages.where((e) => e.isMarked).length;
+
+  //Test Drug Page
+  void initTestFilteredDrugs() {
+    for (var item in selectedStackDrugs) {
+      model.testFilteredDrug.titles.add(item.title);
+
+      for (var drug in item.drugIds) {
+        if (!model.testFilteredDrug.drugIds.contains(drug)) {
+          model.testFilteredDrug.drugIds.add(drug);
+        }
+      }
+    }
+
+    model.testFilteredDrug.drugs =
+        getDrugsByIDs(model.testFilteredDrug.drugIds.toList());
+  }
+
+  TestDrugStyleModel getDrugInteractions(int drugId) {
+    var selectedInteractionDrugs = drugsInteraction
+        .where((e) =>
+            e.isChecked && e.drugInteractions.any((x) => x.drugId == drugId))
+        .map((e) => e.drugInteractions.firstWhere((x) => x.drugId == drugId))
+        .toList();
+
+    TestDrugStyleModel response = TestDrugStyleModel();
+
+    if (selectedInteractionDrugs.isNotEmpty) {
+      int redInteractions = selectedInteractionDrugs
+          .where((item) => item.type == DrugInteractionEnum.red)
+          .length;
+
+      int darkBlueInteractions = selectedInteractionDrugs
+          .where((item) => item.type == DrugInteractionEnum.darkBlue)
+          .length;
+
+      int yellowInteractions = selectedInteractionDrugs
+          .where((item) => item.type == DrugInteractionEnum.yellow)
+          .length;
+
+      int lightBlueInteractions = selectedInteractionDrugs
+          .where((item) => item.type == DrugInteractionEnum.lightBlue)
+          .length;
+
+      int purpleInteractions = selectedInteractionDrugs
+          .where((item) => item.type == DrugInteractionEnum.purple)
+          .length;
+
+      if (redInteractions > 0) {
+        response.message = model.drugInteractions.redMessage;
+        response.color = AppColors.red;
+        response.isAllowed = false;
+      } else if (darkBlueInteractions > 0) {
+        response.message = model.drugInteractions.darkBlueMessage;
+        response.color = AppColors.yellow;
+        response.isAllowed = false;
+      } else if (yellowInteractions > 1) {
+        response.message = model.drugInteractions.yellowMessage;
+        response.color = AppColors.blue;
+        response.isAllowed = false;
+      } else if (lightBlueInteractions > 1) {
+        response.message = model.drugInteractions.lightBlueMessage;
+        response.color = AppColors.blue2;
+        response.isAllowed = false;
+      } else if (purpleInteractions > 0) {
+        response.message = model.drugInteractions.purpleMessage;
+        response.color = AppColors.purple;
+        response.isAllowed = true;
+      }
+    }
+
+    return response;
   }
 
   //DrugsInteraction
@@ -249,7 +342,7 @@ Bleeding risk is dynamic, and attention to the change in bleeding risk profile i
     drugInteractionQuery.value = query;
   }
 
-  List<DrugInteractionRowModel> get filteredDrugs => drugsInteraction
+  List<DrugInteractionRowModel> get filteredDrugsInteraction => drugsInteraction
       .where((drug) =>
           drug.drugName
               .toLowerCase()
@@ -259,7 +352,8 @@ Bleeding risk is dynamic, and attention to the change in bleeding risk profile i
       .toList();
 
   void toggleDrugInteraction(int index, _) {
-    filteredDrugs[index].isChecked = !filteredDrugs[index].isChecked;
+    filteredDrugsInteraction[index].isChecked =
+        !filteredDrugsInteraction[index].isChecked;
     isloading = false;
   }
 }

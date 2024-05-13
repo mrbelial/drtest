@@ -50,10 +50,10 @@ class DrugInteractionScreen extends StatelessWidget {
               ),
               Expanded(
                 child: ListView.builder(
-                  itemCount: _controller.filteredDrugs.length,
+                  itemCount: _controller.filteredDrugsInteraction.length,
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
-                    var drug = _controller.filteredDrugs[index];
+                    var drug = _controller.filteredDrugsInteraction[index];
                     return ListTile(
                       title: Text(drug.drugName),
                       trailing: IconButton(

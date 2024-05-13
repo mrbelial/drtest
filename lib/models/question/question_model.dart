@@ -3,6 +3,8 @@ import 'package:drtest/models/public/idtitle_model.dart';
 import 'package:drtest/models/public/radiobox_model.dart';
 import 'package:drtest/models/question/drug_interaction_model.dart';
 import 'package:drtest/models/question/drug_interaction_data.dart';
+import 'package:drtest/tools/core.dart';
+import 'package:flutter/material.dart';
 
 class TestModel {
   int id = 0;
@@ -832,6 +834,8 @@ In AF patients with stroke risk factors not taking OAC before ablation, it is re
         ]);
   }
 
+  TestFilteredDrugModel testFilteredDrug = TestFilteredDrugModel();
+
   DrugInteractionModel drugInteractions =
       DrugInteractionModel.fromList(drugInteractionData);
 }
@@ -879,4 +883,10 @@ class TestFilteredDrugModel {
   List<String> titles = [];
   Set<int> drugIds = {};
   List<TestDrugModel> drugs = [];
+}
+
+class TestDrugStyleModel {
+  String message = "";
+  Color color = AppColors.primary;
+  bool isAllowed = true;
 }

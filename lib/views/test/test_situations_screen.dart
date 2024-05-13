@@ -10,12 +10,6 @@ class TestSituationsScreen extends StatelessWidget {
   final TestController _controller = Get.find();
   TestPageModel get model => _controller.model.pages;
 
-  final tempResult = TestPageModel(
-      title: "Result",
-      value: "Result",
-      type: TestPageTypeEnum.result,
-      drugs: []);
-
   @override
   Widget build(BuildContext context) {
     _controller.initStack();
@@ -24,11 +18,11 @@ class TestSituationsScreen extends StatelessWidget {
         title: Text(model.value),
         actions: [
           Obx(() {
-            if (_controller.stacks.isNotEmpty) {
+            if (_controller.stackCount > 0) {
               return textButton(
                   title: "Next",
                   onTap: () {
-                    _controller.addToStack(tempResult);
+                    _controller.fillStack();
 
                     Get.toNamed("/test_page",
                         arguments: _controller.stacks.first);
@@ -47,19 +41,22 @@ class TestSituationsScreen extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               itemCount: model.pages.length,
               itemBuilder: (c, i) {
-                var item = model.pages[i];
                 return Obx(() {
+                  var item = model.pages[i];
                   return checkBox(
                     id: 0,
                     title: item.value,
-                    checked: _controller.isItemStacked(item),
+                    checked: item.isMarked,
+                    //_controller.isItemStacked(item)
                     onChange: (i, b) {
-                      _controller.removeFromStack(tempResult);
-                      if (b) {
-                        _controller.addToStack(item);
-                      } else {
-                        _controller.removeFromStack(item);
-                      }
+                      item.isMarked = b;
+                      _controller.isloading = false;
+                      // _controller.removeFromStack(tempResult);
+                      // if (b) {
+                      //   _controller.addToStack(item);
+                      // } else {
+                      //   _controller.removeFromStack(item);
+                      // }
                     },
                   );
                 });

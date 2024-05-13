@@ -8,50 +8,45 @@ import 'package:get/get.dart';
 class DrugsScreen extends StatelessWidget {
   DrugsScreen({super.key});
   final TestController _controller = Get.find();
-
-  TestFilteredDrugModel filteredDrugs() {
-    TestFilteredDrugModel model = TestFilteredDrugModel();
-
-    for (var item in _controller.selectedDrugs) {
-      model.titles.add(item.title);
-
-      for (var drug in item.drugIds) {
-        if (!model.drugIds.contains(drug)) {
-          model.drugIds.add(drug);
-        }
-      }
-    }
-
-    model.drugs = _controller.getDrugsByIDs(model.drugIds.toList());
-
-    return model;
-  }
+  TestFilteredDrugModel get model => _controller.model.testFilteredDrug;
 
   @override
   Widget build(BuildContext context) {
-    var model = filteredDrugs();
+    _controller.initTestFilteredDrugs();
     return Scaffold(
       appBar: AppBar(
         title: const Text("Drugs"),
       ),
-      body: ListView(
-        padding: AppConst.defaultPadding,
-        children: [
-          ...model.titles.map((e) => cardBox(
-                  child: Text(
-                e,
-                style: AppTextStyles.bodyTextLargeDark,
-              ))),
-          ...model.drugs.map((e) => testButton(e.name, () {
-                Get.toNamed("/drug_dosing", arguments: e);
-              })),
-          appButton(
-              title: "Drug Interaction",
-              onTap: () {
-                Get.toNamed("/drug_interaction");
-              }),
-        ],
-      ),
+      body: Obx(() {
+        return ListView(
+          padding: AppConst.defaultPadding,
+          children: [
+            ...model.titles.map((e) => cardBox(
+                    child: Text(
+                  e,
+                  style: AppTextStyles.bodyTextLargeDark,
+                ))),
+            ...model.drugs.map(
+              (e) {
+                var status = _controller.getDrugInteractions(e.id);
+
+                return testButton(e.name, () {
+                  if (status.isAllowed) {
+                    Get.toNamed("/drug_dosing", arguments: e);
+                  } else {
+                    testMessage(status.message, Get.back);
+                  }
+                }, color: status.color);
+              },
+            ),
+            appButton(
+                title: "Drug Interaction",
+                onTap: () {
+                  Get.toNamed("/drug_interaction");
+                }),
+          ],
+        );
+      }),
     );
   }
 }
