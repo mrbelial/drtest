@@ -57,68 +57,68 @@ bool isUrl(String url) {
   return Uri.parse(url).isAbsolute;
 }
 
-extension Jalali2 on Jalali {
-  String toStr() {
-    var f = formatter;
-    return "${f.yyyy}/${f.mm}/${f.dd}";
-  }
+// extension Jalali2 on Jalali {
+//   String toStr() {
+//     var f = formatter;
+//     return "${f.yyyy}/${f.mm}/${f.dd}";
+//   }
 
-  Jalali fromString(String txt) {
-    List<int> s = [];
-    if (txt.contains("/")) {
-      s = txt.split("/").map((e) => int.parse(e)).toList();
-    } else if (txt.contains("-")) {
-      s = txt.split("-").map((e) => int.parse(e)).toList();
-    } else {
-      return Jalali.now();
-    }
+//   Jalali fromString(String txt) {
+//     List<int> s = [];
+//     if (txt.contains("/")) {
+//       s = txt.split("/").map((e) => int.parse(e)).toList();
+//     } else if (txt.contains("-")) {
+//       s = txt.split("-").map((e) => int.parse(e)).toList();
+//     } else {
+//       return Jalali.now();
+//     }
 
-    return Jalali(s[0], s[1], s[2]);
-  }
+//     return Jalali(s[0], s[1], s[2]);
+//   }
 
-  String cDate([int type = 1]) {
-    return toDateTime().cDate(type);
-  }
-}
+//   String cDate([int type = 1]) {
+//     return toDateTime().cDate(type);
+//   }
+// }
 
-extension MDateTime on DateTime {
-  DateTime addDays(days) =>
-      Jalali.fromDateTime(this).addDays(days).toDateTime();
+// extension MDateTime on DateTime {
+//   DateTime addDays(days) =>
+//       Jalali.fromDateTime(this).addDays(days).toDateTime();
 
-  String toDate() => dateTimeFormatter.format(this);
-  Jalali toJalali() => Jalali.fromDateTime(this);
+//   String toDate() => dateTimeFormatter.format(this);
+//   Jalali toJalali() => Jalali.fromDateTime(this);
 
-  String formatter(String format) => DateFormat(format).format(this);
-  int getTimeDuration() {
-    return Duration(hours: hour, minutes: minute).inMinutes;
-  }
+//   String formatter(String format) => DateFormat(format).format(this);
+//   int getTimeDuration() {
+//     return Duration(hours: hour, minutes: minute).inMinutes;
+//   }
 
-  String cDate([int type = 1]) {
-    var c = Jalali.fromDateTime(this);
-    final f = c.formatter;
+//   String cDate([int type = 1]) {
+//     var c = Jalali.fromDateTime(this);
+//     final f = c.formatter;
 
-    switch (type) {
-      case 1:
-        return '${f.wN} ${f.d} ${f.mN} ${f.yy}';
-      case 2:
-        return '${f.d} ${f.mN}';
-      case 3:
-        return '${f.mN} ${f.yy}';
-      case 4:
-        return '${f.wN} ${f.d} ${f.mN} ${f.yyyy}';
-      case 5:
-        return '${f.wN} ${f.d} ${f.mN} ${f.yyyy} ساعت $hour:$minute';
-      case 6:
-        return '${f.wN} ${f.d} ${f.mN} ${f.yyyy} - $hour:$minute';
-      case 7:
-        return '${f.yyyy}-${f.mm}-${f.dd}';
-      case 8:
-        return '${f.yyyy}/${f.mm}/${f.dd}';
-      default:
-        return '${f.wN} ${f.d} ${f.mN} ${f.yy}';
-    }
-  }
-}
+//     switch (type) {
+//       case 1:
+//         return '${f.wN} ${f.d} ${f.mN} ${f.yy}';
+//       case 2:
+//         return '${f.d} ${f.mN}';
+//       case 3:
+//         return '${f.mN} ${f.yy}';
+//       case 4:
+//         return '${f.wN} ${f.d} ${f.mN} ${f.yyyy}';
+//       case 5:
+//         return '${f.wN} ${f.d} ${f.mN} ${f.yyyy} ساعت $hour:$minute';
+//       case 6:
+//         return '${f.wN} ${f.d} ${f.mN} ${f.yyyy} - $hour:$minute';
+//       case 7:
+//         return '${f.yyyy}-${f.mm}-${f.dd}';
+//       case 8:
+//         return '${f.yyyy}/${f.mm}/${f.dd}';
+//       default:
+//         return '${f.wN} ${f.d} ${f.mN} ${f.yy}';
+//     }
+//   }
+// }
 
 extension MyStringExtension on String {
   int toNumber(String seprator) => int.parse(replaceAll(seprator, ""));
@@ -148,10 +148,10 @@ extension MyDoubleExtension on double {
   }
 }
 
-Jalali jalaliParse(String txt) {
-  var s = txt.split("/").map((e) => int.parse(e)).toList();
-  return Jalali(s[0], s[1], s[2]);
-}
+// Jalali jalaliParse(String txt) {
+//   var s = txt.split("/").map((e) => int.parse(e)).toList();
+//   return Jalali(s[0], s[1], s[2]);
+// }
 
 wrapWB(void Function(Duration) f) {
   WidgetsBinding.instance.addPostFrameCallback(f);

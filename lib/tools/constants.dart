@@ -176,9 +176,9 @@ class AppThemes {
     floatingActionButtonTheme:
         const FloatingActionButtonThemeData(backgroundColor: AppColors.primary),
     checkboxTheme: CheckboxThemeData(
-      fillColor: MaterialStateProperty.all(Colors.transparent),
+      fillColor: WidgetStateProperty.all(Colors.transparent),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2)),
-      checkColor: MaterialStateProperty.all(AppColors.primary),
+      checkColor: WidgetStateProperty.all(AppColors.primary),
       side: const BorderSide(color: AppColors.gray),
       materialTapTargetSize: MaterialTapTargetSize.padded,
     ),
@@ -198,7 +198,7 @@ class AppThemes {
       bodySmall: AppTextStyles.caption,
     ),
     colorScheme: const ColorScheme.dark(
-      background: AppColors.background,
+      surface: AppColors.background,
     ),
   );
 }

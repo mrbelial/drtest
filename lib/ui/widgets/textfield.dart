@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
 import '../../tools/core.dart';
 
@@ -131,73 +130,6 @@ Widget textField({
           ),
   );
 }
-
-Widget dateField({
-  required String hint,
-  String? label,
-  EdgeInsetsGeometry? margin = const EdgeInsets.only(top: 5),
-  required TextEditingController controller,
-  required BuildContext context,
-  int cDate = 8,
-  Jalali? maxDate,
-  Jalali? minDate,
-  bool enable = true,
-  Function(String, Jalali)? onChanged,
-}) =>
-    textField(
-        maxLength: 10,
-        hint: hint,
-        label: label,
-        margin: margin,
-        controller: controller,
-        readOnly: true,
-        bgColor: enable ? AppColors.white : AppColors.lightGray.withOpacity(.2),
-        onTap: !enable
-            ? null
-            : () async {
-                Jalali? picked = await showPersianDatePicker(
-                  context: context,
-                  initialDate: Jalali.now().fromString(controller.text),
-                  firstDate: minDate ?? Jalali(1300, 1),
-                  lastDate: maxDate ?? Jalali.now().addYears(5),
-                );
-                if (picked != null) {
-                  controller.text = picked.cDate(cDate);
-                  if (onChanged != null) onChanged(picked.cDate(cDate), picked);
-                }
-              });
-
-Widget timeField({
-  required String hint,
-  String? label,
-  EdgeInsetsGeometry? margin = const EdgeInsets.only(top: 5),
-  required TextEditingController controller,
-  required BuildContext context,
-  int cDate = 8,
-}) =>
-    textField(
-      maxLength: 5,
-      hint: hint,
-      label: label,
-      margin: margin,
-      controller: controller,
-      readOnly: true,
-      onTap: () async {
-        List<int> t = [];
-        try {
-          t = controller.text.split(":").map((e) => int.parse(e)).toList();
-        } catch (e) {
-          t = [0, 0];
-        }
-        var picked = await showPersianTimePicker(
-          context: context,
-          initialTime: TimeOfDay(hour: t[0], minute: t[1]),
-        );
-        if (picked != null) {
-          controller.text = "${picked.hour}:${picked.minute}";
-        }
-      },
-    );
 
 Widget textField2({
   required int maxLength,

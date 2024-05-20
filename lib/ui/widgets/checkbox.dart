@@ -47,7 +47,7 @@ Widget checkBox({
   );
 }
 
-class AlwaysActiveBorderSide extends MaterialStateBorderSide {
+class AlwaysActiveBorderSide extends WidgetStateBorderSide {
   const AlwaysActiveBorderSide(this.isChecked);
   final bool isChecked;
 
