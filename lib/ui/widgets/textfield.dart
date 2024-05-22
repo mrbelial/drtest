@@ -23,7 +23,7 @@ Widget headerField({
 }
 
 Widget textField({
-  required int maxLength,
+  int? maxLength,
   String hint = "",
   String? label,
   bool pass = false,

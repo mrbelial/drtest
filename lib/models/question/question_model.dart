@@ -17,6 +17,10 @@ class TestModel {
   int? ul;
   int get ulValue => ul ?? 0;
   double bmi = 0;
+  int aptt = 0;
+  double xaActivity = 0;
+
+  int perWeight(int v) => v * weight;
 
   List<TestDrugModel> drugs = [
     TestDrugModel(1, "Warfarin"),
