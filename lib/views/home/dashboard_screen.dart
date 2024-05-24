@@ -12,9 +12,6 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _testController.age = 35;
-    _testController.weight = 90;
-    _testController.initDrugDosing();
     return Scaffold(
       appBar: AppBar(
         title: const Text("داشبورد"),
@@ -32,6 +29,9 @@ class DashboardScreen extends StatelessWidget {
             return listTile(
               title: item.name,
               onTap: () {
+                _testController.age = 35;
+                _testController.weight = 90;
+                _testController.initDrugDosing();
                 _testController.selectDrugDosing(item.id);
                 Get.toNamed("/drug_dosing");
               },

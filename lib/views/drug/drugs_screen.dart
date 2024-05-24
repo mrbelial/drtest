@@ -33,7 +33,8 @@ class DrugsScreen extends StatelessWidget {
 
                 return testButton(e.name, () {
                   if (status.isAllowed) {
-                    Get.toNamed("/drug_dosing", arguments: e);
+                    _controller.selectDrugDosing(e.id);
+                    Get.toNamed("/drug_dosing");
                   } else {
                     testMessage(status.message, Get.back);
                   }
