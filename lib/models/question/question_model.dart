@@ -1,6 +1,7 @@
 import 'package:drtest/models/public/checkbox_model.dart';
 import 'package:drtest/models/public/idtitle_model.dart';
 import 'package:drtest/models/public/radiobox_model.dart';
+import 'package:drtest/models/question/drug_dosing_data.dart';
 import 'package:drtest/models/question/drug_interaction_model.dart';
 import 'package:drtest/models/question/drug_interaction_data.dart';
 import 'package:drtest/tools/core.dart';
@@ -15,6 +16,10 @@ class TestModel {
   int height = 0;
   double serumCreatinine = 0;
   int? ul;
+
+  List<DrugDosingModel> drugDosing = [];
+  int selectedDrugDosing = 0;
+
   int get ulValue => ul ?? 0;
   double bmi = 0;
   int aptt = 0;
@@ -213,6 +218,90 @@ mechanical heart valve, DOACs are recommended over Warfarin.
 
   //Cockcroft-Gault
   double cgAnswer = 0;
+
+  //Ts Scpre
+  int tsPoint = 0;
+  String tsAnswer() {
+    switch (tsPoint) {
+      case < 4:
+        return "0 to 3 points: Low probability";
+      case < 6:
+        return "4 to 5 points: Intermediate probability";
+      case < 9:
+        return "6 to 8 points: High probability";
+      default:
+        return "Point: $tsPoint";
+    }
+  }
+
+  List<RadioGroupModel> tsScore = [
+    RadioGroupModel(
+        id: 1,
+        title: "Thrombocytopenia",
+        selectedID: 0,
+        point: 0,
+        radios: [
+          RadioBoxModel(
+              1,
+              "Platelet count fall >50% AND nadir ≥20,000/microL (2 points)",
+              2),
+          RadioBoxModel(
+              2,
+              "Platelet count fall 30 to 50% OR nadir 10,000 to 19,000/microL (1 point)",
+              1),
+          RadioBoxModel(
+              3,
+              "Grade 2: Inappropriate behavior, impending stupor, somnolence (2 points)",
+              2),
+          RadioBoxModel(4,
+              "Platelet count fall <30% OR nadir <10,000/microL (0 points)", 0),
+        ]),
+    RadioGroupModel(
+        id: 2,
+        title: "Timing of platelet count fall",
+        selectedID: 0,
+        point: 0,
+        radios: [
+          RadioBoxModel(
+              1,
+              "Clear onset between days 5 and 10 of heparin exposure OR platelet count fall at ≤1 day if prior heparin exposure within the last 30 days (2 points)",
+              2),
+          RadioBoxModel(
+              2,
+              "Consistent with fall in platelet count at 5 to 10 days but unclear (eg, missing platelet counts) OR onset after day 10 OR fall ≤1 day with prior heparin exposure within 30 to 100 days (1 point)",
+              1),
+          RadioBoxModel(
+              3,
+              "Platelet count fall at <4 days without recent heparin exposure (0 points)",
+              1),
+        ]),
+    RadioGroupModel(
+        id: 3,
+        title: "Thrombosis or other sequelae",
+        selectedID: 0,
+        point: 0,
+        radios: [
+          RadioBoxModel(
+              1,
+              "Confirmed new thrombosis, skin necrosis, or acute systemic reaction after intravenous unfractionated heparin bolus (2 points)",
+              2),
+          RadioBoxModel(
+              2,
+              "Progressive or recurrent thrombosis, non-necrotizing (erythematous) skin lesions, or suspected thrombosis that has not been proven (1 point)",
+              1),
+          RadioBoxModel(3, "None (0 points)", 1),
+        ]),
+    RadioGroupModel(
+        id: 4,
+        title: "Other causes for thrombocytopenia present",
+        selectedID: 0,
+        point: 0,
+        radios: [
+          RadioBoxModel(1, "None apparent (2 points)", 2),
+          RadioBoxModel(2, "Possible (1 point)", 1),
+          RadioBoxModel(3, "Definite (0 points)", 1),
+        ]),
+  ];
 
   //Child Pugh
   int cpPoint = 0;

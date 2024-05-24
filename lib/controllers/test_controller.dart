@@ -1,8 +1,13 @@
 import 'package:drtest/models/public/idtitle_model.dart';
+import 'package:drtest/models/question/drug_dosing_data.dart';
 import 'package:drtest/models/question/drug_interaction_model.dart';
 import 'package:drtest/models/question/question_model.dart';
 import 'package:drtest/response/question/question_response.dart';
 import 'package:drtest/tools/core.dart';
+import 'package:drtest/views/drug/dosing/calc/ufh_screen.dart';
+import 'package:drtest/views/drug/dosing/extra/ptt_calc_screen.dart';
+import 'package:drtest/views/drug/dosing/extra/ts_calc_screen.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class TestController extends GetxController {
@@ -10,6 +15,7 @@ class TestController extends GetxController {
   QuestionResponse get responseModel => _responseObs.value;
 
   bool get isloading => responseModel.isLoading;
+
   set isloading(bool v) => _responseObs.update((val) => val!.isLoading = v);
 
   TestModel get model => _responseObs.value.content!;
@@ -355,5 +361,130 @@ Bleeding risk is dynamic, and attention to the change in bleeding risk profile i
     filteredDrugsInteraction[index].isChecked =
         !filteredDrugsInteraction[index].isChecked;
     isloading = false;
+  }
+
+  //Drug Dosing
+  DrugDosingModel get selectedDrugDosing =>
+      model.drugDosing[model.selectedDrugDosing];
+
+  void initDrugDosing() {
+    model.drugDosing = drugDosing(model);
+  }
+
+  void selectDrugDosing(int id) {
+    model.selectedDrugDosing =
+        model.drugDosing.indexWhere((x) => x.drugId == id);
+  }
+
+  Widget getDrugDosingWidget(DrugDosingParams item) {
+    switch (item.page) {
+      case "/ufh_dosing":
+        return UFHDosingScreen(item: item);
+      case "/ptt_dosing":
+        return PTTCalcScreen(item: item);
+      case "/ts_dosing":
+        return TsScoreScreen(item: item);
+      default:
+        return Container();
+    }
+  }
+
+  //UFH Dosing
+  set aptt(int v) => _responseObs.update((val) => val!.content!.aptt = v);
+  set xaActivity(double v) =>
+      _responseObs.update((val) => val!.content!.xaActivity = v);
+
+  List<String> get apptDesciption => [
+        """Consider bolus 25 Unit/kg (${model.perWeight(25)}).
+Increase infusion by 3 unit/kg/hour (${model.perWeight(3)}).
+Repeat assay in 6 hours.""",
+        """Increase infusion by 2 unit/kg/hour (${model.perWeight(2)}).
+Repeat assay in 6 hours.""",
+        """Increase infusion by 1 unit/kg/hour (${model.perWeight(1)}).
+Repeat assay in 6 hours.""",
+        """No change. (within therapeutic range)
+Repeat assay in 6 hours.
+Once therapeutic for two assays, may change to once daily assays.""",
+        """Decrease infusion by 1 unit/kg/hour (${model.perWeight(1)}).
+Repeat assay in 6 hours.""",
+        """Stop infusion for 1 hour, then decrease by 2 unit/kg/hour (${model.perWeight(2)}).
+Repeat assay 6 hours after restarting the infusion.""",
+        """Stop infusion for 1 hour, then decrease by 3 unit/kg/hour (${model.perWeight(3)}).
+Repeat assay 6 hours after restarting the infusion.""",
+        """Stop infusion for 2 hour, then decrease by 4 unit/kg/hour (${model.perWeight(4)}).
+Repeat assay 6 hours after restarting the infusion.""",
+        """Stop infusion for 2 hour, then decrease by 5 unit/kg/hour (${model.perWeight(5)}) and notify clinician.
+Repeat assay 6 hours after restarting the infusion.""",
+      ];
+
+  String apttDesc() {
+    if (model.aptt > 0) {
+      switch (model.aptt) {
+        case < 40:
+          return apptDesciption[0];
+        case < 50:
+          return apptDesciption[1];
+        case < 70:
+          return apptDesciption[2];
+        case < 111:
+          return apptDesciption[3];
+        case < 121:
+          return apptDesciption[4];
+        case < 131:
+          return apptDesciption[5];
+        case < 141:
+          return apptDesciption[6];
+        case < 151:
+          return apptDesciption[7];
+        case > 150:
+          return apptDesciption[8];
+        default:
+          return "";
+      }
+    } else if (model.xaActivity > 0) {
+      switch (model.xaActivity) {
+        case < .10:
+          return apptDesciption[0];
+        case < .20:
+          return apptDesciption[1];
+        case < .30:
+          return apptDesciption[2];
+        case < .71:
+          return apptDesciption[3];
+        case < .80:
+          return apptDesciption[4];
+        case < .90:
+          return apptDesciption[5];
+        case < 1:
+          return apptDesciption[6];
+        case < 1.1:
+          return apptDesciption[7];
+        case > 1.0:
+          return apptDesciption[8];
+        default:
+          return "";
+      }
+    }
+    return "";
+  }
+
+  //tsScore
+
+  //Child Pugh Calculator
+  void tsAnswer(int i, int v, int p) {
+    _responseObs.update((val) {
+      val!.content!.tsScore[i].selectedID = v;
+      val.content!.tsScore[i].point = p;
+      calcCP();
+    });
+  }
+
+  IDTitleModel calcTS() {
+    var p = 0;
+    for (var item in model.tsScore) {
+      p += item.point;
+    }
+    model.tsPoint = p;
+    return IDTitleModel(p, model.tsAnswer());
   }
 }

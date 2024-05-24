@@ -85,6 +85,8 @@ class MyApp extends StatelessWidget {
         //test_situations_page
         GetPage(
             name: "/test_situations_page", page: () => TestSituationsScreen()),
+
+        //Drug Dosing
       ],
       theme: AppThemes.defaultTheme,
       home: SplashScreen(),

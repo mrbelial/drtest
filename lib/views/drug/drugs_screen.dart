@@ -13,6 +13,7 @@ class DrugsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _controller.initTestFilteredDrugs();
+    _controller.initDrugDosing();
     return Scaffold(
       appBar: AppBar(
         title: const Text("Drugs"),

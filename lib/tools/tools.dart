@@ -135,6 +135,7 @@ extension MyStringExtension on String {
 
 extension MyIntExtension on int {
   String get toCurrency {
+    if (this == 0) return "";
     var cf = NumberFormat('###,###', 'en_US');
     return cf.format(this);
   }
@@ -142,6 +143,7 @@ extension MyIntExtension on int {
 
 extension MyDoubleExtension on double {
   String get toCurrency {
+    if (this == 0) return "";
     // var cf = NumberFormat('###,###', 'en_US');
     // return cf.format(this);
     return NumberFormat().format(this);
