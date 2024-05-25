@@ -65,7 +65,7 @@ class TsScoreScreen extends StatelessWidget {
 ●Evaluate for other causes of thrombocytopenia.
 ● Continue to assess HIT probability.
 ● Can restart/ continue  heparin if clinically indicated.""", () {
-              Get.offAllNamed("/home");
+              _controller.closeDosing();
             });
           } else {
             testMessage("""●Stop all Heparin.

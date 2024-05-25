@@ -102,6 +102,25 @@ List<DrugDosingModel> drugDosing(TestModel model) {
     ],
   );
 
+  var extra4 = DrugDosingParams(
+      desc: "Is the patient case of major surgery or major trauma ?",
+      params: [
+        DrugDosingParams(
+          buttonTitle: "No",
+          msg: "Suggest against platelet count monitoring.",
+          desc: extra2.desc,
+          params: extra2.params,
+        ),
+        DrugDosingParams(
+          buttonTitle: "Yes",
+          msg:
+              """Consider Platelet count monitoring every 2 to 3 days from day 0 through day 14.
+(Ref: Cuker A, Arepally GM, Chong BH, et al. American Society of Hematology 2018 guidelines for management of venous thromboembolism: heparin-induced thrombocytopenia. Blood Advances 2018; 2:3360.)""",
+          desc: extra2.desc,
+          params: extra2.params,
+        ),
+      ]);
+
   var extra1 = DrugDosingParams(
     desc: """Any of the following scenarios present?
 ● Medical or obstetric patients.
@@ -127,13 +146,72 @@ Baseline platelet count and a repeat platelet count within 24 to 48 hours is rec
       )
     ],
   );
+  var extra6 = DrugDosingParams(params: [
+    DrugDosingParams(
+        buttonTitle: "INR still not in range?",
+        msg:
+            """Assessment of medication adherence, intercurrent illness, new or recently adjusted medications, 
+dietary changes, and alcohol intake.
+ Education/counselling and more frequent INR checks is critical.(Iia B)
+Switching to a NOAC but ensuring good adherence and persistence with therapy is another option. (I B)""")
+  ]);
 
-  return [
+  var warfarinMaintenanceDosing = DrugDosingParams(
+    desc: "What is the INR level?",
+    params: [
+      DrugDosingParams(
+          buttonTitle: "< 1.5",
+          msg:
+              "Give extra one- time daily dose and increase weekly dose by 10-20 %.",
+          params: extra6.params),
+      DrugDosingParams(
+          buttonTitle: "1.5-1.9",
+          msg:
+              "Increase weekly dose by 5- 15 %.\n(may give extra one -time daily dose)",
+          params: extra6.params),
+      DrugDosingParams(
+          buttonTitle: "2.0-3.0",
+          msg: "Maintain current dose.",
+          params: extra6.params),
+      DrugDosingParams(
+          buttonTitle: "3.1-4.0",
+          msg: "Hold up to one daily dose and decrease weekly dose by 5-20%.",
+          params: extra6.params),
+      DrugDosingParams(
+          buttonTitle: "4.1-5",
+          msg: "Hold up to two daily dose and decrease weekly dose by 10-20%.",
+          params: extra6.params),
+      DrugDosingParams(
+          buttonTitle: "≥ 5",
+          msg: "Hold until INR is 2-3, and decrease daily dose by 10-20%.",
+          params: extra6.params),
+    ],
+  );
+
+  var extra5 = DrugDosingParams(params: [
+    DrugDosingParams(
+      buttonTitle: "What is the maintenance dose?",
+      desc: warfarinMaintenanceDosing.desc,
+      params: warfarinMaintenanceDosing.params,
+    ),
+    DrugDosingParams(
+        buttonTitle: "INR still not in range?",
+        msg:
+            """Assessment of medication adherence, intercurrent illness, new or recently adjusted medications, 
+dietary changes, and alcohol intake.
+ Education/counselling and more frequent INR checks is critical.(Iia B)
+Switching to a NOAC but ensuring good adherence and persistence with therapy is another option. (I B)
+(AF ESC 2020)"""),
+  ]);
+
+  List<DrugDosingModel> list = [];
+
+  //UFH
+  list.add(
     DrugDosingModel(
-      drugId: 2,
-      drugName: "UFH",
-      param: DrugDosingParams(
-        params: [
+        drugId: 2,
+        drugName: "UFH",
+        param: DrugDosingParams(params: [
           DrugDosingParams(
             page: "/ufh_dosing",
             params: [
@@ -176,8 +254,178 @@ Baseline platelet count and a repeat platelet count within 24 to 48 hours is rec
               ),
             ],
           ),
+        ])),
+  );
+
+  //Edoxaban
+  list.add(
+    DrugDosingModel(
+        drugId: 5,
+        drugName: "Edoxaban",
+        param: DrugDosingParams(params: [
+          DrugDosingParams(
+            page: "/edoxaban_dosing",
+            params: [
+              DrugDosingParams(
+                desc: """Any of the following scenarios present?
+● Patients with BMI ≥40 kg/m2 who are unstable, experience unexpected thromboembolic or bleeding complications, or require prolonged VTE treatment.
+● CrCl<30 ml/min.""",
+                params: [
+                  DrugDosingParams(
+                    buttonTitle: "Yes",
+                    msg:
+                        "May consider checking anti-factor Xa activity 4 to 6 hours after dosing, following at least the third or fourth dose.",
+                    params: [
+                      DrugDosingParams(
+                        buttonTitle: "Enoxaparin twice daily dosing?",
+                        msg:
+                            "The therapeutic ranges is generally 0.5 to 1 anti-factor Xa units/mL.",
+                        desc: extra4.desc,
+                        params: extra4.params,
+                      ),
+                      DrugDosingParams(
+                        buttonTitle: "Enoxaparin Once Daily Dosing?",
+                        msg:
+                            "The therapeutic ranges is generally 1.0-2.0 anti-factor Xa units/mL.",
+                        desc: extra4.desc,
+                        params: extra4.params,
+                      ),
+                    ],
+                  ),
+                  DrugDosingParams(
+                    buttonTitle: "No",
+                    msg:
+                        "Generally, anti-factor Xa monitoring is not recommended.",
+                    desc: extra4.desc,
+                    params: extra4.params,
+                  )
+                ],
+              ),
+            ],
+          ),
+        ])),
+  );
+
+  //Warfarin
+  list.add(
+    DrugDosingModel(
+      drugId: 1,
+      drugName: "Warfarin",
+      param: DrugDosingParams(
+        desc:
+            """Is there high risk of thromboembolism including any of the following scenario?
+● Prior cerebrovascular event
+● Transient ischemic attack
+●  History of thromboembolism 
+● Current intracardiac thrombus
+AND
+concurrent with low risk of ICH?
+(UpToDate)""",
+        params: [
+          DrugDosingParams(
+            buttonTitle: "Yes",
+            desc:
+                """● Initiation of warfarin with a heparin bridging regimen may be reasonable in these clinical settings.
+● Consider warfarin in combination with bridging therapy using UFH or LMWH until therapeutic INR is achieved.
+● Bridging therapy should continue for at least 5 days and until therapeutic INR achieved.
+● Similar safety and efficacy outcomes have been reported following bridging with either UFH or LMWH.
+●  Once a stable therapeutic INR is reached
+for >_24 h, bridging can be discontinued.
+(ESC VHD 2021)""",
+            params: [
+              DrugDosingParams(page: "/wafarin_extra"),
+            ],
+          ),
+          DrugDosingParams(
+            buttonTitle: "No",
+            desc:
+                "It is reasonable to initiate warfarin without heparin bridging.\n(UpToDate)",
+            params: [
+              DrugDosingParams(
+                  buttonTitle: "Warfarin initial dosing",
+                  desc:
+                      """Is the patient categorized as sensitive or any of the following present?
+● Age ≥ 70
+● Malnourish
+● Liver or Kidney disease
+● Heart failure
+● Concurrent medication known to increase warfarin sensitivity (e.g. amiodarone)""",
+                  params: [
+                    DrugDosingParams(
+                      msg:
+                          "Start 5 mg daily for the first 2 days and check INR on the 3th day.",
+                      desc: "What is the INR on the 3th day?",
+                      buttonTitle: "No",
+                      params: [
+                        DrugDosingParams(
+                            buttonTitle: "< 1.5",
+                            msg:
+                                "Increase dose to 7.5-10 mg daily.\nCheck INR in the next 2-3 days.",
+                            params: extra5.params),
+                        DrugDosingParams(
+                            buttonTitle: "1.5-1.9",
+                            msg:
+                                "Continue with 5 mg daily.\nCheck INR in the next 2-3 days.",
+                            params: extra5.params),
+                        DrugDosingParams(
+                            buttonTitle: "2.0-3.0",
+                            msg:
+                                "Decrease dose to 2.5 mg daily.\nCheck INR in the next 2-3 days.",
+                            params: extra5.params),
+                        DrugDosingParams(
+                            buttonTitle: "3.1-4.0",
+                            msg:
+                                "Decrease dose to 1.25 mg daily.\nCheck INR in the next 2-3 days.",
+                            params: extra5.params),
+                        DrugDosingParams(
+                            buttonTitle: "> 4.0",
+                            msg: "Hold. Check INR in the next 2-3 days.",
+                            params: extra5.params),
+                      ],
+                    ),
+                    DrugDosingParams(
+                      msg:
+                          "Start 2.5 mg daily for the first 2 days and check the INR on the 3th day.",
+                      desc: "What is the INR on the 3th day?",
+                      buttonTitle: "Yes",
+                      params: [
+                        DrugDosingParams(
+                            buttonTitle: "< 1.5",
+                            msg:
+                                "Increase dose to 5- 7.5 mg daily.\nCheck INR in the next 2-3 days.",
+                            params: extra5.params),
+                        DrugDosingParams(
+                            buttonTitle: "1.5-1.9",
+                            msg:
+                                "Continue with 2.5 mg daily.\nCheck INR in the next 2-3 days.",
+                            params: extra5.params),
+                        DrugDosingParams(
+                            buttonTitle: "2.0-3.0",
+                            msg:
+                                "Decrease dose to 1.25 mg daily.\nCheck INR in the next 2-3 days.",
+                            params: extra5.params),
+                        DrugDosingParams(
+                            buttonTitle: "3.1-4.0",
+                            msg:
+                                "Decrease dose to 0.5 mg daily.\nCheck INR in the next 2-3 days.",
+                            params: extra5.params),
+                        DrugDosingParams(
+                            buttonTitle: "> 4.0",
+                            msg: "Hold. Check INR in the next 2-3 days.",
+                            params: extra5.params),
+                      ],
+                    ),
+                  ]),
+              DrugDosingParams(
+                  buttonTitle: "What is the INR level?",
+                  desc: warfarinMaintenanceDosing.desc,
+                  params: warfarinMaintenanceDosing.params),
+            ],
+          ),
         ],
       ),
-    )
-  ];
+    ),
+  );
+
+  return list;
 }

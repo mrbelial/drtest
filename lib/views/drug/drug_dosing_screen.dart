@@ -12,7 +12,7 @@ class DrugDosingScreen extends StatelessWidget {
 
   void ontap(DrugDosingParams item) {
     if (item.params.isEmpty) {
-      Get.offAllNamed("/home");
+      _testController.closeDosing();
     } else {
       Get.toNamed("/drug_dosing", arguments: item, preventDuplicates: false);
     }

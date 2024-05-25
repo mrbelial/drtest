@@ -4,13 +4,20 @@ import 'package:drtest/models/question/drug_interaction_model.dart';
 import 'package:drtest/models/question/question_model.dart';
 import 'package:drtest/response/question/question_response.dart';
 import 'package:drtest/tools/core.dart';
-import 'package:drtest/views/drug/dosing/calc/ufh_screen.dart';
-import 'package:drtest/views/drug/dosing/extra/ptt_calc_screen.dart';
-import 'package:drtest/views/drug/dosing/extra/ts_calc_screen.dart';
+import 'package:drtest/views/drug/dosing/edoxaparin_dosing_screen.dart';
+import 'package:drtest/views/drug/dosing/ufh_screen.dart';
+import 'package:drtest/views/drug/dosing/ptt_calc_screen.dart';
+import 'package:drtest/views/drug/dosing/ts_calc_screen.dart';
+import 'package:drtest/views/drug/dosing/wafarin_extra_screen.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class TestController extends GetxController {
+  void closeDosing() {
+    Get.offNamedUntil(
+        "/home", (route) => route.settings.name != '/drug_dosing');
+  }
+
   final _responseObs = QuestionResponse().obs;
   QuestionResponse get responseModel => _responseObs.value;
 
@@ -384,6 +391,10 @@ Bleeding risk is dynamic, and attention to the change in bleeding risk profile i
         return PTTCalcScreen(item: item);
       case "/ts_dosing":
         return TsScoreScreen(item: item);
+      case "/edoxaban_dosing":
+        return EdoxaparinDosingScreen(item: item);
+      case "/wafarin_extra":
+        return WafarinExtraScreen();
       default:
         return Container();
     }
@@ -486,5 +497,38 @@ Repeat assay 6 hours after restarting the infusion.""",
     }
     model.tsPoint = p;
     return IDTitleModel(p, model.tsAnswer());
+  }
+
+  List<String> initEnoxaparinDosing() {
+    List<String> list = [];
+    if (model.cgAnswer < 30) {
+      list.add(
+          "CrCl < 30 ml/min:\n1 mg/kg (${model.perWeight(1)}) SC once daily.");
+    }
+
+    if (model.bmi < 18 || model.weight < 55) {
+      list.add(
+          "BMI < 18 Kg/m2 or Total body weight < 55 Kg:\n1 mg/kg (${model.perWeight(1)}) SC twice daily.");
+    }
+
+    if (model.bmi >= 40) {
+      list.add(
+          "BMI ≥ 40:\n0.7-0.8 mg/kg (${model.perWeight(.7)}-${model.perWeight(.8)}) twice daily.");
+    }
+
+    if (stacks.indexWhere((x) => x.id == 12) > -1) {
+      list.add("Pregnancy:\n1 mg/kg (${model.perWeight(1)}) SC twice daily.");
+    }
+
+    if (stacks.indexWhere((x) => x.id == 7) > -1) {
+      list.add("Cancer:\n1 mg/kg (${model.perWeight(1)}) SC twice daily.");
+    }
+
+    if (list.isEmpty) {
+      list.add(
+          "None:\n1.5 mg/kg (${model.perWeight(1.5)}) once daily or 1 mg/kg (${model.perWeight(1)}) SC twice daily.");
+    }
+
+    return list;
   }
 }

@@ -25,7 +25,7 @@ class TestModel {
   int aptt = 0;
   double xaActivity = 0;
 
-  int perWeight(int v) => v * weight;
+  double perWeight(double v) => v * weight;
 
   List<TestDrugModel> drugs = [
     TestDrugModel(1, "Warfarin"),
