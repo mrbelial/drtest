@@ -1,6 +1,10 @@
+import 'dart:convert';
 import 'dart:io';
 
+import 'package:drtest/models/public/app_model.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 import '../models/public/login_model.dart';
 import '../models/public/main_model.dart';
@@ -8,6 +12,13 @@ import '../models/user/user_model.dart';
 import '../response/public/dashboard_response.dart';
 import '../response/public/main_response.dart';
 
+import "package:universal_html/html.dart" as html;
+
+class GetConnectService extends GetConnect {
+
+  Future<Response> getLastVersion() =>
+      get('${html.window.location.href}/version.json');
+}
 class MainController extends GetxController {
   var isSplashReady = false;
   bool isInit = false, isInitRunning = false;
@@ -17,6 +28,8 @@ class MainController extends GetxController {
 
   String token = "";
   Directory? tempDir;
+  
+  late PackageInfo packageInfo;
 
   var headers = {
     "accept": 'application/json',
@@ -30,7 +43,26 @@ class MainController extends GetxController {
 
     await init();
   }
+  
+  AppVersionModel appVersionModel = AppVersionModel("", "");
 
+  Future<AppVersionModel> getLastVersion() async {
+    var appService = GetConnectService();
+    var response = await appService.getLastVersion();
+
+    if (response.statusCode == 200) {
+      Map<String, dynamic> param;
+      if (response.body is String) {
+        param = jsonDecode(response.body);
+      } else {
+        param = response.body;
+      }
+      appVersionModel = AppVersionModel.fromJson(param);
+    }
+
+    return appVersionModel;
+  }
+  
   final _mainResponseObs = MainResponse().obs;
   MainResponse get mainResponse => _mainResponseObs.value;
   set mainResponse(MainResponse val) => _mainResponseObs.value = val;
@@ -58,7 +90,23 @@ class MainController extends GetxController {
 
     mainResponse.content =
         MainModel(user: UserModel(token: token), aboutus: "");
+        
+    packageInfo = await PackageInfo.fromPlatform();
 
+    buildVersion = packageInfo.buildNumber;
+    appVersion = packageInfo.version.toString();
+
+    await getLastVersion();
+    if (kIsWeb) {
+      if (appVersionModel.version != appVersion) {
+        // Clear cache
+        html.window.localStorage.clear();
+        html.window.sessionStorage.clear();
+        // Reload page
+        html.window.location.reload();
+        // return;
+      }
+    }
     // packageInfo = await PackageInfo.fromPlatform();
 
     // buildVersion = packageInfo.buildNumber;
