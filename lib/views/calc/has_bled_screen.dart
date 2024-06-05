@@ -13,6 +13,13 @@ class HasBledScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("HAS-BLED Calculator"),
+        actions: [
+          IconButton(
+              onPressed: () {
+                testMessage(_controller.model.hbDesc, Get.back);
+              },
+              icon: const Icon(Icons.help_outline))
+        ],
       ),
       body: Obx(() {
         return ListView(

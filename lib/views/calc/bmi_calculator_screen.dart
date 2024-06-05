@@ -56,7 +56,7 @@ class BMICalculatorScreen extends StatelessWidget {
                 child: badge(
                   color: AppColors.warning,
                   child: Text(
-                    "${_controller.bmi} kg/m2",
+                    "BMI: ${_controller.bmi} kg/m2",
                     style: AppTextStyles.headline4
                         .copyWith(color: AppColors.black),
                   ),

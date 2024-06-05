@@ -25,7 +25,7 @@ class Test2Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Step2"),
+        title: const Text("Evaluate Indications"),
       ),
       body: ListView(
         padding: AppConst.defaultPadding,

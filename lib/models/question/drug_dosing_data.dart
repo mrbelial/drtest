@@ -427,5 +427,18 @@ for >_24 h, bridging can be discontinued.
     ),
   );
 
+// //Ex
+//   list.add(
+//     DrugDosingModel(
+//       drugId: 5,
+//       drugName: "Edoxaban",
+//       param: DrugDosingParams(params: [
+//         DrugDosingParams(
+//           page: "/edoxaban_dosing",
+//           params: [],
+//         ),
+//       ]),
+//     ),
+//   );
   return list;
 }

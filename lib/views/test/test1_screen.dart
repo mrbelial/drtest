@@ -14,7 +14,14 @@ class TestScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("آزمایش"),
+        title: const Text("Confirm Diagnosis"),
+        actions: [
+          IconButton(
+              onPressed: () {
+                testMessage(_controller.model.q1Desc, Get.back);
+              },
+              icon: const Icon(Icons.help_outline))
+        ],
       ),
       body: Container(
         padding: AppConst.defaultPadding,

@@ -13,7 +13,7 @@ class TestPageScreen extends StatelessWidget {
   void itemClicked(TestPageModel item) async {
     switch (item.type) {
       case TestPageTypeEnum.drug:
-        _controller.addToDrugs(item);
+        _controller.addToDrugs(item, _controller.selectedStack.value);
         _controller.selectedStackIndex += 1;
         itemClicked(_controller.selectedStack);
 

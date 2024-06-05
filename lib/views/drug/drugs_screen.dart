@@ -23,10 +23,7 @@ class DrugsScreen extends StatelessWidget {
           padding: AppConst.defaultPadding,
           children: [
             ...model.titles.map((e) => cardBox(
-                    child: Text(
-                  e,
-                  style: AppTextStyles.bodyTextLargeDark,
-                ))),
+                child: Text(e, style: AppTextStyles.bodyTextLargeDark))),
             ...model.drugs.map(
               (e) {
                 var status = _controller.getDrugInteractions(e.id);
@@ -41,11 +38,9 @@ class DrugsScreen extends StatelessWidget {
                 }, color: status.color);
               },
             ),
-            appButton(
-                title: "Drug Interaction",
-                onTap: () {
-                  Get.toNamed("/drug_interaction");
-                }),
+            testButton("Consider DOACs Drug Interaction", () {
+              Get.toNamed("/drug_interaction");
+            }, color: AppColors.red),
           ],
         );
       }),

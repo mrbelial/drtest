@@ -23,7 +23,7 @@ extension DrugInteractionColor on DrugInteractionEnum {
     switch (this) {
       case DrugInteractionEnum.red:
         return AppColors.red;
-        
+
       case DrugInteractionEnum.darkBlue:
         return AppColors.blue;
       case DrugInteractionEnum.yellow:
@@ -38,7 +38,16 @@ extension DrugInteractionColor on DrugInteractionEnum {
   }
 }
 
-enum DrugInteractionCalcType { check, ageMore, ageLess, weightMore, weightLess }
+enum DrugInteractionCalcType {
+  check,
+  ageMore,
+  ageLess,
+  weightMore,
+  weightLess,
+  crcfMore,
+  crcfLess,
+  singleRed
+}
 
 DrugInteractionCalcType drugInteractionCalcTypeGet(String v) {
   switch (v) {
@@ -50,6 +59,10 @@ DrugInteractionCalcType drugInteractionCalcTypeGet(String v) {
       return DrugInteractionCalcType.weightMore;
     case "weightLess":
       return DrugInteractionCalcType.weightLess;
+    case "crcfMore":
+      return DrugInteractionCalcType.crcfMore;
+    case "crcfLess":
+      return DrugInteractionCalcType.crcfLess;
     default:
       return DrugInteractionCalcType.check;
   }
@@ -83,15 +96,21 @@ class DrugInteractionRowModel {
 }
 
 class DrugInteractionWithType {
-  DrugInteractionWithType(this.drugId, this.type, [this.desc = ""]);
+  DrugInteractionWithType(this.drugId, this.type,
+      {this.desc = "",
+      this.calcType = DrugInteractionCalcType.check,
+      this.value = 0});
 
   int drugId;
   DrugInteractionEnum type;
   String desc;
+  DrugInteractionCalcType calcType;
+  double value;
 
   factory DrugInteractionWithType.fromJson(Map<String, dynamic> json) {
-    return DrugInteractionWithType(json['drugId'],
-        drugInteractionEnumGet(json['type']), json['desc'] ?? "");
+    return DrugInteractionWithType(
+        json['drugId'], drugInteractionEnumGet(json['type']),
+        desc: json['desc'] ?? "");
   }
 }
 
@@ -117,8 +136,9 @@ class DrugInteractionModel {
   factory DrugInteractionModel.fromList(List<DrugInteractionRowModel> d) {
     return DrugInteractionModel(
         redMessage:
-            "Contraindicated / not advisable due to increased plasma levels",
-        darkBlueMessage: "Contraindicated due to reduced NOAC plasma levels",
+            "Contraindicated / not advisable due to increased plasma levels or increase in the risk of bleeding",
+        darkBlueMessage:
+            "Contraindicated due to reduced NOAC plasma levels or an increase in the risk of thromboembolic events.",
         yellowMessage:
             "Caution required, especially in case of polypharmacy or in the presence of ≥2 yellow / bleeding risk factors",
         lightBlueMessage:

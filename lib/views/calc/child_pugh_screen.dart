@@ -13,6 +13,13 @@ class ChildPughScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Child Pugh Calculator"),
+        actions: [
+          IconButton(
+              onPressed: () {
+                testMessage(_controller.model.cpDesc, Get.back);
+              },
+              icon: const Icon(Icons.help_outline))
+        ],
       ),
       body: ListView(
         padding: AppConst.defaultPadding,

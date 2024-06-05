@@ -12,7 +12,7 @@ class Test3Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Step 3"),
+        title: const Text("Consider Contraindications"),
       ),
       body: ListView(
         padding: AppConst.defaultPadding,

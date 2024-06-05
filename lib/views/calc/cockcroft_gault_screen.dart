@@ -19,6 +19,13 @@ class CockcroftGaultScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Cockcroft-Gault Calculator"),
+        actions: [
+          IconButton(
+              onPressed: () {
+                testMessage(_controller.model.cgDesc, Get.back);
+              },
+              icon: const Icon(Icons.help_outline))
+        ],
       ),
       body: ListView(
         padding: AppConst.defaultPadding,
@@ -95,7 +102,7 @@ class CockcroftGaultScreen extends StatelessWidget {
               child: badge(
                 color: AppColors.warning,
                 child: Text(
-                  "Point: ${_controller.model.cgAnswer} (mL/min)",
+                  "Creatinine Clearance: ${_controller.model.cgAnswer} (mL/min)",
                   style:
                       AppTextStyles.headline4.copyWith(color: AppColors.black),
                 ),
@@ -121,7 +128,7 @@ class CockcroftGaultScreen extends StatelessWidget {
               return;
             }
 
-            testMessage("Point: ${_controller.model.cgAnswer} (mL/min)", () {
+            testMessage("Creatinine Clearance: ${_controller.model.cgAnswer} (mL/min)", () {
               Get.back();
               Get.toNamed("/child_pugh");
             });

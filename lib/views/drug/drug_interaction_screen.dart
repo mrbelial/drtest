@@ -11,6 +11,7 @@ class DrugInteractionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    _controller.initDrugInteraction();
     return Scaffold(
       appBar: AppBar(
         title: const Text("Drug Interactions"),

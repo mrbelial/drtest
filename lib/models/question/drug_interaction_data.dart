@@ -4,7 +4,10 @@ List<DrugInteractionRowModel> drugInteractionData = [
   DrugInteractionRowModel(
     "Dronedarone",
     [
-      DrugInteractionWithType(6, DrugInteractionEnum.red),
+      DrugInteractionWithType(6, DrugInteractionEnum.red,
+          calcType: DrugInteractionCalcType.crcfLess, value: 30),
+      DrugInteractionWithType(6, DrugInteractionEnum.yellow,
+          calcType: DrugInteractionCalcType.crcfMore, value: 29),
       DrugInteractionWithType(4, DrugInteractionEnum.yellow),
       DrugInteractionWithType(7, DrugInteractionEnum.red),
       DrugInteractionWithType(5, DrugInteractionEnum.darkBlue),
@@ -23,16 +26,21 @@ List<DrugInteractionRowModel> drugInteractionData = [
     "Itraconazole",
     [
       DrugInteractionWithType(6, DrugInteractionEnum.red),
-      DrugInteractionWithType(4, DrugInteractionEnum.red),
+      DrugInteractionWithType(4, DrugInteractionEnum.red,
+          calcType: DrugInteractionCalcType.singleRed),
       DrugInteractionWithType(7, DrugInteractionEnum.red),
-      DrugInteractionWithType(5, DrugInteractionEnum.purple, "30 mg QD"),
+      DrugInteractionWithType(5, DrugInteractionEnum.purple, desc: "30 mg QD"),
     ],
   ),
   DrugInteractionRowModel(
-    "Ketoconazole",
+    "Ketoconazole (systemic)",
     [
-      DrugInteractionWithType(6, DrugInteractionEnum.red),
-      DrugInteractionWithType(4, DrugInteractionEnum.red),
+      DrugInteractionWithType(6, DrugInteractionEnum.red,
+          calcType: DrugInteractionCalcType.crcfLess, value: 30),
+      DrugInteractionWithType(6, DrugInteractionEnum.yellow,
+          calcType: DrugInteractionCalcType.crcfMore, value: 29),
+      DrugInteractionWithType(4, DrugInteractionEnum.red,
+          calcType: DrugInteractionCalcType.singleRed),
       DrugInteractionWithType(7, DrugInteractionEnum.red),
     ],
   ),
@@ -78,7 +86,7 @@ List<DrugInteractionRowModel> drugInteractionData = [
       DrugInteractionWithType(6, DrugInteractionEnum.red),
       DrugInteractionWithType(4, DrugInteractionEnum.yellow),
       DrugInteractionWithType(7, DrugInteractionEnum.yellow),
-      DrugInteractionWithType(5, DrugInteractionEnum.purple, "30 mg QD"),
+      DrugInteractionWithType(5, DrugInteractionEnum.purple, desc: "30 mg QD"),
     ],
   ),
   DrugInteractionRowModel(
@@ -100,10 +108,17 @@ List<DrugInteractionRowModel> drugInteractionData = [
     ],
   ),
   DrugInteractionRowModel(
+    "Cobicistat",
+    [
+      DrugInteractionWithType(7, DrugInteractionEnum.red),
+    ],
+  ),
+  DrugInteractionRowModel(
     "Lopinavir / Ritonavir",
     [
       DrugInteractionWithType(6, DrugInteractionEnum.red),
-      DrugInteractionWithType(4, DrugInteractionEnum.red),
+      DrugInteractionWithType(4, DrugInteractionEnum.red,
+          calcType: DrugInteractionCalcType.singleRed),
       DrugInteractionWithType(7, DrugInteractionEnum.red),
       DrugInteractionWithType(5, DrugInteractionEnum.red),
     ],
@@ -224,7 +239,7 @@ List<DrugInteractionRowModel> drugInteractionData = [
       DrugInteractionWithType(6, DrugInteractionEnum.yellow),
       DrugInteractionWithType(4, DrugInteractionEnum.yellow),
       DrugInteractionWithType(7, DrugInteractionEnum.yellow),
-      DrugInteractionWithType(5, DrugInteractionEnum.purple, "30 mg QD"),
+      DrugInteractionWithType(5, DrugInteractionEnum.purple, desc: "30 mg QD"),
     ],
   ),
   DrugInteractionRowModel(
@@ -254,28 +269,58 @@ List<DrugInteractionRowModel> drugInteractionData = [
       DrugInteractionWithType(5, DrugInteractionEnum.yellow),
     ],
   ),
-  DrugInteractionRowModel(
-    "Age ≥ 75 years",
-    [
-      DrugInteractionWithType(6, DrugInteractionEnum.yellow),
-      DrugInteractionWithType(4, DrugInteractionEnum.yellow),
-      DrugInteractionWithType(7, DrugInteractionEnum.yellow),
-      DrugInteractionWithType(5, DrugInteractionEnum.yellow),
-    ],
-    calcType: DrugInteractionCalcType.ageMore,
-    value: 75,
-  ),
-  DrugInteractionRowModel(
-    "Weight ≤ 60 kg",
-    [
-      DrugInteractionWithType(6, DrugInteractionEnum.yellow),
-      DrugInteractionWithType(4, DrugInteractionEnum.yellow),
-      DrugInteractionWithType(7, DrugInteractionEnum.yellow),
-      DrugInteractionWithType(5, DrugInteractionEnum.purple),
-    ],
-    calcType: DrugInteractionCalcType.weightLess,
-    value: 60,
-  ),
+  DrugInteractionRowModel("Age ≥ 75 years", [
+    DrugInteractionWithType(
+      6,
+      DrugInteractionEnum.yellow,
+      calcType: DrugInteractionCalcType.ageMore,
+      value: 74,
+    ),
+    DrugInteractionWithType(
+      4,
+      DrugInteractionEnum.yellow,
+      calcType: DrugInteractionCalcType.ageMore,
+      value: 74,
+    ),
+    DrugInteractionWithType(
+      7,
+      DrugInteractionEnum.yellow,
+      calcType: DrugInteractionCalcType.ageMore,
+      value: 74,
+    ),
+    DrugInteractionWithType(
+      5,
+      DrugInteractionEnum.yellow,
+      calcType: DrugInteractionCalcType.ageMore,
+      value: 74,
+    ),
+  ]),
+  DrugInteractionRowModel("Weight ≤ 60 kg", [
+    DrugInteractionWithType(
+      6,
+      DrugInteractionEnum.yellow,
+      calcType: DrugInteractionCalcType.weightLess,
+      value: 61,
+    ),
+    DrugInteractionWithType(
+      4,
+      DrugInteractionEnum.yellow,
+      calcType: DrugInteractionCalcType.weightLess,
+      value: 61,
+    ),
+    DrugInteractionWithType(
+      7,
+      DrugInteractionEnum.yellow,
+      calcType: DrugInteractionCalcType.weightLess,
+      value: 61,
+    ),
+    DrugInteractionWithType(
+      5,
+      DrugInteractionEnum.purple,
+      calcType: DrugInteractionCalcType.weightLess,
+      value: 61,
+    ),
+  ]),
   DrugInteractionRowModel(
     "CKD",
     [
@@ -413,14 +458,14 @@ List<DrugInteractionRowModel> drugInteractionData = [
       DrugInteractionWithType(6, DrugInteractionEnum.yellow),
     ],
   ),
-  DrugInteractionRowModel(
-    "Weight ≥ 120 kg",
-    [
-      DrugInteractionWithType(6, DrugInteractionEnum.lightBlue),
-    ],
-    calcType: DrugInteractionCalcType.weightMore,
-    value: 120,
-  ),
+  DrugInteractionRowModel("Weight ≥ 120 kg", [
+    DrugInteractionWithType(
+      6,
+      DrugInteractionEnum.lightBlue,
+      calcType: DrugInteractionCalcType.weightMore,
+      value: 120,
+    ),
+  ]),
   DrugInteractionRowModel(
     "Levetiracetam",
     [
@@ -442,19 +487,21 @@ List<DrugInteractionRowModel> drugInteractionData = [
   DrugInteractionRowModel(
     "Verapamil",
     [
-      DrugInteractionWithType(6, DrugInteractionEnum.purple, "110 mg BID"),
+      DrugInteractionWithType(6, DrugInteractionEnum.purple,
+          desc: "110 mg BID"),
       DrugInteractionWithType(7, DrugInteractionEnum.yellow),
       DrugInteractionWithType(5, DrugInteractionEnum.yellow),
     ],
   ),
-  DrugInteractionRowModel(
-    "Age ≥ 80 years",
-    [
-      DrugInteractionWithType(6, DrugInteractionEnum.purple, "110 mg BID"),
-    ],
-    calcType: DrugInteractionCalcType.ageMore,
-    value: 80,
-  ),
+  DrugInteractionRowModel("Age ≥ 80 years", [
+    DrugInteractionWithType(
+      6,
+      DrugInteractionEnum.purple,
+      desc: "110 mg BID",
+      calcType: DrugInteractionCalcType.ageMore,
+      value: 79,
+    ),
+  ]),
   DrugInteractionRowModel(
     "Voriconazole",
     [
@@ -593,6 +640,161 @@ List<DrugInteractionRowModel> drugInteractionData = [
     "Fluconazole",
     [
       DrugInteractionWithType(7, DrugInteractionEnum.yellow),
+    ],
+  ),
+  DrugInteractionRowModel(
+    "Vorapaxar",
+    [
+      DrugInteractionWithType(6, DrugInteractionEnum.red),
+      DrugInteractionWithType(4, DrugInteractionEnum.red),
+      DrugInteractionWithType(7, DrugInteractionEnum.red),
+    ],
+  ),
+  DrugInteractionRowModel(
+    "Abciximab",
+    [
+      DrugInteractionWithType(6, DrugInteractionEnum.red),
+      DrugInteractionWithType(4, DrugInteractionEnum.red),
+      DrugInteractionWithType(7, DrugInteractionEnum.red),
+      DrugInteractionWithType(5, DrugInteractionEnum.red),
+    ],
+  ),
+  DrugInteractionRowModel(
+    "Alteplase",
+    [
+      DrugInteractionWithType(6, DrugInteractionEnum.red),
+      DrugInteractionWithType(4, DrugInteractionEnum.red),
+      DrugInteractionWithType(7, DrugInteractionEnum.red),
+      DrugInteractionWithType(5, DrugInteractionEnum.red),
+    ],
+  ),
+  DrugInteractionRowModel(
+    "Defibrotide",
+    [
+      DrugInteractionWithType(6, DrugInteractionEnum.red),
+      DrugInteractionWithType(4, DrugInteractionEnum.red),
+      DrugInteractionWithType(7, DrugInteractionEnum.red),
+      DrugInteractionWithType(5, DrugInteractionEnum.red),
+    ],
+  ),
+  DrugInteractionRowModel(
+    "Lasmiditan",
+    [
+      DrugInteractionWithType(6, DrugInteractionEnum.red),
+      DrugInteractionWithType(5, DrugInteractionEnum.red),
+    ],
+  ),
+  DrugInteractionRowModel(
+    "Mifepristone",
+    [
+      DrugInteractionWithType(6, DrugInteractionEnum.red),
+      DrugInteractionWithType(4, DrugInteractionEnum.red),
+      DrugInteractionWithType(7, DrugInteractionEnum.red),
+      DrugInteractionWithType(5, DrugInteractionEnum.red),
+    ],
+  ),
+  DrugInteractionRowModel(
+    "Pacritinib",
+    [
+      DrugInteractionWithType(6, DrugInteractionEnum.red),
+    ],
+  ),
+  DrugInteractionRowModel(
+    "Sparsentan",
+    [
+      DrugInteractionWithType(6, DrugInteractionEnum.red),
+      DrugInteractionWithType(5, DrugInteractionEnum.red),
+    ],
+  ),
+  DrugInteractionRowModel(
+    "Streptokinase",
+    [
+      DrugInteractionWithType(6, DrugInteractionEnum.red),
+      DrugInteractionWithType(4, DrugInteractionEnum.red),
+      DrugInteractionWithType(7, DrugInteractionEnum.red),
+      DrugInteractionWithType(5, DrugInteractionEnum.red),
+    ],
+  ),
+  DrugInteractionRowModel(
+    "Taurursodiol",
+    [
+      DrugInteractionWithType(6, DrugInteractionEnum.red),
+      DrugInteractionWithType(5, DrugInteractionEnum.red),
+    ],
+  ),
+  DrugInteractionRowModel(
+    "Tenecteplase",
+    [
+      DrugInteractionWithType(6, DrugInteractionEnum.red),
+      DrugInteractionWithType(4, DrugInteractionEnum.red),
+      DrugInteractionWithType(7, DrugInteractionEnum.red),
+      DrugInteractionWithType(5, DrugInteractionEnum.red),
+    ],
+  ),
+  DrugInteractionRowModel(
+    "Hemin",
+    [
+      DrugInteractionWithType(6, DrugInteractionEnum.red),
+      DrugInteractionWithType(4, DrugInteractionEnum.red),
+      DrugInteractionWithType(7, DrugInteractionEnum.red),
+      DrugInteractionWithType(5, DrugInteractionEnum.red),
+    ],
+  ),
+  DrugInteractionRowModel(
+    "Apalutamide",
+    [
+      DrugInteractionWithType(6, DrugInteractionEnum.darkBlue),
+      DrugInteractionWithType(4, DrugInteractionEnum.darkBlue),
+      DrugInteractionWithType(7, DrugInteractionEnum.darkBlue),
+    ],
+  ),
+  DrugInteractionRowModel(
+    "Fosphenytoin",
+    [
+      DrugInteractionWithType(4, DrugInteractionEnum.darkBlue),
+      DrugInteractionWithType(7, DrugInteractionEnum.darkBlue),
+    ],
+  ),
+  DrugInteractionRowModel(
+    "Adagrasib",
+    [
+      DrugInteractionWithType(7, DrugInteractionEnum.red),
+    ],
+  ),
+  DrugInteractionRowModel(
+    "Levoketoconazole",
+    [
+      DrugInteractionWithType(7, DrugInteractionEnum.red),
+    ],
+  ),
+  DrugInteractionRowModel(
+    "Ombitasvir",
+    [
+      DrugInteractionWithType(7, DrugInteractionEnum.red),
+    ],
+  ),
+  DrugInteractionRowModel(
+    "Nirmatrelvir",
+    [
+      DrugInteractionWithType(7, DrugInteractionEnum.red),
+    ],
+  ),
+  DrugInteractionRowModel(
+    "Paritaprevir",
+    [
+      DrugInteractionWithType(7, DrugInteractionEnum.red),
+    ],
+  ),
+  DrugInteractionRowModel(
+    "Tucatinib",
+    [
+      DrugInteractionWithType(7, DrugInteractionEnum.red),
+    ],
+  ),
+  DrugInteractionRowModel(
+    "Rifampin",
+    [
+      DrugInteractionWithType(5, DrugInteractionEnum.darkBlue),
     ],
   ),
 ];

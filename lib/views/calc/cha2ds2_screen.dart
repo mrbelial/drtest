@@ -14,6 +14,12 @@ class CHA2DS2Screen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: const Text("CHA2DS2-VASc Calculator"),
+          actions: [
+            IconButton(
+                onPressed: () =>
+                    testMessage(_controller.model.q3Desc, Get.back),
+                icon: const Icon(Icons.help_outline))
+          ],
         ),
         body: ListView(
           padding: AppConst.defaultPadding,

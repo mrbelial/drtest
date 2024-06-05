@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 Widget testTitle(String title) {
-  return Container(padding: AppConst.widgetPadding, child: Text(title));
+  return Container(
+      padding: AppConst.widgetPadding,
+      child: Text(title, textAlign: TextAlign.left));
 }
 
 Widget testButton(String title, void Function() onTap,
@@ -35,7 +37,7 @@ void testMessage(String message, void Function() ontap,
         height: Get.size.height - 150,
         child: ListView(
           shrinkWrap: true,
-          children: [Text(message)],
+          children: [Text(message, textAlign: TextAlign.left)],
         ),
       ),
       actions: [textButton(title: "Ok", onTap: ontap)]);

@@ -14,7 +14,7 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("داشبورد"),
+        title: const Text("ACAFib-APP"),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
