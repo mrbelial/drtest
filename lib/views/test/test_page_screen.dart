@@ -33,10 +33,14 @@ class TestPageScreen extends StatelessWidget {
         break;
       case TestPageTypeEnum.page:
         // print("${item.value}: ${item.type.toString()}");
-        await Get.offAndToNamed("/test_page", arguments: item);
+        Get.offAndToNamed("/test_page", arguments: item);
+        break;
+      case TestPageTypeEnum.toPage:
+        // print("${item.value}: ${item.type.toString()}");
+        Get.offAndToNamed(item.page, arguments: item);
         break;
       case TestPageTypeEnum.result:
-        await Get.offAndToNamed("/drugs");
+        Get.offAndToNamed("/drugs");
         break;
     }
   }

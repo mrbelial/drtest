@@ -1,5 +1,6 @@
 import 'package:drtest/controllers/test_controller.dart';
 import 'package:drtest/models/question/drug_interaction_model.dart';
+import 'package:drtest/models/question/question_model.dart';
 import 'package:drtest/tools/core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,6 +9,7 @@ class DrugInteractionScreen extends StatelessWidget {
   DrugInteractionScreen({super.key});
   final _controller = Get.put(TestController());
   final TextEditingController _filterController = TextEditingController();
+  final TestPageModel? model = Get.arguments;
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +19,15 @@ class DrugInteractionScreen extends StatelessWidget {
         title: const Text("Drug Interactions"),
         elevation: 0,
         backgroundColor: Colors.transparent,
+        actions: [
+          if (model != null)
+            textButton(
+              title: "Done",
+              onTap: () {
+                Get.offAndToNamed("/drugs", arguments: model);
+              },
+            )
+        ],
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(50),
           child: Container(

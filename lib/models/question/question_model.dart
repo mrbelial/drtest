@@ -1186,7 +1186,7 @@ administration.
       DrugInteractionModel.fromList(drugInteractionData);
 }
 
-enum TestPageTypeEnum { page, drug, message, result }
+enum TestPageTypeEnum { page, drug, message, result, toPage }
 
 class TestPageModel {
   TestPageModel({

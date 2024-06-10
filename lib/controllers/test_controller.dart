@@ -279,6 +279,13 @@ Patients at high bleeding risk (eg HAS-BLED ≥3) should have their modifiable b
     stacks.addAll(model.pages.pages.where((e) => e.isMarked).toList());
 
     stacks.add(TestPageModel(
+      title: "Result",
+      value: "Result",
+      page: "/drug_interaction",
+      type: TestPageTypeEnum.toPage,
+    ));
+
+    stacks.add(TestPageModel(
         title: "Result",
         value: "Result",
         type: TestPageTypeEnum.result,
