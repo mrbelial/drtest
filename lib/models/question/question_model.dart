@@ -1237,4 +1237,5 @@ class TestDrugStyleModel {
   bool isAllowed = true;
   String extra = "";
   String title = "";
+  DrugInteractionEnum type = DrugInteractionEnum.none;
 }

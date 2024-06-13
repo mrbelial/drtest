@@ -4,7 +4,8 @@ import 'package:drtest/models/question/drug_interaction_model.dart';
 import 'package:drtest/models/question/question_model.dart';
 import 'package:drtest/response/question/question_response.dart';
 import 'package:drtest/tools/core.dart';
-import 'package:drtest/views/drug/dosing/edoxaparin_dosing_screen.dart';
+import 'package:drtest/views/drug/dosing/edoxaban_dosing_screen.dart';
+import 'package:drtest/views/drug/dosing/lmwh_dosing_screen.dart';
 import 'package:drtest/views/drug/dosing/ufh_screen.dart';
 import 'package:drtest/views/drug/dosing/ptt_calc_screen.dart';
 import 'package:drtest/views/drug/dosing/ts_calc_screen.dart';
@@ -378,7 +379,7 @@ Patients at high bleeding risk (eg HAS-BLED ≥3) should have their modifiable b
 
       //Drug Interaction calc Type != check
       for (var item in selectedInteractionDrugs) {
-        DrugInteractionEnum color = DrugInteractionEnum.red;
+        DrugInteractionEnum color = DrugInteractionEnum.none;
 
         switch (item.calcType) {
           case DrugInteractionCalcType.ageLess:
@@ -434,6 +435,8 @@ Patients at high bleeding risk (eg HAS-BLED ≥3) should have their modifiable b
           case DrugInteractionEnum.purple:
             purpleInteractions++;
             break;
+          case DrugInteractionEnum.none:
+            break;
         }
       }
 
@@ -442,26 +445,31 @@ Patients at high bleeding risk (eg HAS-BLED ≥3) should have their modifiable b
         response.extra = "(Contraindicated)";
         response.color = AppColors.red;
         response.isAllowed = false;
+        response.type = DrugInteractionEnum.red;
       } else if (darkBlueInteractions > 0) {
         response.message = model.drugInteractions.darkBlueMessage;
         response.extra = "(Contraindicated)";
         response.color = AppColors.red;
+        response.type = DrugInteractionEnum.darkBlue;
         // response.color = AppColors.blue;
         response.isAllowed = false;
       } else if (yellowInteractions > 1) {
         response.message = model.drugInteractions.yellowMessage;
         response.extra = "(Caution Required)";
         response.color = AppColors.yellow;
+        response.type = DrugInteractionEnum.yellow;
         response.isAllowed = false;
       } else if (lightBlueInteractions > 1) {
         response.message = model.drugInteractions.lightBlueMessage;
         response.extra = "(Caution Required)";
         response.color = AppColors.yellow;
+        response.type = DrugInteractionEnum.lightBlue;
         // response.color = AppColors.blue2;
         response.isAllowed = false;
       } else if (purpleInteractions > 0) {
         response.message = model.drugInteractions.purpleMessage;
         response.color = AppColors.purple;
+        response.type = DrugInteractionEnum.purple;
         response.isAllowed = true;
       }
     }
@@ -573,10 +581,12 @@ Patients at high bleeding risk (eg HAS-BLED ≥3) should have their modifiable b
         return PTTCalcScreen(item: item);
       case "/ts_dosing":
         return TsScoreScreen(item: item);
-      case "/edoxaban_dosing":
-        return EdoxaparinDosingScreen(item: item);
+      case "/lmwh_dosing":
+        return LMWHDosingScreen(item: item);
       case "/wafarin_extra":
         return WafarinExtraScreen();
+      case "/edoxaban_dosing":
+        return EdoxabanDosingScreen();
       default:
         return Container();
     }
@@ -679,7 +689,7 @@ Repeat assay 6 hours after restarting the infusion.""",
     return IDTitleModel(p, model.tsAnswer());
   }
 
-  List<String> initEnoxaparinDosing() {
+  List<String> initLMWHDosing() {
     List<String> list = [];
     if (model.cgAnswer < 30) {
       list.add(
@@ -710,5 +720,42 @@ Repeat assay 6 hours after restarting the infusion.""",
     }
 
     return list;
+  }
+
+  String edoxabanDosing() {
+    var dosingYes = "30 mg daily or 15 mg daily.\n(AF ESC 2020)";
+    if (model.cgAnswer >= 15 && model.cgAnswer <= 30) {
+      return dosingYes;
+    }
+    if (model.weight <= 60) {
+      return dosingYes;
+    }
+
+    var status = getDrugInteractions(5);
+    if (status.type == DrugInteractionEnum.purple) {
+      return dosingYes;
+    }
+
+    return "60 mg daily.\n(AF ESC 2020)";
+  }
+
+  dabigatranDosing() {
+    //Check Black
+    var dosingYes = "110 mg twice daily.\n(AF ESC 2020)";
+    if (model.age >= 80) {
+      return dosingYes;
+    }
+    var status = getDrugInteractions(6);
+    if (status.type == DrugInteractionEnum.purple) {
+      return dosingYes;
+    }
+
+    //Check Red
+    if (model.cgAnswer >= 15 && model.cgAnswer <= 30) {
+      return "75 mg twice daily.\n(AHA ACC ACCP HRS 2023)";
+    }
+    
+    //No
+    return "150 mg twice daily.\n(AF ESC 2020)";
   }
 }

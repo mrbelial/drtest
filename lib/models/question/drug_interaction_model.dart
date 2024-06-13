@@ -1,7 +1,7 @@
 import 'package:drtest/tools/core.dart';
 import 'package:flutter/material.dart';
 
-enum DrugInteractionEnum { red, darkBlue, yellow, lightBlue, purple }
+enum DrugInteractionEnum { red, darkBlue, yellow, lightBlue, purple, none }
 
 DrugInteractionEnum drugInteractionEnumGet(int v) {
   switch (v) {

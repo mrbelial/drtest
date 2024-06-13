@@ -260,11 +260,11 @@ Switching to a NOAC but ensuring good adherence and persistence with therapy is 
   //Edoxaban
   list.add(
     DrugDosingModel(
-        drugId: 5,
-        drugName: "Edoxaban",
+        drugId: 3,
+        drugName: "LMWH",
         param: DrugDosingParams(params: [
           DrugDosingParams(
-            page: "/edoxaban_dosing",
+            page: "/lmwh_dosing",
             params: [
               DrugDosingParams(
                 desc: """Any of the following scenarios present?
@@ -427,18 +427,32 @@ for >_24 h, bridging can be discontinued.
     ),
   );
 
-// //Ex
-//   list.add(
-//     DrugDosingModel(
-//       drugId: 5,
-//       drugName: "Edoxaban",
-//       param: DrugDosingParams(params: [
-//         DrugDosingParams(
-//           page: "/edoxaban_dosing",
-//           params: [],
-//         ),
-//       ]),
-//     ),
-//   );
+  //Edoxaban
+  list.add(
+    DrugDosingModel(
+      drugId: 5,
+      drugName: "Edoxaban",
+      param: DrugDosingParams(params: [
+        DrugDosingParams(
+          page: "/edoxaban_dosing",
+          params: [],
+        ),
+      ]),
+    ),
+  );
+  
+  //Dabigatran
+  list.add(
+    DrugDosingModel(
+      drugId: 6,
+      drugName: "Dabigatran",
+      param: DrugDosingParams(params: [
+        DrugDosingParams(
+          page: "/dabigatran_dosing",
+          params: [],
+        ),
+      ]),
+    ),
+  );
   return list;
 }

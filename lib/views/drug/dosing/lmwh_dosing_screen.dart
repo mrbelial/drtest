@@ -5,15 +5,15 @@ import 'package:drtest/ui/test/test_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class EdoxaparinDosingScreen extends StatelessWidget {
-  EdoxaparinDosingScreen({super.key, required this.item});
+class LMWHDosingScreen extends StatelessWidget {
+  LMWHDosingScreen({super.key, required this.item});
   final DrugDosingParams item;
   final TestController _controller = Get.find();
   DrugDosingModel get model => _controller.selectedDrugDosing;
 
   @override
   Widget build(BuildContext context) {
-    var list = _controller.initEnoxaparinDosing();
+    var list = _controller.initLMWHDosing();
     model.drugDose = list.join("\n\n");
 
     return Column(
