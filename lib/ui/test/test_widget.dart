@@ -49,3 +49,14 @@ Widget testDrug(TestDrugModel item) {
       margin: const EdgeInsets.symmetric(vertical: 10),
       onTap: () => Get.toNamed("/drug_dosing", arguments: item));
 }
+
+Widget testBadge({required String text, Color color = AppColors.red}) {
+  return Container(
+    padding: const EdgeInsets.all(10),
+    color: color,
+    child: Text(
+      text,
+      style: AppTextStyles.headline3,
+    ),
+  );
+}

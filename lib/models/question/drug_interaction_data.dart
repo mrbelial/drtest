@@ -10,7 +10,7 @@ List<DrugInteractionRowModel> drugInteractionData = [
           calcType: DrugInteractionCalcType.crcfMore, value: 29),
       DrugInteractionWithType(4, DrugInteractionEnum.yellow),
       DrugInteractionWithType(7, DrugInteractionEnum.red),
-      DrugInteractionWithType(5, DrugInteractionEnum.darkBlue),
+      DrugInteractionWithType(5, DrugInteractionEnum.yellow),
     ],
   ),
   DrugInteractionRowModel(

@@ -257,7 +257,7 @@ Switching to a NOAC but ensuring good adherence and persistence with therapy is 
         ])),
   );
 
-  //Edoxaban
+  //LMWH
   list.add(
     DrugDosingModel(
         drugId: 3,

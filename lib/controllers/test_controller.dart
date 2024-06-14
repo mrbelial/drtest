@@ -1,9 +1,13 @@
+import 'package:drtest/models/dosing/dabigatran_dosing_model.dart';
+import 'package:drtest/models/dosing/edoxaban_dosing_model.dart';
+import 'package:drtest/models/public/checkbox_model.dart';
 import 'package:drtest/models/public/idtitle_model.dart';
 import 'package:drtest/models/question/drug_dosing_data.dart';
 import 'package:drtest/models/question/drug_interaction_model.dart';
 import 'package:drtest/models/question/question_model.dart';
 import 'package:drtest/response/question/question_response.dart';
 import 'package:drtest/tools/core.dart';
+import 'package:drtest/views/drug/dosing/dabigatran_dosing_screen.dart';
 import 'package:drtest/views/drug/dosing/edoxaban_dosing_screen.dart';
 import 'package:drtest/views/drug/dosing/lmwh_dosing_screen.dart';
 import 'package:drtest/views/drug/dosing/ufh_screen.dart';
@@ -434,6 +438,9 @@ Patients at high bleeding risk (eg HAS-BLED ≥3) should have their modifiable b
             break;
           case DrugInteractionEnum.purple:
             purpleInteractions++;
+            if (item.desc.isNotEmpty) {
+              response.purpleMessage += "\n${item.desc}";
+            }
             break;
           case DrugInteractionEnum.none:
             break;
@@ -587,6 +594,8 @@ Patients at high bleeding risk (eg HAS-BLED ≥3) should have their modifiable b
         return WafarinExtraScreen();
       case "/edoxaban_dosing":
         return EdoxabanDosingScreen();
+      case "/dabigatran_dosing":
+        return DabigatranDosingScreen();
       default:
         return Container();
     }
@@ -722,40 +731,84 @@ Repeat assay 6 hours after restarting the infusion.""",
     return list;
   }
 
+  final _edoxabanDosingModel = EdoxabanDosingModel().obs;
+  EdoxabanDosingModel get edoxabanDosingModel => _edoxabanDosingModel.value;
+  set edoxabanLoading(bool v) =>
+      _edoxabanDosingModel.update((val) => val!.isloading = v);
+
+  void edoxabanDosingInit() {
+    if (edoxabanDosingModel.list.isEmpty) {
+      var status = getDrugInteractions(5);
+      edoxabanDosingModel.list = [
+        CheckBoxModel("CrCl 15 - 50 mL/min?", 0,
+            model.cgAnswer >= 15 && model.cgAnswer <= 30),
+        CheckBoxModel("Body weight ≤ 60 kg?", 0, model.weight <= 60),
+        CheckBoxModel(
+            "Concomitant use of strong P-Gp inhibitor (e.g verapamil, quinidine, or dronedarone)?",
+            5,
+            status.type == DrugInteractionEnum.purple,desc: "30 mg QD"),
+        CheckBoxModel(
+            "Disproportionate and non-modifiable bleeding risk?", 0, false),
+      ];
+    }
+  }
+
   String edoxabanDosing() {
-    var dosingYes = "30 mg daily or 15 mg daily.\n(AF ESC 2020)";
-    if (model.cgAnswer >= 15 && model.cgAnswer <= 30) {
-      return dosingYes;
-    }
-    if (model.weight <= 60) {
-      return dosingYes;
-    }
+    List<CheckBoxModel> list = [];
+    list.addAll(edoxabanDosingModel.list.where((x) => x.checked));
+    list.sort((a, b) => a.point.compareTo(b.point));
+    return list.firstOrNull?.desc ?? "";
 
-    var status = getDrugInteractions(5);
-    if (status.type == DrugInteractionEnum.purple) {
-      return dosingYes;
-    }
-
-    return "60 mg daily.\n(AF ESC 2020)";
+    // edoxabanDosingModel.getByPoint(2).checked
+    //   ? getDrugInteractions(5).purpleMessage
+    //   : edoxabanDosingModel.totalChecked > 0
+    //       ? "30 mg daily or 15 mg daily.\n(AF ESC 2020)"
+    //       : "60 mg daily.\n(AF ESC 2020)"
   }
 
-  dabigatranDosing() {
-    //Check Black
-    var dosingYes = "110 mg twice daily.\n(AF ESC 2020)";
-    if (model.age >= 80) {
-      return dosingYes;
-    }
-    var status = getDrugInteractions(6);
-    if (status.type == DrugInteractionEnum.purple) {
-      return dosingYes;
-    }
+  //Dabigatran
+  final _dabigatranDosingModel = DabigatranDosingModel().obs;
 
-    //Check Red
-    if (model.cgAnswer >= 15 && model.cgAnswer <= 30) {
-      return "75 mg twice daily.\n(AHA ACC ACCP HRS 2023)";
+  DabigatranDosingModel get dabigatranDosingModel =>
+      _dabigatranDosingModel.value;
+
+  set dabigatranLoading(bool v) =>
+      _dabigatranDosingModel.update((val) => val!.isloading = v);
+
+  void dabigatranDosingInit() {
+    if (dabigatranDosingModel.list.isEmpty) {
+      var status = getDrugInteractions(6);
+      dabigatranDosingModel.list = [
+        CheckBoxModel("Age >_80 years?", 0, model.age >= 80),
+        CheckBoxModel(
+            "Concomitant use of of strong P-Gp inhibitor (e.g. verapamil)",
+            2,
+            status.type == DrugInteractionEnum.purple),
+        CheckBoxModel("History of GI bleeding", 0, false),
+        CheckBoxModel(
+            "Concerned about disproportionate and non-modifiable bleeding risk",
+            0,
+            false),
+        CheckBoxModel("High bleeding risk (HAS-BLED >_3)", 0, false),
+        CheckBoxModel(
+            "Concomitant single or Dual antiplatelet therapy ? (IIa B)",
+            0,
+            false),
+      ];
+      dabigatranDosingModel.redlist = [
+        CheckBoxModel(
+            "Concomitant therapy of dronedarone or ketoconazole for patients with CrCl 30 to 50 mL/min?",
+            0,
+            false),
+        CheckBoxModel("CrCl 15 to 30 mL/min?", 0,
+            model.cgAnswer >= 15 && model.cgAnswer <= 30),
+      ];
     }
-    
-    //No
-    return "150 mg twice daily.\n(AF ESC 2020)";
   }
+
+  String get dabigatranDosing => dabigatranDosingModel.totalRedChecked > 0
+      ? "75 mg twice daily.\n(AHA ACC ACCP HRS 2023)"
+      : dabigatranDosingModel.totalChecked > 0
+          ? "110 mg twice daily.\n(AF ESC 2020)"
+          : "150 mg twice daily.\n(AF ESC 2020)";
 }

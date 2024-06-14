@@ -1238,4 +1238,5 @@ class TestDrugStyleModel {
   String extra = "";
   String title = "";
   DrugInteractionEnum type = DrugInteractionEnum.none;
+  String purpleMessage = "";
 }
