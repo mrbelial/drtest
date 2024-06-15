@@ -12,6 +12,7 @@ List<DrugInteractionRowModel> drugInteractionData = [
       DrugInteractionWithType(7, DrugInteractionEnum.red),
       DrugInteractionWithType(5, DrugInteractionEnum.yellow),
     ],
+    id: 1,
   ),
   DrugInteractionRowModel(
     "HIV protease inhibitors (e.g., ritonavir)",
@@ -21,6 +22,7 @@ List<DrugInteractionRowModel> drugInteractionData = [
       DrugInteractionWithType(7, DrugInteractionEnum.red),
       DrugInteractionWithType(5, DrugInteractionEnum.red),
     ],
+    id: 2,
   ),
   DrugInteractionRowModel(
     "Itraconazole",
@@ -31,6 +33,7 @@ List<DrugInteractionRowModel> drugInteractionData = [
       DrugInteractionWithType(7, DrugInteractionEnum.red),
       DrugInteractionWithType(5, DrugInteractionEnum.purple, desc: "30 mg QD"),
     ],
+    id: 3,
   ),
   DrugInteractionRowModel(
     "Ketoconazole (systemic)",
@@ -43,6 +46,7 @@ List<DrugInteractionRowModel> drugInteractionData = [
           calcType: DrugInteractionCalcType.singleRed),
       DrugInteractionWithType(7, DrugInteractionEnum.red),
     ],
+    id: 4,
   ),
   DrugInteractionRowModel(
     "Imatinib, Crizotinib",
@@ -52,6 +56,7 @@ List<DrugInteractionRowModel> drugInteractionData = [
       DrugInteractionWithType(7, DrugInteractionEnum.red),
       DrugInteractionWithType(5, DrugInteractionEnum.red),
     ],
+    id: 5,
   ),
   DrugInteractionRowModel(
     "Vandetanib, Sunitinib",
@@ -61,6 +66,7 @@ List<DrugInteractionRowModel> drugInteractionData = [
       DrugInteractionWithType(7, DrugInteractionEnum.red),
       DrugInteractionWithType(5, DrugInteractionEnum.red),
     ],
+    id: 6,
   ),
   DrugInteractionRowModel(
     "Abiraterone",
@@ -70,6 +76,7 @@ List<DrugInteractionRowModel> drugInteractionData = [
       DrugInteractionWithType(7, DrugInteractionEnum.red),
       DrugInteractionWithType(5, DrugInteractionEnum.red),
     ],
+    id: 7,
   ),
   DrugInteractionRowModel(
     "Enzalutamide",
@@ -79,6 +86,7 @@ List<DrugInteractionRowModel> drugInteractionData = [
       DrugInteractionWithType(7, DrugInteractionEnum.red),
       DrugInteractionWithType(5, DrugInteractionEnum.red),
     ],
+    id: 8,
   ),
   DrugInteractionRowModel(
     "Cyclosporine",
@@ -88,6 +96,7 @@ List<DrugInteractionRowModel> drugInteractionData = [
       DrugInteractionWithType(7, DrugInteractionEnum.yellow),
       DrugInteractionWithType(5, DrugInteractionEnum.purple, desc: "30 mg QD"),
     ],
+    id: 8,
   ),
   DrugInteractionRowModel(
     "Tacrolimus",
@@ -97,6 +106,7 @@ List<DrugInteractionRowModel> drugInteractionData = [
       DrugInteractionWithType(7, DrugInteractionEnum.red),
       DrugInteractionWithType(5, DrugInteractionEnum.red),
     ],
+    id: 9,
   ),
   DrugInteractionRowModel(
     "Darunavir / Cobicistat",
@@ -122,6 +132,7 @@ List<DrugInteractionRowModel> drugInteractionData = [
       DrugInteractionWithType(7, DrugInteractionEnum.red),
       DrugInteractionWithType(5, DrugInteractionEnum.red),
     ],
+    id: 13,
   ),
   DrugInteractionRowModel(
     "Rifampicin",
@@ -214,6 +225,7 @@ List<DrugInteractionRowModel> drugInteractionData = [
       DrugInteractionWithType(7, DrugInteractionEnum.yellow),
       DrugInteractionWithType(5, DrugInteractionEnum.yellow),
     ],
+    id: 11,
   ),
   DrugInteractionRowModel(
     "Ticagrelor",
@@ -241,6 +253,7 @@ List<DrugInteractionRowModel> drugInteractionData = [
       DrugInteractionWithType(7, DrugInteractionEnum.yellow),
       DrugInteractionWithType(5, DrugInteractionEnum.purple, desc: "30 mg QD"),
     ],
+    id: 12,
   ),
   DrugInteractionRowModel(
     "Posaconazole",
@@ -492,6 +505,7 @@ List<DrugInteractionRowModel> drugInteractionData = [
       DrugInteractionWithType(7, DrugInteractionEnum.yellow),
       DrugInteractionWithType(5, DrugInteractionEnum.yellow),
     ],
+    id: 10,
   ),
   DrugInteractionRowModel("Age ≥ 80 years", [
     DrugInteractionWithType(

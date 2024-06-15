@@ -74,6 +74,7 @@ class DrugInteractionRowModel {
     this.drugInteractions, {
     this.calcType = DrugInteractionCalcType.check,
     this.value = 0,
+    this.id = 0,
   });
 
   String drugName;
@@ -81,6 +82,7 @@ class DrugInteractionRowModel {
   bool isChecked = false;
   DrugInteractionCalcType calcType;
   double value;
+  int id;
 
   factory DrugInteractionRowModel.fromJson(Map<String, dynamic> json) {
     return DrugInteractionRowModel(

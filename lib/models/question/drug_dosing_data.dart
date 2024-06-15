@@ -433,24 +433,40 @@ for >_24 h, bridging can be discontinued.
       drugId: 5,
       drugName: "Edoxaban",
       param: DrugDosingParams(params: [
-        DrugDosingParams(
-          page: "/edoxaban_dosing",
-          params: [],
-        ),
+        DrugDosingParams(page: "/edoxaban_dosing"),
       ]),
     ),
   );
-  
+
   //Dabigatran
   list.add(
     DrugDosingModel(
       drugId: 6,
       drugName: "Dabigatran",
       param: DrugDosingParams(params: [
-        DrugDosingParams(
-          page: "/dabigatran_dosing",
-          params: [],
-        ),
+        DrugDosingParams(page: "/dabigatran_dosing"),
+      ]),
+    ),
+  );
+
+  //Apixaban
+  list.add(
+    DrugDosingModel(
+      drugId: 4,
+      drugName: "Apixaban",
+      param: DrugDosingParams(params: [
+        DrugDosingParams(page: "/apixaban_dosing"),
+      ]),
+    ),
+  );
+
+  //Rivaroxaban
+  list.add(
+    DrugDosingModel(
+      drugId: 7,
+      drugName: "Rivaroxaban",
+      param: DrugDosingParams(params: [
+        DrugDosingParams(page: "/rivaroxaban_dosing"),
       ]),
     ),
   );

@@ -1,19 +1,20 @@
 import 'package:drtest/controllers/test_controller.dart';
-import 'package:drtest/models/dosing/dabigatran_dosing_model.dart';
+import 'package:drtest/models/dosing/rivaroxaban_dosing_model.dart';
 import 'package:drtest/tools/core.dart';
 import 'package:drtest/ui/test/test_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class DabigatranDosingScreen extends StatelessWidget {
-  DabigatranDosingScreen({super.key});
+class RivaroxabanDosingScreen extends StatelessWidget {
+  RivaroxabanDosingScreen({super.key});
+
   final TestController _controller = Get.find();
 
-  DabigatranDosingModel get model => _controller.dabigatranDosingModel;
+  RivaroxabanDosingModel get model => _controller.rivaroxabanDosingModel;
 
   @override
   Widget build(BuildContext context) {
-    _controller.dabigatranDosingInit();
+    _controller.rivaroxabanDosingInit();
     return Obx(() {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -32,12 +33,12 @@ class DabigatranDosingScreen extends StatelessWidget {
                     checked: item.checked,
                     onChange: (i, b) {
                       item.checked = b;
-                      _controller.dabigatranLoading = false;
+                      _controller.rivaroxabanLoading = false;
                     },
                   );
                 });
               }),
-          testBadge(text: _controller.dabigatranDosing()),
+          testBadge(text: _controller.rivaroxabanDosing()),
           const SizedBox(height: 15),
           testButton("Ok", Get.back),
         ],

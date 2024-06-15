@@ -1,5 +1,7 @@
+import 'package:drtest/models/dosing/apixaban_dosing_model.dart';
 import 'package:drtest/models/dosing/dabigatran_dosing_model.dart';
 import 'package:drtest/models/dosing/edoxaban_dosing_model.dart';
+import 'package:drtest/models/dosing/rivaroxaban_dosing_model.dart';
 import 'package:drtest/models/public/checkbox_model.dart';
 import 'package:drtest/models/public/idtitle_model.dart';
 import 'package:drtest/models/question/drug_dosing_data.dart';
@@ -7,9 +9,11 @@ import 'package:drtest/models/question/drug_interaction_model.dart';
 import 'package:drtest/models/question/question_model.dart';
 import 'package:drtest/response/question/question_response.dart';
 import 'package:drtest/tools/core.dart';
+import 'package:drtest/views/drug/dosing/apixaban_dosing_screen.dart';
 import 'package:drtest/views/drug/dosing/dabigatran_dosing_screen.dart';
 import 'package:drtest/views/drug/dosing/edoxaban_dosing_screen.dart';
 import 'package:drtest/views/drug/dosing/lmwh_dosing_screen.dart';
+import 'package:drtest/views/drug/dosing/rivaroxaban_dosing_screen.dart';
 import 'package:drtest/views/drug/dosing/ufh_screen.dart';
 import 'package:drtest/views/drug/dosing/ptt_calc_screen.dart';
 import 'package:drtest/views/drug/dosing/ts_calc_screen.dart';
@@ -567,6 +571,12 @@ Patients at high bleeding risk (eg HAS-BLED ≥3) should have their modifiable b
     isloading = false;
   }
 
+  bool isSelectedDrugInterActions(List<int> ids) {
+    return drugsInteraction
+        .where((e) => e.isChecked)
+        .any((e) => ids.contains(e.id));
+  }
+
   //Drug Dosing
   DrugDosingModel get selectedDrugDosing =>
       model.drugDosing[model.selectedDrugDosing];
@@ -596,6 +606,10 @@ Patients at high bleeding risk (eg HAS-BLED ≥3) should have their modifiable b
         return EdoxabanDosingScreen();
       case "/dabigatran_dosing":
         return DabigatranDosingScreen();
+      case "/apixaban_dosing":
+        return ApixabanDosingScreen();
+      case "/rivaroxaban_dosing":
+        return RivaroxabanDosingScreen();
       default:
         return Container();
     }
@@ -740,25 +754,36 @@ Repeat assay 6 hours after restarting the infusion.""",
     if (edoxabanDosingModel.list.isEmpty) {
       var status = getDrugInteractions(5);
       edoxabanDosingModel.list = [
-        CheckBoxModel("CrCl 15 - 50 mL/min?", 0,
-            model.cgAnswer >= 15 && model.cgAnswer <= 30),
-        CheckBoxModel("Body weight ≤ 60 kg?", 0, model.weight <= 60),
+        CheckBoxModel("CrCl 15 - 50 mL/min?", 1,
+            model.cgAnswer >= 15 && model.cgAnswer <= 30,
+            desc: "30 mg daily or 15 mg daily.\n(AF ESC 2020)"),
+        CheckBoxModel("Body weight ≤ 60 kg?", 1, model.weight <= 60,
+            desc: "30 mg daily or 15 mg daily.\n(AF ESC 2020)"),
         CheckBoxModel(
             "Concomitant use of strong P-Gp inhibitor (e.g verapamil, quinidine, or dronedarone)?",
-            5,
-            status.type == DrugInteractionEnum.purple,desc: "30 mg QD"),
+            3,
+            status.type == DrugInteractionEnum.purple,
+            desc: "30 mg daily or 15 mg daily.\n(AF ESC 2020)"),
         CheckBoxModel(
-            "Disproportionate and non-modifiable bleeding risk?", 0, false),
+            "Disproportionate and non-modifiable bleeding risk?", 2, false,
+            desc: "30 mg daily or 15 mg daily.\n(AF ESC 2020)"),
       ];
     }
   }
 
   String edoxabanDosing() {
+    if (isSelectedDrugInterActions([8, 3, 4, 12])) {
+      return "30 mg QD";
+    }
     List<CheckBoxModel> list = [];
     list.addAll(edoxabanDosingModel.list.where((x) => x.checked));
     list.sort((a, b) => a.point.compareTo(b.point));
-    return list.firstOrNull?.desc ?? "";
-
+    var item = list.lastOrNull;
+    if (item == null) {
+      return "60 mg daily.\n(AF ESC 2020)";
+    }
+    return item.desc;
+    // if (item.id == 5) {}
     // edoxabanDosingModel.getByPoint(2).checked
     //   ? getDrugInteractions(5).purpleMessage
     //   : edoxabanDosingModel.totalChecked > 0
@@ -779,36 +804,190 @@ Repeat assay 6 hours after restarting the infusion.""",
     if (dabigatranDosingModel.list.isEmpty) {
       var status = getDrugInteractions(6);
       dabigatranDosingModel.list = [
-        CheckBoxModel("Age >_80 years?", 0, model.age >= 80),
+        CheckBoxModel(
+          "Age ≥ 80 years",
+          0,
+          model.age >= 80,
+          desc: "110 mg twice daily.\n(AF ESC 2020)\n(ESC ACS 2023 IIa B)",
+        ),
         CheckBoxModel(
             "Concomitant use of of strong P-Gp inhibitor (e.g. verapamil)",
             2,
-            status.type == DrugInteractionEnum.purple),
-        CheckBoxModel("History of GI bleeding", 0, false),
+            status.type == DrugInteractionEnum.purple,
+            desc: "110 mg twice daily.\n(AF ESC 2020)\n(ESC ACS 2023 IIa B)"),
+        CheckBoxModel("History of GI bleeding", 0, false,
+            desc: "110 mg twice daily.\n(AF ESC 2020)"),
         CheckBoxModel(
             "Concerned about disproportionate and non-modifiable bleeding risk",
             0,
-            false),
-        CheckBoxModel("High bleeding risk (HAS-BLED >_3)", 0, false),
+            false,
+            desc: "110 mg twice daily.\n(AF ESC 2020)"),
+        CheckBoxModel("High bleeding risk (HAS-BLED >_3)", 0, false,
+            desc: "110 mg twice daily.\n(AF ESC 2020)"),
         CheckBoxModel(
             "Concomitant single or Dual antiplatelet therapy ? (IIa B)",
             0,
-            false),
-      ];
-      dabigatranDosingModel.redlist = [
+            false,
+            desc: "110 mg twice daily.\n(AF ESC 2020)"),
+        CheckBoxModel(
+            "Concomitant therapy of dronedarone or ketoconazole for patients with CrCl ≥ 50 mL/min?",
+            6,
+            (model.cgAnswer >= 30 && model.cgAnswer <= 50) &&
+                isSelectedDrugInterActions([1, 4]),
+            desc: "110 mg twice daily.\n(AF ESC 2020)\n(ESC ACS 2023 IIa B)"),
         CheckBoxModel(
             "Concomitant therapy of dronedarone or ketoconazole for patients with CrCl 30 to 50 mL/min?",
-            0,
-            false),
-        CheckBoxModel("CrCl 15 to 30 mL/min?", 0,
-            model.cgAnswer >= 15 && model.cgAnswer <= 30),
+            4,
+            (model.cgAnswer >= 30 && model.cgAnswer <= 50) &&
+                isSelectedDrugInterActions([1, 4]),
+            desc: "75 mg twice daily.\n(AHA ACC ACCP HRS 2023)"),
+        CheckBoxModel("CrCl 15 to 30 mL/min?", 3,
+            model.cgAnswer >= 15 && model.cgAnswer <= 30,
+            desc: " 75 mg twice daily.\n(AHA ACC ACCP HRS 2023)"),
       ];
     }
   }
 
-  String get dabigatranDosing => dabigatranDosingModel.totalRedChecked > 0
-      ? "75 mg twice daily.\n(AHA ACC ACCP HRS 2023)"
-      : dabigatranDosingModel.totalChecked > 0
-          ? "110 mg twice daily.\n(AF ESC 2020)"
-          : "150 mg twice daily.\n(AF ESC 2020)";
+  String dabigatranDosing() {
+    List<CheckBoxModel> list = [];
+    list.addAll(dabigatranDosingModel.list.where((x) => x.checked));
+    list.sort((a, b) => a.point.compareTo(b.point));
+    var item = list.lastOrNull;
+    if (item != null) {
+      return item.desc;
+    }
+
+    return "150 mg twice daily.\n(AF ESC 2020)";
+
+    // => dabigatranDosingModel.totalRedChecked > 0
+    //   ? "75 mg twice daily.\n(AHA ACC ACCP HRS 2023)"
+    //   : dabigatranDosingModel.totalChecked > 0
+    //       ? "110 mg twice daily.\n(AF ESC 2020)"
+    //       : "150 mg twice daily.\n(AF ESC 2020)";
+  }
+
+  //Apixaban
+  final _apixabanDosingModel = ApixabanDosingModel().obs;
+
+  ApixabanDosingModel get apixabanDosingModel => _apixabanDosingModel.value;
+
+  set apixabanLoading(bool v) =>
+      _apixabanDosingModel.update((val) => val!.isloading = v);
+
+  void apixabanDosingInit() {
+    if (apixabanDosingModel.list.isEmpty) {
+      apixabanDosingModel.list = [
+        CheckBoxModel(
+          "Age ≥ 80 years",
+          0,
+          model.age >= 80,
+          desc: "5 mg twice daily.\n(AF ESC 2020)",
+          id: 1,
+        ),
+        CheckBoxModel(
+          "Body weight ≤ 60 kg",
+          0,
+          model.weight <= 60,
+          desc: "5 mg twice daily.\n(AF ESC 2020)",
+          id: 1,
+        ),
+        CheckBoxModel(
+          "Serum creatinine ≥ 1.5 mg/dL (133 lmol/L)",
+          0,
+          model.serumCreatinine >= 1.5,
+          desc: "5 mg twice daily.\n(AF ESC 2020)",
+          id: 1,
+        ),
+        CheckBoxModel(
+          "Concomitant ketoconazole, itraconazole, or ritonavir?",
+          3,
+          isSelectedDrugInterActions([4, 3, 13]),
+          desc: "2.5 mg twice daily.\n(AF ESC 2020)",
+        ),
+        CheckBoxModel(
+          "Patient on dialysis?",
+          2,
+          false,
+          desc: "2.5 mg twice daily.\n(AF ESC 2020)",
+        ),
+        CheckBoxModel(
+          "CrCl 15-29 ml/min",
+          1,
+          model.cgAnswer >= 15 && model.cgAnswer <= 29,
+          desc:
+              "5 mg twice daily.\n(AHA ACC ACCP HRS 2023)\n2.5 mg twice daily.\n(AHA ACC ACCP HRS 2023)\n(EHRA NOAC AF 2021)",
+        ),
+      ];
+    }
+  }
+
+  String apixabanDosing() {
+    List<CheckBoxModel> list = [];
+    list.addAll(apixabanDosingModel.list.where((x) => x.checked));
+    list.sort((a, b) => a.point.compareTo(b.point));
+    var item = list.lastOrNull;
+    if (item != null) {
+      if (item.point == 0 && list.where((x) => x.id == 1).length > 1) {
+        return "2.5 mg twice daily.\n(AF ESC 2020)";
+      }
+      return item.desc;
+    }
+
+    return "5 mg twice daily.\n(AF ESC 2020)";
+  }
+
+  //Rivaroxaban
+  final _rivaroxabanDosingModel = RivaroxabanDosingModel().obs;
+
+  RivaroxabanDosingModel get rivaroxabanDosingModel =>
+      _rivaroxabanDosingModel.value;
+
+  set rivaroxabanLoading(bool v) =>
+      _rivaroxabanDosingModel.update((val) => val!.isloading = v);
+
+  void rivaroxabanDosingInit() {
+    if (rivaroxabanDosingModel.list.isEmpty) {
+      rivaroxabanDosingModel.list = [
+        CheckBoxModel(
+          "Post ACS / PCI receiving triple therapy with CrCl 30-49 ml/min?",
+          10,
+          model.cgAnswer >= 30 && model.cgAnswer <= 49,
+          desc: "10 mg once daily.",
+        ),
+        CheckBoxModel(
+          """CrCl ≤ 50 mL/min based on the Cockcroft-Gault equation or on dialysis?
+(AHA ACC ACCP HRS 2023)
+OR
+Post ACS / PCI receiving triple therapy?
+(EHRA NOAC AF 2021)
+OR
+Patients with CHA2DS2VASc risk score of 2 or greater who have undergone PCI with stenting for ACS receiving concurrent P2Y12 inhibitors  (clopidogrel) 
+(AHA ACC HRS 2019 Iia B-R)
+High bleeding risk (HAS-BLED >_3) during concomitant single or DAPT ?
+(AF ESC 2020 Iia B)""",
+          0,
+          model.cgAnswer <= 50,
+          desc: "15 mg once daily with food.",
+        ),
+        CheckBoxModel(
+          "CrCl > 50 mL/min based on the Cockcroft-Gault equation?",
+          0,
+          model.cgAnswer > 50,
+          desc: "20 mg once daily with food.\n(AF ESC 2020)",
+        ),
+      ];
+    }
+  }
+
+  String rivaroxabanDosing() {
+    List<CheckBoxModel> list = [];
+    list.addAll(rivaroxabanDosingModel.list.where((x) => x.checked));
+    list.sort((a, b) => a.point.compareTo(b.point));
+    var item = list.lastOrNull;
+    if (item != null) {
+      return item.desc;
+    }
+
+    return "";
+  }
 }
