@@ -39,7 +39,7 @@ class TestScreen extends StatelessWidget {
               testMessage('End Test', () {
                 Get.back();
                 toMain();
-              }, "Test Finished");
+              }, title: "Test Finished");
             }),
           ],
         ),

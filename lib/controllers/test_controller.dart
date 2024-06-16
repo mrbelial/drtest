@@ -247,7 +247,7 @@ Patients at high bleeding risk (eg HAS-BLED ≥3) should have their modifiable b
   }
 
   void initStack() {
-    stacks.clear();
+    model.stacks = [];
     model.initPages();
 
     if (model.cgAnswer > -1) {
@@ -284,8 +284,11 @@ Patients at high bleeding risk (eg HAS-BLED ≥3) should have their modifiable b
   }
 
   void fillStack() {
-    stacks.clear();
+    selectedStackIndex = 0;
+    model.stacks = [];
     stacks.addAll(model.pages.pages.where((e) => e.isMarked).toList());
+    // print(stacks.length);
+    if (stacks.isEmpty) return;
 
     stacks.add(TestPageModel(
       title: "Result",
@@ -302,7 +305,7 @@ Patients at high bleeding risk (eg HAS-BLED ≥3) should have their modifiable b
   }
 
   int get stackCount => model.pages.pages.where((e) => e.isMarked).length;
-  List<TestPageModel> banList = [];
+  // List<TestPageModel> banList = [];
 
   //Test Drug Page
   void initTestFilteredDrugs() {
@@ -320,15 +323,32 @@ Patients at high bleeding risk (eg HAS-BLED ≥3) should have their modifiable b
       }
     }
 
-    for (var item in selectedStackDrugs) {
-      model.testFilteredDrug.titles.add(item.title);
+    // List<int> list = [];
+    for (var drug in model.drugs) {
+      var tempDrugId = drug.id;
 
-      for (var drug in item.drugIds) {
-        if (!model.testFilteredDrug.drugIds.contains(drug)) {
-          model.testFilteredDrug.drugIds.add(drug);
+      for (var item in selectedStackDrugs) {
+        if (!item.drugIds.contains(tempDrugId)) {
+          tempDrugId = 0;
+          break;
         }
       }
+
+      if (tempDrugId > 0) {
+        model.testFilteredDrug.drugIds.add(tempDrugId);
+      }
     }
+    model.testFilteredDrug.titles
+        .addAll(selectedStackDrugs.map((x) => x.title));
+
+    // for (var item in selectedStackDrugs) {
+    //   model.testFilteredDrug.titles.add(item.title);
+
+    //   for (var drug in item.drugIds) {
+    //     if (!model.testFilteredDrug.drugIds.contains(drug)) {
+    //     }
+    //   }
+    // }
 
     model.testFilteredDrug.drugs =
         getDrugsByIDs(model.testFilteredDrug.drugIds.toList());
@@ -486,6 +506,23 @@ Patients at high bleeding risk (eg HAS-BLED ≥3) should have their modifiable b
     }
 
     return response;
+  }
+
+  bool isDrugAllowedToContinue(int drugId) {
+    if (drugId == 4) {
+      var selectedInteractionDrugs = drugsInteraction
+          .where((e) =>
+              e.isChecked && e.drugInteractions.any((x) => x.drugId == drugId))
+          .map((e) => e.id);
+      for (var id in selectedInteractionDrugs) {
+        if (![4, 3, 13].contains(id)) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    return false;
   }
 
   //DrugsInteraction

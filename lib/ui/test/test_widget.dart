@@ -28,8 +28,13 @@ Widget testButton(String title, void Function() onTap,
   );
 }
 
-void testMessage(String message, void Function() ontap,
-    [String title = "Message"]) {
+void testMessage(
+  String message,
+  void Function() ontap, {
+  String title = "Message",
+  String button2Title = "",
+  void Function()? ontap2,
+}) {
   Get.defaultDialog(
       title: title,
       content: SizedBox(
@@ -40,7 +45,10 @@ void testMessage(String message, void Function() ontap,
           children: [Text(message, textAlign: TextAlign.left)],
         ),
       ),
-      actions: [textButton(title: "Ok", onTap: ontap)]);
+      actions: [
+        textButton(title: "Ok", onTap: ontap),
+        if (ontap2 != null) textButton(title: button2Title, onTap: ontap2)
+      ]);
 }
 
 Widget testDrug(TestDrugModel item) {

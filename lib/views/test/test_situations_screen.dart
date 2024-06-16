@@ -23,6 +23,11 @@ class TestSituationsScreen extends StatelessWidget {
                   title: "Next",
                   onTap: () {
                     _controller.fillStack();
+                    
+                    if (_controller.stacks.isEmpty) {
+                      ShowMSG.error("Error", "Select Situations");
+                      return;
+                    }
 
                     Get.toNamed("/test_page",
                         arguments: _controller.stacks.first);

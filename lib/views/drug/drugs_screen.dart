@@ -29,11 +29,21 @@ class DrugsScreen extends StatelessWidget {
                 var status = _controller.getDrugInteractions(e.id);
 
                 return testButton(e.name, () {
+                  _controller.selectDrugDosing(e.id);
                   if (status.isAllowed) {
-                    _controller.selectDrugDosing(e.id);
                     Get.toNamed("/drug_dosing");
                   } else {
-                    testMessage(status.message, Get.back);
+                    testMessage(
+                      status.message,
+                      Get.back,
+                      button2Title: "No Problem",
+                      ontap2: _controller.isDrugAllowedToContinue(e.id)
+                          ? () {
+                              Get.back();
+                              Get.toNamed("/drug_dosing");
+                            }
+                          : null,
+                    );
                   }
                 }, color: status.color);
               },
