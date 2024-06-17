@@ -68,6 +68,28 @@ DrugInteractionCalcType drugInteractionCalcTypeGet(String v) {
   }
 }
 
+class DrugInteractionWithDescModel {
+  DrugInteractionWithDescModel(
+    this.drugName,
+    this.color,
+    this.desc,
+  );
+
+  String drugName;
+  Color color;
+  String desc;
+}
+
+class DrugInteractionStatusModel {
+  String message = "";
+  Color color = AppColors.primary;
+  bool isAllowed = true;
+  // String extra = "";
+  String title = "";
+  // DrugInteractionEnum type = DrugInteractionEnum.none;
+  List<DrugInteractionWithDescModel> interactions = [];
+}
+
 class DrugInteractionRowModel {
   DrugInteractionRowModel(
     this.drugName,

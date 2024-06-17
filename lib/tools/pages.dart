@@ -1,5 +1,4 @@
 export '../views/login/login_screen.dart';
-export '../views/public/aboutapp_screen.dart';
 export '../views/public/aboutus_screen.dart';
 export '../views/public/profile_screen.dart';
 export '../views/public/splash_screen.dart';
@@ -18,3 +17,7 @@ export '../views/test/test3_screen.dart';
 export '../views/test/test1_screen.dart';
 export '../views/test/test_page_screen.dart';
 export '../views/test/test_situations_screen.dart';
+export 'package:drtest/views/drug/drug_interaction_screen.dart';
+export 'package:drtest/views/home/dashboard_screen.dart';
+export 'package:drtest/views/public/abbreviations_screen.dart';
+export 'package:drtest/views/public/contactus_screen.dart';

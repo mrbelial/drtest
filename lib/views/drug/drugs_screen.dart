@@ -33,8 +33,16 @@ class DrugsScreen extends StatelessWidget {
                   if (status.isAllowed) {
                     Get.toNamed("/drug_dosing");
                   } else {
-                    testMessage(
-                      status.message,
+                    print(_controller.model.cgAnswer);
+                    print(e.id);
+                    testdrugMessage(
+                      status.interactions
+                          .map((x) => Text(
+                                "${x.drugName}\n${x.desc}\n",
+                                style: AppTextStyles.bodyText1
+                                    .copyWith(color: x.color),
+                              ))
+                          .toList(),
                       Get.back,
                       button2Title: "No Problem",
                       ontap2: _controller.isDrugAllowedToContinue(e.id)

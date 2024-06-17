@@ -51,6 +51,29 @@ void testMessage(
       ]);
 }
 
+void testdrugMessage(
+  List<Widget> messages,
+  void Function() ontap, {
+  String title = "Message",
+  String button2Title = "",
+  void Function()? ontap2,
+}) {
+  Get.defaultDialog(
+      title: title,
+      content: SizedBox(
+        width: Get.size.width - 50,
+        height: Get.size.height - 150,
+        child: ListView(
+          shrinkWrap: true,
+          children: messages,
+        ),
+      ),
+      actions: [
+        textButton(title: "Ok", onTap: ontap),
+        if (ontap2 != null) textButton(title: button2Title, onTap: ontap2)
+      ]);
+}
+
 Widget testDrug(TestDrugModel item) {
   return listTile(
       title: item.name,

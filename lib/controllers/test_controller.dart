@@ -363,15 +363,14 @@ Patients at high bleeding risk (eg HAS-BLED ≥3) should have their modifiable b
     return selectedInteractionDrugs;
   }
 
-  TestDrugStyleModel getDrugInteractions(int drugId) {
-    List<DrugInteractionWithType> selectedInteractionDrugs = [];
-    drugsInteraction
+  DrugInteractionStatusModel getDrugInteractions(int drugId) {
+    List<DrugInteractionRowModel> selectedInteractionDrugs = drugsInteraction
         .where((e) =>
             e.isChecked && e.drugInteractions.any((x) => x.drugId == drugId))
-        .forEach((e) => selectedInteractionDrugs
-            .addAll(e.drugInteractions.where((x) => x.drugId == drugId)));
+        .toList();
 
-    TestDrugStyleModel response = TestDrugStyleModel();
+//.drugInteractions.where((x) => x.drugId == drugId)
+    DrugInteractionStatusModel response = DrugInteractionStatusModel();
 
     if (selectedInteractionDrugs.isNotEmpty) {
       int redInteractions = 0;
@@ -380,127 +379,113 @@ Patients at high bleeding risk (eg HAS-BLED ≥3) should have their modifiable b
       int lightBlueInteractions = 0;
       int purpleInteractions = 0;
 
-      // redInteractions = selectedInteractionDrugs
-      //     .where((item) => item.type == DrugInteractionEnum.red)
-      //     .where((item) => item.calcType == DrugInteractionCalcType.check)
-      //     .length;
-
-      // darkBlueInteractions = selectedInteractionDrugs
-      //     .where((item) => item.type == DrugInteractionEnum.darkBlue)
-      //     .where((item) => item.calcType == DrugInteractionCalcType.check)
-      //     .length;
-
-      // yellowInteractions = selectedInteractionDrugs
-      //     .where((item) => item.type == DrugInteractionEnum.yellow)
-      //     .where((item) => item.calcType == DrugInteractionCalcType.check)
-      //     .length;
-
-      // lightBlueInteractions = selectedInteractionDrugs
-      //     .where((item) => item.type == DrugInteractionEnum.lightBlue)
-      //     .where((item) => item.calcType == DrugInteractionCalcType.check)
-      //     .length;
-
-      // purpleInteractions = selectedInteractionDrugs
-      //     .where((item) => item.type == DrugInteractionEnum.purple)
-      //     .where((item) => item.calcType == DrugInteractionCalcType.check)
-      //     .length;
-
       //Drug Interaction calc Type != check
-      for (var item in selectedInteractionDrugs) {
-        DrugInteractionEnum color = DrugInteractionEnum.none;
+      for (var drug in selectedInteractionDrugs) {
+        for (var item
+            in drug.drugInteractions.where((x) => x.drugId == drugId)) {
+          DrugInteractionEnum color = DrugInteractionEnum.none;
 
-        switch (item.calcType) {
-          case DrugInteractionCalcType.ageLess:
-            if (model.age < item.value) {
+          switch (item.calcType) {
+            case DrugInteractionCalcType.ageLess:
+              if (model.age < item.value) {
+                color = item.type;
+              }
+              break;
+            case DrugInteractionCalcType.ageMore:
+              if (model.age > item.value) {
+                color = item.type;
+              }
+              break;
+            case DrugInteractionCalcType.check:
               color = item.type;
-            }
-            break;
-          case DrugInteractionCalcType.ageMore:
-            if (model.age > item.value) {
+              break;
+            case DrugInteractionCalcType.crcfLess:
+              if (model.cgAnswer < item.value) {
+                color = item.type;
+              }
+              break;
+            case DrugInteractionCalcType.crcfMore:
+              if (model.cgAnswer > item.value) {
+                color = item.type;
+              }
+              break;
+            case DrugInteractionCalcType.weightLess:
+              if (model.weight < item.value) {
+                color = item.type;
+              }
+              break;
+            case DrugInteractionCalcType.weightMore:
+              if (model.age > item.value) {
+                color = item.type;
+              }
+              break;
+            case DrugInteractionCalcType.singleRed:
               color = item.type;
-            }
-            break;
-          case DrugInteractionCalcType.check:
-            color = item.type;
-            break;
-          case DrugInteractionCalcType.crcfLess:
-            if (model.cgAnswer < item.value) {
-              color = item.type;
-            }
-            break;
-          case DrugInteractionCalcType.crcfMore:
-            if (model.age > item.value) {
-              color = item.type;
-            }
-            break;
-          case DrugInteractionCalcType.weightLess:
-            if (model.weight < item.value) {
-              color = item.type;
-            }
-            break;
-          case DrugInteractionCalcType.weightMore:
-            if (model.age > item.value) {
-              color = item.type;
-            }
-            break;
-          case DrugInteractionCalcType.singleRed:
-            color = item.type;
-            break;
-        }
-        switch (color) {
-          case DrugInteractionEnum.red:
-            redInteractions++;
-            break;
-          case DrugInteractionEnum.darkBlue:
-            darkBlueInteractions++;
-            break;
-          case DrugInteractionEnum.yellow:
-            yellowInteractions++;
-            break;
-          case DrugInteractionEnum.lightBlue:
-            lightBlueInteractions++;
-            break;
-          case DrugInteractionEnum.purple:
-            purpleInteractions++;
-            if (item.desc.isNotEmpty) {
-              response.purpleMessage += "\n${item.desc}";
-            }
-            break;
-          case DrugInteractionEnum.none:
-            break;
+              break;
+          }
+          switch (color) {
+            case DrugInteractionEnum.red:
+              redInteractions++;
+              response.interactions.add(DrugInteractionWithDescModel(
+                  drug.drugName,
+                  AppColors.red,
+                  model.drugInteractions.redMessage));
+              break;
+            case DrugInteractionEnum.darkBlue:
+              darkBlueInteractions++;
+              response.interactions.add(DrugInteractionWithDescModel(
+                  drug.drugName,
+                  AppColors.blue,
+                  model.drugInteractions.darkBlueMessage));
+              break;
+            case DrugInteractionEnum.yellow:
+              yellowInteractions++;
+              response.interactions.add(DrugInteractionWithDescModel(
+                  drug.drugName,
+                  AppColors.yellow,
+                  model.drugInteractions.yellowMessage));
+              break;
+            case DrugInteractionEnum.lightBlue:
+              lightBlueInteractions++;
+              response.interactions.add(DrugInteractionWithDescModel(
+                  drug.drugName,
+                  AppColors.blue2,
+                  model.drugInteractions.lightBlueMessage));
+              break;
+            case DrugInteractionEnum.purple:
+              purpleInteractions++;
+              response.interactions.add(DrugInteractionWithDescModel(
+                  drug.drugName,
+                  AppColors.purple,
+                  "${model.drugInteractions.purpleMessage}\n${item.desc}"));
+              break;
+            case DrugInteractionEnum.none:
+              break;
+          }
         }
       }
 
       if (redInteractions > 0) {
         response.message = model.drugInteractions.redMessage;
-        response.extra = "(Contraindicated)";
         response.color = AppColors.red;
         response.isAllowed = false;
-        response.type = DrugInteractionEnum.red;
       } else if (darkBlueInteractions > 0) {
         response.message = model.drugInteractions.darkBlueMessage;
-        response.extra = "(Contraindicated)";
         response.color = AppColors.red;
-        response.type = DrugInteractionEnum.darkBlue;
         // response.color = AppColors.blue;
         response.isAllowed = false;
       } else if (yellowInteractions > 1) {
         response.message = model.drugInteractions.yellowMessage;
-        response.extra = "(Caution Required)";
         response.color = AppColors.yellow;
-        response.type = DrugInteractionEnum.yellow;
         response.isAllowed = false;
       } else if (lightBlueInteractions > 1) {
         response.message = model.drugInteractions.lightBlueMessage;
-        response.extra = "(Caution Required)";
         response.color = AppColors.yellow;
-        response.type = DrugInteractionEnum.lightBlue;
         // response.color = AppColors.blue2;
         response.isAllowed = false;
       } else if (purpleInteractions > 0) {
         response.message = model.drugInteractions.purpleMessage;
         response.color = AppColors.purple;
-        response.type = DrugInteractionEnum.purple;
         response.isAllowed = true;
       }
     }
@@ -789,7 +774,7 @@ Repeat assay 6 hours after restarting the infusion.""",
 
   void edoxabanDosingInit() {
     if (edoxabanDosingModel.list.isEmpty) {
-      var status = getDrugInteractions(5);
+      // var status = getDrugInteractions(5);
       edoxabanDosingModel.list = [
         CheckBoxModel("CrCl 15 - 50 mL/min?", 1,
             model.cgAnswer >= 15 && model.cgAnswer <= 30,
@@ -799,7 +784,7 @@ Repeat assay 6 hours after restarting the infusion.""",
         CheckBoxModel(
             "Concomitant use of strong P-Gp inhibitor (e.g verapamil, quinidine, or dronedarone)?",
             3,
-            status.type == DrugInteractionEnum.purple,
+            false,
             desc: "30 mg daily or 15 mg daily.\n(AF ESC 2020)"),
         CheckBoxModel(
             "Disproportionate and non-modifiable bleeding risk?", 2, false,
@@ -839,7 +824,7 @@ Repeat assay 6 hours after restarting the infusion.""",
 
   void dabigatranDosingInit() {
     if (dabigatranDosingModel.list.isEmpty) {
-      var status = getDrugInteractions(6);
+      // var status = getDrugInteractions(6);
       dabigatranDosingModel.list = [
         CheckBoxModel(
           "Age ≥ 80 years",
@@ -850,7 +835,7 @@ Repeat assay 6 hours after restarting the infusion.""",
         CheckBoxModel(
             "Concomitant use of of strong P-Gp inhibitor (e.g. verapamil)",
             2,
-            status.type == DrugInteractionEnum.purple,
+            false,
             desc: "110 mg twice daily.\n(AF ESC 2020)\n(ESC ACS 2023 IIa B)"),
         CheckBoxModel("History of GI bleeding", 0, false,
             desc: "110 mg twice daily.\n(AF ESC 2020)"),

@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import '../../controllers/main_controller.dart';
 import '../../tools/core.dart';
 
 class AboutUsScreen extends StatelessWidget {
-  AboutUsScreen({super.key});
-  final MainController _controller = Get.find();
+  const AboutUsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +16,19 @@ class AboutUsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
-              _controller.mainResponse.content?.aboutus ?? "",
-              textAlign: TextAlign.center,
-              style: AppTextStyles.headline3,
+            Image.asset(
+              imagePath("dn.png"),
+              height: 150,
             ),
+            Image.asset(
+              imagePath("dn2.png"),
+              height: 150,
+            ),
+            // Text(
+            //   """""",
+            //   textAlign: TextAlign.center,
+            //   style: AppTextStyles.headline3,
+            // ),
           ],
         ),
       ),
