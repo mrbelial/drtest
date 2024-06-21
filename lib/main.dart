@@ -1,5 +1,6 @@
 import 'package:drtest/controllers/main_controller.dart';
 import 'package:drtest/tools/core.dart';
+import 'package:drtest/views/test/part3_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -57,7 +58,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/profile', page: () => ProfileScreen()),
         GetPage(name: '/aboutus', page: () => const AboutUsScreen()),
         GetPage(name: '/contactus', page: () => const ContactusScreen()),
-        GetPage(name: '/abbreviations', page: () => const AbbreviationsScreen()),
+        GetPage(
+            name: '/abbreviations', page: () => const AbbreviationsScreen()),
 
         //Tests
         GetPage(name: '/test', page: () => TestScreen()),
@@ -85,7 +87,8 @@ class MyApp extends StatelessWidget {
         GetPage(
             name: "/test_situations_page", page: () => TestSituationsScreen()),
 
-        //Drug Dosing
+        //Part 3
+        GetPage(name: "/part3", page: () => Part3Screen()),
       ],
       theme: AppThemes.defaultTheme,
       home: SplashScreen(),

@@ -33,8 +33,6 @@ class DrugsScreen extends StatelessWidget {
                   if (status.isAllowed) {
                     Get.toNamed("/drug_dosing");
                   } else {
-                    print(_controller.model.cgAnswer);
-                    print(e.id);
                     testdrugMessage(
                       status.interactions
                           .map((x) => Text(

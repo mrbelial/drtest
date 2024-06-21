@@ -1,20 +1,17 @@
-import 'package:drtest/controllers/main_controller.dart';
+import 'package:drtest/controllers/test_controller.dart';
+import 'package:drtest/models/question/part3_data.dart';
 import 'package:drtest/tools/core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class DashboardScreen extends StatelessWidget {
   DashboardScreen({super.key});
-  // ignore: unused_field
-  final MainController _controller = Get.find();
-  // final _testController = Get.put(TestController());
+  final _testController = Get.put(TestController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("ACAFib-APP"),
-        ),
+        appBar: AppBar(title: const Text("ACAFib-APP")),
         floatingActionButton: FloatingActionButton(
           onPressed: () => Get.toNamed("/test"),
           child: const Icon(Icons.add),
@@ -38,6 +35,11 @@ class DashboardScreen extends StatelessWidget {
             appButton(
               title: "abbreviations",
               onTap: () => Get.toNamed("/abbreviations"),
+            ),
+            appButton(
+              title: "Part 3",
+              onTap: () => Get.toNamed("/part3",
+                  arguments: part3Data(_testController.model)),
             ),
           ],
         )
