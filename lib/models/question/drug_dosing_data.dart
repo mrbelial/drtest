@@ -470,5 +470,143 @@ for >_24 h, bridging can be discontinued.
       ]),
     ),
   );
+
+  //4-Factor PCC dosing
+  list.add(
+    DrugDosingModel(
+      drugId: 8,
+      drugName: "4-Factor PCC dosing",
+      param: DrugDosingParams(params: [
+        DrugDosingParams(
+            buttonTitle: "Warfarin overdose?", msg: """Enter INR: ….
+بصورت عددی توسط کاربر وارد شود، سپس بصورت زیر تحلیل شود:
+1. INR 2–<4: 25 units/kg (${model.perWeight(25)})
+(up to 2500 units)
+
+2. INR 4–6: 35 units/kg (${model.perWeight(35)})
+(up to 3500 units)
+
+3. INR >6: 50 units/kg (${model.perWeight(50)})
+(up to 5000 units)
+
+
+پیام مشترک برای همه:
+Repeat INR
+within 30 min after the
+Administration.
+
+(AHA ACC ACCP HRS 2023)"""),
+        DrugDosingParams(
+            buttonTitle: "Apixaban, Rivaroxaban, Edoxaban overdose?",
+            msg:
+                "2000 units once or 25 to 50 units/kg (${model.perWeight(25)} to ${model.perWeight(50)})\n(AHA ACC ACCP HRS 2023)"),
+      ]),
+    ),
+  );
+
+  //Activated PCC
+  list.add(
+    DrugDosingModel(
+      drugId: 9,
+      drugName: "Activated PCC",
+      param: DrugDosingParams(desc: """Dabigatran-associated life-threatening
+bleeding: 
+50 units/kg once (${model.perWeight(50)})
+(AHA ACC ACCP HRS 2023)"""),
+    ),
+  );
+
+  //Idarucizumab dosing
+  list.add(
+    DrugDosingModel(
+      drugId: 10,
+      drugName: "Idarucizumab dosing",
+      param: DrugDosingParams(
+          desc:
+              """● A total of 5 g idarucizumab is administered intravenously in two ready-to-use doses of 2.5 g i.v., administered as two consecutive infusions over 5 to 10 minutes each or as a bolus injection.
+
+● Additional 5 g may be given if
+reappearance of bleeding with
+elevated coagulation parameters
+have been observed or patients
+require second emergency
+surgery/procedure and elevated
+coagulation parameters.
+
+(AHA ACC ACCP HRS 2023)
+(EHRA NOAC AF 2021)""",
+          params: [
+            DrugDosingParams(
+                buttonTitle:
+                    "Which monitoring should be considered after idarucizumab administration?",
+                msg:
+                    """After 24 hours, dabigatran can be re-started if clinically indicated and feasible, with normal kinetics. 
+Other anticoagulants, including heparins, are not affected by idarucizumab.
+(EHRA NOAC AF 2021)"""),
+            DrugDosingParams(
+                buttonTitle: "When to reinitiate dabigatran?",
+                msg: """Consider monitoring including
+coagulation parameters (aPTT,
+diluted thrombin time, or ecarin
+clotting time) between 12 and
+24 h to assess redistribution of
+dabigatran from peripheral to
+Plasma
+(EHRA NOAC AF 2021)"""),
+          ]),
+    ),
+  );
+
+  //Andexanet alfa
+  list.add(
+    DrugDosingModel(
+      drugId: 11,
+      drugName: "Andexanet alfa",
+      param: DrugDosingParams(desc: """
+Which of the following clinical scenario exist regarding the last dose of DOAC?
+
+1- Apixaban ≤ 5 mg OR Rivaroxaban ≤ 10 mg OR Edoxaban ≤ 30 mg regardless of the timing of the last dose:
+Low-dose regimen: 400-mg bolus at a
+target rate of 30 mg/min followed
+by 4 mg/min for up to 120 min
+
+
+2- Apixaban > 5 mg  OR Rivaroxaban > 10 mg OR  Edoxaban > 30 mg and  last dose taken < 8 hours:
+High-dose regimen: 800-mg bolus at a
+target rate of 30 mg/min followed
+by 8 mg/min for up to 120 min
+
+3- Apixaban > 5 mg  OR Rivaroxaban > 10 mg OR  Edoxaban > 30 mg and  last dose taken ≥ 8 hours:
+Low-dose regimen: 400-mg bolus at a
+target rate of 30 mg/min followed
+by 4 mg/min for up to 120 min
+رفرنس مشترک برای همه:
+(AHA ACC ACCP HRS 2023)
+(EHRA NOAC AF 2021)""", params: [
+        DrugDosingParams(
+            buttonTitle:
+                "Which monitoring should be considered after idarucizumab administration?",
+            msg: """Current commercial anti-Xa activity
+assays are unsuitable for measuring
+factor Xa activities after
+andexanet alfa use.
+(EHRA NOAC AF 2021)"""),
+        DrugDosingParams(
+            buttonTitle: "When to reinitiate anti-Xa drugs?",
+            msg:
+                """Since anticoagulant activity may re-appear after cessation of the infusion it is currently less clear at what point in time and with which anticoagulant effect FXa  inhibitors or heparin can be (re-)administered following andexanet alpha administration.
+(EHRA NOAC AF 2021)"""),
+      ]),
+    ),
+  );
+
+  //Vitamin K dosing
+  list.add(
+    DrugDosingModel(
+      drugId: 12,
+      drugName: "Vitamin K dosing",
+      param: DrugDosingParams(desc: """Null"""),
+    ),
+  );
   return list;
 }

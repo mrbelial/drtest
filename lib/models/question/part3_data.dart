@@ -4,36 +4,41 @@ TestPageModel part3Data(TestModel model) {
   var f4Dosing = TestPageModel(
     title: "",
     value: "4 factor PCC dosing",
-    type: TestPageTypeEnum.page,
-    page: "",
+    type: TestPageTypeEnum.toPage,
+    page: "/f4Dosing",
+    id: 8,
   );
 
   var fPPDosing = TestPageModel(
     title: "",
     value: "FFP dosing",
-    type: TestPageTypeEnum.page,
-    page: "",
+    type: TestPageTypeEnum.toPage,
+    page: "/fPPDosing",
+    id: 12,
   );
 
   var activatedPCCDosing = TestPageModel(
     title: "",
     value: "Activated PCC dosing",
-    type: TestPageTypeEnum.page,
-    page: "",
+    type: TestPageTypeEnum.toPage,
+    page: "/activatedPCCDosing",
+    id: 9,
   );
 
   var idarucizumabDosing = TestPageModel(
     title: "",
     value: "Idarucizumab dosing",
-    type: TestPageTypeEnum.page,
-    page: "",
+    type: TestPageTypeEnum.toPage,
+    page: "/idarucizumabDosing",
+    id: 10,
   );
 
   var andexanetAlfa = TestPageModel(
     title: "",
     value: "Andexanet alfa",
-    type: TestPageTypeEnum.page,
-    page: "",
+    type: TestPageTypeEnum.toPage,
+    page: "/andexanetAlfa",
+    id: 11,
   );
 
   var inrExtra = TestPageModel(

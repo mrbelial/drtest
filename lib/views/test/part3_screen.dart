@@ -1,3 +1,4 @@
+import 'package:drtest/controllers/test_controller.dart';
 import 'package:drtest/models/question/question_model.dart';
 import 'package:drtest/tools/core.dart';
 import 'package:drtest/ui/test/test_widget.dart';
@@ -6,6 +7,7 @@ import 'package:get/get.dart';
 
 class Part3Screen extends StatelessWidget {
   Part3Screen({super.key});
+  final TestController _controller = Get.find();
 
   final TestPageModel model = Get.arguments;
 
@@ -23,7 +25,20 @@ class Part3Screen extends StatelessWidget {
                 arguments: item, preventDuplicates: false));
         break;
       case TestPageTypeEnum.toPage:
-        Get.offAndToNamed(item.page, arguments: item);
+        var page = item.page;
+        _controller.initDrugDosing();
+        switch (item.page) {
+          case "/f4Dosing":
+          case "/fPPDosing":
+          case "/activatedPCCDosing":
+          case "/idarucizumabDosing":
+          case "/andexanetAlfa":
+            _controller.selectDrugDosing(item.id);
+            page = "/drug_dosing";
+            Get.toNamed(page, preventDuplicates: false);
+          default:
+            Get.toNamed(page, arguments: item, preventDuplicates: false);
+        }
         break;
       case TestPageTypeEnum.result:
         break;

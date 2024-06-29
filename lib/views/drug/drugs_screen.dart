@@ -1,4 +1,5 @@
 import 'package:drtest/controllers/test_controller.dart';
+import 'package:drtest/models/question/part3_data.dart';
 import 'package:drtest/models/question/question_model.dart';
 import 'package:drtest/tools/core.dart';
 import 'package:drtest/ui/test/test_widget.dart';
@@ -57,6 +58,11 @@ class DrugsScreen extends StatelessWidget {
             testButton("Consider DOACs Drug Interaction", () {
               Get.toNamed("/drug_interaction");
             }, color: AppColors.red),
+            testButton(
+              "Part 3",
+              () => Get.toNamed("/part3",
+                  arguments: part3Data(_controller.model)),
+            ),
           ],
         );
       }),

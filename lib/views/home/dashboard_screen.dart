@@ -10,6 +10,7 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    _testController.initDrugDosing();
     return Scaffold(
         appBar: AppBar(title: const Text("ACAFib-APP")),
         floatingActionButton: FloatingActionButton(
@@ -41,6 +42,14 @@ class DashboardScreen extends StatelessWidget {
               onTap: () => Get.toNamed("/part3",
                   arguments: part3Data(_testController.model)),
             ),
+            // appButton(
+            //   title: "Part 8",
+            //   onTap: () {
+            //     _testController.initDrugDosing();
+            //     _testController.selectDrugDosing(12);
+            //     Get.toNamed("/drug_dosing");
+            //   },
+            // ),
           ],
         )
         //  ListView.builder(
