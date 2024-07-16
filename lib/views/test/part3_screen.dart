@@ -49,7 +49,7 @@ class Part3Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(model.value.replaceAll("\n", " ")),
+        title: Text(model.value.replaceAll("\n", " ").replaceAll("•", "")),
       ),
       body: ListView(
         padding: AppConst.defaultPadding,

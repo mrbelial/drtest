@@ -8,4 +8,6 @@ class MainModel {
 
   UserModel user = UserModel();
   String aboutus = "";
+
+  bool termsChecked = false;
 }

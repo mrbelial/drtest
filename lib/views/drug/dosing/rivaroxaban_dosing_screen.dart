@@ -32,6 +32,7 @@ class RivaroxabanDosingScreen extends StatelessWidget {
                     title: item.title,
                     checked: item.checked,
                     onChange: (i, b) {
+                      _controller.rivaroxabanClearChecked();
                       item.checked = b;
                       _controller.rivaroxabanLoading = false;
                     },

@@ -39,6 +39,10 @@ class MainController extends GetxController {
     await init();
   }
 
+  bool get termsChecked => mainResponse.content!.termsChecked;
+  set termsChecked(bool v) =>
+      _mainResponseObs.update((val) => val!.content!.termsChecked = v);
+
   final _mainResponseObs = MainResponse().obs;
   MainResponse get mainResponse => _mainResponseObs.value;
   set mainResponse(MainResponse val) => _mainResponseObs.value = val;
@@ -71,6 +75,8 @@ class MainController extends GetxController {
 
     appVersion = packageInfo.version;
     buildVersion = packageInfo.buildNumber;
+
+    termsChecked = prefs.getBool("termsChecked") ?? false;
 
     if (kIsWeb) {
       var localVersion = prefs.getString("appVersion");

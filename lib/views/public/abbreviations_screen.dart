@@ -8,7 +8,7 @@ class AbbreviationsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("abbreviations"),
+        title: const Text("Abbreviations"),
       ),
       body: ListView(
         padding: AppConst.defaultPadding,

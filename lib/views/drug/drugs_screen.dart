@@ -22,48 +22,56 @@ class DrugsScreen extends StatelessWidget {
       body: Obx(() {
         return ListView(
           padding: AppConst.defaultPadding,
-          children: [
-            ...model.titles.map((e) => cardBox(
-                child: Text(e, style: AppTextStyles.bodyTextLargeDark))),
-            ...model.drugs.map(
-              (e) {
-                var status = _controller.getDrugInteractions(e.id);
+          children: _controller.model.ulValue < 25000
+              ? [
+                  cardBox(child: Text("""Thrombocytopenia
+•	Avoid anticoagulation therapy due to the high risk of spontaneous Bleeding. (EHRA/NOAC/AF 2021)
+•	Absolute contraindications to OACs. (AF ESC 2020)
+•	Temporarily hold anticoagulant until platelet count increases above 25000 / µl. (UpToDate)
+""", style: AppTextStyles.bodyTextLargeDark))
+                ]
+              : [
+                  ...model.titles.map((e) => cardBox(
+                      child: Text(e, style: AppTextStyles.bodyTextLargeDark))),
+                  ...model.drugs.map(
+                    (e) {
+                      var status = _controller.getDrugInteractions(e.id);
 
-                return testButton(e.name, () {
-                  _controller.selectDrugDosing(e.id);
-                  if (status.isAllowed) {
-                    Get.toNamed("/drug_dosing");
-                  } else {
-                    testdrugMessage(
-                      status.interactions
-                          .map((x) => Text(
-                                "${x.drugName}\n${x.desc}\n",
-                                style: AppTextStyles.bodyText1
-                                    .copyWith(color: x.color),
-                              ))
-                          .toList(),
-                      Get.back,
-                      button2Title: "No Problem",
-                      ontap2: _controller.isDrugAllowedToContinue(e.id)
-                          ? () {
-                              Get.back();
-                              Get.toNamed("/drug_dosing");
-                            }
-                          : null,
-                    );
-                  }
-                }, color: status.color);
-              },
-            ),
-            testButton("Consider DOACs Drug Interaction", () {
-              Get.toNamed("/drug_interaction");
-            }, color: AppColors.red),
-            testButton(
-              "Part 3",
-              () => Get.toNamed("/part3",
-                  arguments: part3Data(_controller.model)),
-            ),
-          ],
+                      return testButton(e.name, () {
+                        _controller.selectDrugDosing(e.id);
+                        if (status.isAllowed) {
+                          Get.toNamed("/drug_dosing");
+                        } else {
+                          testdrugMessage(
+                            status.interactions
+                                .map((x) => Text(
+                                      "${x.drugName}\n${x.desc}\n",
+                                      style: AppTextStyles.bodyText1
+                                          .copyWith(color: x.color),
+                                    ))
+                                .toList(),
+                            Get.back,
+                            button2Title: "No Problem",
+                            ontap2: _controller.isDrugAllowedToContinue(e.id)
+                                ? () {
+                                    Get.back();
+                                    Get.toNamed("/drug_dosing");
+                                  }
+                                : null,
+                          );
+                        }
+                      }, color: status.color);
+                    },
+                  ),
+                  testButton("Consider DOACs Drug Interaction", () {
+                    Get.toNamed("/drug_interaction");
+                  }, color: AppColors.red),
+                  testButton(
+                    "Part 3",
+                    () => Get.toNamed("/part3",
+                        arguments: part3Data(_controller.model)),
+                  ),
+                ],
         );
       }),
     );

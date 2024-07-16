@@ -36,7 +36,7 @@ class TestScreen extends StatelessWidget {
             }),
             testButton("No", () {
               _controller.qa1 = false;
-              testMessage('End Test', () {
+              testMessage('The End.', () {
                 Get.back();
                 toMain();
               }, title: "Test Finished");

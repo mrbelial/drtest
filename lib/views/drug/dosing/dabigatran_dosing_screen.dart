@@ -31,6 +31,7 @@ class DabigatranDosingScreen extends StatelessWidget {
                     title: item.title,
                     checked: item.checked,
                     onChange: (i, b) {
+                      _controller.dabigatranClearChecked();
                       item.checked = b;
                       _controller.dabigatranLoading = false;
                     },

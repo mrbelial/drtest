@@ -13,10 +13,6 @@ class DashboardScreen extends StatelessWidget {
     _testController.initDrugDosing();
     return Scaffold(
         appBar: AppBar(title: const Text("ACAFib-APP")),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => Get.toNamed("/test"),
-          child: const Icon(Icons.add),
-        ),
         body: ListView(
           padding: AppConst.defaultPadding,
           children: [
@@ -34,7 +30,7 @@ class DashboardScreen extends StatelessWidget {
               onTap: () => Get.toNamed("/contactus"),
             ),
             appButton(
-              title: "abbreviations",
+              title: "Abbreviations",
               onTap: () => Get.toNamed("/abbreviations"),
             ),
             appButton(
@@ -42,14 +38,23 @@ class DashboardScreen extends StatelessWidget {
               onTap: () => Get.toNamed("/part3",
                   arguments: part3Data(_testController.model)),
             ),
+            appButton(
+              title: "Start",
+              onTap: () => Get.toNamed("/test"),
+            ),
             // appButton(
             //   title: "Part 8",
             //   onTap: () {
             //     _testController.initDrugDosing();
-            //     _testController.selectDrugDosing(12);
+            //     _testController.selectDrugDosing(5);
             //     Get.toNamed("/drug_dosing");
             //   },
             // ),
+            appButton(
+              title: "Part 3",
+              onTap: () => Get.toNamed("/part3",
+                  arguments: part3Data(_testController.model)),
+            ),
           ],
         )
         //  ListView.builder(

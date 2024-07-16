@@ -1,5 +1,6 @@
 import 'package:drtest/controllers/main_controller.dart';
 import 'package:drtest/tools/core.dart';
+import 'package:drtest/views/home/terms_screen.dart';
 import 'package:drtest/views/test/part3_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -55,6 +56,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/', page: () => SplashScreen()),
         // GetPage(name: '/login', page: () => LoginScreen()),
         GetPage(name: '/home', page: () => DashboardScreen()),
+        GetPage(name: '/terms', page: () => TermsScreen()),
         GetPage(name: '/profile', page: () => ProfileScreen()),
         GetPage(name: '/aboutus', page: () => const AboutUsScreen()),
         GetPage(name: '/contactus', page: () => const ContactusScreen()),

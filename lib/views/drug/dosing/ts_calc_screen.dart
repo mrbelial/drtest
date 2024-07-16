@@ -15,7 +15,6 @@ class TsScoreScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        testTitle("Child Pugh Calculator (ESC NOAC 2021)"),
         Obx(() {
           return ListView.builder(
               shrinkWrap: true,

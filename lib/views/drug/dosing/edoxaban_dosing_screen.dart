@@ -31,6 +31,7 @@ class EdoxabanDosingScreen extends StatelessWidget {
                     title: item.title,
                     checked: item.checked,
                     onChange: (i, b) {
+                      _controller.edoxabanClearChecked();
                       item.checked = b;
                       _controller.edoxabanLoading = false;
                     },

@@ -1,6 +1,7 @@
 import 'package:drtest/models/dosing/apixaban_dosing_model.dart';
 import 'package:drtest/models/dosing/dabigatran_dosing_model.dart';
 import 'package:drtest/models/dosing/edoxaban_dosing_model.dart';
+import 'package:drtest/models/dosing/f4_dosing_model.dart';
 import 'package:drtest/models/dosing/rivaroxaban_dosing_model.dart';
 import 'package:drtest/models/public/checkbox_model.dart';
 import 'package:drtest/models/public/idtitle_model.dart';
@@ -17,6 +18,7 @@ import 'package:drtest/views/drug/dosing/rivaroxaban_dosing_screen.dart';
 import 'package:drtest/views/drug/dosing/ufh_screen.dart';
 import 'package:drtest/views/drug/dosing/ptt_calc_screen.dart';
 import 'package:drtest/views/drug/dosing/ts_calc_screen.dart';
+import 'package:drtest/views/drug/dosing/wafarin4f_dosing_screen.dart';
 import 'package:drtest/views/drug/dosing/wafarin_extra_screen.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -166,7 +168,7 @@ Patients at high bleeding risk (eg HAS-BLED ≥3) should have their modifiable b
       v = v * .85;
     }
 
-    model.cgAnswer = double.tryParse(v.toStringAsFixed(5)) ?? 0;
+    model.cgAnswer = double.tryParse(v.toStringAsFixed(2)) ?? 0;
 
     return IDTitleModel(0, "$v (mL/min)");
   }
@@ -258,25 +260,20 @@ Patients at high bleeding risk (eg HAS-BLED ≥3) should have their modifiable b
       model.pages.pages.firstWhere((x) => x.id == 2).isMarked = true;
       // stacks.add(model.pages.pages.firstWhere((x) => x.id == 2));
     }
-    if (model.bmi > 0) {
+    if (model.bmi < 17.5 || model.bmi > 40) {
       model.pages.pages.firstWhere((x) => x.id == 3).isMarked = true;
-      // stacks.add(model.pages.pages.firstWhere((x) => x.id == 3));
     }
-    if (model.ulValue > 0) {
+    if (model.ulValue > 0 && model.ulValue <= 50000) {
       model.pages.pages.firstWhere((x) => x.id == 4).isMarked = true;
-      // stacks.add(model.pages.pages.firstWhere((x) => x.id == 4));
     }
     if (model.q2Answer == 2) {
       model.pages.pages.firstWhere((x) => x.id == 15).isMarked = true;
-      // stacks.add(model.pages.pages.firstWhere((x) => x.id == 15));
     }
     if (model.q2Answer == 4) {
       model.pages.pages.firstWhere((x) => x.id == 16).isMarked = true;
-      // stacks.add(model.pages.pages.firstWhere((x) => x.id == 16));
     }
     if (model.q2Answer == 6) {
       model.pages.pages.firstWhere((x) => x.id == 17).isMarked = true;
-      // stacks.add(model.pages.pages.firstWhere((x) => x.id == 17));
     }
     if (model.q2Answer == 10) {
       model.pages.pages.firstWhere((x) => x.id == 18).isMarked = true;
@@ -632,6 +629,8 @@ Patients at high bleeding risk (eg HAS-BLED ≥3) should have their modifiable b
         return ApixabanDosingScreen();
       case "/rivaroxaban_dosing":
         return RivaroxabanDosingScreen();
+      case "/Warfarin4f_dosing":
+        return Wafarin4fDosingScreen();
       default:
         return Container();
     }
@@ -738,30 +737,36 @@ Repeat assay 6 hours after restarting the infusion.""",
     List<String> list = [];
     if (model.cgAnswer < 30) {
       list.add(
-          "CrCl < 30 ml/min:\n1 mg/kg (${model.perWeight(1)}) SC once daily.");
+          "CrCl < 30 ml/min:\n1 mg/kg (${model.perWeight(1)} mg) SC once daily.");
     }
 
     if (model.bmi < 18 || model.weight < 55) {
       list.add(
-          "BMI < 18 Kg/m2 or Total body weight < 55 Kg:\n1 mg/kg (${model.perWeight(1)}) SC twice daily.");
+          "BMI < 18 Kg/m2 or Total body weight < 55 Kg:\n1 mg/kg (${model.perWeight(1)} mg) SC twice daily.");
     }
 
     if (model.bmi >= 40) {
       list.add(
-          "BMI ≥ 40:\n0.7-0.8 mg/kg (${model.perWeight(.7)}-${model.perWeight(.8)}) twice daily.");
+          "BMI ≥ 40:\n0.7-0.8 mg/kg (${model.perWeight(.7)}-${model.perWeight(.8)} mg) twice daily.");
     }
 
     if (stacks.indexWhere((x) => x.id == 12) > -1) {
-      list.add("Pregnancy:\n1 mg/kg (${model.perWeight(1)}) SC twice daily.");
+      list.add(
+          "Pregnancy:\n1 mg/kg (${model.perWeight(1)} mg) SC twice daily.");
     }
 
     if (stacks.indexWhere((x) => x.id == 7) > -1) {
-      list.add("Cancer:\n1 mg/kg (${model.perWeight(1)}) SC twice daily.");
+      list.add("Cancer:\n1 mg/kg (${model.perWeight(1)} mg) SC twice daily.");
+    }
+
+    if (model.ulValue >= 25000 && model.ulValue <= 50000) {
+      list.add(
+          "0.75 mg/kg (${model.perWeight(.75)} mg) once daily or 0.5 mg/kg (${model.perWeight(.5)} mg) SC twice daily. (UpToDate)");
     }
 
     if (list.isEmpty) {
       list.add(
-          "None:\n1.5 mg/kg (${model.perWeight(1.5)}) once daily or 1 mg/kg (${model.perWeight(1)}) SC twice daily.");
+          "None:\n1.5 mg/kg (${model.perWeight(1.5)} mg) once daily or 1 mg/kg (${model.perWeight(1)} mg) SC twice daily.");
     }
 
     return list;
@@ -789,7 +794,16 @@ Repeat assay 6 hours after restarting the infusion.""",
         CheckBoxModel(
             "Disproportionate and non-modifiable bleeding risk?", 2, false,
             desc: "30 mg daily or 15 mg daily.\n(AF ESC 2020)"),
+        CheckBoxModel("Platelet count: 25000-50000 Cell/ µL", 0,
+            model.ulValue >= 25000 && model.ulValue <= 50000,
+            desc: "30 mg once daily.  (UpToDate), (EHRA NOAC AF 2021)"),
       ];
+    }
+  }
+
+  void edoxabanClearChecked() {
+    for (var e in edoxabanDosingModel.list) {
+      e.checked = false;
     }
   }
 
@@ -830,27 +844,27 @@ Repeat assay 6 hours after restarting the infusion.""",
           "Age ≥ 80 years",
           0,
           model.age >= 80,
-          desc: "110 mg twice daily.\n(AF ESC 2020)\n(ESC ACS 2023 IIa B)",
+          desc: "110 mg twice daily. (AF/ESC 2020), (ESC/ACS 2023 IIa B)",
         ),
         CheckBoxModel(
             "Concomitant use of of strong P-Gp inhibitor (e.g. verapamil)",
             2,
             false,
-            desc: "110 mg twice daily.\n(AF ESC 2020)\n(ESC ACS 2023 IIa B)"),
+            desc: "110 mg twice daily. (AF/ESC 2020), (ESC/ACS 2023 IIa B)"),
         CheckBoxModel("History of GI bleeding", 0, false,
-            desc: "110 mg twice daily.\n(AF ESC 2020)"),
+            desc: "110 mg twice daily. (AF/ESC 2020), (ESC/ACS 2023 IIa B)"),
         CheckBoxModel(
             "Concerned about disproportionate and non-modifiable bleeding risk",
             0,
             false,
-            desc: "110 mg twice daily.\n(AF ESC 2020)"),
+            desc: "110 mg twice daily. (AF/ESC 2020), (ESC/ACS 2023 IIa B)"),
         CheckBoxModel("High bleeding risk (HAS-BLED >_3)", 0, false,
-            desc: "110 mg twice daily.\n(AF ESC 2020)"),
+            desc: "110 mg twice daily. (AF/ESC 2020), (ESC/ACS 2023 IIa B)"),
         CheckBoxModel(
             "Concomitant single or Dual antiplatelet therapy ? (IIa B)",
             0,
             false,
-            desc: "110 mg twice daily.\n(AF ESC 2020)"),
+            desc: "110 mg twice daily. (AF/ESC 2020), (ESC/ACS 2023 IIa B)"),
         CheckBoxModel(
             "Concomitant therapy of dronedarone or ketoconazole for patients with CrCl ≥ 50 mL/min?",
             6,
@@ -866,7 +880,16 @@ Repeat assay 6 hours after restarting the infusion.""",
         CheckBoxModel("CrCl 15 to 30 mL/min?", 3,
             model.cgAnswer >= 15 && model.cgAnswer <= 30,
             desc: " 75 mg twice daily.\n(AHA ACC ACCP HRS 2023)"),
+        CheckBoxModel("Platelet count: 25000-50000 Cell/ µL", 0,
+            model.ulValue >= 25000 && model.ulValue <= 50000,
+            desc: "75 mg twice daily.  (UpToDate), (EHRA NOAC AF 2021)")
       ];
+    }
+  }
+
+  void dabigatranClearChecked() {
+    for (var e in dabigatranDosingModel.list) {
+      e.checked = false;
     }
   }
 
@@ -924,13 +947,15 @@ Repeat assay 6 hours after restarting the infusion.""",
           "Concomitant ketoconazole, itraconazole, or ritonavir?",
           3,
           isSelectedDrugInterActions([4, 3, 13]),
-          desc: "2.5 mg twice daily.\n(AF ESC 2020)",
+          desc: """•	2.5 mg twice daily. (AF/ESC 2020), (AHA/ACC/ACCP HRS 2023)
+•	Contraindicated. (AF/ESC 2020), (AHA/ACC/ACCP HRS 2023)""",
         ),
         CheckBoxModel(
           "Patient on dialysis?",
           2,
           false,
-          desc: "2.5 mg twice daily.\n(AF ESC 2020)",
+          desc:
+              "2.5 or 5 mg twice daily. (AF ESC 2020), (AHA/ACC/ACCP HRS 2023)",
         ),
         CheckBoxModel(
           "CrCl 15-29 ml/min",
@@ -938,6 +963,12 @@ Repeat assay 6 hours after restarting the infusion.""",
           model.cgAnswer >= 15 && model.cgAnswer <= 29,
           desc:
               "5 mg twice daily.\n(AHA ACC ACCP HRS 2023)\n2.5 mg twice daily.\n(AHA ACC ACCP HRS 2023)\n(EHRA NOAC AF 2021)",
+        ),
+        CheckBoxModel(
+          "Platelet count: 25000-50000 Cell/ µL",
+          0,
+          model.ulValue >= 25000 && model.ulValue <= 50000,
+          desc: "2.5 mg twice daily.  (UpToDate), (EHRA NOAC AF 2021)",
         ),
       ];
     }
@@ -949,6 +980,9 @@ Repeat assay 6 hours after restarting the infusion.""",
     list.sort((a, b) => a.point.compareTo(b.point));
     var item = list.lastOrNull;
     if (item != null) {
+      if (item.point == 3 && list.length > 1) {
+        return "Contraindicated. (AF/ESC 2020), (AHA/ACC/ACCP HRS 2023)";
+      }
       if (item.point == 0 && list.where((x) => x.id == 1).length > 1) {
         return "2.5 mg twice daily.\n(AF ESC 2020)";
       }
@@ -997,7 +1031,19 @@ High bleeding risk (HAS-BLED >_3) during concomitant single or DAPT ?
           model.cgAnswer > 50,
           desc: "20 mg once daily with food.\n(AF ESC 2020)",
         ),
+        CheckBoxModel(
+          "Platelet count: 25000-50000 Cell/ µL",
+          0,
+          model.ulValue >= 25000 && model.ulValue <= 50000,
+          desc: "10 mg once daily. (UpToDate), (EHRA NOAC AF 2021)",
+        ),
       ];
+    }
+  }
+
+  void rivaroxabanClearChecked() {
+    for (var e in rivaroxabanDosingModel.list) {
+      e.checked = false;
     }
   }
 
@@ -1011,5 +1057,28 @@ High bleeding risk (HAS-BLED >_3) during concomitant single or DAPT ?
     }
 
     return "";
+  }
+
+  final _f4DosingModel = F4DosingModel().obs;
+  F4DosingModel get f4DosingModel => _f4DosingModel.value;
+  int get f4INR => f4DosingModel.inr;
+  set f4INR(int v) => _f4DosingModel.update((val) => val!.inr = v);
+
+  String f4DosingDesc() {
+    var msg = "";
+    if (f4INR >= 2 && f4INR <= 4) {
+      msg = "INR 2–<4: 25 units/kg (${model.perWeight(25)}) (up to 2500 units)";
+    } else if (f4INR >= 4 && f4INR <= 6) {
+      msg = "INR 4–6: 35 units/kg (${model.perWeight(35)}) (up to 3500 units)";
+    } else if (f4INR >= 6) {
+      msg = "INR >6: 50 units/kg (${model.perWeight(50)}) (up to 5000 units)";
+    }
+    if (msg.isNotEmpty) {
+      msg +=
+          """● Repeat INR within 30 min after the administration. (AHA/ACC/ACCP HRS 2023)
+● Administer intravenous vitamin K 10 mg over 10-20 min in addition to 4-factor PCC.(AHA/ACC/ACCP HRS 2023)""";
+    }
+
+    return msg;
   }
 }
