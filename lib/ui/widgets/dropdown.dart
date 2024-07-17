@@ -22,7 +22,7 @@ Widget dropDown({
         Get.defaultDialog(
           titleStyle: const TextStyle(
             fontSize: 18,
-            fontWeight: FontWeight.w400,
+            fontWeight: FontWeight.w500,
           ),
           title: dialogTitle,
           content: Column(

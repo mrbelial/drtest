@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:drtest/tools/core.dart';
+import 'package:drtest/views/public/toc_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -27,7 +28,7 @@ class MainController extends GetxController {
   late PackageInfo packageInfo;
   late SharedPreferences prefs;
 
-  double spScale = 1.3333333333;
+  // double spScale = 1.3333333333;
 
   var headers = {
     "accept": 'application/json',
@@ -213,7 +214,7 @@ class MainController extends GetxController {
         title: "Abbr",
         appbarTitle: appName,
         icon: "abbr.png",
-        page: const AbbreviationsScreen(),
+        page: AbbreviationsScreen(),
         count: 0,
       ),
       PageIndexModel(
@@ -221,7 +222,7 @@ class MainController extends GetxController {
         title: "Contents",
         appbarTitle: appName,
         icon: "contents.png",
-        page: DashboardScreen(),
+        page: TocScreen(),
         count: 0,
       ),
       PageIndexModel(

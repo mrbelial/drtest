@@ -10,16 +10,42 @@ class ContactusScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Contact Us"),
       ),
-      body: const Padding(
+      body: Padding(
         padding: AppConst.defaultPadding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(height: 20),
-            Text(""),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
-              """Contact us:\nEmail: acafibapp@gmail.com\nTelegram: @Acafibapp""",
+              "We value your feedback and inquiries. If you have any questions, suggestions, or need assistance with ACAFib-APP, please do not hesitate to reach out to us.",
+              style: AppTextStyles.text2,
+            ),
+            const SizedBox(height: 20),
+            Text(
+              """You can contact our support team at:""",
+              style: AppTextStyles.text3,
+            ),
+            Row(
+              children: [
+                Text(
+                  "Email: ",
+                  style: AppTextStyles.text3,
+                ),
+                textButton(
+                    title: "acafibapp@gmail.com",
+                    onTap: () => launchURL("mailto:acafibapp@gmail.com")),
+              ],
+            ),
+            Row(
+              children: [
+                Text(
+                  "Telegram: ",
+                  style: AppTextStyles.text3,
+                ),
+                textButton(
+                    title: "@Acafibapp",
+                    onTap: () => launchURL("https://t.me/Acafibapp")),
+              ],
             ),
           ],
         ),

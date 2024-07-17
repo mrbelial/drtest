@@ -50,10 +50,10 @@ String getApiHost() {
   // }
 }
 
-final MainController _mainController = Get.find();
+// final MainController _mainController = Get.find();
 
 extension PtToPx on num {
-  double get toPx => (this - 3) * _mainController.spScale;
+  double get toPx => (this) * 1.333;
 }
 
 String imagePath(String image) => "assets/images/$image";
@@ -176,7 +176,7 @@ class AppThemes {
         disabledForegroundColor: AppColors.primary.withOpacity(.5),
         disabledBackgroundColor: AppColors.secondary.withOpacity(.5),
         padding: AppConst.buttonPadding,
-        textStyle: AppTextStyles.text3,
+        textStyle: AppTextStyles.buttonText,
         shape: AppConst.buttonShape2,
       ),
     ),
@@ -244,15 +244,15 @@ class AppTextStyles {
   // static TextStyle subtitle1 = base.copyWith(
   //     fontSize: 14.toPx,
   //     color: AppColors.textColor,
-  //     fontWeight: FontWeight.w400);
+  //     fontWeight: FontWeight.w500);
   // static TextStyle subtitle2 = base.copyWith(
   //     fontSize: 12.toPx,
   //     color: AppColors.textColor,
-  //     fontWeight: FontWeight.w400);
+  //     fontWeight: FontWeight.w500);
   // static TextStyle subtitle3 = base.copyWith(
   //     fontSize: 11.toPx,
   //     color: AppColors.darkGray,
-  //     fontWeight: FontWeight.w400);
+  //     fontWeight: FontWeight.w500);
   static TextStyle subtitleSmallLight = base.copyWith(
     color: AppColors.gray,
     fontSize: 10.toPx,
@@ -266,7 +266,7 @@ class AppTextStyles {
   static TextStyle text1 = base.copyWith(
       fontSize: 15.toPx,
       color: AppColors.textColor1,
-      fontWeight: FontWeight.w400);
+      fontWeight: FontWeight.w500);
   static TextStyle bodyTextLargePrimary =
       text1.copyWith(color: AppColors.primary);
   static TextStyle bodyTextLargeDark = text1.copyWith(color: AppColors.black);
@@ -274,17 +274,17 @@ class AppTextStyles {
   static TextStyle text2 = base.copyWith(
       fontSize: 15.toPx,
       color: AppColors.textColor2,
-      fontWeight: FontWeight.w500);
+      fontWeight: FontWeight.w400);
 
   static TextStyle text3 = base.copyWith(
       fontSize: 15.toPx,
       color: AppColors.textColor1,
-      fontWeight: FontWeight.w500);
+      fontWeight: FontWeight.w400);
 
   static TextStyle buttonText = base.copyWith(
       fontSize: 16.toPx,
       color: AppColors.buttonText,
-      fontWeight: FontWeight.w400);
+      fontWeight: FontWeight.w500);
 
   static TextStyle bodyTextSmallPrimary =
       text3.copyWith(color: AppColors.primary);
@@ -292,7 +292,7 @@ class AppTextStyles {
   static TextStyle appbarTitle = base.copyWith(
       fontSize: 18.toPx,
       color: AppColors.textColor,
-      fontWeight: FontWeight.w400);
+      fontWeight: FontWeight.w500);
 
   static TextStyle caption = base.copyWith(
       fontSize: 11.toPx,
@@ -302,10 +302,10 @@ class AppTextStyles {
   static TextStyle navbar0 = base.copyWith(
       fontSize: 14.toPx,
       color: AppColors.textColor,
-      fontWeight: FontWeight.w500);
+      fontWeight: FontWeight.w400);
 
   static TextStyle navbar1 = base.copyWith(
       fontSize: 14.toPx,
       color: AppColors.textColor4,
-      fontWeight: FontWeight.w500);
+      fontWeight: FontWeight.w400);
 }

@@ -44,11 +44,16 @@ Widget _buildRunnableApp({
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
+  // ignore: unused_field
   final _controller = Get.put(MainController());
 
   @override
   Widget build(BuildContext context) {
-    _controller.spScale = MediaQuery.of(context).devicePixelRatio;
+    // _controller.spScale = MediaQuery.of(context).devicePixelRatio *
+    //     MediaQuery.of(context).size.width /
+    //     MediaQuery.of(context).size.height *
+    //     160;
+
     return GetMaterialApp(
       title: appName,
       debugShowCheckedModeBanner: false,
@@ -62,8 +67,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/profile', page: () => ProfileScreen()),
         GetPage(name: '/aboutus', page: () => const AboutUsScreen()),
         GetPage(name: '/contactus', page: () => const ContactusScreen()),
-        GetPage(
-            name: '/abbreviations', page: () => const AbbreviationsScreen()),
+        GetPage(name: '/abbreviations', page: () => AbbreviationsScreen()),
 
         //Tests
         GetPage(name: '/test', page: () => TestScreen()),

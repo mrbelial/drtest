@@ -46,7 +46,7 @@ class TermsScreen extends StatelessWidget {
                     : () {
                         _controller.prefs
                             .setBool("termsChecked", _controller.termsChecked);
-                        Get.toNamed("/home");
+                        toMain();
                       }),
           ],
         );

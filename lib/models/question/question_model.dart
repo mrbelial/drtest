@@ -932,39 +932,40 @@ CrCl 15 to 30 mL/min [dabigatran], CrCl ≤50 mL/min [rivaroxaban], or CrCl 15 t
                   [1, 2, 3, 4, 5, 6, 7])
             ],
           ),
-          TestPageModel(
-            title:
-                """● For patients with AF receiving DOACs, optimal management of drug interactions is recommended for those receiving concomitant therapy with interacting drugs, especially CYP3A4 and/or p-glycoprotein inhibitors or inducers. (AHA/ACC/ACCP/HRS/AF 2023, 1 C-LD)
-● Warfarin remains the preferred agent in patients with AF receiving CYP3A4/p-glycoprotein–inducing agents. (AHA/ACC/ACCP/HRS 2023)""",
-            value:
-                "Is there contraindication for DOAC due to drug-drug interactions?",
-            type: TestPageTypeEnum.page,
-            id: 14,
-            pages: [
-              TestPageModel(
-                title: "",
-                value: "Yes",
-                type: TestPageTypeEnum.drug,
-                drugs: [
-                  TestDrugPageModel("", [1, 2, 3])
-                ],
-              ),
-              TestPageModel(
-                title: "",
-                value: "No",
-                type: TestPageTypeEnum.drug,
-                drugs: [
-                  TestDrugPageModel("", [1, 2, 3, 4, 5, 6, 7])
-                ],
-              ),
-              TestPageModel(
-                title: "",
-                value: "Consider drug list",
-                type: TestPageTypeEnum.page,
-                pages: [],
-              ),
-            ],
-          ),
+//           TestPageModel(
+//             title:
+//                 """● For patients with AF receiving DOACs, optimal management of drug interactions is recommended for those receiving concomitant therapy with interacting drugs, especially CYP3A4 and/or p-glycoprotein inhibitors or inducers. (AHA/ACC/ACCP/HRS/AF 2023, 1 C-LD)
+// ● Warfarin remains the preferred agent in patients with AF receiving CYP3A4/p-glycoprotein–inducing agents. (AHA/ACC/ACCP/HRS 2023)""",
+//             value:
+//                 "Is there contraindication for DOAC due to drug-drug interactions?",
+//             type: TestPageTypeEnum.page,
+//             id: 14,
+//             pages: [
+//               TestPageModel(
+//                 title: "",
+//                 value: "Yes",
+//                 type: TestPageTypeEnum.drug,
+//                 drugs: [
+//                   TestDrugPageModel("", [1, 2, 3])
+//                 ],
+//               ),
+//               TestPageModel(
+//                 title: "",
+//                 value: "No",
+//                 type: TestPageTypeEnum.drug,
+//                 drugs: [
+//                   TestDrugPageModel("", [1, 2, 3, 4, 5, 6, 7])
+//                 ],
+//               ),
+//               TestPageModel(
+//                 title: "",
+//                 value: "Consider drug list",
+//                 type: TestPageTypeEnum.page,
+//                 pages: [],
+//               ),
+//             ],
+//           ),
+     
           TestPageModel(
             title: "",
             value: "Hypertrophic Cardiomyopathy",

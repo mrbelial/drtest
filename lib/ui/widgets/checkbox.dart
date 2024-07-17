@@ -31,7 +31,7 @@ Widget checkBox({
       child: Row(
         children: [
           Transform.scale(
-            scale: 1,
+            scale: 1.3,
             child: Checkbox(
               value: checked,
               onChanged: (b) => onChange(id, b!),

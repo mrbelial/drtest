@@ -19,8 +19,6 @@ class HomeScreen extends StatelessWidget {
           backgroundColor: Colors.transparent,
           selectedItemColor: AppColors.textColor4,
           unselectedItemColor: AppColors.gray,
-          selectedLabelStyle: AppTextStyles.navbar1.copyWith(height: 3),
-          unselectedLabelStyle: AppTextStyles.navbar0.copyWith(height: 3),
           showUnselectedLabels: true,
           type: BottomNavigationBarType.fixed,
           elevation: 0,

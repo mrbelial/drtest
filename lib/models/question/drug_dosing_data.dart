@@ -320,8 +320,9 @@ Baseline platelet count and a repeat platelet count within 24 to 48 hours is rec
     DrugDosingModel(
         drugId: 3,
         drugName: "Enoxaparin",
-        param: DrugDosingParams(params: [
+        param: DrugDosingParams(title: "Enoxaparin Dosing", params: [
           DrugDosingParams(
+            title: "Enoxaparin Dosing",
             page: "/lmwh_dosing",
             params: [
               DrugDosingParams(
