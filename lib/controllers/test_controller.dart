@@ -25,8 +25,7 @@ import 'package:get/get.dart';
 
 class TestController extends GetxController {
   void closeDosing() {
-    Get.offNamedUntil(
-        "/home", (route) => route.settings.name != '/drug_dosing');
+    Get.offNamedUntil("/drugs", ModalRoute.withName("/drug_dosing"));
   }
 
   final _responseObs = QuestionResponse().obs;

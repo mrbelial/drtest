@@ -1,5 +1,4 @@
 import 'package:drtest/controllers/test_controller.dart';
-import 'package:drtest/models/question/part3_data.dart';
 import 'package:drtest/tools/core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,49 +12,46 @@ class DashboardScreen extends StatelessWidget {
     _testController.initDrugDosing();
     return Scaffold(
         appBar: AppBar(title: const Text("ACAFib-APP")),
-        body: ListView(
+        body: Padding(
           padding: AppConst.defaultPadding,
-          children: [
-            Text(
-                "Anticoagulant in Atrial Fibrillation Application (ACAFib-APP)",
-                textAlign: TextAlign.center,
-                style: AppTextStyles.headline3),
-            const SizedBox(height: 15),
-            appButton(
-              title: "About Us",
-              onTap: () => Get.toNamed("/aboutus"),
-            ),
-            appButton(
-              title: "Contact Us",
-              onTap: () => Get.toNamed("/contactus"),
-            ),
-            appButton(
-              title: "Abbreviations",
-              onTap: () => Get.toNamed("/abbreviations"),
-            ),
-            appButton(
-              title: "Part 3",
-              onTap: () => Get.toNamed("/part3",
-                  arguments: part3Data(_testController.model)),
-            ),
-            appButton(
-              title: "Start",
-              onTap: () => Get.toNamed("/test"),
-            ),
-            // appButton(
-            //   title: "Part 8",
-            //   onTap: () {
-            //     _testController.initDrugDosing();
-            //     _testController.selectDrugDosing(5);
-            //     Get.toNamed("/drug_dosing");
-            //   },
-            // ),
-            appButton(
-              title: "Part 3",
-              onTap: () => Get.toNamed("/part3",
-                  arguments: part3Data(_testController.model)),
-            ),
-          ],
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: Image.asset(
+                  imagePath("tf.png"),
+                  height: 150,
+                ),
+              ),
+              const SizedBox(height: 15),
+              Text("Begin Diagnostic Assessment Here",
+                  textAlign: TextAlign.center, style: AppTextStyles.text1),
+              const SizedBox(height: 15),
+              // appButton(
+              //   title: "Part 3",
+              //   onTap: () => Get.toNamed("/part3",
+              //       arguments: part3Data(_testController.model)),
+              // ),
+              appButton(
+                title: "Start",
+                onTap: () => Get.toNamed("/test"),
+              ),
+              const SizedBox(height: 100),
+              // appButton(
+              //   title: "Part 8",
+              //   onTap: () {
+              //     _testController.initDrugDosing();
+              //     _testController.selectDrugDosing(5);
+              //     Get.toNamed("/drug_dosing");
+              //   },
+              // ),
+              // appButton(
+              //   title: "Part 3",
+              //   onTap: () => Get.toNamed("/part3",
+              //       arguments: part3Data(_testController.model)),
+              // ),
+            ],
+          ),
         )
         //  ListView.builder(
         //     itemCount: _testController.model.drugs.length,

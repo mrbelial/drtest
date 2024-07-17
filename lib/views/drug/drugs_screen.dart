@@ -46,7 +46,7 @@ class DrugsScreen extends StatelessWidget {
                             status.interactions
                                 .map((x) => Text(
                                       "${x.drugName}\n${x.desc}\n",
-                                      style: AppTextStyles.bodyText1
+                                      style: AppTextStyles.text1
                                           .copyWith(color: x.color),
                                     ))
                                 .toList(),

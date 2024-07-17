@@ -40,7 +40,7 @@ class ChildPughScreen extends StatelessWidget {
                         padding: const EdgeInsets.all(10),
                         child: Text(
                           item.title,
-                          style: AppTextStyles.headline2,
+                          style: AppTextStyles.text1,
                           textAlign: TextAlign.start,
                         ),
                       ),
@@ -63,7 +63,7 @@ class ChildPughScreen extends StatelessWidget {
                 child: Text(
                   _controller.calcCP().title,
                   style:
-                      AppTextStyles.headline4.copyWith(color: AppColors.black),
+                      AppTextStyles.text1.copyWith(color: AppColors.black),
                 ),
               ),
             );

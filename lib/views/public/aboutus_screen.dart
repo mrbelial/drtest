@@ -8,29 +8,33 @@ class AboutUsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(appName),
+        title: const Text("About Us"),
       ),
-      body: Padding(
+      body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Image.asset(
-              imagePath("dn.png"),
-              height: 150,
-            ),
-            Image.asset(
-              imagePath("dn2.png"),
-              height: 150,
-            ),
-            // Text(
-            //   """""",
-            //   textAlign: TextAlign.center,
-            //   style: AppTextStyles.headline3,
-            // ),
-          ],
-        ),
+        children: [
+          const SizedBox(height: 50),
+          Image.asset(
+            imagePath("tums.png"),
+            height: 250,
+          ),
+          const SizedBox(height: 20),
+          Text(
+            "",
+            style: AppTextStyles.text2,
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 20),
+          Image.asset(
+            imagePath("research_center.png"),
+            height: 250,
+          ),
+          // Text(
+          //   """""",
+          //   textAlign: TextAlign.center,
+          //   style: AppTextStyles.headline3,
+          // ),
+        ],
       ),
     );
   }

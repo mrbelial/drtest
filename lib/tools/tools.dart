@@ -41,7 +41,8 @@ toMain({bool isIntro = false, bool isForce = false}) {
   // page = "/login";
   // }
   // }
-  Get.offAndToNamed(page);
+  Get.offNamedUntil(page, ModalRoute.withName("/main"));
+  // Get.offAndToNamed(page);
 }
 
 bool isPhone(String tel) {
@@ -283,7 +284,7 @@ Widget simpleEmptyBox({
         child: Text(
           title,
           textAlign: TextAlign.center,
-          style: AppTextStyles.headline1,
+          style: AppTextStyles.text1,
         ),
       ),
       Container(

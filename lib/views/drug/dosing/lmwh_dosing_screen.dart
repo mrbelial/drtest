@@ -24,7 +24,7 @@ class LMWHDosingScreen extends StatelessWidget {
             margin: const EdgeInsets.only(bottom: 10),
             child: Text(
               item,
-              style: AppTextStyles.bodyText1.copyWith(color: AppColors.black),
+              style: AppTextStyles.text1.copyWith(color: AppColors.black),
             ),
           ),
         testButton("Ok", () {

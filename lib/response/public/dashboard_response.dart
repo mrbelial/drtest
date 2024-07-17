@@ -12,10 +12,13 @@ class PageIndexResponse {
 class PageIndexModel {
   String title;
   String appbarTitle;
-  IconData? icon;
+  String icon;
   Widget page;
   int count;
+
+  int index;
   PageIndexModel({
+    required this.index,
     required this.title,
     required this.appbarTitle,
     required this.icon,

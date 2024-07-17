@@ -46,63 +46,6 @@ Widget cardBox({
   );
 }
 
-Widget dashboardBox(
-    {required String title,
-    required String value,
-    required Widget icon,
-    required Color color}) {
-  return cardBox(
-    child: Row(
-      children: [
-        Container(
-          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
-          margin: const EdgeInsets.only(left: 15),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5),
-            color: color,
-          ),
-          child: icon,
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(title, style: AppTextStyles.headline5),
-            Text(value, style: AppTextStyles.headline2),
-          ],
-        )
-      ],
-    ),
-  );
-}
-
-Widget dashboardBox2({
-  required String title,
-  required Widget icon,
-  required String value,
-  String? desc,
-  Widget? child,
-}) {
-  return cardBox(
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(title, style: AppTextStyles.headline5),
-        const SizedBox(height: 10),
-        Row(
-          children: [
-            icon,
-            const SizedBox(width: 10),
-            Text(value),
-          ],
-        ),
-        const SizedBox(height: 10),
-        if (child != null) child,
-        if (desc != null) Center(child: Text(desc)),
-      ],
-    ),
-  );
-}
-
 Widget square(double size, Color color, Widget widget) => Container(
       height: size,
       width: size,
@@ -115,7 +58,7 @@ Widget square(double size, Color color, Widget widget) => Container(
 
 Widget title(String title) => Text(
       title,
-      style: AppTextStyles.headline3,
+      style: AppTextStyles.text1,
     );
 
 // Widget box(
@@ -151,7 +94,7 @@ exitDialog() => Container(
           children: [
             Text(
               'آیا می خواهید از برنامه خارج شوید؟',
-              style: AppTextStyles.headline3,
+              style: AppTextStyles.text1,
             ),
             Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
               appButton(
@@ -169,7 +112,7 @@ Widget rowField(String title, Widget value) {
     padding: const EdgeInsets.symmetric(vertical: 4),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [Text(title, style: AppTextStyles.bodyText1), value],
+      children: [Text(title, style: AppTextStyles.text1), value],
     ),
   );
 }
@@ -180,9 +123,9 @@ Widget rowTextField(String title, String value, [int maxLines = 2]) {
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(title, style: AppTextStyles.bodyText1),
+        Text(title, style: AppTextStyles.text1),
         Text(value,
-            style: AppTextStyles.headline6,
+            style: AppTextStyles.text1,
             maxLines: maxLines,
             overflow: TextOverflow.ellipsis),
       ],
@@ -248,7 +191,7 @@ listTile({
                 if (subtitle != null)
                   Text(subtitle,
                       style:
-                          AppTextStyles.bodyText3.apply(color: AppColors.gray)),
+                          AppTextStyles.text3.apply(color: AppColors.gray)),
                 if (hasLine)
                   Padding(
                     padding: const EdgeInsets.only(top: 15),
@@ -267,35 +210,6 @@ listTile({
             ),
         ],
       ),
-    ),
-  );
-}
-
-Widget locationBlock(
-    {required String title,
-    required String expertise,
-    required String address}) {
-  return ListTile(
-    title: Text(title),
-    subtitle: Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Text(
-          expertise,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: AppTextStyles.subtitle2,
-        ),
-        Text(
-          address,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: AppTextStyles.subtitle2,
-        ),
-      ],
-    ),
-    leading: Image.asset(
-      iconPath("dr.png"),
     ),
   );
 }

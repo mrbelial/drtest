@@ -3,18 +3,8 @@ import 'package:flutter/material.dart';
 
 class AbbreviationsScreen extends StatelessWidget {
   const AbbreviationsScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Abbreviations"),
-      ),
-      body: ListView(
-        padding: AppConst.defaultPadding,
-        children: [
-          Text(
-            """AF: Atrial Fibrillation
+  
+  final text = """AF: Atrial Fibrillation
 AFL: Atrial Flutter
 OACs: Oral Anti-Coagulants
 DOAC: Direct Oral Anti-Coagulant
@@ -70,8 +60,20 @@ ACT: Activated Clotting Time
 LAA Thrombosis: Left Atrial Appendage Thrombosis
 ICD: Implantable Cardioverter Defibrillator
 AVR: Aortic Valve Replacement
-""",
-            style: AppTextStyles.bodyText1,
+""";
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Abbreviations"),
+      ),
+      body: ListView(
+        padding: AppConst.defaultPadding,
+        children: [
+          Text(
+            text,
+            style: AppTextStyles.text2,
           ),
         ],
       ),

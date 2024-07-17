@@ -49,7 +49,8 @@ class Part3Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(model.value.replaceAll("\n", " ").replaceAll("•", "")),
+        title: Text(model.appbarTitle ??
+            model.value.replaceAll("\n", " ").replaceAll("•", "")),
       ),
       body: ListView(
         padding: AppConst.defaultPadding,
@@ -62,13 +63,15 @@ class Part3Screen extends StatelessWidget {
               itemBuilder: (c, i) {
                 var item = model.pages[i];
                 return testButton(item.value, () => itemClicked(item),
-                    color:
-                        item.isMarked ? AppColors.primary : AppColors.darkGray);
+                    color: item.isMarked
+                        ? AppColors.buttonBackground
+                        : AppColors.darkGray);
               }),
           if (model.type == TestPageTypeEnum.end)
             testButton("Done", () {
-              Get.offNamedUntil(
-                  "/home", (route) => route.settings.name != '/part3');
+              Get.offNamedUntil("/drugs", ModalRoute.withName("/part3"));
+              // Get.offNamedUntil(
+              //     "/home", (route) => route.settings.name != '/part3');
             })
         ],
       ),

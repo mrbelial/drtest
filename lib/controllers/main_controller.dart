@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:drtest/tools/core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -25,6 +26,8 @@ class MainController extends GetxController {
 
   late PackageInfo packageInfo;
   late SharedPreferences prefs;
+
+  double spScale = 1.3333333333;
 
   var headers = {
     "accept": 'application/json',
@@ -191,4 +194,52 @@ class MainController extends GetxController {
   PageIndexModel get currentPage => _pages.value.current;
   int get tabIndex => _pages.value.selectedIndex;
   set tabIndex(int v) => _pages.update((val) => val!.selectedIndex = v);
+
+  void initDashboard() {
+    if (pages.isNotEmpty) {
+      return;
+    }
+    _pages.value = PageIndexResponse(pages: [
+      PageIndexModel(
+        index: 0,
+        title: "Home",
+        appbarTitle: appName,
+        icon: "home.png",
+        page: DashboardScreen(),
+        count: 0,
+      ),
+      PageIndexModel(
+        index: 1,
+        title: "Abbr",
+        appbarTitle: appName,
+        icon: "abbr.png",
+        page: const AbbreviationsScreen(),
+        count: 0,
+      ),
+      PageIndexModel(
+        index: 2,
+        title: "Contents",
+        appbarTitle: appName,
+        icon: "contents.png",
+        page: DashboardScreen(),
+        count: 0,
+      ),
+      PageIndexModel(
+        index: 3,
+        title: "Contact",
+        appbarTitle: appName,
+        icon: "contactUS.png",
+        page: const ContactusScreen(),
+        count: 0,
+      ),
+      PageIndexModel(
+        index: 4,
+        title: "About",
+        appbarTitle: appName,
+        icon: "aboutUS.png",
+        page: const AboutUsScreen(),
+        count: 0,
+      ),
+    ]);
+  }
 }

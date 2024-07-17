@@ -45,16 +45,16 @@ class Test2Screen extends StatelessWidget {
                       child: testButton(
                         item.title,
                         () => answer(item),
-                        textAlign: Alignment.centerLeft,
+                        textAlign: TextAlign.left,
                         color: item.id == 9 ? AppColors.red : AppColors.primary,
                       ),
                     ),
                     if (item.desc.isNotEmpty) ...[
                       const SizedBox(width: 10),
                       IconButton(
-                        icon: const Icon(Icons.question_mark_rounded),
-                        style: IconButton.styleFrom(
-                            backgroundColor: AppColors.primary),
+                        icon: const Icon(Icons.help_outline),
+                        iconSize: 50,
+                        color: AppColors.primary,
                         onPressed: () => testMessage(item.desc, Get.back),
                       ),
                     ]

@@ -17,7 +17,7 @@ Widget headerField({
     padding: padding,
     child: Text(
       label,
-      style: AppTextStyles.headline6.copyWith(color: color),
+      style: AppTextStyles.text1.copyWith(color: color),
     ),
   );
 }
@@ -69,7 +69,7 @@ Widget textField({
     keyboardType: type,
     maxLines: maxLines,
     focusNode: focusNode,
-    cursorColor: AppColors.primary,
+    cursorColor: AppColors.black,
     obscureText: pass,
     controller: controller,
     textAlign: textAlign,
@@ -81,7 +81,7 @@ Widget textField({
     //         : TextAlign.right,
     readOnly: readOnly,
     maxLength: maxLength,
-    style: AppTextStyles.bodyText1.apply(color: AppColors.primary),
+    style: AppTextStyles.text1.apply(color: AppColors.black),
     textInputAction: textInputAction,
     onChanged: onChanged,
     onSubmitted: onSubmitted,
@@ -91,7 +91,7 @@ Widget textField({
       counterText: '',
       fillColor: bgColor,
       hoverColor: bgColor,
-      focusColor: AppColors.primary,
+      focusColor: AppColors.black,
       focusedBorder: AppThemes.inputBorder,
       hintText: hint,
       hintTextDirection: hintTextDirection ?? TextDirection.ltr,
@@ -167,7 +167,7 @@ Widget textField2({
       //         : TextAlign.right,
       readOnly: readOnly,
       maxLength: maxLength,
-      style: AppTextStyles.bodyText2,
+      style: AppTextStyles.text2,
       textInputAction: textInputAction,
       onChanged: onChanged,
       textDirection: [TextInputType.number, TextInputType.phone].contains(type)
@@ -254,7 +254,7 @@ Widget textField3({
           //         : TextAlign.right,
           readOnly: readOnly,
           maxLength: maxLength,
-          style: AppTextStyles.bodyText1
+          style: AppTextStyles.text1
               .copyWith(color: readOnly ? AppColors.gray : AppColors.black),
           textInputAction: textInputAction,
           onChanged: onChanged,

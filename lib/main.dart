@@ -9,15 +9,14 @@ import 'package:get/get.dart';
 
 import 'views/drug/drug_dosing_screen.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  Get.put(MainController());
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   final runnableApp = _buildRunnableApp(
     isWeb: kIsWeb,
     webAppWidth: 800,
-    app: const MyApp(),
+    app: MyApp(),
   );
   runApp(runnableApp);
 }
@@ -43,10 +42,13 @@ Widget _buildRunnableApp({
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  final _controller = Get.put(MainController());
 
   @override
   Widget build(BuildContext context) {
+    _controller.spScale = MediaQuery.of(context).devicePixelRatio;
     return GetMaterialApp(
       title: appName,
       debugShowCheckedModeBanner: false,
@@ -55,7 +57,7 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(name: '/', page: () => SplashScreen()),
         // GetPage(name: '/login', page: () => LoginScreen()),
-        GetPage(name: '/home', page: () => DashboardScreen()),
+        GetPage(name: '/home', page: () => HomeScreen()),
         GetPage(name: '/terms', page: () => TermsScreen()),
         GetPage(name: '/profile', page: () => ProfileScreen()),
         GetPage(name: '/aboutus', page: () => const AboutUsScreen()),

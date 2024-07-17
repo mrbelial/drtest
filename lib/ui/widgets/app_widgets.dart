@@ -62,6 +62,6 @@ Widget filterBox({
 Widget headerText(String title) {
   return Container(
     padding: const EdgeInsets.only(top: 10, right: 10),
-    child: Text("$title:", style: AppTextStyles.headline5),
+    child: Text("$title:", style: AppTextStyles.text1),
   );
 }

@@ -104,7 +104,7 @@ class CockcroftGaultScreen extends StatelessWidget {
                 child: Text(
                   "Creatinine Clearance: ${_controller.model.cgAnswer} (mL/min)",
                   style:
-                      AppTextStyles.headline4.copyWith(color: AppColors.black),
+                      AppTextStyles.text1.copyWith(color: AppColors.black),
                 ),
               ),
             );

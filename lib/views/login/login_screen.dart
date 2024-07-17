@@ -27,7 +27,7 @@
 //                 const SizedBox(height: 10),
 //                 Text(
 //                   "نام کاربری و رمز عبور را وارد کنید",
-//                   style: AppTextStyles.bodyText1,
+//                   style: AppTextStyles.text1,
 //                   textAlign: TextAlign.center,
 //                 ),
 //                 const SizedBox(height: 50),

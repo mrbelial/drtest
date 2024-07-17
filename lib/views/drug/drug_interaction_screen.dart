@@ -82,7 +82,7 @@ class DrugInteractionScreen extends StatelessWidget {
                                                 vertical: 10),
                                             child: Text(
                                               "${_controller.getDrugById(e.drugId).name} ${e.desc}",
-                                              style: AppTextStyles.headline2
+                                              style: AppTextStyles.text1
                                                   .copyWith(
                                                       color: e.type.toColor()),
                                             ),

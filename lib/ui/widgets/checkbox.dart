@@ -31,15 +31,19 @@ Widget checkBox({
       child: Row(
         children: [
           Transform.scale(
-            scale: 1.3,
+            scale: 1,
             child: Checkbox(
               value: checked,
               onChanged: (b) => onChange(id, b!),
-              side: AlwaysActiveBorderSide(checked),
               splashRadius: 0,
             ),
           ),
-          Flexible(child: Text(title))
+          Flexible(
+            child: Text(
+              title,
+              style: AppTextStyles.text1.apply(color: AppColors.textColor1),
+            ),
+          ),
         ],
       ),
     ),

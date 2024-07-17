@@ -1027,6 +1027,7 @@ CrCl 15 to 30 mL/min [dabigatran], CrCl ≤50 mL/min [rivaroxaban], or CrCl 15 t
 enum TestPageTypeEnum { page, drug, message, result, toPage, end }
 
 class TestPageModel {
+
   TestPageModel({
     required this.title,
     required this.value,
@@ -1036,8 +1037,10 @@ class TestPageModel {
     this.pages = const [],
     this.id = 0,
     this.isMarked = false,
+    this.appbarTitle,
   });
 
+  String? appbarTitle;
   int id;
   String title;
   String value;

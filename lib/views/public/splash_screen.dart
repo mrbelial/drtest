@@ -37,7 +37,6 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     init();
     return Scaffold(
-      // backgroundColor: AppColors.primary,
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -45,22 +44,15 @@ class SplashScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const Spacer(),
+            Image.asset(imagePath("logo.png"), height: 150),
             Text(
               appName,
-              style: AppTextStyles.headline1.apply(color: AppColors.white),
+              style: AppTextStyles.title,
               textAlign: TextAlign.center,
             ),
-            // Container(
-            //     constraints: const BoxConstraints(maxHeight: 100),
-            //     child: Image.asset(imagePath("logo.png"))),
-            // Text(
-            //   "خدمات مالی و فایننس",
-            //   style: AppTextStyles.headline3.apply(color: AppColors.white),
-            //   textAlign: TextAlign.center,
-            // ),
             const Spacer(),
             Text(
-              "تمامی حقوق برای $appName محفوظ است.© 1402",
+              "© 2024, Tehran University of Medical Science",
               style: AppTextStyles.caption,
               textAlign: TextAlign.center,
             ),

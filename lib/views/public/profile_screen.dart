@@ -20,12 +20,12 @@ class ProfileScreen extends StatelessWidget {
                 children: [
                   Directionality(
                     textDirection: TextDirection.ltr,
-                    child: Text(value, style: AppTextStyles.headline5),
+                    child: Text(value, style: AppTextStyles.text1),
                   ),
-                  Text(extra, style: AppTextStyles.headline5)
+                  Text(extra, style: AppTextStyles.text1)
                 ],
               )
-            : Text(value, style: AppTextStyles.headline5),
+            : Text(value, style: AppTextStyles.text1),
       ],
     );
   }

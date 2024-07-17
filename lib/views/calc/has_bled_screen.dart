@@ -49,7 +49,7 @@ class HasBledScreen extends StatelessWidget {
                 child: Text(
                   "Point: ${_controller.calcHB().title}",
                   style:
-                      AppTextStyles.headline4.copyWith(color: AppColors.black),
+                      AppTextStyles.text1.copyWith(color: AppColors.black),
                 ),
               ),
             ),

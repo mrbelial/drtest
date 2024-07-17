@@ -30,7 +30,7 @@ class TsScoreScreen extends StatelessWidget {
                       padding: const EdgeInsets.all(10),
                       child: Text(
                         item.title,
-                        style: AppTextStyles.headline2,
+                        style: AppTextStyles.text1,
                         textAlign: TextAlign.start,
                       ),
                     ),
@@ -52,7 +52,7 @@ class TsScoreScreen extends StatelessWidget {
               color: AppColors.warning,
               child: Text(
                 _controller.calcTS().title,
-                style: AppTextStyles.headline4.copyWith(color: AppColors.black),
+                style: AppTextStyles.text1.copyWith(color: AppColors.black),
               ),
             ),
           );

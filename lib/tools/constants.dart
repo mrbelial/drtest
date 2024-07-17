@@ -13,7 +13,7 @@ part of 'core.dart';
 String get appName => _getAppName();
 
 String _getAppName() {
-  return "DR Test";
+  return "ACAFIB";
   // switch (_currentApp) {
   //   case AppConfig.ryanex:
   //     return "رایانکس";
@@ -50,6 +50,12 @@ String getApiHost() {
   // }
 }
 
+final MainController _mainController = Get.find();
+
+extension PtToPx on num {
+  double get toPx => (this - 3) * _mainController.spScale;
+}
+
 String imagePath(String image) => "assets/images/$image";
 String iconPath(String image) => "assets/icons/$image";
 
@@ -65,12 +71,13 @@ class AppConst {
   );
 
   static final OutlinedBorder buttonShape2 = RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(5.0),
+    borderRadius: BorderRadius.circular(25),
   );
 }
 
 class AppColors {
-  static const Color primary = Color(0xff7165e3);
+  static const Color backgroundColor = Color(0xff1b1b1b);
+  static const Color primary = Color(0xff48ff91);
   static const Color primaryLight = Color(0xff6e3fff);
   static const Color pink = Color.fromRGBO(255, 237, 237, 1.0);
   static const Color black = Colors.black;
@@ -78,8 +85,16 @@ class AppColors {
   static const Color gray = Color(0xff979797);
   static const Color grayPrimary = Color(0xff9ea6be);
   static const Color lightGray = Color.fromARGB(255, 206, 206, 206);
-  static const Color white = Color.fromRGBO(255, 255, 255, 1.0);
-  static const Color background = Color.fromRGBO(30, 36, 41, 1);
+  static const Color white2 = Color.fromRGBO(255, 255, 255, 1.0);
+  static const Color white = Color(0xffeaeaea);
+  static const Color textColor = Color(0xffeaeaea);
+  static const Color textColor1 = Color(0xffeaeaec);
+  static const Color textColor2 = Color(0xff858e9d);
+  static const Color textColor3 = Color(0xff858d97);
+  static const Color textColor4 = Color(0xff48ff91);
+  static const Color buttonText = Color(0xff102117);
+  static const Color buttonBackground = Color(0xff48ff91);
+  static const Color background = Color(0xff1b1b1b);
   static const Color orange = Color.fromRGBO(255, 168, 37, 1.0);
   static const Color green = Color(0xff05A95C);
   static const Color green3 = Color(0xff77eb74);
@@ -99,7 +114,7 @@ class AppColors {
 class AppThemes {
   static final OutlineInputBorder inputBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(5),
-    borderSide: const BorderSide(color: AppColors.primary, width: 2),
+    borderSide: const BorderSide(color: AppColors.buttonBackground, width: 2),
   );
 
   static final OutlineInputBorder enabledBorder = inputBorder.copyWith(
@@ -114,7 +129,7 @@ class AppThemes {
 
   static final UnderlineInputBorder inputBorder2 = UnderlineInputBorder(
     borderRadius: BorderRadius.circular(5),
-    borderSide: const BorderSide(color: AppColors.primary, width: 2),
+    borderSide: const BorderSide(color: AppColors.buttonBackground, width: 2),
   );
 
   static final UnderlineInputBorder enabledBorder2 = inputBorder2.copyWith(
@@ -129,12 +144,12 @@ class AppThemes {
 
   static final InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
     contentPadding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
-    hintStyle: AppTextStyles.bodyText1,
+    hintStyle: AppTextStyles.text1,
     filled: true,
     fillColor: Colors.white,
     hoverColor: Colors.white,
     border: border,
-    focusColor: AppColors.primary,
+    focusColor: AppColors.buttonBackground,
     suffixStyle: AppTextStyles.base.copyWith(color: Colors.green),
   );
 
@@ -142,8 +157,8 @@ class AppThemes {
     dividerColor: Colors.transparent,
     primaryColor: AppColors.primary,
     hintColor: AppColors.gray,
-    fontFamily: 'IRANYekan',
-    // scaffoldBackgroundColor: Colors.white,
+    fontFamily: AppTextStyles.fontFamily,
+    // scaffoldBackgroundColor: AppColors.backgroundColor,
     inputDecorationTheme: inputDecorationTheme,
     appBarTheme: AppBarTheme(
       actionsIconTheme: const IconThemeData(color: AppColors.primary),
@@ -152,8 +167,7 @@ class AppThemes {
       systemOverlayStyle: SystemUiOverlayStyle.dark,
       backgroundColor: AppColors.background,
       iconTheme: const IconThemeData(color: AppColors.white),
-      titleTextStyle: AppTextStyles.headline3
-          .copyWith(fontFamily: 'IRANYekan', color: AppColors.white),
+      titleTextStyle: AppTextStyles.appbarTitle,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
@@ -162,7 +176,7 @@ class AppThemes {
         disabledForegroundColor: AppColors.primary.withOpacity(.5),
         disabledBackgroundColor: AppColors.secondary.withOpacity(.5),
         padding: AppConst.buttonPadding,
-        textStyle: AppTextStyles.headline4,
+        textStyle: AppTextStyles.text3,
         shape: AppConst.buttonShape2,
       ),
     ),
@@ -178,23 +192,15 @@ class AppThemes {
     checkboxTheme: CheckboxThemeData(
       fillColor: WidgetStateProperty.all(Colors.transparent),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2)),
+      side: const BorderSide(color: AppColors.white, width: 2),
       checkColor: WidgetStateProperty.all(AppColors.primary),
-      side: const BorderSide(color: AppColors.gray),
       materialTapTargetSize: MaterialTapTargetSize.padded,
     ),
     tooltipTheme: const TooltipThemeData(
         decoration: BoxDecoration(color: AppColors.primary)),
     textTheme: TextTheme(
-      displayLarge: AppTextStyles.headline1,
-      displayMedium: AppTextStyles.headline2,
-      displaySmall: AppTextStyles.headline3,
-      headlineMedium: AppTextStyles.headline4,
-      headlineSmall: AppTextStyles.headline5,
-      titleLarge: AppTextStyles.headline6,
-      titleMedium: AppTextStyles.subtitle1,
-      titleSmall: AppTextStyles.subtitle2,
-      bodyLarge: AppTextStyles.bodyText1,
-      bodyMedium: AppTextStyles.bodyText2,
+      bodyLarge: AppTextStyles.text1,
+      bodyMedium: AppTextStyles.text2,
       bodySmall: AppTextStyles.caption,
     ),
     colorScheme: const ColorScheme.dark(
@@ -204,52 +210,102 @@ class AppThemes {
 }
 
 class AppTextStyles {
-  static TextStyle base = const TextStyle(fontFamily: "IRANYekan");
-  static TextStyle headline1 = base.copyWith(
-      fontSize: 28, color: AppColors.white, fontWeight: FontWeight.w800);
-  static TextStyle headline2 = base.copyWith(
-      fontSize: 24, color: AppColors.white, fontWeight: FontWeight.w800);
-  static TextStyle headline3 = base.copyWith(
-      fontSize: 18, color: AppColors.white, fontWeight: FontWeight.w700);
-  static TextStyle headline4 = base.copyWith(
-      fontSize: 16, color: AppColors.white, fontWeight: FontWeight.w700);
-  static TextStyle headline5 = base.copyWith(
-      fontSize: 14, color: AppColors.white, fontWeight: FontWeight.w700);
-  static TextStyle headline6 = base.copyWith(
-      fontSize: 12, color: AppColors.white, fontWeight: FontWeight.w700);
-  static TextStyle headline7 = base.copyWith(
-      fontSize: 10, color: AppColors.white, fontWeight: FontWeight.w700);
+  static String fontFamily = kIsWeb ? "GeneralSansWeb" : "GeneralSans";
+  static TextStyle base = TextStyle(fontFamily: fontFamily);
+  static TextStyle title = base.copyWith(
+      fontSize: 25.toPx,
+      color: AppColors.textColor,
+      fontWeight: FontWeight.w600);
+  // static TextStyle headline2 = base.copyWith(
+  //     fontSize: 24.toPx,
+  //     color: AppColors.textColor,
+  //     fontWeight: FontWeight.w700);
+  // static TextStyle headline3 = base.copyWith(
+  //     fontSize: 25.toPx,
+  //     color: AppColors.textColor,
+  //     fontWeight: FontWeight.w600);
+  // static TextStyle headline4 = base.copyWith(
+  //     fontSize: 16.toPx,
+  //     color: AppColors.textColor,
+  //     fontWeight: FontWeight.w600);
+  // static TextStyle headline5 = base.copyWith(
+  //     fontSize: 14.toPx,
+  //     color: AppColors.textColor,
+  //     fontWeight: FontWeight.w600);
+  // static TextStyle headline6 = base.copyWith(
+  //     fontSize: 12.toPx,
+  //     color: AppColors.textColor,
+  //     fontWeight: FontWeight.w600);
+  // static TextStyle headline7 = base.copyWith(
+  //     fontSize: 10.toPx,
+  //     color: AppColors.textColor,
+  //     fontWeight: FontWeight.w600);
 
-  static TextStyle subtitle1 = base.copyWith(
-      fontSize: 14, color: AppColors.white, fontWeight: FontWeight.w400);
-  static TextStyle subtitle2 = base.copyWith(
-      fontSize: 12, color: AppColors.white, fontWeight: FontWeight.w400);
-  static TextStyle subtitle3 = base.copyWith(
-      fontSize: 11, color: AppColors.darkGray, fontWeight: FontWeight.w400);
+  // static TextStyle subtitle1 = base.copyWith(
+  //     fontSize: 14.toPx,
+  //     color: AppColors.textColor,
+  //     fontWeight: FontWeight.w400);
+  // static TextStyle subtitle2 = base.copyWith(
+  //     fontSize: 12.toPx,
+  //     color: AppColors.textColor,
+  //     fontWeight: FontWeight.w400);
+  // static TextStyle subtitle3 = base.copyWith(
+  //     fontSize: 11.toPx,
+  //     color: AppColors.darkGray,
+  //     fontWeight: FontWeight.w400);
   static TextStyle subtitleSmallLight = base.copyWith(
     color: AppColors.gray,
-    fontSize: 10,
+    fontSize: 10.toPx,
   );
+
   static TextStyle label = base.copyWith(
     color: AppColors.grayPrimary,
-    fontSize: 12,
+    fontSize: 12.toPx,
   );
 
-  static TextStyle bodyText1 = base.copyWith(
-      fontSize: 16, color: AppColors.white, fontWeight: FontWeight.w400);
+  static TextStyle text1 = base.copyWith(
+      fontSize: 15.toPx,
+      color: AppColors.textColor1,
+      fontWeight: FontWeight.w400);
   static TextStyle bodyTextLargePrimary =
-      bodyText1.copyWith(color: AppColors.primary);
-  static TextStyle bodyTextLargeDark =
-      bodyText1.copyWith(color: AppColors.black);
+      text1.copyWith(color: AppColors.primary);
+  static TextStyle bodyTextLargeDark = text1.copyWith(color: AppColors.black);
 
-  static TextStyle bodyText2 = base.copyWith(
-      fontSize: 14, color: AppColors.white, fontWeight: FontWeight.w400);
+  static TextStyle text2 = base.copyWith(
+      fontSize: 15.toPx,
+      color: AppColors.textColor2,
+      fontWeight: FontWeight.w500);
 
-  static TextStyle bodyText3 = base.copyWith(
-      fontSize: 12, color: AppColors.white, fontWeight: FontWeight.w400);
+  static TextStyle text3 = base.copyWith(
+      fontSize: 15.toPx,
+      color: AppColors.textColor1,
+      fontWeight: FontWeight.w500);
+
+  static TextStyle buttonText = base.copyWith(
+      fontSize: 16.toPx,
+      color: AppColors.buttonText,
+      fontWeight: FontWeight.w400);
+
   static TextStyle bodyTextSmallPrimary =
-      bodyText3.copyWith(color: AppColors.primary);
+      text3.copyWith(color: AppColors.primary);
+
+  static TextStyle appbarTitle = base.copyWith(
+      fontSize: 18.toPx,
+      color: AppColors.textColor,
+      fontWeight: FontWeight.w400);
 
   static TextStyle caption = base.copyWith(
-      fontSize: 10, color: AppColors.white, fontWeight: FontWeight.w400);
+      fontSize: 11.toPx,
+      color: AppColors.textColor,
+      fontWeight: FontWeight.w300);
+
+  static TextStyle navbar0 = base.copyWith(
+      fontSize: 14.toPx,
+      color: AppColors.textColor,
+      fontWeight: FontWeight.w500);
+
+  static TextStyle navbar1 = base.copyWith(
+      fontSize: 14.toPx,
+      color: AppColors.textColor4,
+      fontWeight: FontWeight.w500);
 }

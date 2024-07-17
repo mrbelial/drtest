@@ -7,24 +7,29 @@ Widget appButton({
   VoidCallback? onTap,
   Widget? trailing,
   Widget? leading,
-  Color? color,
+  Color color = AppColors.buttonBackground,
   EdgeInsets margin = const EdgeInsets.symmetric(vertical: 7),
   EdgeInsets padding = const EdgeInsets.symmetric(vertical: 15, horizontal: 8),
+  TextAlign textAlign = TextAlign.center,
 }) =>
     Container(
       padding: margin,
       child: ElevatedButton(
         onPressed: onTap,
-        style: ElevatedButton.styleFrom(padding: padding),
+        style:
+            ElevatedButton.styleFrom(padding: padding, backgroundColor: color),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (leading != null) ...[leading, const SizedBox(width: 10)],
-            Text(
-              title,
-              style: AppTextStyles.bodyText1.apply(color: AppColors.white),
-              maxLines: 10,
-              softWrap: true,
+            Expanded(
+              child: Text(
+                title,
+                style: AppTextStyles.buttonText,
+                maxLines: 10,
+                softWrap: true,
+                textAlign: textAlign,
+              ),
             ),
             if (trailing != null) trailing,
           ],
@@ -54,8 +59,7 @@ Widget appButtonSmallText({
             if (leading != null) ...[leading, const SizedBox(width: 10)],
             Text(
               title,
-              style:
-                  AppTextStyles.bodyText2.copyWith(color: color, fontSize: 11),
+              style: AppTextStyles.text2.copyWith(color: color, fontSize: 11),
             ),
             if (trailing != null) trailing,
           ],
@@ -102,7 +106,7 @@ Widget smallAppButton({
             if (leading != null) leading,
             Text(
               title.isEmpty ? "خالی" : title,
-              style: AppTextStyles.bodyText1.apply(color: AppColors.white),
+              style: AppTextStyles.text1.apply(color: AppColors.white),
             ),
             if (trailing != null) trailing,
           ],
@@ -123,7 +127,7 @@ Widget borderButton({
       ),
       child: Text(
         title,
-        style: AppTextStyles.bodyText1.apply(color: color ?? AppColors.primary),
+        style: AppTextStyles.text1.apply(color: color ?? AppColors.primary),
       ),
     );
 
@@ -139,7 +143,7 @@ Widget textButton({
       style: TextButton.styleFrom(padding: padding),
       child: Text(
         "\t$title\t",
-        style: textStyle ?? AppTextStyles.bodyText1.apply(color: color),
+        style: textStyle ?? AppTextStyles.text1.apply(color: color),
       ),
     );
 
@@ -155,7 +159,7 @@ Widget linkButton({
       child: Text(
         "\t$title\t",
         style: textStyle ??
-            AppTextStyles.bodyText1
+            AppTextStyles.text1
                 .apply(color: color, decoration: TextDecoration.underline),
       ),
     );
@@ -188,7 +192,7 @@ Widget appButton2({
             Text(
               title,
               style: textStyle ??
-                  AppTextStyles.bodyText1.apply(color: AppColors.white),
+                  AppTextStyles.text1.apply(color: AppColors.white),
             ),
             if (trailing != null) trailing,
           ],
@@ -217,7 +221,7 @@ Widget borderButton2({
         ),
         child: Text(
           title,
-          style: AppTextStyles.bodyText1.apply(color: color ?? AppColors.blue),
+          style: AppTextStyles.text1.apply(color: color ?? AppColors.blue),
         ),
       ),
     );
@@ -243,7 +247,7 @@ Widget borderButtonLarge({
         ),
         child: Text(
           title,
-          style: AppTextStyles.bodyText1
+          style: AppTextStyles.text1
               .copyWith(color: color ?? AppColors.primary, fontSize: 25),
         ),
       ),

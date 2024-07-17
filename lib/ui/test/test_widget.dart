@@ -10,22 +10,9 @@ Widget testTitle(String title) {
 }
 
 Widget testButton(String title, void Function() onTap,
-    {Alignment textAlign = Alignment.center, Color color = AppColors.primary}) {
-  return Container(
-    padding: const EdgeInsets.only(bottom: 10),
-    child: MaterialButton(
-      color: color,
-      onPressed: onTap,
-      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-      child: Container(
-        alignment: textAlign,
-        child: Text(
-          title,
-          style: AppTextStyles.bodyText1.apply(color: AppColors.white),
-        ),
-      ),
-    ),
-  );
+    {TextAlign textAlign = TextAlign.center, Color color = AppColors.primary}) {
+  return appButton(
+      title: title, onTap: onTap, color: color, textAlign: textAlign);
 }
 
 void testMessage(
@@ -39,7 +26,7 @@ void testMessage(
       title: title,
       content: SizedBox(
         width: Get.size.width - 50,
-        height: Get.size.height - 150,
+        height: Get.size.height - 200,
         child: ListView(
           shrinkWrap: true,
           children: [Text(message, textAlign: TextAlign.left)],
@@ -87,7 +74,7 @@ Widget testBadge({required String text, Color color = AppColors.red}) {
     color: color,
     child: Text(
       text,
-      style: AppTextStyles.headline3,
+      style: AppTextStyles.text1,
     ),
   );
 }
