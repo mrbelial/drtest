@@ -16,7 +16,7 @@ class DrugInteractionScreen extends StatelessWidget {
     _controller.initDrugInteraction();
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Drug Interactions"),
+        title: const Text("DOAC Drug Interaction (EHRA 2021, Lexi Comp)"),
         elevation: 0,
         backgroundColor: Colors.transparent,
         actions: [
@@ -46,6 +46,12 @@ class DrugInteractionScreen extends StatelessWidget {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.toNamed("/drug_interaction_description");
+        },
+        child: const Icon(Icons.help),
+      ),
       body: Obx(
         () {
           return Column(
@@ -62,9 +68,13 @@ class DrugInteractionScreen extends StatelessWidget {
               ),
               Expanded(
                 child: ListView.builder(
-                  itemCount: _controller.filteredDrugsInteraction.length,
+                  itemCount: _controller.filteredDrugsInteraction.length + 1,
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
+                    if (index + 1 >
+                        _controller.filteredDrugsInteraction.length) {
+                      return const SizedBox(height: 100);
+                    }
                     var drug = _controller.filteredDrugsInteraction[index];
                     return ListTile(
                       title: Text(drug.drugName),

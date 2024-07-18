@@ -473,12 +473,12 @@ Patients at high bleeding risk (eg HAS-BLED ≥3) should have their modifiable b
       } else if (yellowInteractions > 1) {
         response.message = model.drugInteractions.yellowMessage;
         response.color = AppColors.yellow;
-        response.isAllowed = false;
+        response.isAllowed = true;
       } else if (lightBlueInteractions > 1) {
         response.message = model.drugInteractions.lightBlueMessage;
         response.color = AppColors.yellow;
         // response.color = AppColors.blue2;
-        response.isAllowed = false;
+        response.isAllowed = true;
       } else if (purpleInteractions > 0) {
         response.message = model.drugInteractions.purpleMessage;
         response.color = AppColors.purple;
@@ -782,20 +782,25 @@ Repeat assay 6 hours after restarting the infusion.""",
       edoxabanDosingModel.list = [
         CheckBoxModel("CrCl 15 - 50 mL/min?", 1,
             model.cgAnswer >= 15 && model.cgAnswer <= 30,
-            desc: "30 mg daily or 15 mg daily.\n(AF ESC 2020)"),
+            desc: "30 mg daily or 15 mg daily. (ESC AF 2020)"),
         CheckBoxModel("Body weight ≤ 60 kg?", 1, model.weight <= 60,
-            desc: "30 mg daily or 15 mg daily.\n(AF ESC 2020)"),
+            desc: "30 mg daily or 15 mg daily. (ESC AF 2020)"),
         CheckBoxModel(
             "Concomitant use of strong P-Gp inhibitor (e.g verapamil, quinidine, or dronedarone)?",
             3,
             false,
-            desc: "30 mg daily or 15 mg daily.\n(AF ESC 2020)"),
+            desc: "30 mg daily or 15 mg daily. (ESC AF 2020)"),
         CheckBoxModel(
             "Disproportionate and non-modifiable bleeding risk?", 2, false,
-            desc: "30 mg daily or 15 mg daily.\n(AF ESC 2020)"),
+            desc: "30 mg daily or 15 mg daily. (ESC AF 2020)"),
         CheckBoxModel("Platelet count: 25000-50000 Cell/ µL", 0,
             model.ulValue >= 25000 && model.ulValue <= 50000,
             desc: "30 mg once daily.  (UpToDate), (EHRA NOAC AF 2021)"),
+        CheckBoxModel(
+            "Concomitant use of Cyclosporine, Itraconazole, Ketoconazole, Erythromycin?",
+            4,
+            isSelectedDrugInterActions([8, 3, 4, 12]),
+            desc: "30 mg QD. (EHRA 2021)"),
       ];
     }
   }
@@ -807,9 +812,9 @@ Repeat assay 6 hours after restarting the infusion.""",
   }
 
   String edoxabanDosing() {
-    if (isSelectedDrugInterActions([8, 3, 4, 12])) {
-      return "30 mg QD";
-    }
+    // if (isSelectedDrugInterActions([8, 3, 4, 12])) {
+    //   return "30 mg QD";
+    // }
     List<CheckBoxModel> list = [];
     list.addAll(edoxabanDosingModel.list.where((x) => x.checked));
     list.sort((a, b) => a.point.compareTo(b.point));
@@ -822,7 +827,7 @@ Repeat assay 6 hours after restarting the infusion.""",
     // edoxabanDosingModel.getByPoint(2).checked
     //   ? getDrugInteractions(5).purpleMessage
     //   : edoxabanDosingModel.totalChecked > 0
-    //       ? "30 mg daily or 15 mg daily.\n(AF ESC 2020)"
+    //       ? "30 mg daily or 15 mg daily. (ESC AF 2020)"
     //       : "60 mg daily.\n(AF ESC 2020)"
   }
 
@@ -848,7 +853,7 @@ Repeat assay 6 hours after restarting the infusion.""",
         CheckBoxModel(
             "Concomitant use of of strong P-Gp inhibitor (e.g. verapamil)",
             2,
-            false,
+            isSelectedDrugInterActions([10]),
             desc: "110 mg twice daily. (AF/ESC 2020), (ESC/ACS 2023 IIa B)"),
         CheckBoxModel("History of GI bleeding", 0, false,
             desc: "110 mg twice daily. (AF/ESC 2020), (ESC/ACS 2023 IIa B)"),

@@ -1,5 +1,6 @@
 import 'package:drtest/controllers/main_controller.dart';
 import 'package:drtest/tools/core.dart';
+import 'package:drtest/views/drug/drug_interaction_desc_screen.dart';
 import 'package:drtest/views/home/terms_screen.dart';
 import 'package:drtest/views/test/part3_screen.dart';
 import 'package:flutter/foundation.dart';
@@ -90,6 +91,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/drugs', page: () => DrugsScreen()),
         GetPage(name: '/drug_dosing', page: () => DrugDosingScreen()),
         GetPage(name: '/drug_interaction', page: () => DrugInteractionScreen()),
+        GetPage(name: '/drug_interaction_description', page: () => const DrugInteractionDescScreen()),
 
         //test_situations_page
         GetPage(

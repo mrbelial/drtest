@@ -65,9 +65,7 @@ class TocScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Abbreviations"),
-      ),
+      appBar: AppBar(title: const Text("Contents")),
       body: ListView.builder(
           padding: AppConst.defaultPadding,
           itemCount: tableOfContent.length,

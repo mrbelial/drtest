@@ -17,7 +17,7 @@ class ContactusScreen extends StatelessWidget {
           children: [
             const SizedBox(height: 20),
             Text(
-              "We value your feedback and inquiries. If you have any questions, suggestions, or need assistance with ACAFib-APP, please do not hesitate to reach out to us.",
+              "We value your feedback and inquiries. If you have any questions, suggestions, or need assistance with ACAFiB App, please do not hesitate to reach out to us.",
               style: AppTextStyles.text2,
             ),
             const SizedBox(height: 20),
@@ -32,8 +32,8 @@ class ContactusScreen extends StatelessWidget {
                   style: AppTextStyles.text3,
                 ),
                 textButton(
-                    title: "acafibapp@gmail.com",
-                    onTap: () => launchURL("mailto:acafibapp@gmail.com")),
+                    title: "ACAFiBapp@gmail.com",
+                    onTap: () => launchURL("mailto:ACAFiBapp@gmail.com")),
               ],
             ),
             Row(
@@ -43,8 +43,8 @@ class ContactusScreen extends StatelessWidget {
                   style: AppTextStyles.text3,
                 ),
                 textButton(
-                    title: "@Acafibapp",
-                    onTap: () => launchURL("https://t.me/Acafibapp")),
+                    title: "@ACAFiBapp",
+                    onTap: () => launchURL("https://t.me/ACAFiBapp")),
               ],
             ),
           ],

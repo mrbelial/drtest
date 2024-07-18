@@ -67,7 +67,7 @@ class DrugsScreen extends StatelessWidget {
                     Get.toNamed("/drug_interaction");
                   }, color: AppColors.red),
                   testButton(
-                    "Part 3",
+                    "Continue",
                     () => Get.toNamed("/part3",
                         arguments: part3Data(_controller.model)),
                   ),

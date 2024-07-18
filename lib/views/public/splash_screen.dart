@@ -10,7 +10,7 @@ class SplashScreen extends StatelessWidget {
 
   init() async {
     await Future.delayed(
-      const Duration(seconds: 1),
+      const Duration(seconds: 2),
       () {
         _controller.updateToken("ss");
         toMain();

@@ -11,7 +11,7 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     _testController.initDrugDosing();
     return Scaffold(
-        appBar: AppBar(title: const Text("ACAFib-APP")),
+        appBar: AppBar(title: const Text("ACAFiB APP")),
         body: Padding(
           padding: AppConst.defaultPadding,
           child: Column(
@@ -36,6 +36,9 @@ class DashboardScreen extends StatelessWidget {
                 title: "Start",
                 onTap: () => Get.toNamed("/test"),
               ),
+              // appButton(
+              //     title: "title",
+              //     onTap: () => Get.toNamed("/drug_interaction_description")),
               const SizedBox(height: 100),
               // appButton(
               //   title: "Part 8",

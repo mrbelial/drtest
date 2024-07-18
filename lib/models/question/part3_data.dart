@@ -222,6 +222,7 @@ OR
     type: TestPageTypeEnum.page,
     pages: [
       TestPageModel(
+        appbarTitle: "Very high risk of thromboembolic events",
         title:
             """●  In patients with AF and conditions associated with very high risk of thromboembolic events (>5%/year), early (1-2 weeks) resumption of anticoagulation after ICH is reasonable to reduce the risk of thromboembolic events. (AHA/ACC/ACCP/HRS 2023, 2a C-LD)
 ● LAA occlusion is a potential alternative strategy to long-term anticoagulation in this setting. (EHRA/NOAC AF 2021)""",
@@ -235,6 +236,7 @@ OR
         type: TestPageTypeEnum.end,
       ),
       TestPageModel(
+        appbarTitle: "High risk of recurrent ICH",
         title:
             """●  In patients with AF and conditions associated with high risk of recurrent ICH (e.g., cerebral amyloid angiopathy) anticoagulation-sparing strategies (e.g., LAAO) may be considered to reduce the risk of recurrent hemorrhage. (AHA/ACC/ACCP/HRS 2023, 2b B-NR)
 ● LAA occlusion is a potential alternative strategy to long-term anticoagulation in this setting. (EHRA/NOAC AF 2021)
@@ -628,10 +630,10 @@ OR
         pages: [
           TestPageModel(
             title:
-                """● Consider renal function assessment every 1-2 months.(AHA/ACC/ACCP/HRS 2023)""",
-            value: "CrCl < 30",
+                """● Consider renal function assessment every 6 months. (AHA/ACC/ACCP/HRS 2023)""",
+            value: "CrCl > 60",
             type: TestPageTypeEnum.end,
-            isMarked: model.cgAnswer < 30,
+            isMarked: model.cgAnswer >= 60,
           ),
           TestPageModel(
             title:
@@ -642,10 +644,10 @@ OR
           ),
           TestPageModel(
             title:
-                """● Consider renal function assessment every 6 months. (AHA/ACC/ACCP/HRS 2023)""",
-            value: "CrCl > 60",
+                """● Consider renal function assessment every 1-2 months.(AHA/ACC/ACCP/HRS 2023)""",
+            value: "CrCl < 30",
             type: TestPageTypeEnum.end,
-            isMarked: model.cgAnswer >= 60,
+            isMarked: model.cgAnswer < 30,
           ),
         ],
       ),
@@ -1056,6 +1058,47 @@ When to reinitiate DOAC following ablation?
     ],
   );
 
+  var lowToModerateBleedRisk = TestPageModel(
+    title:
+        """Low-to-moderate-bleed-risk surgery/procedures (30-d risk of major bleed 0%-2%):
+● Arthroscopy
+● Cutaneous/lymph node biopsies
+● Foot/hand surgery
+● Coronary angiography
+● GI endoscopy ± biopsy
+● Colonoscopy ± biopsy
+● Abdominal hysterectomy
+● Laparoscopic cholecystectomy
+● Abdominal hernia repair
+● Hemorrhoidal surgery
+● Bronchoscopy ± biopsy""",
+    value:
+        """See the complete list of Low-to-moderate-bleed-risk surgery/procedure""",
+    type: TestPageTypeEnum.end,
+  );
+
+  var highToModerateBleedRisk = TestPageModel(
+    title: """High-bleed-risk surgery/procedures (30-d risk of major bleed≥ 2%):
+● Major surgery with extensive tissue injury
+● Cancer surgery, especially solid tumor resection (lung, esophagus, gastric, colon, hepatobiliary, pancreatic)
+● Major orthopedic surgery, including shoulder replacement surgery
+● Reconstructive plastic surgery
+● Major thoracic surgery
+● Urologic or GI surgery, especially anastomosis surgery
+● Transurethral prostate resection, bladder resection, or tumor ablation
+● Nephrectomy, kidney biopsy
+● Colonic polyp resection
+● Bowel resection
+● Percutaneous endoscopic gastrostomy placement, endoscopic
+● Retrograde cholangiopancreatography
+● Surgery in highly vascular organs (kidneys, liver, spleen)
+● Cardiac, intracranial, or spinal surgery
+● Any major operation (procedure duration > 45 min)
+● Neuraxial anesthesia (Includes spinal and epidural anesthesia or any other neuraxial e.g., pain management intervention)
+● Epidural injections""",
+    value: """See the complete list of high-bleed-risk surgery/procedure""",
+    type: TestPageTypeEnum.end,
+  );
   var prePostOperativeManagementOfOACs = TestPageModel(
     title: "",
     value: "Pre/ post operative management of OACs.",
@@ -1092,10 +1135,10 @@ High-bleed-risk surgery/procedures (30-d risk of major bleed≥ 2%):
 ● Any major operation (procedure duration > 45 min)
 ● Neuraxial anesthesia (Includes spinal and epidural anesthesia or any other neuraxial e.g., pain management intervention)
 ● Epidural injections""",
-                value:
-                    "High-bleed-risk?\nSee the complete list of high-bleed-risk procedures",
+                value: "High-bleed-risk?",
                 type: TestPageTypeEnum.end,
               ),
+              highToModerateBleedRisk,
               TestPageModel(
                 title: """Consider Holding Warfarin. (CHEST 2022)
 
@@ -1111,10 +1154,10 @@ Low-to-moderate-bleed-risk surgery/procedures (30-d risk of major bleed 0%-2%):
 ● Abdominal hernia repair
 ● Hemorrhoidal surgery
 ● Bronchoscopy ±  biopsy""",
-                value:
-                    "Low-to-moderate-bleed-risk?\nSee the complete list of Low-to-moderate-bleed-risk procedures",
+                value: "Low-to-moderate-bleed-risk?",
                 type: TestPageTypeEnum.end,
               ),
+              lowToModerateBleedRisk,
               TestPageModel(
                 title:
                     """Minimal-bleed-risk surgery/procedures (30-d risk of major bleed approximately 0%):
@@ -1186,20 +1229,20 @@ undergoing pacemaker or defibrillator implantation or generator change?""",
 
 ● It is recommended that VKAs are timely discontinued prior to elective surgery to aim for an INR <1.5. (ESC/VHD 2021, I C)""",
                     value: """Low/ Moderate Bleeding Risk Procedure?
-(including: Endoscopic, dental extraction, many ophthalmologic procedures, and percutaneous vascular access, such as cardiac catheterization.)
-See the complete list of Low-to-moderate-bleed-risk procedures""",
+(including: Endoscopic, dental extraction, many ophthalmologic procedures, and percutaneous vascular access, such as cardiac catheterization.)""",
                     type: TestPageTypeEnum.end,
                   ),
+                  lowToModerateBleedRisk,
                   TestPageModel(
                     title: """● Hold anticoagulant two days preprocedural.
 ● For patients on DOAC with creatinine clearance lower than the values in the table, few clinical data exist. Consider holding for an additional 1 to 3 days, especially for high
 bleeding risk procedures.
 ● It is recommended that VKAs are timely discontinued prior to elective surgery to aim for an INR <1.5. (ESC/VHD 2021, I C)""",
                     value: """High Bleeding Risk Procedure?
-(including: Intra-abdominal, pelvic, orthopedic, neurosurgical, cardiac, and transvenous lead extraction procedures neuraxial anesthesia, and spinal surgery)
-See the complete list of high-bleed-risk procedures""",
+(including: Intra-abdominal, pelvic, orthopedic, neurosurgical, cardiac, and transvenous lead extraction procedures neuraxial anesthesia, and spinal surgery)""",
                     type: TestPageTypeEnum.end,
                   ),
+                  highToModerateBleedRisk,
                 ],
               ),
               TestPageModel(
@@ -1233,14 +1276,10 @@ suggest against routine use of pre-operative vitamin K. (CHEST 2022, Conditional
                 type: TestPageTypeEnum.page,
                 pages: [
                   TestPageModel(
-                    title: "",
-                    value:
+                    appbarTitle:
                         "Is the patient receiving VKA therapy for a mechanical heart valve?",
-                    type: TestPageTypeEnum.page,
-                    pages: [
-                      TestPageModel(
-                        title:
-                            """● In patients receiving VKA therapy for a mechanical heart valve who require VKA interruption for an elective surgery/procedure, we suggest against heparin Bridging. (CHEST 2022, Conditional Recommendation, Very Low Certainty of Evidence).
+                    title:
+                        """● In patients receiving VKA therapy for a mechanical heart valve who require VKA interruption for an elective surgery/procedure, we suggest against heparin Bridging. (CHEST 2022, Conditional Recommendation, Very Low Certainty of Evidence).
 ● Patients with mechanical valves, and recent stroke/TIA, or other high-risk markers, were not included in most studies and may still benefit from bridging anticoagulation: in these scenarios, management should be individualized.
 ● In patients with AF on warfarin anticoagulation, who are undergoing surgeries or procedures for which they are holding warfarin, except in patients with mechanical valve or recent stroke or TIA, bridging anticoagulation with low-molecular-weight heparin should not be administered. (AHA/ACC/ACCP/HRS 2023 Harm, B-R)
 ● For patients who are undergoing invasive procedures and have 1) a mechanical AVR and any thromboembolic risk factor, 2) an older-generation mechanical AVR, or 3) a mechanical mitral valve replacement, bridging anticoagulation therapy during the preoperative time interval when the INR is subtherapeutic is reasonable on an individualized basis, with the risks of bleeding weighed against the benefits of thromboembolism prevention. (ACC/AHA/VHD 2020, 2a C-LD)
@@ -1249,17 +1288,9 @@ suggest against routine use of pre-operative vitamin K. (CHEST 2022, Conditional
 What is the therapeutic plan if patient with a mechanical valve prosthesis receiving VKA require immediate/ emergency noncardiac surgery or an invasive procedure?
 
 For patients with a mechanical valve prosthesis receiving VKA therapy who require immediate/emergency noncardiac surgery or an invasive procedure, administration of 4-factor prothrombin complex concentrate (or its activated form) is reasonable. (ACC/AHA/VHD 2020, 2a C-LD)""",
-                        value: "Yes",
-                        type: TestPageTypeEnum.page,
-                        pages: [],
-                      ),
-                      TestPageModel(
-                        title: "",
-                        value: "No",
-                        type: TestPageTypeEnum.page,
-                        pages: [],
-                      ),
-                    ],
+                    value:
+                        "Is the patient receiving VKA therapy for a mechanical heart valve?",
+                    type: TestPageTypeEnum.end,
                   ),
                   TestPageModel(
                     title:
@@ -1418,18 +1449,19 @@ over apixaban continuation. (CHEST 2022, Conditional Recommendation, Very Low Ce
 ● For patients on DOAC with creatinine clearance lower than the values in the table, few clinical data exist. Consider holding for an additional 1 to 3 days, especially for high bleeding risk procedures. (CHEST 2022, AHA/ACC/ACCP/HRS 2023)""",
                     value:
                         """Is the surgery/procedure low-to-moderate-bleed-risk?
-See the complete list of Low-to-moderate-bleed-risk surgery/procedure
 + (CrCl >25 mL/min)""",
                     type: TestPageTypeEnum.end,
                   ),
+                  lowToModerateBleedRisk,
                   TestPageModel(
                     title:
                         """● Consider 2 days off before low-to-moderate-bleed-risk surgery/procedure.
 ● For patients on DOAC with creatinine clearance lower than the values in the table, few clinical data exist. Consider holding for an additional 1 to 3 days, especially for high bleeding risk procedures. (CHEST 2022, AHA/ACC/ACCP/HRS 2023)""",
                     value:
-                        """Is the surgery/procedure high-bleed-risk? (See the complete list of high-bleed-risk surgery/procedure)+ (CrCl >25 mL/min)""",
+                        """Is the surgery/procedure high-bleed-risk? + (CrCl >25 mL/min)""",
                     type: TestPageTypeEnum.end,
                   ),
+                  highToModerateBleedRisk,
                 ],
               ),
             ],
@@ -1457,17 +1489,17 @@ When to interrupt Dabigatran preprocedural?""",
                       TestPageModel(
                         title:
                             """Consider 1 day off. (CHEST 2022, AHA/ACC/ACCP/HRS 2023)""",
-                        value:
-                            "Low-to-moderate-bleed-risk surgery/procedure (See the complete list of Low-to-moderate-bleed-risk surgery/procedure)?",
+                        value: "Low-to-moderate-bleed-risk surgery/procedure",
                         type: TestPageTypeEnum.end,
                       ),
+                      lowToModerateBleedRisk,
                       TestPageModel(
                         title:
                             """Consider 2 days off. (CHEST 2022, AHA/ACC/ACCP/HRS 2023)""",
-                        value:
-                            "High-bleed-risk surgery/procedure? (See the complete list of high-bleed-risk surgery/procedure)",
+                        value: "High-bleed-risk surgery/procedure?",
                         type: TestPageTypeEnum.end,
                       ),
+                      highToModerateBleedRisk,
                     ],
                   ),
                   TestPageModel(
@@ -1479,17 +1511,17 @@ When to interrupt Dabigatran preprocedural?""",
                       TestPageModel(
                         title: """● Consider 2 days off.
 ● For patients on DOAC with creatinine clearance lower than the values in the table, fewclinical data exist. Consider holding for an additional 1 to 3 days, especially for high bleeding risk procedures. (CHEST 2022, AHA/ACC/ACCP/HRS 2023)""",
-                        value:
-                            "Low-to-moderate-bleed-risk surgery/procedure?(See the complete list of Low-to-moderate-bleed-risk surgery/procedure)",
+                        value: "Low-to-moderate-bleed-risk surgery/procedure?",
                         type: TestPageTypeEnum.end,
                       ),
+                      lowToModerateBleedRisk,
                       TestPageModel(
                         title: """● Consider 4 days off.
 ● For patients on DOAC with creatinine clearance lower than the values in the table, few clinical data exist. Consider holding for an additional 1 to 3 days, especially for high bleeding risk procedures.(CHEST 2022, AHA/ACC/ACCP/HRS 2023)""",
-                        value:
-                            "High-bleed-risk surgery/procedure?(See the complete list of high-bleed-risk surgery/procedure)",
+                        value: "High-bleed-risk surgery/procedure?",
                         type: TestPageTypeEnum.end,
                       ),
+                      highToModerateBleedRisk,
                     ],
                   ),
                 ],
@@ -1515,16 +1547,18 @@ When to interrupt Edoxaban preprocedural?""",
                     title: """● Consider 1 day off.
 ● For patients on DOAC with creatinine clearance lower than the values in the table, few clinical data exist. Consider holding for an additional 1 to 3 days, especially for high bleeding risk procedures. (CHEST 2022, AHA/ACC/ACCP/HRS 2023)""",
                     value:
-                        "Low-to-moderate-bleed-risk surgery/procedure?(See the complete list of Low-to-moderate-bleed-risk surgery/procedure)\n+\n(CrCl >15 mL/min)",
+                        "Low-to-moderate-bleed-risk surgery/procedure? + (CrCl >15 mL/min)",
                     type: TestPageTypeEnum.end,
                   ),
+                  lowToModerateBleedRisk,
                   TestPageModel(
                     title: """● Consider 2 days off.
 ● For patients on DOAC with creatinine clearance lower than the values in the table, few clinical data exist. Consider holding for an additional 1 to 3 days, especially for high bleeding risk procedures. (CHEST 2022, AHA/ACC/ACCP/HRS 2023)""",
                     value:
-                        "High-bleed-risk surgery/procedure?(See the complete list of high-bleed-risk surgery/procedure)\n+\n(CrCl >15 mL/min)",
+                        "High-bleed-risk surgery/procedure? + (CrCl >15 mL/min)",
                     type: TestPageTypeEnum.end,
                   ),
+                  highToModerateBleedRisk,
                 ],
               ),
             ],
@@ -1547,16 +1581,18 @@ When to interrupt rivaroxaban preprocedural?""",
                     title: """● Consider 1 day off.
 ● For patients on DOAC with creatinine clearance lower than the values in the table, few clinical data exist. Consider holding for an additional 1 to 3 days, especially for high bleeding risk procedures. (CHEST 2022, AHA/ACC/ACCP/HRS 2023)""",
                     value:
-                        "Low-to-moderate-bleed-risk surgery/procedure? (See the complete list of Low-to-moderate-bleed-risk surgery/procedure)\n+\n(CrCl > 30 mL/min)",
+                        "Low-to-moderate-bleed-risk surgery/procedure? + (CrCl > 30 mL/min)",
                     type: TestPageTypeEnum.end,
                   ),
+                  lowToModerateBleedRisk,
                   TestPageModel(
                     title: """● Consider 2 days off.
 ● For patients on DOAC with creatinine clearance lower than the values in the table, few clinical data exist. Consider holding for an additional 1 to 3 days, especially for high bleeding risk procedures. (CHEST 2022, AHA/ACC/ACCP/HRS 2023)""",
                     value:
-                        "High-bleed-risk surgery/procedure? (See the complete list of high-bleed-risk surgery/procedure)\n+\n(CrCl > 30 mL/min)",
+                        "High-bleed-risk surgery/procedure? + (CrCl > 30 mL/min)",
                     type: TestPageTypeEnum.end,
                   ),
+                  highToModerateBleedRisk,
                 ],
               ),
             ],
@@ -1580,8 +1616,7 @@ resuming DOACs within 24 hours. (CHEST 2022, Conditional Recommendation, Very Lo
                 title:
                     """● Resume at least 24 hours after low-to-moderate-bleed-risk surgery/procedure. (CHEST 2022)
 ● Resumption of anticoagulation the day after low bleeding risk surgery is reasonable. (AHA/ACC/ACCP/HRS 2023)""",
-                value:
-                    "Low-to-moderate-bleed-risk surgery/procedure (See the complete list of Low-to-moderate-bleed-risk surgery/procedure)?",
+                value: "Low-to-moderate-bleed-risk surgery/procedure?",
                 type: TestPageTypeEnum.end,
                 pages: [
                   TestPageModel(
@@ -1592,12 +1627,12 @@ resuming DOACs within 24 hours. (CHEST 2022, Conditional Recommendation, Very Lo
                   ),
                 ],
               ),
+              lowToModerateBleedRisk,
               TestPageModel(
                 title:
                     """● Resume at least 48-72 hours after low-to-moderate-bleed-risk surgery/procedure. (CHEST 2022)
 ● Resumption of anticoagulation between the evening of the second day and the evening of the third day is reasonable. (AHA/ACC/ACCP/HRS 2023)""",
-                value:
-                    "High-bleed-risk surgery/procedure (See the complete list of high-bleed-risk surgery/procedure)?",
+                value: "High-bleed-risk surgery/procedure?",
                 type: TestPageTypeEnum.end,
                 pages: [
                   TestPageModel(
@@ -1608,10 +1643,69 @@ resuming DOACs within 24 hours. (CHEST 2022, Conditional Recommendation, Very Lo
                   ),
                 ],
               ),
+              highToModerateBleedRisk,
             ],
           ),
         ],
       ),
+    ],
+  );
+
+  var targetINRExtra =
+      "Anticoagulation with a VKA is indicated to achieve an INR of 3.0. 1 B-NR";
+
+  var targetINR = TestPageModel(
+    title: "",
+    value: "Target INR in patients with Mechanical Heart Valve",
+    type: TestPageTypeEnum.page,
+    pages: [
+      TestPageModel(
+        title: "",
+        value: "ACC/AHA VHD 2020",
+        type: TestPageTypeEnum.page,
+        pages: [
+          TestPageModel(
+            title: targetINRExtra,
+            value: "Mechanical aortic valve replacement  + AF ?",
+            type: TestPageTypeEnum.end,
+          ),
+          TestPageModel(
+            title: targetINRExtra,
+            value: "Mechanical mitral valve Replacement?",
+            type: TestPageTypeEnum.end,
+          ),
+          TestPageModel(
+            title: targetINRExtra,
+            value:
+                "Mechanical bileaflet or current-generation single-tilting disk aortic valve replacement?",
+            type: TestPageTypeEnum.end,
+          ),
+        ],
+      ),
+      TestPageModel(
+        title: "",
+        value: "(ESC VHD 2021)",
+        type: TestPageTypeEnum.page,
+        pages: [
+          TestPageModel(
+            title: "Target INR is 3.",
+            value:
+                "Carbomedics, Medtronic Hall, ATS, Medtronic Open-Pivot, St Jude Medical, Sorin BicarboN?",
+            type: TestPageTypeEnum.end,
+          ),
+          TestPageModel(
+            title: "Target INR is 4.",
+            value:
+                "Lillehei-Kaster, Omniscience, Starr-Edwards (ball-cage), Bjork-Shiley and other tilting-disc valves?",
+            type: TestPageTypeEnum.end,
+          ),
+          TestPageModel(
+            title: "Target INR is 3.5.",
+            value: "Other bileaflet valves with insufficient data?",
+            type: TestPageTypeEnum.end,
+          ),
+        ],
+      )
     ],
   );
 
@@ -1648,6 +1742,7 @@ resuming DOACs within 24 hours. (CHEST 2022, Conditional Recommendation, Very Lo
       aFCardioversion,
       aFIschemicStrokeOrTIA,
       prePostOperativeManagementOfOACs,
+      targetINR,
     ],
   );
 }
