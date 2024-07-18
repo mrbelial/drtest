@@ -8,6 +8,7 @@ Widget appButton({
   Widget? trailing,
   Widget? leading,
   Color color = AppColors.buttonBackground,
+  Color? textColor,
   EdgeInsets margin = const EdgeInsets.symmetric(vertical: 7),
   EdgeInsets padding = const EdgeInsets.symmetric(vertical: 15, horizontal: 8),
   TextAlign textAlign = TextAlign.center,
@@ -25,7 +26,9 @@ Widget appButton({
             Expanded(
               child: Text(
                 title,
-                style: AppTextStyles.buttonText,
+                style: textColor == null
+                    ? AppTextStyles.buttonText
+                    : AppTextStyles.buttonText.apply(color: textColor),
                 maxLines: 10,
                 softWrap: true,
                 textAlign: textAlign,

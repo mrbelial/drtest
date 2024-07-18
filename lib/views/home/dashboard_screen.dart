@@ -24,7 +24,7 @@ class DashboardScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 15),
-              Text("Begin Diagnostic Assessment Here",
+              Text("Initiate Evaluation Here...",
                   textAlign: TextAlign.center, style: AppTextStyles.text1),
               const SizedBox(height: 15),
               // appButton(

@@ -102,27 +102,27 @@ TestPageModel part3Data(TestModel model) {
         type: TestPageTypeEnum.page,
         pages: [
           TestPageModel(
-            title:
-                """Management of Minor/ Non-life -threatening bleeding while on anticoagulant
+              title:
+                  """Management of Minor/ Non-life -threatening bleeding while on anticoagulant
         
 ● Supportive measure. (EHRA/NOAC AF 2021)
 ● Hold an anticoagulant until hemostasis is achieved. (EHRA/NOAC AF 2021)
 ● Consider hemodialysis (Dabigatran). (EHRA/NOAC AF 2021)
 ● Mechanical compression. (EHRA/NOAC AF 2021)
 ● Delay or discontinue next dose. (EHRA/NOAC AF 2021)
-● Reconsider concomitant medication. (EHRA/NOAC AF 2021)
-
-
-
-When to resume anticoagulant?
-
-● In most cases of nuisance or minor bleeding anticoagulation can be re-started, sometimes simply by delaying or skipping a single dose. (EHRA/NOAC AF 2021)
-● When bleeding is due to a secondary cause (e.g., bleeding post-trauma, genitourinary bleeding due to cancer, etc.) anticoagulation can be resumed once the cause of the bleeding has been eliminated. (EHRA/NOAC AF 2021)
-        """,
-            value:
-                "Management of Minor/ Non-life -threatening bleeding while on anticoagulant",
-            type: TestPageTypeEnum.end,
-          ),
+● Reconsider concomitant medication. (EHRA/NOAC AF 2021)""",
+              value:
+                  "Management of Minor/ Non-life -threatening bleeding while on anticoagulant",
+              type: TestPageTypeEnum.page,
+              pages: [
+                TestPageModel(
+                  title:
+                      """● In most cases of nuisance or minor bleeding anticoagulation can be re-started, sometimes simply by delaying or skipping a single dose. (EHRA/NOAC AF 2021)
+● When bleeding is due to a secondary cause (e.g., bleeding post-trauma, genitourinary bleeding due to cancer, etc.) anticoagulation can be resumed once the cause of the bleeding has been eliminated. (EHRA/NOAC AF 2021)""",
+                  value: "When to resume anticoagulant?",
+                  type: TestPageTypeEnum.end,
+                ),
+              ]),
           TestPageModel(
             title:
                 """● Consider fluid replacement, and blood transfusion, platelet replacement when indicated. (AF/ESC 2020)
@@ -166,16 +166,19 @@ When to resume anticoagulant?
 ● Consider hemodialysis (Dabigatran). (EHRA/NOAC AF 2021)
 ● Mechanical compression. (EHRA/NOAC AF 2021)
 ● Delay or discontinue next dose. (EHRA/NOAC AF 2021)
-● Reconsider concomitant medication. (EHRA/NOAC AF 2021)
-
-
-When to resume anticoagulant?
-
-● In most cases of nuisance or minor bleeding anticoagulation can be re-started, sometimes simply by delaying or skipping a single dose. (EHRA/NOAC AF 2021)
-● When bleeding is due to a secondary cause (e.g., bleeding post-trauma, genitourinary bleeding due to cancer, etc.) anticoagulation can be resumed once the cause of the bleeding has been eliminated. (EHRA/NOAC AF 2021)""",
+● Reconsider concomitant medication. (EHRA/NOAC AF 2021)""",
           value:
               "Management of Minor/ Non-life -threatening bleeding while on anticoagulant",
-          type: TestPageTypeEnum.end,
+          type: TestPageTypeEnum.page,
+          pages: [
+            TestPageModel(
+              title:
+                  """● In most cases of nuisance or minor bleeding anticoagulation can be re-started, sometimes simply by delaying or skipping a single dose. (EHRA/NOAC AF 2021)
+● When bleeding is due to a secondary cause (e.g., bleeding post-trauma, genitourinary bleeding due to cancer, etc.) anticoagulation can be resumed once the cause of the bleeding has been eliminated. (EHRA/NOAC AF 2021)""",
+              value: "When to resume anticoagulant?",
+              type: TestPageTypeEnum.end,
+            ),
+          ],
         ),
         TestPageModel(
             title: "",
@@ -889,14 +892,17 @@ After the procedure, administration of the first dose the evening after ablation
 ● For patients undergoing AF catheter ablation who have been therapeutically anticoagulated with warfarin, dabigatran, rivaroxaban, apixaban, or edoxaban, performance of the ablation procedure without OAC interruption is recommended. (ESC/AF 2020, I A)
 ● Performing left atrial catheter ablation under uninterrupted anticoagulant treatment with VKA (target INR 2.0-2.5 if on VKAs) and uninterrupted NOAC therapy can be considered safe and effective in AF ablation and should likely be the preferred mode of anticoagulation for patients undergoing this procedure. (EHRA/NOAC/AF 2021)
 ● NOAC interruption might be considered 12 hours before ablation. (Shorter interruption period may be considered if High CHA2DS2VASc Score≥ 4). (EHRA/NOAC/AF 2021)
-● The last dose of once-daily based NOACs were recommended (rivaroxaban) or mandated (edoxaban) to be administered in the evening before the procedure whereas twice-daily dosed NOACs(apixaban, dabigatran) were administered in the morning of the procedure. (EHRA/NOAC/AF 2021)
-
-
-When to reinitiate DOAC following ablation?
-
-● NOAC intake can be resumed 3 - 5 hours after sheath removal if adequate hemostasis is established and pericardial effusion has been ruled out. (EHRA/NOAC/AF 2021)""",
+● The last dose of once-daily based NOACs were recommended (rivaroxaban) or mandated (edoxaban) to be administered in the evening before the procedure whereas twice-daily dosed NOACs(apixaban, dabigatran) were administered in the morning of the procedure. (EHRA/NOAC/AF 2021)""",
                 value: "DOAC",
-                type: TestPageTypeEnum.end,
+                type: TestPageTypeEnum.page,
+                pages: [
+                  TestPageModel(
+                    title:
+                        "● NOAC intake can be resumed 3 - 5 hours after sheath removal if adequate hemostasis is established and pericardial effusion has been ruled out. (EHRA/NOAC/AF 2021)",
+                    value: "When to reinitiate DOAC following ablation?",
+                    type: TestPageTypeEnum.end,
+                  ),
+                ],
               ),
             ],
           ),
@@ -1282,15 +1288,17 @@ suggest against routine use of pre-operative vitamin K. (CHEST 2022, Conditional
                         """● In patients receiving VKA therapy for a mechanical heart valve who require VKA interruption for an elective surgery/procedure, we suggest against heparin Bridging. (CHEST 2022, Conditional Recommendation, Very Low Certainty of Evidence).
 ● Patients with mechanical valves, and recent stroke/TIA, or other high-risk markers, were not included in most studies and may still benefit from bridging anticoagulation: in these scenarios, management should be individualized.
 ● In patients with AF on warfarin anticoagulation, who are undergoing surgeries or procedures for which they are holding warfarin, except in patients with mechanical valve or recent stroke or TIA, bridging anticoagulation with low-molecular-weight heparin should not be administered. (AHA/ACC/ACCP/HRS 2023 Harm, B-R)
-● For patients who are undergoing invasive procedures and have 1) a mechanical AVR and any thromboembolic risk factor, 2) an older-generation mechanical AVR, or 3) a mechanical mitral valve replacement, bridging anticoagulation therapy during the preoperative time interval when the INR is subtherapeutic is reasonable on an individualized basis, with the risks of bleeding weighed against the benefits of thromboembolism prevention. (ACC/AHA/VHD 2020, 2a C-LD)
-
-
-What is the therapeutic plan if patient with a mechanical valve prosthesis receiving VKA require immediate/ emergency noncardiac surgery or an invasive procedure?
-
-For patients with a mechanical valve prosthesis receiving VKA therapy who require immediate/emergency noncardiac surgery or an invasive procedure, administration of 4-factor prothrombin complex concentrate (or its activated form) is reasonable. (ACC/AHA/VHD 2020, 2a C-LD)""",
+● For patients who are undergoing invasive procedures and have 1) a mechanical AVR and any thromboembolic risk factor, 2) an older-generation mechanical AVR, or 3) a mechanical mitral valve replacement, bridging anticoagulation therapy during the preoperative time interval when the INR is subtherapeutic is reasonable on an individualized basis, with the risks of bleeding weighed against the benefits of thromboembolism prevention. (ACC/AHA/VHD 2020, 2a C-LD)""",
                     value:
                         "Is the patient receiving VKA therapy for a mechanical heart valve?",
-                    type: TestPageTypeEnum.end,
+                    type: TestPageTypeEnum.page,
+                    pages: [
+                      TestPageModel(
+                        title: "For patients with a mechanical valve prosthesis receiving VKA therapy who require immediate/emergency noncardiac surgery or an invasive procedure, administration of 4-factor prothrombin complex concentrate (or its activated form) is reasonable. (ACC/AHA/VHD 2020, 2a C-LD)",
+                        value: "What is the therapeutic plan if patient with a mechanical valve prosthesis receiving VKA require immediate/ emergency noncardiac surgery or an invasive procedure?",
+                        type: TestPageTypeEnum.end,
+                      ),
+                    ],
                   ),
                   TestPageModel(
                     title:

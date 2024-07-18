@@ -5,6 +5,7 @@ class AbbreviationsScreen extends StatelessWidget {
   AbbreviationsScreen({super.key});
 
   final List<String> medicalAbbreviations = [
+    "ACAFiB: Anticoagulant in Atrial Fibrillation",
     "AF: Atrial Fibrillation",
     "AFL: Atrial Flutter",
     "OACs: Oral Anti-Coagulants",
@@ -78,7 +79,9 @@ class AbbreviationsScreen extends StatelessWidget {
               child: Text(
                 "• ${medicalAbbreviations[i]}",
                 style: AppTextStyles.text3.apply(
-                    color: i % 2 == 0 ? AppColors.textColor1 : AppColors.textColor2),
+                    color: i % 2 == 0
+                        ? AppColors.textColor1
+                        : AppColors.textColor2),
               ),
             );
           }),

@@ -37,29 +37,49 @@ class Test2Screen extends StatelessWidget {
               itemCount: _controller.model.qa2.length,
               itemBuilder: (c, i) {
                 var item = _controller.model.qa2[i];
-                return Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      flex: 3,
-                      child: testButton(
-                        item.title,
-                        () => answer(item),
-                        textAlign: TextAlign.left,
-                        color: item.id == 9 ? AppColors.red : AppColors.primary,
-                      ),
-                    ),
-                    if (item.desc.isNotEmpty) ...[
-                      const SizedBox(width: 10),
-                      IconButton(
-                        icon: const Icon(Icons.help_outline),
-                        iconSize: 50,
-                        color: AppColors.primary,
+                if (item.id == 9) {
+                  return testListTile(
+                    ontap: () => answer(item),
+                    title: item.title,
+                    bgColor: AppColors.yellowBackground,
+                    textColor: AppColors.warning,
+                    trailing: const Icon(Icons.arrow_forward_ios,
+                        color: AppColors.warning),
+                  );
+                }
+                return testListTile(
+                    ontap: () => answer(item),
+                    title: item.title,
+                    trailing: IconButton(
                         onPressed: () => testMessage(item.desc, Get.back),
-                      ),
-                    ]
-                  ],
-                );
+                        icon: const Icon(
+                          Icons.help_outline,
+                          color: AppColors.textColor2,
+                          size: 35,
+                        )));
+                // return Row(
+                //   crossAxisAlignment: CrossAxisAlignment.start,
+                //   children: [
+                //     Expanded(
+                //       flex: 3,
+                //       child: testButton(
+                //         item.title,
+                //         () => answer(item),
+                //         textAlign: TextAlign.left,
+                //         color: AppColors.primary,
+                //       ),
+                //     ),
+                //     if (item.desc.isNotEmpty) ...[
+                //       const SizedBox(width: 10),
+                //       IconButton(
+                //         icon: const Icon(Icons.help_outline),
+                //         iconSize: 50,
+                //         color: AppColors.primary,
+                //         onPressed: () => testMessage(item.desc, Get.back),
+                //       ),
+                //     ]
+                //   ],
+                // );
               }),
         ],
       ),

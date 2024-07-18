@@ -507,15 +507,19 @@ List<DrugInteractionRowModel> drugInteractionData = [
     ],
     id: 10,
   ),
-  DrugInteractionRowModel("Age ≥ 80 years", [
-    DrugInteractionWithType(
-      6,
-      DrugInteractionEnum.purple,
-      desc: "110 mg BID",
-      calcType: DrugInteractionCalcType.ageMore,
-      value: 79,
-    ),
-  ]),
+  DrugInteractionRowModel(
+    "Age ≥ 80 years",
+    [
+      DrugInteractionWithType(
+        6,
+        DrugInteractionEnum.purple,
+        desc: "110 mg BID",
+        calcType: DrugInteractionCalcType.ageMore,
+        value: 79,
+      ),
+    ],
+    id: 80,
+  ),
   DrugInteractionRowModel(
     "Voriconazole",
     [

@@ -19,8 +19,10 @@ class PlateletCountScreen extends StatelessWidget {
         body: ListView(
           padding: AppConst.defaultPadding,
           children: [
-            testTitle(
-                "Platelet Count : …..   (Cell/ µL) (Normal range: 150000- 450000 Cell/µL) (ESC NOAC 2021)"),
+            Obx(() {
+              return testTitle(
+                  "Platelet Count : ${_controller.model.ulValue} (Cell/ µL) (Normal range: 150000 - 450000 Cell/µL) (ESC NOAC 2021)");
+            }),
             textField(
               autofocus: true,
               maxLength: 15,

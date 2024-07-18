@@ -24,7 +24,10 @@ class CHA2DS2Screen extends StatelessWidget {
         body: ListView(
           padding: AppConst.defaultPadding,
           children: [
-            testTitle(_controller.model.q3Title),
+            Padding(
+              padding: const EdgeInsets.all(5),
+              child: testTitle(_controller.model.q3Title),
+            ),
             Obx(() {
               return ListView.builder(
                   shrinkWrap: true,
@@ -82,9 +85,8 @@ class CHA2DS2Screen extends StatelessWidget {
               },
             ),
             Obx(() {
-              return Text("Point: ${_controller.model.q3Point}");
+              return testBadge(text: "Point: ${_controller.model.q3Point}");
             }),
-            const SizedBox(height: 15),
             testButton("Done", () {
               if (_controller.age == 0) {
                 ShowMSG.error("Error", "Please Enter Age.");

@@ -94,13 +94,14 @@ class AppColors {
   static const Color textColor4 = Color(0xff48ff91);
   static const Color buttonText = Color(0xff102117);
   static const Color buttonBackground = Color(0xff48ff91);
+  static const Color buttonBackground2 = Color(0xff272727);
   static const Color background = Color(0xff1b1b1b);
   static const Color orange = Color.fromRGBO(255, 168, 37, 1.0);
   static const Color green = Color(0xff05A95C);
   static const Color green3 = Color(0xff77eb74);
   static const Color shadow =
       Color.fromRGBO(164, 189, 214, 0.30196078431372547);
-  static const Color warning = Color(0xffFBA63C);
+  static const Color warning = Color(0xfff1b90c);
   static const Color success = Color(0xff46BD84);
   static const Color blue = Color.fromARGB(255, 33, 97, 216);
   static const Color red = Color(0xffea0606);
@@ -108,7 +109,9 @@ class AppColors {
   static const Color green2 = Color(0xff0d4b28);
   static const purple = Color.fromARGB(255, 169, 14, 216);
   static const yellow = Color.fromARGB(255, 221, 241, 106);
+  static const yellowBackground = Color(0xff262219);
   static const blue2 = Color.fromARGB(255, 69, 207, 241);
+
 }
 
 class AppThemes {

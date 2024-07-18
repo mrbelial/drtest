@@ -58,14 +58,7 @@ class ChildPughScreen extends StatelessWidget {
           Obx(() {
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 15),
-              child: badge(
-                color: AppColors.warning,
-                child: Text(
-                  _controller.calcCP().title,
-                  style:
-                      AppTextStyles.text1.copyWith(color: AppColors.black),
-                ),
-              ),
+              child: testBadge(text: _controller.calcCP().title),
             );
           }),
           testButton("Done", () {

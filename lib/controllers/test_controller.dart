@@ -147,6 +147,16 @@ Patients with AF at intermediate annual risk of thromboembolic events by risk sc
         msg = "5 to 9 points: Insufficient data";
     }
 
+    if (model.hbPoint <= 2) {
+      msg +=
+          "\nConsider bleeding risk assessment every 6 months. (AHA/ACC/ACCP/HRS 2023)";
+    }
+
+    if (model.hbPoint >= 3) {
+      msg +=
+          "\nConsider bleeding risk assessment every 3 months. (AHA/ACC/ACCP/HRS 2023)";
+    }
+
     var desc =
         """In patients who are deemed at high risk for stroke, bleeding risk scores should not be used in isolation to determine eligibility for oral anticoagulation but instead to identify and modify bleeding risk factors and to inform medical decision-making. (AHA/ACC/ACCP/HRS AF 2023, No benefit B-NR)
 Estimated bleeding risk, in the absence of absolute contraindications to OAC, should not in itself guide treatment decisions to use OAC for stroke prevention. (ESC 2020 AF III A).
@@ -170,6 +180,23 @@ Patients at high bleeding risk (eg HAS-BLED ≥3) should have their modifiable b
     model.cgAnswer = double.tryParse(v.toStringAsFixed(2)) ?? 0;
 
     return IDTitleModel(0, "$v (mL/min)");
+  }
+
+  String cgDesc() {
+    var msg = "Creatinine Clearance: ${model.cgAnswer} (mL/min)\n";
+    if (model.cgAnswer < 30) {
+      msg +=
+          "● Consider renal function assessment every 1-2 months.(AHA/ACC/ACCP/HRS 2023)";
+    }
+    if (model.cgAnswer >= 30 && model.cgAnswer <= 59) {
+      msg +=
+          "● Consider renal function assessment every 3 months. (AHA/ACC/ACCP/HRS 2023)";
+    }
+    if (model.cgAnswer >= 60) {
+      msg +=
+          "● Consider renal function assessment every 6 months. (AHA/ACC/ACCP/HRS 2023)";
+    }
+    return msg;
   }
 
   //Child Pugh Calculator
@@ -262,7 +289,7 @@ Patients at high bleeding risk (eg HAS-BLED ≥3) should have their modifiable b
     if (model.bmi < 17.5 || model.bmi > 40) {
       model.pages.pages.firstWhere((x) => x.id == 3).isMarked = true;
     }
-    if (model.ulValue > 0 && model.ulValue <= 50000) {
+    if (model.ulValue > 0 && model.ulValue < 50000) {
       model.pages.pages.firstWhere((x) => x.id == 4).isMarked = true;
     }
     if (model.q2Answer == 2) {
@@ -534,7 +561,7 @@ Patients at high bleeding risk (eg HAS-BLED ≥3) should have their modifiable b
             }
             break;
           case DrugInteractionCalcType.crcfMore:
-            if (model.age > item.value) {
+            if (model.cgAnswer > item.value) {
               drug.isChecked = true;
             }
             break;
@@ -544,7 +571,7 @@ Patients at high bleeding risk (eg HAS-BLED ≥3) should have their modifiable b
             }
             break;
           case DrugInteractionCalcType.weightMore:
-            if (model.age > item.value) {
+            if (model.weight > item.value) {
               drug.isChecked = true;
             }
             break;
@@ -847,7 +874,7 @@ Repeat assay 6 hours after restarting the infusion.""",
         CheckBoxModel(
           "Age ≥ 80 years",
           0,
-          model.age >= 80,
+          model.age >= 80 || isSelectedDrugInterActions([80]),
           desc: "110 mg twice daily. (AF/ESC 2020), (ESC/ACS 2023 IIa B)",
         ),
         CheckBoxModel(
@@ -929,7 +956,7 @@ Repeat assay 6 hours after restarting the infusion.""",
         CheckBoxModel(
           "Age ≥ 80 years",
           0,
-          model.age >= 80,
+          model.age >= 80 || isSelectedDrugInterActions([80]),
           desc: "5 mg twice daily.\n(AF ESC 2020)",
           id: 1,
         ),
@@ -1015,16 +1042,13 @@ Repeat assay 6 hours after restarting the infusion.""",
           desc: "10 mg once daily.",
         ),
         CheckBoxModel(
-          """CrCl ≤ 50 mL/min based on the Cockcroft-Gault equation or on dialysis?
-(AHA ACC ACCP HRS 2023)
+          """•	CrCl 50 ≤ mL/min based on the Cockcroft-Gault equation or on dialysis? (AHA/ACC/ACCP/ HRS 2023)
 OR
-Post ACS / PCI receiving triple therapy?
-(EHRA NOAC AF 2021)
+•	Post ACS / PCI receiving concurrent single antiplatelet therapy or dual antiplatelet therapy? (EHRA/NOAC AF 2021), (ESC/ACS 2023 IIa B) 
 OR
-Patients with CHA2DS2VASc risk score of 2 or greater who have undergone PCI with stenting for ACS receiving concurrent P2Y12 inhibitors  (clopidogrel) 
-(AHA ACC HRS 2019 Iia B-R)
-High bleeding risk (HAS-BLED >_3) during concomitant single or DAPT ?
-(AF ESC 2020 Iia B)""",
+•	Patients with a CHA2DS2VASc risk score of 2 or greater who have undergone PCI with stenting for ACS receiving concurrent P2Y12 inhibitors. (AHA/ACC/ HRS 2019 IIa B-R)
+OR
+•	High bleeding risk (HAS-BLED >_3) during concomitant single or DAPT? (AF/ESC 2020 IIa B)""",
           0,
           model.cgAnswer <= 50,
           desc: "15 mg once daily with food.",

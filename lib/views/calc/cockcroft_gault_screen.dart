@@ -99,14 +99,7 @@ class CockcroftGaultScreen extends StatelessWidget {
           Obx(() {
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 15),
-              child: badge(
-                color: AppColors.warning,
-                child: Text(
-                  "Creatinine Clearance: ${_controller.model.cgAnswer} (mL/min)",
-                  style:
-                      AppTextStyles.text1.copyWith(color: AppColors.black),
-                ),
-              ),
+              child: testBadge(text: _controller.cgDesc()),
             );
           }),
           testButton("Done", () {
@@ -128,7 +121,9 @@ class CockcroftGaultScreen extends StatelessWidget {
               return;
             }
 
-            testMessage("Creatinine Clearance: ${_controller.model.cgAnswer} (mL/min)", () {
+            testMessage(
+                "Creatinine Clearance: ${_controller.model.cgAnswer} (mL/min)",
+                () {
               Get.back();
               Get.toNamed("/child_pugh");
             });

@@ -44,14 +44,7 @@ class HasBledScreen extends StatelessWidget {
                 }),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 15),
-              child: badge(
-                color: AppColors.warning,
-                child: Text(
-                  "Point: ${_controller.calcHB().title}",
-                  style:
-                      AppTextStyles.text1.copyWith(color: AppColors.black),
-                ),
-              ),
+              child: testBadge(text: "Point: ${_controller.calcHB().title}"),
             ),
             testButton("Done", () {
               var result = _controller.calcHB();

@@ -58,7 +58,7 @@ class TestModel {
         0,
         "Moderate to severe mitral stenosis or Rheumatic MS (AHA/ACC/ACCP/HRS AF 2023)",
         """● In patients with mitral stenosis of moderate or greater severity and history of AF, long-term anticoagulation with warfarin is recommended over DOACs, independent of the CHA2DS2- VASc score to prevent cardiovascular events, including stroke or death. (AHA/ACC/ACCP/HRS AF 2023, 1 B-R)
- ● For patients with AF and rheumatic MS, long-term VKA oral anticoagulation is recommended. (ACC/AHA/VHD 2020, 1 C-EO)"""),
+● For patients with AF and rheumatic MS, long-term VKA oral anticoagulation is recommended. (ACC/AHA/VHD 2020, 1 C-EO)"""),
     IDTitleModel(
         1,
         "Mechanical heart valve implementation (ESC VHD 2021), (ESC VHD 2020)",
@@ -293,15 +293,19 @@ Moderate or severe forms of congenital heart disease including:
       """Assess Child-Pugh score in patients with liver disease. (EHRA/NOAC AF 2021)""";
   String cpAnswer() {
     if (cpPoint < 5) {
-      return "point: $cpPoint";
+      return """point: $cpPoint
+● Consider liver function assessment every 12 months. (AHA/ACC/ACCP/HRS 2023)""";
     }
     if (cpPoint < 7) {
-      return "5 to 6 points: Child class A";
+      return """5 to 6 points: Child class A
+● Consider renal function assessment every 1-2 months. (AHA/ACC/ACCP/HRS 2023)""";
     }
     if (cpPoint < 10) {
-      return "7 to 9 points: Child class B";
+      return """7 to 9 points: Child class B
+● Consider liver function assessment every 3 months. (AHA/ACC/ACCP/HRS 2023)""";
     }
-    return "10 to 15 points: Child class C";
+    return """10 to 15 points: Child class C
+● Consider liver function assessment every 6 months. (AHA/ACC/ACCP/HRS 2023)""";
   }
 
   List<RadioGroupModel> cpQuestions = [
@@ -935,7 +939,7 @@ CrCl 15 to 30 mL/min [dabigatran], CrCl ≤50 mL/min [rivaroxaban], or CrCl 15 t
 //           TestPageModel(
 //             title:
 //                 """● For patients with AF receiving DOACs, optimal management of drug interactions is recommended for those receiving concomitant therapy with interacting drugs, especially CYP3A4 and/or p-glycoprotein inhibitors or inducers. (AHA/ACC/ACCP/HRS/AF 2023, 1 C-LD)
-// ● Warfarin remains the preferred agent in patients with AF receiving CYP3A4/p-glycoprotein–inducing agents. (AHA/ACC/ACCP/HRS 2023)""",
+//● Warfarin remains the preferred agent in patients with AF receiving CYP3A4/p-glycoprotein–inducing agents. (AHA/ACC/ACCP/HRS 2023)""",
 //             value:
 //                 "Is there contraindication for DOAC due to drug-drug interactions?",
 //             type: TestPageTypeEnum.page,
@@ -965,7 +969,7 @@ CrCl 15 to 30 mL/min [dabigatran], CrCl ≤50 mL/min [rivaroxaban], or CrCl 15 t
 //               ),
 //             ],
 //           ),
-     
+
           TestPageModel(
             title: "",
             value: "Hypertrophic Cardiomyopathy",
@@ -1028,7 +1032,6 @@ CrCl 15 to 30 mL/min [dabigatran], CrCl ≤50 mL/min [rivaroxaban], or CrCl 15 t
 enum TestPageTypeEnum { page, drug, message, result, toPage, end }
 
 class TestPageModel {
-
   TestPageModel({
     required this.title,
     required this.value,

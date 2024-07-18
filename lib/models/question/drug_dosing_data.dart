@@ -168,9 +168,9 @@ Baseline platelet count and a repeat platelet count within 24 to 48 hours is rec
 
 //   var extra1 = DrugDosingParams(
 //     desc: """Any of the following scenarios present?
-// ● Medical or obstetric patients.
-// ● Major surgery or major trauma patients.
-// ● History of receiving UFH  in the past 100 days.""",
+//● Medical or obstetric patients.
+//● Major surgery or major trauma patients.
+//● History of receiving UFH  in the past 100 days.""",
 //     params: [
 //       DrugDosingParams(
 //         msg:
@@ -622,18 +622,25 @@ concurrent low risk of ICH?
       drugId: 11,
       drugName: "Andexanet alfa",
       param: DrugDosingParams(
-          desc: """
-Which of the following clinical scenario exist regarding the last dose of DOAC?
-
-1- Apixaban ≤ 5 mg OR Rivaroxaban ≤ 10 mg OR Edoxaban ≤ 30 mg regardless of the timing of the last dose:
-● Consider Low-dose regimen: 400-mg bolus at a target rate of 30 mg/min followed by 4 mg/min for up to 120 min. (AHA/ACC/ACCP HRS 2023), (EHRA/NOAC AF 2021)
-
-2- Apixaban > 5 mg  OR Rivaroxaban > 10 mg OR  Edoxaban > 30 mg and  last dose taken < 8 hours:
-● Consider High-dose regimen: 800-mg bolus at a target rate of 30 mg/min followed by 8 mg/min for up to 120 min. (AHA/ACC/ACCP HRS 2023), (EHRA/NOAC AF 2021)
-
-3- Apixaban > 5 mg  OR Rivaroxaban > 10 mg OR  Edoxaban > 30 mg and  last dose taken ≥ 8 hours:
-● Consider Low-dose regimen: 400-mg bolus at a target rate of 30 mg/min followed by 4 mg/min for up to 120 min. (AHA/ACC/ACCP HRS 2023), (EHRA/NOAC AF 2021)""",
+          desc:
+              """Which of the following clinical scenario exist regarding the last dose of DOAC?""",
           params: [
+            DrugDosingParams(
+                buttonTitle:
+                    "Apixaban ≤ 5 mg OR Rivaroxaban ≤ 10 mg OR Edoxaban ≤ 30 mg regardless of the timing of the last dose",
+                msg:
+                    "● Consider Low-dose regimen: 400-mg bolus at a target rate of 30 mg/min followed by 4 mg/min for up to 120 min. (AHA/ACC/ACCP HRS 2023), (EHRA/NOAC AF 2021)"),
+            DrugDosingParams(
+                buttonTitle:
+                    "Apixaban > 5 mg  OR Rivaroxaban > 10 mg OR  Edoxaban > 30 mg and  last dose taken < 8 hours",
+                msg:
+                    "● Consider High-dose regimen: 800-mg bolus at a target rate of 30 mg/min followed by 8 mg/min for up to 120 min. (AHA/ACC/ACCP HRS 2023), (EHRA/NOAC AF 2021)"),
+            DrugDosingParams(
+              buttonTitle:
+                  "Apixaban > 5 mg  OR Rivaroxaban > 10 mg OR  Edoxaban > 30 mg and  last dose taken ≥ 8 hours",
+              msg:
+                  "● Consider Low-dose regimen: 400-mg bolus at a target rate of 30 mg/min followed by 4 mg/min for up to 120 min. (AHA/ACC/ACCP HRS 2023), (EHRA/NOAC AF 2021)",
+            ),
             DrugDosingParams(
                 buttonTitle:
                     "Which monitoring should be considered after idarucizumab administration?",
