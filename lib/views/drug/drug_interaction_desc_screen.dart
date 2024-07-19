@@ -45,7 +45,7 @@ Caution is required, especially in case of polypharmacy or in the presence of â‰
             """Purple
 Lower dose is recommended.
             """,
-            style: AppTextStyles.text2.apply(color: AppColors.blue2),
+            style: AppTextStyles.text2.apply(color: AppColors.purple),
           ),
         ],
       ),

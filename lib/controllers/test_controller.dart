@@ -158,14 +158,15 @@ Patients with AF at intermediate annual risk of thromboembolic events by risk sc
     }
 
     var desc =
-        """In patients who are deemed at high risk for stroke, bleeding risk scores should not be used in isolation to determine eligibility for oral anticoagulation but instead to identify and modify bleeding risk factors and to inform medical decision-making. (AHA/ACC/ACCP/HRS AF 2023, No benefit B-NR)
-Estimated bleeding risk, in the absence of absolute contraindications to OAC, should not in itself guide treatment decisions to use OAC for stroke prevention. (ESC 2020 AF III A).
-Concomitant regular administration of antiplatelet drugs or non-steroidal anti-inflammatory drug (NSAID) should be avoided in anticoagulated patients. (ECS 2020 AF)
-Bleeding risk is dynamic, and attention to the change in bleeding risk profile is a stronger predictor of major bleeding events. (ESC 2020 AF)
-Stroke and bleeding risk reassessment at periodic intervals is recommended to inform treatment decisions (e.g. initiation of OAC in patients no longer at low risk of stroke) and address potentially modifiable bleeding risk factors. (ESC 2020 AF, I)
-Consider modifiable bleeding risk factors including Hypertension/elevated SBP, Concomitant antiplatelet/NSAID, Excessive alcohol intake, Non-adherence to OAC. (AF ESC 2020)
-Assessment of risk factors specific for bleeding may suggest interventions to reduce bleeding risk, such as discontinuing antiplatelet medications or nonsteroidal anti-inflammatory medications or the use of LAAO device. (AHA ACC ACCP HRS 2023)
-Patients at high bleeding risk (eg HAS-BLED ≥3) should have their modifiable bleeding risk factors identified and addressed,1, 44 and should be scheduled for an earlier and more frequent clinical follow-up. (EHRA NOAC AF 2021)""";
+        """• In patients who are deemed at high risk for stroke, bleeding risk scores should not be used in isolation to determine eligibility for oral anticoagulation but instead to identify and modify bleeding risk factors and to inform medical decision-making. (AHA/ACC/ACCP/HRS AF 2023, No benefit B-NR)
+• Estimated bleeding risk, in the absence of absolute contraindications to OAC, should not in itself guide treatment decisions to use OAC for stroke prevention. (ESC/AF 2020 III A)
+• Concomitant regular administration of antiplatelet drugs or non-steroidal anti-inflammatory drugs (NSAID) should be avoided in anticoagulated patients. (ECS/AF 2020)
+• Bleeding risk is dynamic, and attention to the change in bleeding risk profile is a stronger predictor of major bleeding events. (ESC/ AF 2020)
+• Stroke and bleeding risk reassessment at periodic intervals is recommended to inform treatment decisions (e.g. initiation of OAC in patients no longer at low risk of stroke) and address potentially modifiable bleeding risk factors. (ESC/ AF 2020, I)
+• Consider modifiable bleeding risk factors including Hypertension/elevated SBP, Concomitant antiplatelet/NSAID, Excessive alcohol intake, and Non-adherence to OAC. (ESC/ AF 2020)
+• Assessment of risk factors specific for bleeding may suggest interventions to reduce bleeding risk, such as discontinuing antiplatelet medications or nonsteroidal anti-inflammatory medications or the use of an LAAO device. (AHA/ACC/ACCP/HRS 2023)
+• Patients at high bleeding risk (e.g. HAS-BLED ≥3) should have their modifiable bleeding risk factors identified and addressed and should be scheduled for an earlier and more frequent clinical follow-up. (EHRA/NOAC/AF 2021)
+""";
 
     return IDTitleModel(point, msg, desc);
   }
@@ -303,6 +304,12 @@ Patients at high bleeding risk (eg HAS-BLED ≥3) should have their modifiable b
     }
     if (model.q2Answer == 10) {
       model.pages.pages.firstWhere((x) => x.id == 18).isMarked = true;
+    }
+    if (model.q2Answer == 0) {
+      model.pages.pages.firstWhere((x) => x.id == 11).isMarked = true;
+    }
+    if (model.q2Answer == 1) {
+      model.pages.pages.firstWhere((x) => x.id == 11).isMarked = true;
     }
   }
 
@@ -787,7 +794,7 @@ Repeat assay 6 hours after restarting the infusion.""",
 
     if (model.ulValue >= 25000 && model.ulValue <= 50000) {
       list.add(
-          "0.75 mg/kg (${model.perWeight(.75)} mg) once daily or 0.5 mg/kg (${model.perWeight(.5)} mg) SC twice daily. (UpToDate)");
+          "platelet count:\n0.75 mg/kg (${model.perWeight(.75)} mg) once daily or 0.5 mg/kg (${model.perWeight(.5)} mg) SC twice daily. (UpToDate)");
     }
 
     if (list.isEmpty) {

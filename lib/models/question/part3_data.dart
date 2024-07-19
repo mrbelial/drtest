@@ -113,6 +113,7 @@ TestPageModel part3Data(TestModel model) {
 ● Reconsider concomitant medication. (EHRA/NOAC AF 2021)""",
               value:
                   "Management of Minor/ Non-life -threatening bleeding while on anticoagulant",
+              appbarTitle: "Management of Minor Bleeding while on Warfarin",
               type: TestPageTypeEnum.page,
               pages: [
                 TestPageModel(
@@ -136,6 +137,7 @@ TestPageModel part3Data(TestModel model) {
 ● Consider FFP. (ESC/AF 2020)""",
             value:
                 "● Management of Major/life -threatening bleeding\nOR\n●  Need to undergo urgent surgery",
+            appbarTitle: "Management of Major Bleeding while on Warfarin",
             type: TestPageTypeEnum.page,
             pages: [
               f4Dosing,
@@ -169,6 +171,7 @@ TestPageModel part3Data(TestModel model) {
 ● Reconsider concomitant medication. (EHRA/NOAC AF 2021)""",
           value:
               "Management of Minor/ Non-life -threatening bleeding while on anticoagulant",
+          appbarTitle: "Management of Minor Bleeding while on Warfarin",
           type: TestPageTypeEnum.page,
           pages: [
             TestPageModel(
@@ -185,6 +188,7 @@ TestPageModel part3Data(TestModel model) {
             value: """● Management of Major/life -threatening bleeding
 OR
 ●  Need to undergo urgent surgery""",
+            appbarTitle: "Management of Major Bleeding while on Warfarin",
             type: TestPageTypeEnum.page,
             pages: [
               TestPageModel(
@@ -539,6 +543,7 @@ OR
             """In patients with AF who are overweight or obese (with body mass index [BMI] >27 kg/m2), weight loss is recommended, with an ideal target of at least 10% weight loss to reduce AF symptoms, burden, recurrence, and progression to persistent. (AHA/ACC/ACCP/HRS 2023 I B-R)""",
         value:
             "What is the recommendation for overweight or obese patients with AF?",
+        appbarTitle: "Recommendations for Obesity",
         type: TestPageTypeEnum.end,
         isMarked: model.bmi > 27,
       ),
@@ -547,6 +552,7 @@ OR
             """● In individuals with AF, moderate-to-vigorous exercise training to a target of 210 minutes per week is recommended to reduce AF symptoms and burden, increase maintenance of sinus rhythm, increase functional capacity, and improve QOL. (AHA/ACC/ACCP/HRS 2023 I B-R)""",
         value:
             "What is the recommendation regarding exercise in patients with AF?",
+        appbarTitle: "Recommendations for Exercise",
         type: TestPageTypeEnum.end,
       ),
       TestPageModel(
@@ -555,6 +561,7 @@ OR
 ● Cigarette smoking was associated with less time in therapeutic range for patients on warfarin.""",
         value:
             "What is the recommendation regarding smoking cession in patients with AF?",
+        appbarTitle: "Recommendations for Smoking cession",
         type: TestPageTypeEnum.end,
       ),
       TestPageModel(
@@ -562,6 +569,7 @@ OR
             """● Patients with AF seeking a rhythm-control strategy should minimize or eliminate alcohol consumption to reduce AF recurrence and burden. (AHA/ACC/ACCP/HRS 2023 I B-R)""",
         value:
             "What is the recommendation regarding alcohol consumption in patients with AF?",
+        appbarTitle: "Recommendations for Alcohol consumption",
         type: TestPageTypeEnum.end,
       ),
       TestPageModel(
@@ -569,6 +577,7 @@ OR
             """● For patients with AF, recommending caffeine abstention to prevent AF episodes is of no benefit, although it may reduce symptoms in patients who report caffeine triggers or worsens AF symptoms. (AHA/ACC/ACCP/HRS 2023 No Benefit B-NR)""",
         value:
             "What is the recommendation regarding caffeine consumption in patients with AF?",
+        appbarTitle: "Recommendations for Caffeine consumption",
         type: TestPageTypeEnum.end,
       ),
       TestPageModel(
@@ -576,6 +585,7 @@ OR
             """● For patients with AF and hypertension, optimal BP control is recommended to reduce AF recurrence and AF-related cardiovascular events. (AHA/ACC/ACCP/HRS 2023 I B-NR)""",
         value:
             "What is the recommendation regarding the management of hypertension in patients with AF?",
+        appbarTitle: "Recommendations for Hypertension management",
         type: TestPageTypeEnum.end,
       ),
       TestPageModel(
@@ -583,6 +593,7 @@ OR
             """● Among patients with AF, it may be reasonable to screen for obstructive sleep apnea, given its high prevalence in patients with AF, although the role of treatment of sleep-disordered breathing (SDB) to maintain sinus rhythm is uncertain. (AHA/ACC/ACCP/HRS 2023 2b B-NR)""",
         value:
             "What is the recommendation regarding the obstructive sleep apnea  in patients with AF?",
+        appbarTitle: "Recommendations for OSA",
         type: TestPageTypeEnum.end,
       ),
     ],
@@ -727,6 +738,7 @@ OR
 ● In most patients with AF who take oral anticoagulation and undergo PCI, early discontinuation of aspirin(1-4 wk) and continuation of dual antithrombotic therapy with OAC and a P2Y12 inhibitor is preferred over triple therapy (OAC, P2Y12 inhibitor, and aspirin) to reduce the risk of clinically relevant bleeding. (AHA/ACC/ACCP/HRS 2023 1, A)""",
         value:
             "What is the chronic antithrombotic plan in AF patient with an indication for anticoagulant presenting with ACS?",
+        appbarTitle: "Chronic Antithrombotic therapy for AF + ACS",
         type: TestPageTypeEnum.page,
         pages: [
           TestPageModel(
@@ -747,6 +759,7 @@ OR
 ● History of stent thrombosis on antiplatelet treatment""",
             value:
                 "Which factors favors long term Dual antiplatelet therapy (12 months) or Triple therapy (1 month)?",
+            appbarTitle: "Long term DAPT",
             type: TestPageTypeEnum.end,
           ),
           TestPageModel(
@@ -778,6 +791,7 @@ Minor criteria: (ESC ACS 2023)
 ● Any ischemic stroke at any time not meeting the major criterion.""",
             value:
                 "Which factors favors short term Dual antiplatelet therapy (6 months) or Triple therapy (1 week)?",
+            appbarTitle: "Short term DAPT",
             type: TestPageTypeEnum.end,
           ),
         ],
@@ -793,6 +807,7 @@ Minor criteria: (ESC ACS 2023)
 ● Perform PCI without interruption of VKAs or NOACs. (ESC/ACS 2023)""",
         value:
             "What is the antithrombotic plan during PCI in AF patient presenting with ACS?",
+        appbarTitle: "Antithrombotic during PCI",
         type: TestPageTypeEnum.page,
         pages: [
           TestPageModel(
@@ -874,6 +889,7 @@ Minor criteria: (ESC ACS 2023)
             title: "",
             value:
                 "Is there a need for anticoagulant interruption before catheter ablation?",
+            appbarTitle: "Anticoagulant interruption before Ablation",
             type: TestPageTypeEnum.page,
             pages: [
               TestPageModel(
@@ -910,6 +926,7 @@ After the procedure, administration of the first dose the evening after ablation
             title: "",
             value:
                 "What is the duration of anticoagulant therapy post catheter ablation?",
+            appbarTitle: "Anticoagulant post Ablation",
             type: TestPageTypeEnum.page,
             pages: [
               TestPageModel(
@@ -978,6 +995,7 @@ After the procedure, administration of the first dose the evening after ablation
             """● In patients with AF in whom cardioversion is deferred due to LAA thrombus detected on precardioversion imaging, therapeutic anticoagulation should be instituted for at least 3 to 6 weeks, after which imaging should be repeated before cardioversion. (AHA/ACC/ACCP/HRS 2023 1, C-LD)""",
         value:
             "What is the antithrombotic plan when LAA thrombus detected on pre-cardioversion imaging?",
+        appbarTitle: "LAA thrombosis on imaging",
         type: TestPageTypeEnum.end,
       ),
     ],
@@ -993,6 +1011,7 @@ After the procedure, administration of the first dose the evening after ablation
             """● In AF patients with an ischemic stroke or TIA, long-term secondary prevention of stroke using OAC is recommended if there is nostrict contraindication to OAC use, with a preference for NOACs over VKAs in NOAC-eligible patients. (ESC AF 2020 I A)""",
         value:
             "What is the antithrombotic plan in patients with AF following Ischemic stroke or TIA?",
+        appbarTitle: "Antithrombotic plan",
         type: TestPageTypeEnum.end,
       ),
       TestPageModel(
@@ -1000,12 +1019,14 @@ After the procedure, administration of the first dose the evening after ablation
             """● In AF patients presenting with acute ischemic stroke, very early anticoagulation (<48 h) using UFH, LMWH, or VKAs is not recommended. (ESC AF 2020 III B)""",
         value:
             "When to reinitiate anticoagulant in patients with AF receiving UFH, LMWH or VKA following Ischemic stroke or TIA?",
+        appbarTitle: "Anticoagulant re-initiation",
         type: TestPageTypeEnum.end,
       ),
       TestPageModel(
         title: "",
         value:
             "When to reinitiate anticoagulant in patients with AF receiving DOAC following Ischemic stroke or TIA?",
+        appbarTitle: "DOAC re-initiation",
         type: TestPageTypeEnum.page,
         pages: [
           TestPageModel(
@@ -1294,8 +1315,10 @@ suggest against routine use of pre-operative vitamin K. (CHEST 2022, Conditional
                     type: TestPageTypeEnum.page,
                     pages: [
                       TestPageModel(
-                        title: "For patients with a mechanical valve prosthesis receiving VKA therapy who require immediate/emergency noncardiac surgery or an invasive procedure, administration of 4-factor prothrombin complex concentrate (or its activated form) is reasonable. (ACC/AHA/VHD 2020, 2a C-LD)",
-                        value: "What is the therapeutic plan if patient with a mechanical valve prosthesis receiving VKA require immediate/ emergency noncardiac surgery or an invasive procedure?",
+                        title:
+                            "For patients with a mechanical valve prosthesis receiving VKA therapy who require immediate/emergency noncardiac surgery or an invasive procedure, administration of 4-factor prothrombin complex concentrate (or its activated form) is reasonable. (ACC/AHA/VHD 2020, 2a C-LD)",
+                        value:
+                            "What is the therapeutic plan if patient with a mechanical valve prosthesis receiving VKA require immediate/ emergency noncardiac surgery or an invasive procedure?",
                         type: TestPageTypeEnum.end,
                       ),
                     ],

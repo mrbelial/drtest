@@ -192,7 +192,8 @@ Baseline platelet count and a repeat platelet count within 24 to 48 hours is rec
 //     ],
 //   );
 
-  var extra6 = DrugDosingParams(params: [
+  var extra6 =
+      DrugDosingParams(title: "Maintenance target INR not reached?", params: [
     DrugDosingParams(
         buttonTitle: "INR still not in range?",
         msg:
@@ -204,46 +205,54 @@ Baseline platelet count and a repeat platelet count within 24 to 48 hours is rec
   ]);
 
   var warfarinMaintenanceDosing = DrugDosingParams(
+    title: "Warfarin maintenance dose monitoring (Target INR= 2-3)",
     desc: "What is the INR level?",
     params: [
       DrugDosingParams(
           buttonTitle: "< 1.5",
           msg:
               "Give extra one- time daily dose and increase weekly dose by 10-20 %.",
+          title: extra6.title,
           params: extra6.params),
       DrugDosingParams(
           buttonTitle: "1.5-1.9",
           msg:
               "Increase weekly dose by 5- 15 %.\n(may give extra one -time daily dose)",
+          title: extra6.title,
           params: extra6.params),
       DrugDosingParams(
           buttonTitle: "2.0-3.0",
           msg: "Maintain current dose.",
+          title: extra6.title,
           params: extra6.params),
       DrugDosingParams(
           buttonTitle: "3.1-4.0",
           msg: "Hold up to one daily dose and decrease weekly dose by 5-20%.",
+          title: extra6.title,
           params: extra6.params),
       DrugDosingParams(
           buttonTitle: "4.1-5",
           msg: "Hold up to two daily dose and decrease weekly dose by 10-20%.",
+          title: extra6.title,
           params: extra6.params),
       DrugDosingParams(
           buttonTitle: "≥ 5",
           msg: "Hold until INR is 2-3, and decrease daily dose by 10-20%.",
+          title: extra6.title,
           params: extra6.params),
     ],
   );
 
-  var extra5 = DrugDosingParams(params: [
+  var extra5 =
+      DrugDosingParams(title: "Initial target INR not reached?", params: [
     DrugDosingParams(
-      title: "Initial target INR not reached?",
+      title: "",
       buttonTitle: "What is the maintenance dose?",
       desc: warfarinMaintenanceDosing.desc,
       params: warfarinMaintenanceDosing.params,
     ),
     DrugDosingParams(
-        title: "Maintenance target INR not reached?",
+        title: "",
         buttonTitle: "INR still not in range?",
         msg:
             """● Assessment of medication adherence, intercurrent illness, new or recently adjusted medications, dietary changes, and alcohol intake.
@@ -658,7 +667,7 @@ concurrent low risk of ICH?
   list.add(
     DrugDosingModel(
       drugId: 12,
-      drugName: "Vitamin K dosing",
+      drugName: "FFP Dosing",
       param: DrugDosingParams(
           desc:
               """•	FFP may be given if no PCC is available (initial dose 15 to 30 mL/kg), or if the patient is receiving massive transfusions for severe ongoing bleeding. Doses of FFP required to replace coagulation factors often involve multiple units of FFP, which must be thawed and may take hours to administer, with risks of volume overload and transfusion reactions. (UpToDate)

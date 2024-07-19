@@ -169,9 +169,9 @@ Moderate or severe forms of congenital heart disease including:
   //Has_Bled
   int hbPoint = 0;
   String hbDesc =
-      """● For a formal risk-score-based assessment of bleeding risk, the HAS-BLED score should be considered to help address modifiable bleeding risk factors, and to identify patients at high risk of bleeding (HAS-BLED score >_3) for early and more frequent clinical review and follow-up. (AF/ESC 2020 IIa B)
+      """● For a formal risk-score-based assessment of bleeding risk, the HAS-BLED score should be considered to help address modifiable bleeding risk factors and to identify patients at high risk of bleeding (HAS-BLED score >_3) for early and more frequent clinical review and follow-up. (ESC/AF 2020 IIa B)
 ● Patients with AF should be evaluated for factors that specifically indicate a higher risk of bleeding, such as previous bleeding and use of drugs that increase bleeding risk, in order to identify possible interventions to prevent bleeding on anticoagulation. (AHA/ACC/ACCP/HRS 2023)
-● Reevaluation of the need for the choice of anticoagulant therapy at periodic intervals is recommended to reassess stroke and bleeding risks. (AHA/ACC/HRS 2019, I C)""";
+● Reevaluation of the need for and choice of anticoagulant therapy at periodic intervals is recommended to reassess stroke and bleeding risks. (AHA/ACC/HRS 2019, I C)""";
   List<CheckBoxModel> hbAnswer = [
     CheckBoxModel(
         "Uncontrolled hypertension (SBP >160 mmHg) [1 point]", 1, false),
@@ -667,6 +667,7 @@ CrCl 15 to 30 mL/min [dabigatran], CrCl ≤50 mL/min [rivaroxaban], or CrCl 15 t
                     value:
                         " Mechanical Heart Valves/ Rheumatic Mitral Stenosis ",
                     type: TestPageTypeEnum.drug,
+                    isMarked: q2Answer == 0 || q2Answer == 1,
                     drugs: [
                       TestDrugPageModel(
                           """● OAC using a VKA is recommended lifelong for all patients with an MHV prosthesis. (ESC/VHD 2021  I B)
