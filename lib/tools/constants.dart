@@ -77,23 +77,29 @@ class AppConst {
 
 class AppColors {
   static const Color backgroundColor = Color(0xff1b1b1b);
-  static const Color primary = Color(0xff48ff91);
+  static const Color primary = Color(0xff01c38d);
   static const Color primaryLight = Color(0xff6e3fff);
   static const Color pink = Color.fromRGBO(255, 237, 237, 1.0);
-  static const Color black = Colors.black;
-  static const Color darkGray = Color.fromRGBO(108, 108, 108, 1.0);
+  static const Color black = Color(0xff102117);
+  static const Color darkGray = Color(0xFFBDBDBD);
   static const Color gray = Color(0xff979797);
   static const Color grayPrimary = Color(0xff9ea6be);
   static const Color lightGray = Color.fromARGB(255, 206, 206, 206);
   static const Color white2 = Color.fromRGBO(255, 255, 255, 1.0);
   static const Color white = Color(0xffeaeaea);
+  static const Color nav0Color = Color(0xffadb4bc);
+  static const Color nav1Color = Color(0xff01c38d);
   static const Color textColor = Color(0xffeaeaea);
   static const Color textColor1 = Color(0xffeaeaec);
-  static const Color textColor2 = Color(0xff858e9d);
+  static const Color textColor2 = Color(0xffeaeaeb);
   static const Color textColor3 = Color(0xff858d97);
-  static const Color textColor4 = Color(0xff48ff91);
+  static const Color textColor4 = Color(0xff01c38d);
+  static const Color titleColor1 = Color(0xffeaeaea);
+  static const Color titleColor2 = Color(0xffeaeaea);
+  static const Color titleColor3 = Color(0xff01c38d);
+  static const Color titleColor4 = Color(0xffeaeaea);
   static const Color buttonText = Color(0xff102117);
-  static const Color buttonBackground = Color(0xff48ff91);
+  static const Color buttonBackground = Color(0xff01c38d);
   static const Color buttonBackground2 = Color(0xff272727);
   static const Color background = Color(0xff1b1b1b);
   static const Color orange = Color.fromRGBO(255, 168, 37, 1.0);
@@ -111,7 +117,6 @@ class AppColors {
   static const yellow = Color.fromARGB(255, 221, 241, 106);
   static const yellowBackground = Color(0xff262219);
   static const blue2 = Color.fromARGB(255, 69, 207, 241);
-
 }
 
 class AppThemes {
@@ -170,7 +175,7 @@ class AppThemes {
       systemOverlayStyle: SystemUiOverlayStyle.dark,
       backgroundColor: AppColors.background,
       iconTheme: const IconThemeData(color: AppColors.white),
-      titleTextStyle: AppTextStyles.appbarTitle,
+      titleTextStyle: AppTextStyles.title2,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
@@ -179,7 +184,7 @@ class AppThemes {
         disabledForegroundColor: AppColors.primary.withOpacity(.5),
         disabledBackgroundColor: AppColors.secondary.withOpacity(.5),
         padding: AppConst.buttonPadding,
-        textStyle: AppTextStyles.buttonText,
+        textStyle: AppTextStyles.title3,
         shape: AppConst.buttonShape2,
       ),
     ),
@@ -204,7 +209,7 @@ class AppThemes {
     textTheme: TextTheme(
       bodyLarge: AppTextStyles.text1,
       bodyMedium: AppTextStyles.text2,
-      bodySmall: AppTextStyles.caption,
+      bodySmall: AppTextStyles.title4,
     ),
     colorScheme: const ColorScheme.dark(
       surface: AppColors.background,
@@ -215,47 +220,23 @@ class AppThemes {
 class AppTextStyles {
   static String fontFamily = kIsWeb ? "GeneralSansWeb" : "GeneralSans";
   static TextStyle base = TextStyle(fontFamily: fontFamily);
-  static TextStyle title = base.copyWith(
+  static TextStyle title1 = base.copyWith(
       fontSize: 25.toPx,
-      color: AppColors.textColor,
+      color: AppColors.titleColor1,
       fontWeight: FontWeight.w600);
-  // static TextStyle headline2 = base.copyWith(
-  //     fontSize: 24.toPx,
-  //     color: AppColors.textColor,
-  //     fontWeight: FontWeight.w700);
-  // static TextStyle headline3 = base.copyWith(
-  //     fontSize: 25.toPx,
-  //     color: AppColors.textColor,
-  //     fontWeight: FontWeight.w600);
-  // static TextStyle headline4 = base.copyWith(
-  //     fontSize: 16.toPx,
-  //     color: AppColors.textColor,
-  //     fontWeight: FontWeight.w600);
-  // static TextStyle headline5 = base.copyWith(
-  //     fontSize: 14.toPx,
-  //     color: AppColors.textColor,
-  //     fontWeight: FontWeight.w600);
-  // static TextStyle headline6 = base.copyWith(
-  //     fontSize: 12.toPx,
-  //     color: AppColors.textColor,
-  //     fontWeight: FontWeight.w600);
-  // static TextStyle headline7 = base.copyWith(
-  //     fontSize: 10.toPx,
-  //     color: AppColors.textColor,
-  //     fontWeight: FontWeight.w600);
-
-  // static TextStyle subtitle1 = base.copyWith(
-  //     fontSize: 14.toPx,
-  //     color: AppColors.textColor,
-  //     fontWeight: FontWeight.w500);
-  // static TextStyle subtitle2 = base.copyWith(
-  //     fontSize: 12.toPx,
-  //     color: AppColors.textColor,
-  //     fontWeight: FontWeight.w500);
-  // static TextStyle subtitle3 = base.copyWith(
-  //     fontSize: 11.toPx,
-  //     color: AppColors.darkGray,
-  //     fontWeight: FontWeight.w500);
+  static TextStyle title2 = base.copyWith(
+      fontSize: 18.toPx,
+      color: AppColors.titleColor2,
+      fontWeight: FontWeight.w500);
+  static TextStyle title3 = base.copyWith(
+      fontSize: 16.toPx,
+      color: AppColors.buttonText,
+      fontWeight: FontWeight.w500);
+  static TextStyle title4 = base.copyWith(
+      fontSize: 13.toPx,
+      color: AppColors.titleColor4,
+      fontWeight: FontWeight.w300);
+      
   static TextStyle subtitleSmallLight = base.copyWith(
     color: AppColors.gray,
     fontSize: 10.toPx,
@@ -270,9 +251,6 @@ class AppTextStyles {
       fontSize: 15.toPx,
       color: AppColors.textColor1,
       fontWeight: FontWeight.w500);
-  static TextStyle bodyTextLargePrimary =
-      text1.copyWith(color: AppColors.primary);
-  static TextStyle bodyTextLargeDark = text1.copyWith(color: AppColors.black);
 
   static TextStyle text2 = base.copyWith(
       fontSize: 15.toPx,
@@ -284,31 +262,21 @@ class AppTextStyles {
       color: AppColors.textColor1,
       fontWeight: FontWeight.w400);
 
-  static TextStyle buttonText = base.copyWith(
-      fontSize: 16.toPx,
-      color: AppColors.buttonText,
-      fontWeight: FontWeight.w500);
+  // static TextStyle buttonText = base.copyWith(
+  //     fontSize: 16.toPx,
+  //     color: AppColors.buttonText,
+  //     fontWeight: FontWeight.w500);
 
   static TextStyle bodyTextSmallPrimary =
       text3.copyWith(color: AppColors.primary);
 
-  static TextStyle appbarTitle = base.copyWith(
-      fontSize: 18.toPx,
-      color: AppColors.textColor,
-      fontWeight: FontWeight.w500);
-
-  static TextStyle caption = base.copyWith(
-      fontSize: 11.toPx,
-      color: AppColors.textColor,
-      fontWeight: FontWeight.w300);
-
   static TextStyle navbar0 = base.copyWith(
       fontSize: 14.toPx,
-      color: AppColors.textColor,
-      fontWeight: FontWeight.w400);
+      color: AppColors.nav0Color,
+      fontWeight: FontWeight.w500);
 
   static TextStyle navbar1 = base.copyWith(
       fontSize: 14.toPx,
-      color: AppColors.textColor4,
-      fontWeight: FontWeight.w400);
+      color: AppColors.nav1Color,
+      fontWeight: FontWeight.w500);
 }

@@ -47,13 +47,13 @@ class SplashScreen extends StatelessWidget {
             Image.asset(imagePath("logo.png"), height: 150),
             Text(
               appName,
-              style: AppTextStyles.title,
+              style: AppTextStyles.title1,
               textAlign: TextAlign.center,
             ),
             const Spacer(),
             Text(
               "© 2024, Tehran University of Medical Science",
-              style: AppTextStyles.caption,
+              style: AppTextStyles.title4,
               textAlign: TextAlign.center,
             ),
           ],

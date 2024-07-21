@@ -27,8 +27,8 @@ Widget appButton({
               child: Text(
                 title,
                 style: textColor == null
-                    ? AppTextStyles.buttonText
-                    : AppTextStyles.buttonText.apply(color: textColor),
+                    ? AppTextStyles.title3
+                    : AppTextStyles.title3.apply(color: textColor),
                 maxLines: 10,
                 softWrap: true,
                 textAlign: textAlign,

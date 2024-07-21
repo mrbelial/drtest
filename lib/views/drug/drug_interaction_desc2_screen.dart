@@ -43,7 +43,7 @@ Lower dose is recommended.
             """Green
 No clinically remarkable interaction detected based on the EHRA 2021 and Lexi Comp.
             """,
-            style: AppTextStyles.text2.apply(color: AppColors.blue),
+            style: AppTextStyles.text2.apply(color: AppColors.primary),
           ),
         ],
       ),

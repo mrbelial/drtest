@@ -1,27 +1,9 @@
-import 'package:drtest/models/dosing/apixaban_dosing_model.dart';
-import 'package:drtest/models/dosing/dabigatran_dosing_model.dart';
-import 'package:drtest/models/dosing/edoxaban_dosing_model.dart';
-import 'package:drtest/models/dosing/f4_dosing_model.dart';
-import 'package:drtest/models/dosing/rivaroxaban_dosing_model.dart';
-import 'package:drtest/models/public/checkbox_model.dart';
-import 'package:drtest/models/public/idtitle_model.dart';
-import 'package:drtest/models/question/drug_dosing_data.dart';
-import 'package:drtest/models/question/drug_interaction_model.dart';
-import 'package:drtest/models/question/question_model.dart';
 import 'package:drtest/response/question/question_response.dart';
 import 'package:drtest/tools/core.dart';
-import 'package:drtest/views/drug/dosing/apixaban_dosing_screen.dart';
-import 'package:drtest/views/drug/dosing/dabigatran_dosing_screen.dart';
-import 'package:drtest/views/drug/dosing/edoxaban_dosing_screen.dart';
-import 'package:drtest/views/drug/dosing/lmwh_dosing_screen.dart';
-import 'package:drtest/views/drug/dosing/rivaroxaban_dosing_screen.dart';
-import 'package:drtest/views/drug/dosing/ufh_screen.dart';
-import 'package:drtest/views/drug/dosing/ptt_calc_screen.dart';
-import 'package:drtest/views/drug/dosing/ts_calc_screen.dart';
-import 'package:drtest/views/drug/dosing/wafarin4f_dosing_screen.dart';
-import 'package:drtest/views/drug/dosing/wafarin_extra_screen.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+
+import '../models/models.dart';
 
 class TestController extends GetxController {
   void closeDosing() {
@@ -37,7 +19,19 @@ class TestController extends GetxController {
 
   TestModel get model => _responseObs.value.content!;
 
-  newTest() => _responseObs.value = QuestionResponse();
+  void newTest() {
+    _responseObs.value = QuestionResponse();
+    // initDrugInteraction();
+    // initDrugDosing();
+    // initStack();
+  }
+
+  void initAll() {
+    _responseObs.value = QuestionResponse();
+    initDrugInteraction();
+    initDrugDosing();
+    initStack();
+  }
 
   set isFemale(bool v) =>
       _responseObs.update((val) => val!.content!.isFemale = v);

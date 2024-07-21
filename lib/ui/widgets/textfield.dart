@@ -116,7 +116,7 @@ Widget textField({
                   if (showClearButton)
                     textButton(
                       title: "پاک کردن",
-                      textStyle: AppTextStyles.caption
+                      textStyle: AppTextStyles.title4
                           .copyWith(color: AppColors.primary),
                       onTap: () {
                         controller?.text = "";
@@ -231,7 +231,7 @@ Widget textField3({
                 textButton(
                   title: "پاک کردن",
                   textStyle:
-                      AppTextStyles.caption.copyWith(color: AppColors.blue),
+                      AppTextStyles.title4.copyWith(color: AppColors.blue),
                   onTap: () {
                     controller?.text = "";
                     focusNode?.requestFocus();
