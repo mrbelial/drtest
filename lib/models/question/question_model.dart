@@ -380,6 +380,26 @@ Moderate or severe forms of congenital heart disease including:
             title: "",
             value: "CKD",
             page: "/ckd",
+            helpDesc: """✓	Stage 1 (CrCl ≥90 mL/min): 
+● Edoxaban is contraindicated in CrCl≥ 90. (AHA /ACC/ ACCP HRS 2023)
+
+✓	Stage 2 (CrCl 60-90 mL/ min): 
+● In the absence of a history of moderate to severe rheumatic mitral stenosis or a mechanical heart valve, DOACs are recommended over Warfarin to reduce the risk of mortality, stroke, systemic embolism, and ICH. (AHA/ACC/ACCP/HRS AF 2023, 1 A), (ESC 2020 1A), (AHA/ACC/HRS AF 2019 1 A)
+● NOACs are preferred over VKAs in all NOAC-eligible AF patients. (EHRA NOAC AF 2021)
+
+✓	Stage 3 (CrCl 30-59 mL/min):
+● Treatment with warfarin or, preferably, evidence-based doses of direct thrombin or factor Xa inhibitors is recommended. (AHA/ACC/ACCP/HRS AF 2023, 1 B-R)
+● For patients with AF (except with moderate to severe mitral stenosis or a mechanical heart valve) and moderate-to-severe CKD (serum creatinine ≥1.5 mg/dL [apixaban], CrCl 15 to 30 mL/min [dabigatran], CrCl ≤50 mL/min [rivaroxaban], or CrCl 15 to 50 mL/min [edoxaban]) with an elevated CHA2DS2-VASc score, treatment with reduced doses of direct thrombin or factor Xa inhibitors may be considered (e.g., dabigatran, rivaroxaban, apixaban, or edoxaban). (AHA/ACC/ HRS 2019, IIb B-R)
+
+✓	Stage 4 (CrCl 15-29 mL/min):
+● Treatment with warfarin or labeled doses of DOACs is reasonable to reduce the risk of stroke. (AHA/ACC/ACCP/HRS AF 2023, 2a B-NR)
+● For patients with AF (except with moderate-to-severe mitral stenosis or a mechanical heart valve) and moderate-to-severe CKD (serum creatinine ≥1.5 mg/dL [apixaban], CrCl 15 to 30 mL/min [dabigatran], CrCl ≤50 mL/min [rivaroxaban], or CrCl 15 to 50 mL/min [edoxaban]) with an elevated CHA2DS2-VASc score, treatment with reduced doses of direct thrombin or factor Xa inhibitors may be considered (e.g., dabigatran, rivaroxaban, apixaban, or edoxaban). (AHA/ACC/HRS 2019, IIb B-R)
+
+✓	End-stage CKD (CrCl <15 mL/min) or on dialysis:
+● It might be reasonable to prescribe warfarin (INR 2.0-3.0) or an evidence-based dose of apixaban for oral anticoagulation to reduce the risk of stroke. (AHA/ACC/ACCP/HRS AF 2023, 2b B-NR), (AHA/ACC/HRS AF 2019 IIb B-NR).
+● NOACs have not been approved in Europe for patients with CrCl <_15 mL/min or on dialysis. (AF/ESC 2020)
+● Dabigatran, rivaroxaban, or edoxaban are not recommended because of the lack of evidence from clinical trials that the benefit exceeds the risk. (AHA/ACC/HRS AF 2019 No Benefit C-EO)
+""",
             id: 1,
             type: TestPageTypeEnum.page,
             pages: [
@@ -442,6 +462,13 @@ CrCl 15 to 30 mL/min [dabigatran], CrCl ≤50 mL/min [rivaroxaban], or CrCl 15 t
               title: "",
               value: "Liver disease",
               page: "/ld",
+              helpDesc: """✓	Child A: 
+● It is reasonable to prescribe any DOACs over warfarin. (AHA/ACC/ACCP/HRS AF 2023, 2a B-NR)
+✓	Child B: 
+● It is reasonable to prescribe DOACs (apixaban, dabigatran, or edoxaban) over warfarin. (AHA/ACC/ACCP/HRS AF 2023, 2a B-NR)
+● Rivaroxaban is contraindicated due to the potentially increased risk of bleeding. (AHA/ACC/ACCP/HRS AF 2023, Harm C-LD), (AF/ESC 2020)
+✓	Child C: All DOACs are contraindicated. (ESC/AF 2020)
+""",
               id: 2,
               type: TestPageTypeEnum.page,
               pages: [
@@ -482,6 +509,24 @@ CrCl 15 to 30 mL/min [dabigatran], CrCl ≤50 mL/min [rivaroxaban], or CrCl 15 t
               value: "Overweight/Underweight",
               page: "/bmi",
               type: TestPageTypeEnum.page,
+              helpDesc: """✓	BMI≥ 40: 
+● Use NOACs with caution, consider NOAC plasma level measurements, or consider VKA. (EHRA/NOAC AF 2021)
+● In patients with AF and class III obesity (BMI≥ 40 kg/m2), DOACs are reasonable to choose over warfarin for stroke risk reduction. (AHA/ACC/ACCP/HRS AF 2023, 2a B-NR)
+● At a BMI ≥ 50 kg/m2 plasma level measurements with any of the NOACs or conversion to VKA therapy may be reasonable. (EHRA/NOAC AF 2021)
+● In patients with AF who are overweight or obese (with body mass index [BMI] >27 kg/m2), weight loss is recommended, with an ideal target of at least 10% weight loss to reduce AF symptoms, burden, recurrence, and progression to persistent AF. (AHA/ACC/ACCP/HRS AF 2023, 1 B-R)
+● In obese patients with AF, weight loss together with management of other risk factors should be considered to reduce AF incidence, AF progression, AF recurrences, and symptoms. (AF/ESC 2020, IIa B)
+
+✓	BMI 17.5-40:
+● NOACs standard dose is recommended. (EHRA/NOAC AF 2021)
+● In patients with AF who are overweight or obese (with body mass index [BMI] >27 kg/m2), weight loss is recommended, with an ideal target of at least 10% weight loss to reduce AF symptoms, burden, recurrence, and progression to persistent AF. (AHA/ACC/ACCP/HRS AF 2023, 1 B-R)
+● In obese patients with AF, weight loss together with management of other risk factors should be considered to reduce AF incidence, AF progression, AF recurrences, and symptoms. (AF/ESC 2020, IIa B)
+
+✓	BMI<17.5
+● Apixaban or edoxaban (with dedicated dose-reduction criteria) can be used. (EHRA/NOAC AF 2021)
+● Consider Dabigatran / Rivaroxaban with plasma level measurement. (EHRA/NOAC AF 2021)
+● Consider plasma level measurements for NOACs. (EHRA/NOAC AF 2021)
+● Consider VKA. (EHRA/NOAC AF 2021)
+""",
               id: 3,
               pages: [
                 TestPageModel(
@@ -528,6 +573,17 @@ CrCl 15 to 30 mL/min [dabigatran], CrCl ≤50 mL/min [rivaroxaban], or CrCl 15 t
               value: "Thrombocytopenia",
               page: "/Thrombocytopenia",
               type: TestPageTypeEnum.page,
+              helpDesc: """✓	≥ 50000 Cell/ µl:
+● Consider full-dose anticoagulation. (ESC/AF 2020), (UpToDate)
+✓	25'000-50'000 Cell/ µl:
+● Consider half-dose NOAC. (EHRA/NOAC AF 2021), (UpToDate)
+● Consider half-dose LMWH. (UpToDate)
+● Absolute contraindications to OACs. (ESC/AF 2020)
+✓	< 25'000 Cell/ µl
+● Avoid anticoagulation therapy due to the high risk of spontaneous Bleeding. (EHRA/NOAC AF 2021)
+● Absolute contraindications to OACs. (ESC/ AF 2020)
+● Temporarily hold anticoagulant until platelet count increases above 25'000 / µl.  (UpToDate)
+""",
               id: 4,
               pages: [
                 TestPageModel(
@@ -563,6 +619,14 @@ CrCl 15 to 30 mL/min [dabigatran], CrCl ≤50 mL/min [rivaroxaban], or CrCl 15 t
             title: "",
             value: "Lactation",
             type: TestPageTypeEnum.drug,
+            helpDesc:
+                """All NOACs are secreted into the breast milk. (ESC/AF 2020)
+● We do not use the following during breastfeeding, consistent with the 2018 ASH and 2012 ACCP guidelines (1) Oral direct thrombin inhibitors (dabigatran), (2) Oral direct factor Xa inhibitors (rivaroxaban, apixaban, edoxaban). (UpToDate)
+● A review of observational data and a case report with testing of drug levels, however, suggest that dabigatran and rivaroxaban levels in breast milk are quite low, whereas apixaban levels are higher. (UpToDate)
+● Based on available data, warfarin is not present in breast milk. Warfarin is considered compatible with breastfeeding (ACOG 2018). The manufacturer recommends monitoring breastfeeding infants for bruising or bleeding. (UpToDate)
+● If oral anticoagulation is chosen for continued postpartum thromboprophylaxis, warfarin can be started immediately after delivery. (UpToDate)
+● NOACs should not be used in breastfeeding women, and LMWH should be used instead. (ESC/AF 2020)
+""",
             id: 5,
             drugs: [
               TestDrugPageModel(
@@ -579,6 +643,8 @@ CrCl 15 to 30 mL/min [dabigatran], CrCl ≤50 mL/min [rivaroxaban], or CrCl 15 t
             title: "",
             value: "AKI",
             type: TestPageTypeEnum.drug,
+            helpDesc:
+                """● NOACs need to be stopped and switched to unfractionated heparin before resumption after stabilization. (AHA/ACC/ACCP/HRS AF 2023, 2a B-NR)""",
             id: 6,
             drugs: [
               TestDrugPageModel(
@@ -590,6 +656,15 @@ CrCl 15 to 30 mL/min [dabigatran], CrCl ≤50 mL/min [rivaroxaban], or CrCl 15 t
             title: "",
             value: "Cancer",
             type: TestPageTypeEnum.drug,
+            helpDesc:
+                """● In most patients with AF and cancer (remote history or receiving active cancer treatment), DOACs are reasonable to choose over VKAs for stroke risk reduction. (AHA/ACC/ACCP/HRS AF 2023, 2a B-NR)
+● For most patients with AF and cancer who are on chemotherapy, we follow the general approach to the selection of OACs. (UpToDate)
+● For most hemodynamically stable patients with cancer who do not have contraindications, we prefer an oral factor Xa inhibitor rather than LMW heparin or IV UFH followed by warfarin. (UpToDate)
+● Among the factor Xa inhibitors, we suggest apixaban, as an oral monotherapy option (ie, administered without an initial five days of parenteral LMW heparin) (UpToDate, Grade 2C)
+● We tend to avoid edoxaban and rivaroxaban in those with upper GI cancers since more bleeding has been reported with these agents compared with apixaban or LMW heparin. (UpToDate)
+● We generally do not use dabigatran in this population. (UpToDate)
+● The use of NOACs compared to warfarin was associated with a significantly reduced risk of stroke, systemic embolism, and VTE, a strong trend towards fewer ischemic strokes. (EHRA/NOAC AF 2021)
+""",
             id: 7,
             drugs: [
               TestDrugPageModel(
@@ -607,6 +682,14 @@ CrCl 15 to 30 mL/min [dabigatran], CrCl ≤50 mL/min [rivaroxaban], or CrCl 15 t
             title: "",
             value: "History of GI Bleeding",
             type: TestPageTypeEnum.drug,
+            helpDesc:
+                """● After correction of the bleeding source, OAC should be restarted. The risk of bleeding in patients treated with apixaban or dabigatran 110 mg is similar to warfarin. (ESC/ AF 2020)
+● In patients with a recent bleeding event, attention should be directed towards addressing the predisposing pathology (e.g. bleeding ulcer or polyp in a patient with gastrointestinal bleeding), and the reintroduction of OAC as soon as feasible, as part of a multidisciplinary team decision. (ESC/ AF 2020)
+● Lower risks of major bleeding were reported in the apixaban, dabigatran 110 mg twice daily group, and edoxaban 30 mg or 60 mg daily dose groups compared with the warfarin group. (AHA/ACC/ACCP HRS 2023)
+● Nonsignificant differences in major bleeding were reported between dabigatran 150 mg twice daily group or the rivaroxaban group and warfarin. (AHA/ACC/ACCP HRS 2023)
+● Gastrointestinal bleeding risks were significantly higher in the dabigatran 150 mg twice daily, edoxaban 60 mg once daily, and rivaroxaban groups compared with the warfarin group. (AHA/ACC/ACCP HRS 2023)
+● The apixaban group did not significantly increase the risk of gastrointestinal bleeding compared with the warfarin group. (AHA/ACC/ACCP HRS 2023)
+""",
             id: 8,
             drugs: [
               TestDrugPageModel(
@@ -623,6 +706,10 @@ CrCl 15 to 30 mL/min [dabigatran], CrCl ≤50 mL/min [rivaroxaban], or CrCl 15 t
             title: "",
             value: "Bariatric Surgery",
             type: TestPageTypeEnum.drug,
+            helpDesc:
+                """● Warfarin may be reasonable to choose over DOACs for stroke risk reduction in view of concerns about DOAC drug absorption. (AHA/ACC/ACCP/HRS AF 2023, 2b C-LD)
+● Rivaroxaban (in the stroke prevention dose) may not be a preferred primary choice after gastric bypass surgery due to potentially relevant reductions in rivaroxaban exposure. (EHRA/NOAC AF 2021)
+""",
             id: 9,
             drugs: [
               TestDrugPageModel(
@@ -635,6 +722,8 @@ CrCl 15 to 30 mL/min [dabigatran], CrCl ≤50 mL/min [rivaroxaban], or CrCl 15 t
             title: "",
             value: "History of PCI",
             type: TestPageTypeEnum.drug,
+            helpDesc:
+                """● DOACs are preferred over VKAs. (AHA/ACC/ACCP/HRS AF 2023, 1 A)""",
             id: 10,
             drugs: [
               TestDrugPageModel(
@@ -646,6 +735,52 @@ CrCl 15 to 30 mL/min [dabigatran], CrCl ≤50 mL/min [rivaroxaban], or CrCl 15 t
               title: "",
               value: "Valve Disease",
               type: TestPageTypeEnum.page,
+              helpDesc:
+                  """✓	Native valve heart Including aortic stenosis, aortic regurgitation, and mitral regurgitation:
+
+● NOAC is an effective alternative to VKA anticoagulation and should be administered on the basis of the patient’s CHA2DS2VASc score. (ACC/AHA/VHD 2020 1 A)
+● In patients with aortic stenosis, aortic regurgitation, and mitral regurgitation NOACs are recommended in preference to VKAs in patients eligible for anticoagulants. (ESC/VHD 2021 I A)
+● In patients with AF and valve disease other than moderate or greater mitral stenosis or a mechanical heart valve, DOACs are recommended over VKAs. (AHA/ACC/ACCP/HRS AF 2023, 1 B-NR)
+● Use of NOACs is not recommended in patients with AF and moderate-to-severe mitral stenosis. (AF/ESC 2020, III C)
+● For patients with AF and native valve heart disease (except rheumatic mitral stenosis [MS]) or who received a bioprosthetic valve >3 months ago, a non–vitamin K oral anticoagulant (NOAC) is an effective alternative to VKA anticoagulation and should be administered on the basis of the patient’s CHA2DS2-VASc score. (ACC/AHA/VHD 2020, 1 A)
+
+
+✓	Mechanical Heart Valves/ Rheumatic Mitral Stenosis
+● OAC using a VKA is recommended lifelong for all patients with an MHV prosthesis. (ESC/VHD 2021 I B)
+● Warfarin is recommended. (AHA/ACC/HRS AF 2019 1 B)
+● Dabigatran should not be used. (AHA/ACC/HRS 2019 Harm B-R)
+● NOACs are not recommended in patients with a mechanical valve prosthesis. (ESC/VHD 2021 III B)
+● NOACs are not recommended in patients with a mechanical valve prosthesis. (ACC/AHA/VHD 2020 III B)
+● NOACs are contraindicated in patients with a prosthetic mechanical valve. (AF/ESC 2020 III B) 
+● Life-long anticoagulation with a VKA is recommended. (ACC/AHA/VHD 2020 1 A)
+● In patients with a mechanical prosthetic valve, anticoagulation with a VKA is recommended. (ESC/VHD 2020 1A)
+● Anticoagulation with the direct thrombin inhibitor, dabigatran, is contraindicated. (ACC/AHA/VHD 2020 Harm B-R)
+● Use of anti-Xa direct oral anticoagulants has not been assessed and is not recommended. (ACC/AHA/VHD 2020 Harm B-R)
+● In patients with rheumatic mitral stenosis or mitral stenosis of moderate or greater severity and history of AF, long-term anticoagulation with warfarin is recommended over DOACs, independent of the CHA2DS2-VASc score to prevent cardiovascular events, including stroke or death. (AHA/ACC/ACCP/HRS AF 2023, 1 B-R)
+● In patients with a mechanical prosthetic valve, anticoagulation with a VKA is recommended. (ACC/AHA/VHD 2020, 1 A)
+● In patients with mechanical heart valves with or without AF who require long-term anticoagulation with VKA to prevent valve thrombosis, NOACs are not recommended. (ACC/AHA/VHD 2020, Harm B-R))
+● VKAs are the anticoagulation drugs of choice for patients with rheumatic MS and mechanical heart valves. (ACC/AHA/VHD 2020)
+● NOAC therapy should be discouraged unless new evidence reverses. (EHRA/NOAC AF 2021)
+● For patients with AF and rheumatic MS, long-term VKA oral anticoagulation is recommended. (ACC/AHA/VHD 2020 1 C-EO)
+● NOACs are not recommended. (ACC/AHA/VHD 2020 Harm B-R)
+● Use of NOACs is not recommended in patients with AF and moderate-to-severe mitral stenosis. (AF/ESC 2020 III C) 
+● In patients with rheumatic mitral stenosis or mitral stenosis of moderate or greater severity and history of AF, long-term anticoagulation with warfarin is recommended over DOACs, independent of the CHA2DS2-VASc score to prevent cardiovascular events, including stroke or death. (AHA/ACC/ACCP/HRS AF 2023, 1 B-R)
+● VKAs are the anticoagulation drugs of choice for patients with rheumatic MS and mechanical heart valves. (ACC/AHA/VHD 2020)
+● The use of NOACs is not recommended in patients with AF and moderate to severe mitral stenosis. (ESC/VHD 2021, III C)
+● NOAC therapy should be discouraged unless new evidence reverses. (EHRA/NOAC AF 2021)
+
+✓	Surgical valve repair
+● OAC with VKA should be considered during the first 3 months after mitral and tricuspid repair. (ESC/VHD 2021 IIa C)
+
+✓	Bioprosthetic valve >3 months
+● NOAC is an effective alternative to VKA. (ACC/AHA/VHD 2020)
+● Anticoagulation should be administered on the basis of the patient’s CHA2DS2-VASc score. (ACC/AHA/VHD 2020 1 A)
+● NOACs should be considered over VKA after 3 months following surgical implantation of a BHV, in patients with AF. (ESC/VHD 2021 IIa B)
+● NOACs are recommended in preference to VKAs in patients with aortic stenosis, aortic and mitral regurgitation, or aortic bio prostheses >3 months after Implantation. (ACC/AHA/VHD 2020 I A)
+✓	Bioprosthetic valve ≤3 months
+● For patients with new-onset AF ≤3 months after surgical or transcatheter bioprosthetic valve replacement, anticoagulation with a VKA is reasonable. (ACC/AHA/VHD 2020 2a B-NR)
+● OAC using a VKA should be considered for the first 3 months after surgical implantation of a bioprosthesis in the mitral or tricuspid position. (ESC/VHD 2021 IIa B)
+""",
               id: 11,
               pages: [
                 TestPageModel(
@@ -846,6 +981,40 @@ CrCl 15 to 30 mL/min [dabigatran], CrCl ≤50 mL/min [rivaroxaban], or CrCl 15 t
 ● NOACs are contraindicated in pregnancy. (EHRA/NOAC/AF 2021)""",
               value: "Pregnancy",
               type: TestPageTypeEnum.page,
+              helpDesc:
+                  """● Pregnant individuals with AF and elevated risk of stroke may be considered for anticoagulation with the recognition that no anticoagulation strategy is completely safe for both the mother and fetus and an SDM discussion should take place regarding risks to both mother and fetus. (AHA/ACC/ACCP/HRS 2023 2b, C-LD)
+● NOACs are contraindicated in pregnancy. (EHRA/NOAC/AF 2021)
+
+✓	More than one week to delivery AND Warfarin dose ≤5 mg/day
+
+● Continue warfarin for all trimesters. (ACC/AHA VHD 2020 2a B-NR)
+● For pregnant women with mechanical prostheses who require a dose of warfarin ≤5 mg/d to maintain a therapeutic INR, continuation of warfarin for all 3 trimesters is reasonable after full discussion with the patient about risks and benefits. (ACC/AHA/VHD 2020 2a B-NR)
+● For pregnant women with mechanical prostheses who require a dose of warfarin ≤5 mg/d to maintain a therapeutic INR, dose-adjusted LMWH at least 2 times per day during the first trimester, followed by warfarin for the second and third trimesters, may be considered. (ACC/AHA/VHD 2020 2b B-NR)
+
+✓	More than one week to delivery AND Warfarin dose >5 mg/day AND availability of Xa levels monitoring
+● Dose adjusted LMWH for 1st trimester followed by warfarin for 2th and 3th trimesters. (ACC/AHA VHD 2020 2a B-NR)
+● For pregnant women with mechanical prostheses who require >5 mg/d of warfarin to achieve a therapeutic INR, dose-adjusted LMWH (with a target anti-Xa level of 0.8 to 1.2 U/mL at 4 to 6 hours after dose) at least 2 times per day during the first trimester, followed by warfarin during the second and third trimesters, is reasonable. (ACC AHA VHD 2020 2a B-NR)
+OR
+● Dose adjusted LMWH for all 3 trimesters. (ACC/AHA/VHD 2020 2b B-NR)
+● For pregnant women with mechanical prostheses who require a warfarin dose >5 mg/d to achieve a therapeutic INR, dose-adjusted LMWH (with a target anti-Xa level of 0.8 to 1.2 U/mL at 4 to 6 hours after dose) at least 2 times per day for all 3 trimesters may be considered. (ACC/AHA/VHD 2020 2b B-NR)
+
+✓	More than one week to delivery AND Warfarin dose >5 mg/day AND unavailability of Xa levels monitoring
+● Continuous dose-adjusted UFH for the 1st trimester followed by warfarin for the 2nd and 3rd trimesters. (ACC/AHA VHD 2020 2a B-NR)
+● For pregnant women with mechanical prostheses who require a dose of warfarin >5 mg/d to achieve a therapeutic INR, and for whom dose-adjusted LMWH is unavailable, dose-adjusted continuous intravenous UFH during the first trimester (with aPTT 2 times control), followed by warfarin for the second and third trimesters, is reasonable. (ACC/AHA/VHD 2020 2a B-NR)
+
+✓	At least One week to delivery
+● Discontinue warfarin, and switch to IV UFH or dose-adjusted LMWH. (ACC/AHA VHD 2020 1 C-LD)
+● Pregnant women with mechanical valve prostheses who are on warfarin should switch to twice-daily LMWH (with a target anti-Xa level of 0.8 U/mL to 1.2 U/mL at 4 to 6 hours after dose) or intravenous UFH (with an activated partial thromboplastin time [aPTT] 2 times control) at least 1 week before planned delivery. (ACC/AHA/VHD 2020 1 C-LD)
+
+✓	At least 36 hr. before delivery
+● Switch to continuous IV UFH (with an aPTT 2 times control). (ACC/AHA VHD 2020 1 C-LD)
+● Pregnant women with a mechanical valve prosthesis who are on LMWH should switch 
+to UFH (with an aPTT 2 times control) at least 36 hours before planned delivery. (ACC/ AHA/VHD 2020 1 C-LD)
+
+✓	4-6 hr. before planned delivery
+● Stop IV UFH. (ACC/AHA/VHD 2020 1 C-LD)
+● Pregnant women with valve prostheses should stop UFH at least 6 hours before planned vaginal delivery. (ACC/AHA/VHD 2020 1 C-LD)
+""",
               id: 12,
               pages: [
                 TestPageModel(
@@ -929,6 +1098,10 @@ CrCl 15 to 30 mL/min [dabigatran], CrCl ≤50 mL/min [rivaroxaban], or CrCl 15 t
             title: "",
             value: "Undergoing Cardioversion",
             type: TestPageTypeEnum.drug,
+            helpDesc:
+                """● NOACs are recommended with at least similar efficacy and safety as warfarin. (ESC/ AF 2020 I A)
+● For patients with AF or atrial flutter of less than 48 hours duration with a CHA2DS2-VASc score of 2 or greater in men and 3 or greater in women, administration of heparin, a factor Xa inhibitor, or a direct thrombin inhibitor is reasonable as soon as possible before cardioversion, followed by long-term anticoagulation therapy. (AHA/ACC/HRS 2019, IIa B-NR)
+""",
             id: 13,
             drugs: [
               TestDrugPageModel(
@@ -975,6 +1148,12 @@ CrCl 15 to 30 mL/min [dabigatran], CrCl ≤50 mL/min [rivaroxaban], or CrCl 15 t
             title: "",
             value: "Hypertrophic Cardiomyopathy",
             type: TestPageTypeEnum.drug,
+            helpDesc:
+                """● In patients with HCM and clinical AF, anticoagulation is recommended with direct-acting oral anticoagulants (DOACs) as the first-line option and vitamin K antagonists as the second-line option, independent of CHA2DS2-VASc score. (2024 AHA/ACC/AMSSM/HRS/PACES/SCMR Guideline for the Management of Hypertrophic Cardiomyopathy)
+● In hypertrophic cardiomyopathy, the risk of stroke is high enough independent of risk score to indicate anticoagulation. (AHA/ACC/ACCP/HRS AF 2023)
+● Hypertrophic cardiomyopathy has roughly an equivalent risk to a CHADsVASc of 3. (AHA/ACC/ACCP/HRS AF 2023)
+● In both obstructive and non-obstructive hypertrophic cardiomyopathy, AF is associated with a high rate of thromboembolism. (EHRA/NOAC AF 2021)	
+""",
             id: 15,
             drugs: [
               TestDrugPageModel(
@@ -989,6 +1168,10 @@ CrCl 15 to 30 mL/min [dabigatran], CrCl ≤50 mL/min [rivaroxaban], or CrCl 15 t
             title: "",
             value: "Congenital heart disease",
             type: TestPageTypeEnum.drug,
+            helpDesc:
+                """● It may be reasonable to treat with anticoagulation independent of conventional risk score to reduce risk of thromboembolic events. (AHA/ACC/ACCP/HRS AF 2023, 2b C-LD)
+● Oral anticoagulation should be considered in all adult patients with intracardiac repair, cyanosis, Fontan palliation, or systemic right ventricle and a history of AF, AFL, or intra-atrial re-entrant tachycardia. (ESC/ AF 2020 IIa C)
+""",
             id: 16,
             drugs: [
               TestDrugPageModel(
@@ -1001,6 +1184,11 @@ CrCl 15 to 30 mL/min [dabigatran], CrCl ≤50 mL/min [rivaroxaban], or CrCl 15 t
             title: "",
             value: "Ablation",
             type: TestPageTypeEnum.drug,
+            helpDesc:
+                """● In patients who have undergone catheter ablation of AF, oral anticoagulation should be continued for at least 3 months after the procedure with a longer duration determined by underlying risk. (AHA/ACC/ACCP/HRS AF 2023, 1 B-NR)
+● In patients undergoing surgical ablation, anticoagulation therapy is reasonable for at least 3 months after the procedure to reduce the risk of stroke or systemic embolism (AHA/ACC/ACCP/HRS AF 2023, 2a B-NR)
+● In AF patients with stroke risk factors not taking OAC before ablation, it is recommended that pre-procedural management of stroke risk includes initiation of anticoagulation and preferably, therapeutic OAC for at least 3 weeks before ablation (I C), or alternatively, the use of TOE to exclude LA thrombus before ablation ( IIa C). (ESC/ AF 2020)
+""",
             id: 17,
             drugs: [
               TestDrugPageModel(
@@ -1014,6 +1202,8 @@ CrCl 15 to 30 mL/min [dabigatran], CrCl ≤50 mL/min [rivaroxaban], or CrCl 15 t
             title: "",
             value: "Cardiac Amyloidosis",
             type: TestPageTypeEnum.drug,
+            helpDesc:
+                """● There is insufficient randomized clinical trial evidence to inform the use of direct oral anticoagulants vs warfarin in cardiac amyloidosis, although the former offer ease of administration. (2023 ACC Expert Consensus Decision Pathway on Comprehensive Multidisciplinary Care for the Patient With Cardiac Amyloidosis)""",
             id: 18,
             drugs: [
               TestDrugPageModel(
@@ -1043,9 +1233,11 @@ class TestPageModel {
     this.id = 0,
     this.isMarked = false,
     this.appbarTitle,
+    this.helpDesc,
   });
 
   String? appbarTitle;
+  String? helpDesc;
   int id;
   String title;
   String value;

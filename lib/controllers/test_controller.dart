@@ -563,14 +563,14 @@ Patients with AF at intermediate annual risk of thromboembolic events by risk sc
           case DrugInteractionCalcType.check:
             break;
           case DrugInteractionCalcType.crcfLess:
-            if (model.cgAnswer < item.value) {
-              drug.isChecked = true;
-            }
+            // if (model.cgAnswer < item.value) {
+            //   drug.isChecked = true;
+            // }
             break;
           case DrugInteractionCalcType.crcfMore:
-            if (model.cgAnswer > item.value) {
-              drug.isChecked = true;
-            }
+            // if (model.cgAnswer > item.value) {
+            //   drug.isChecked = true;
+            // }
             break;
           case DrugInteractionCalcType.weightLess:
             if (model.weight < item.value) {

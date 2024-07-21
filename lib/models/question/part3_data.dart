@@ -114,6 +114,7 @@ TestPageModel part3Data(TestModel model) {
               value:
                   "Management of Minor/ Non-life -threatening bleeding while on anticoagulant",
               appbarTitle: "Management of Minor Bleeding while on Warfarin",
+              helpDesc : """Minor bleeding: (e.g., epistaxis, bruising, slow gastrointestinal bleeding) can be managed conservatively using local hemostatic measures (e.g., mechanical pressure, and without anticoagulant reversal). Decisions to temporarily discontinue the anticoagulant must balance bleeding and thrombotic risks for each patient on a case-by-case basis.""",
               type: TestPageTypeEnum.page,
               pages: [
                 TestPageModel(
@@ -138,6 +139,7 @@ TestPageModel part3Data(TestModel model) {
             value:
                 "● Management of Major/life -threatening bleeding\nOR\n●  Need to undergo urgent surgery",
             appbarTitle: "Management of Major Bleeding while on Warfarin",
+            helpDesc: "Major bleeding: We define serious/major bleeding as bleeding that is associated with a risk of blood transfusion or bleeding into a critical closed space (eg, intracranial bleeding, compartment syndrome). Major bleeding may also include bleeding requiring intervention for management (e.g., surgery, interventional radiology procedures, endoscopic treatments). Major bleeding has a significant risk of immediate morbidity, regardless of the cause. Some major bleeding may be life-threatening and patients with major bleeding events are at high risk of death during the hospitalization prompted by that bleeding.",
             type: TestPageTypeEnum.page,
             pages: [
               f4Dosing,
@@ -172,6 +174,7 @@ TestPageModel part3Data(TestModel model) {
           value:
               "Management of Minor/ Non-life -threatening bleeding while on anticoagulant",
           appbarTitle: "Management of Minor Bleeding while on Warfarin",
+          helpDesc: "Minor bleeding: (e.g., epistaxis, bruising, slow gastrointestinal bleeding) can be managed conservatively using local hemostatic measures (e.g., mechanical pressure, and without anticoagulant reversal). Decisions to temporarily discontinue the anticoagulant must balance bleeding and thrombotic risks for each patient on a case-by-case basis.",
           type: TestPageTypeEnum.page,
           pages: [
             TestPageModel(
@@ -189,6 +192,7 @@ TestPageModel part3Data(TestModel model) {
 OR
 ●  Need to undergo urgent surgery""",
             appbarTitle: "Management of Major Bleeding while on Warfarin",
+            helpDesc: "Major bleeding: We define serious/major bleeding as bleeding that is associated with a risk of blood transfusion or bleeding into a critical closed space (eg, intracranial bleeding, compartment syndrome). Major bleeding may also include bleeding requiring intervention for management (e.g., surgery, interventional radiology procedures, endoscopic treatments). Major bleeding has a significant risk of immediate morbidity, regardless of the cause. Some major bleeding may be life-threatening and patients with major bleeding events are at high risk of death during the hospitalization prompted by that bleeding.",
             type: TestPageTypeEnum.page,
             pages: [
               TestPageModel(
@@ -527,6 +531,44 @@ OR
         title:
             "substitute LMWH at the time of the next dose. (EHRA/NOAC/AF 2021)",
         value: "QD NOAC to LMWH",
+        type: TestPageTypeEnum.end,
+      ),
+
+      //New
+      TestPageModel(
+        title:
+            "UFH infusion should generally be initiated once the INR is < 2.",
+        value: "Warfarin to UFH",
+        type: TestPageTypeEnum.end,
+      ),
+
+      TestPageModel(
+        title:
+            "When it is important to overlap a heparin product with a VKA, a general rule to follow is to co-administer the two anticoagulants until the effect of the VKA is established. For warfarin, this generally entails four to five days of overlap and at least 24 hours of a therapeutic international normalized ratio (INR).",
+        value: "UFH to a Warfarin",
+        type: TestPageTypeEnum.end,
+      ),
+      TestPageModel(
+        title:
+            "Start warfarin and stop LMWH once INR is in therapeutic range for 2 consecutive days.",
+        value: "Enoxaparin to Warfarin",
+        type: TestPageTypeEnum.end,
+      ),
+      TestPageModel(
+        title: "Stop warfarin and start treatment dose LMWH when INR",
+        value: "Warfarin to Enoxaparin",
+        type: TestPageTypeEnum.end,
+      ),
+      TestPageModel(
+        title:
+            "Stop heparin infusion and start LMWH injection within 2 hours of stopping.",
+        value: "UFH to Enoxaparin",
+        type: TestPageTypeEnum.end,
+      ),
+      TestPageModel(
+        title:
+            "Stop LMWH and start heparin infusion at the time that the next scheduled dose of LMWH would be due.",
+        value: "Enoxaparin to UFH",
         type: TestPageTypeEnum.end,
       ),
     ],

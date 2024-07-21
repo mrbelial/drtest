@@ -23,7 +23,7 @@ class TestSituationsScreen extends StatelessWidget {
                   title: "Next",
                   onTap: () {
                     _controller.fillStack();
-                    
+
                     if (_controller.stacks.isEmpty) {
                       ShowMSG.error("Error", "Select Situations");
                       return;
@@ -48,21 +48,26 @@ class TestSituationsScreen extends StatelessWidget {
               itemBuilder: (c, i) {
                 return Obx(() {
                   var item = model.pages[i];
-                  return checkBox(
-                    id: 0,
-                    title: item.value,
-                    checked: item.isMarked,
-                    //_controller.isItemStacked(item)
-                    onChange: (i, b) {
-                      item.isMarked = b;
-                      _controller.isloading = false;
-                      // _controller.removeFromStack(tempResult);
-                      // if (b) {
-                      //   _controller.addToStack(item);
-                      // } else {
-                      //   _controller.removeFromStack(item);
-                      // }
-                    },
+                  return Row(
+                    children: [
+                      Expanded(
+                        child: checkBox(
+                          id: 0,
+                          title: item.value,
+                          checked: item.isMarked,
+                          onChange: (i, b) {
+                            item.isMarked = b;
+                            _controller.isloading = false;
+                          },
+                        ),
+                      ),
+                      if (item.helpDesc != null)
+                        IconButton(
+                          onPressed: () =>
+                              testMessage(item.helpDesc!, Get.back),
+                          icon: const Icon(Icons.help),
+                        )
+                    ],
                   );
                 });
               }),

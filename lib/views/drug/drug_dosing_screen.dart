@@ -30,6 +30,13 @@ class DrugDosingScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
+        actions: [
+          if (model.pageDesc != null)
+            IconButton(
+              onPressed: () => testMessage(model.pageDesc!, Get.back),
+              icon: const Icon(Icons.help),
+            ),
+        ],
       ),
       body: ListView(
         padding: AppConst.defaultPadding,

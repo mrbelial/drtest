@@ -18,6 +18,11 @@ class DrugsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Drugs"),
+        actions: [
+          IconButton(
+              onPressed: () => Get.toNamed("/drug_interaction_description2"),
+              icon: const Icon(Icons.help))
+        ],
       ),
       body: Obx(() {
         return ListView(

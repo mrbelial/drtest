@@ -62,6 +62,18 @@ class Part3Screen extends StatelessWidget {
               itemCount: model.pages.length,
               itemBuilder: (c, i) {
                 var item = model.pages[i];
+                if (item.helpDesc != null) {
+                  return testListTile(
+                      ontap: () => itemClicked(item),
+                      title: item.value,
+                      bgColor: item.isMarked
+                          ? AppColors.buttonBackground
+                          : AppColors.darkGray,
+                      trailing: IconButton(
+                          onPressed: () =>
+                              testMessage(item.helpDesc!, Get.back),
+                          icon: const Icon(Icons.help)));
+                }
                 return testButton(item.value, () => itemClicked(item),
                     color: item.isMarked
                         ? AppColors.buttonBackground

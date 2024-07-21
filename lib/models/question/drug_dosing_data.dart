@@ -26,6 +26,7 @@ class DrugDosingParams {
     this.msg = "",
     this.params = const [],
     this.type = DrugParamTypeEnum.button,
+    this.pageDesc,
   });
 
   String title;
@@ -36,6 +37,7 @@ class DrugDosingParams {
   DrugParamTypeEnum type;
   String buttonTitle;
   String msg;
+  String? pageDesc;
 }
 
 List<DrugDosingModel> drugDosing(TestModel model) {
@@ -329,54 +331,64 @@ Baseline platelet count and a repeat platelet count within 24 to 48 hours is rec
     DrugDosingModel(
         drugId: 3,
         drugName: "Enoxaparin",
-        param: DrugDosingParams(title: "Enoxaparin Dosing", params: [
-          DrugDosingParams(
+        param: DrugDosingParams(
             title: "Enoxaparin Dosing",
-            page: "/lmwh_dosing",
+            pageDesc: """✓ CrCl<30 ml/min?   1 mg/kg SC once daily.
+✓	BMI<18 Kg/m2 or Total body weight<55 Kg?   1 mg/kg SC twice daily.
+✓	BMI≥40?   0.7-0.8 mg/kg twice daily.
+✓	Pregnancy?   1 mg/kg SC twice daily.
+✓	Cancer?   1 mg/kg SC twice daily.  
+✓	Platelet count 25000-50000 Cell/µ   0.75 mg/kg once daily or 0.5 mg/kg SC twice daily. 
+✓	None of the above?   1.5 mg/kg once daily or 1 mg/kg SC twice daily.
+""",
             params: [
               DrugDosingParams(
-                title: "Is there a need for Enoxaparin monitoring?",
-                desc: """Any of the following scenarios present?
-● Patients with BMI ≥40 kg/m2 who are unstable, experience unexpected thromboembolic or bleeding complications, or require prolonged VTE treatment.
-● CrCl<30 ml/min.""",
+                title: "Enoxaparin Dosing",
+                page: "/lmwh_dosing",
                 params: [
                   DrugDosingParams(
-                    title: "Anti Xa monitoring for Enoxaparin",
-                    buttonTitle: "Yes",
-                    msg:
-                        "May consider checking anti-factor Xa activity 4 to 6 hours after dosing, following at least the third or fourth dose.",
+                    title: "Is there a need for Enoxaparin monitoring?",
+                    desc: """Any of the following scenarios present?
+● Patients with BMI ≥40 kg/m2 who are unstable, experience unexpected thromboembolic or bleeding complications, or require prolonged VTE treatment.
+● CrCl<30 ml/min.""",
                     params: [
                       DrugDosingParams(
-                        buttonTitle: "Enoxaparin twice daily dosing?",
+                        title: "Anti Xa monitoring for Enoxaparin",
+                        buttonTitle: "Yes",
                         msg:
-                            "The therapeutic ranges is generally 0.5 to 1 anti-factor Xa units/mL.",
-                        desc: extra4.desc,
-                        params: extra4.params,
-                        title: extra4.title,
+                            "May consider checking anti-factor Xa activity 4 to 6 hours after dosing, following at least the third or fourth dose.",
+                        params: [
+                          DrugDosingParams(
+                            buttonTitle: "Enoxaparin twice daily dosing?",
+                            msg:
+                                "The therapeutic ranges is generally 0.5 to 1 anti-factor Xa units/mL.",
+                            desc: extra4.desc,
+                            params: extra4.params,
+                            title: extra4.title,
+                          ),
+                          DrugDosingParams(
+                            buttonTitle: "Enoxaparin Once Daily Dosing?",
+                            msg:
+                                "The therapeutic ranges is generally 1.0-2.0 anti-factor Xa units/mL.",
+                            desc: extra4.desc,
+                            params: extra4.params,
+                            title: extra4.title,
+                          ),
+                        ],
                       ),
                       DrugDosingParams(
-                        buttonTitle: "Enoxaparin Once Daily Dosing?",
+                        buttonTitle: "No",
                         msg:
-                            "The therapeutic ranges is generally 1.0-2.0 anti-factor Xa units/mL.",
+                            "Generally, anti-factor Xa monitoring is not recommended.",
                         desc: extra4.desc,
                         params: extra4.params,
                         title: extra4.title,
-                      ),
+                      )
                     ],
                   ),
-                  DrugDosingParams(
-                    buttonTitle: "No",
-                    msg:
-                        "Generally, anti-factor Xa monitoring is not recommended.",
-                    desc: extra4.desc,
-                    params: extra4.params,
-                    title: extra4.title,
-                  )
                 ],
               ),
-            ],
-          ),
-        ])),
+            ])),
   );
 
   //Warfarin
