@@ -160,8 +160,16 @@ Baseline platelet count and a repeat platelet count within 24 to 48 hours is rec
       ),
       DrugDosingParams(
         title: "Suspect for HIT (UFH)",
-        buttonTitle: "● History of receiving UFH  in the past 100 days.",
-        msg: "Suggest against platelet count monitoring.\n(UpToDate)",
+        buttonTitle: "● History of receiving UFH in the past 100 days.",
+        msg:
+            "A baseline platelet count and a repeat platelet count within 24 to 48 hours is recommended.",
+        desc: extra2.desc,
+        params: extra2.params,
+      ),
+      DrugDosingParams(
+        title: "Suspect for HIT (UFH)",
+        buttonTitle: "● None",
+        msg: "Suggest against platelet count monitoring. (UpToDate)",
         desc: extra2.desc,
         params: extra2.params,
       ),

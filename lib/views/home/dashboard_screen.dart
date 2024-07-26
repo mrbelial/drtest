@@ -36,6 +36,12 @@ class DashboardScreen extends StatelessWidget {
                 title: "Start",
                 onTap: () => Get.toNamed("/test"),
               ),
+              // testButton(
+              //   "item.value",
+              //   () {},
+              //   color: AppColors.buttonBackground2,
+              //   textColor: AppColors.textColor2,
+              // ),
               // appButton(
               //     title: "title",
               //     onTap: () => Get.toNamed("/drug_interaction_description")),

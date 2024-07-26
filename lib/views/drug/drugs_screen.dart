@@ -1,6 +1,6 @@
 import 'package:drtest/controllers/test_controller.dart';
+import 'package:drtest/models/models.dart';
 import 'package:drtest/models/question/part3_data.dart';
-import 'package:drtest/models/question/question_model.dart';
 import 'package:drtest/tools/core.dart';
 import 'package:drtest/ui/test/test_widget.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +10,69 @@ class DrugsScreen extends StatelessWidget {
   DrugsScreen({super.key});
   final TestController _controller = Get.find();
   TestFilteredDrugModel get model => _controller.model.testFilteredDrug;
+
+  // void toDrugDosingWithMessage(
+  //     TestDrugModel e, DrugInteractionStatusModel status) {
+  //   var isAllowed = _controller.isDrugAllowedToContinue(e.id);
+
+  //   testdrugMessage(
+  //     status.interactions
+  //         .map((x) => Text(
+  //               "${x.drugName}\n${x.desc}\n",
+  //               style: AppTextStyles.text1.copyWith(color: x.color),
+  //             ))
+  //         .toList(),
+  //     Get.back,
+  //     button2Title: isAllowed ? "No Problem" : "",
+  //     ontap2: isAllowed
+  //         ? () {
+  //             Get.back();
+  //             Get.toNamed("/drug_dosing");
+  //           }
+  //         : null,
+  //   );
+  // }
+
+  Widget _drugBox(TestDrugModel e) {
+    var status = _controller.getDrugInteractions(e.id);
+
+    return testButton(e.name, () {
+      _controller.selectDrugDosing(e.id);
+      if (status.isAllowed) {
+        if (status.message.isNotEmpty) {
+          testdrugMessage(
+            status.interactions
+                .map((x) => Text(
+                      "${x.drugName}\n${x.desc}\n",
+                      style: AppTextStyles.text1.copyWith(color: x.color),
+                    ))
+                .toList(),
+            () => Get.toNamed("/drug_dosing"),
+          );
+        } else {
+          Get.toNamed("/drug_dosing");
+        }
+      } else {
+        var isAllowed = _controller.isDrugAllowedToContinue(e.id);
+        testdrugMessage(
+          status.interactions
+              .map((x) => Text(
+                    "${x.drugName}\n${x.desc}\n",
+                    style: AppTextStyles.text1.copyWith(color: x.color),
+                  ))
+              .toList(),
+          Get.back,
+          button2Title: isAllowed ? "No Problem" : "",
+          ontap2: isAllowed
+              ? () {
+                  Get.back();
+                  Get.toNamed("/drug_dosing");
+                }
+              : null,
+        );
+      }
+    }, color: status.color);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,36 +103,7 @@ class DrugsScreen extends StatelessWidget {
                       child: Text(e,
                           style: AppTextStyles.title3
                               .apply(color: AppColors.black)))),
-                  ...model.drugs.map(
-                    (e) {
-                      var status = _controller.getDrugInteractions(e.id);
-
-                      return testButton(e.name, () {
-                        _controller.selectDrugDosing(e.id);
-                        if (status.isAllowed) {
-                          Get.toNamed("/drug_dosing");
-                        } else {
-                          testdrugMessage(
-                            status.interactions
-                                .map((x) => Text(
-                                      "${x.drugName}\n${x.desc}\n",
-                                      style: AppTextStyles.text1
-                                          .copyWith(color: x.color),
-                                    ))
-                                .toList(),
-                            Get.back,
-                            button2Title: "No Problem",
-                            ontap2: _controller.isDrugAllowedToContinue(e.id)
-                                ? () {
-                                    Get.back();
-                                    Get.toNamed("/drug_dosing");
-                                  }
-                                : null,
-                          );
-                        }
-                      }, color: status.color);
-                    },
-                  ),
+                  ...model.drugs.map((e) => _drugBox(e)),
                   testButton("Consider DOACs Drug Interaction", () {
                     Get.toNamed("/drug_interaction");
                   }, color: AppColors.red),
@@ -79,7 +113,7 @@ class DrugsScreen extends StatelessWidget {
                       "/part3",
                       arguments: part3Data(_controller.model),
                     ),
-                    color: AppColors.orange,
+                    color: AppColors.grayPrimary,
                   ),
                 ],
         );

@@ -173,7 +173,7 @@ TestPageModel part3Data(TestModel model) {
 ● Reconsider concomitant medication. (EHRA/NOAC AF 2021)""",
           value:
               "Management of Minor/ Non-life -threatening bleeding while on anticoagulant",
-          appbarTitle: "Management of Minor Bleeding while on Warfarin",
+          appbarTitle: "Management of Minor Bleeding while on DOAC",
           helpDesc: "Minor bleeding: (e.g., epistaxis, bruising, slow gastrointestinal bleeding) can be managed conservatively using local hemostatic measures (e.g., mechanical pressure, and without anticoagulant reversal). Decisions to temporarily discontinue the anticoagulant must balance bleeding and thrombotic risks for each patient on a case-by-case basis.",
           type: TestPageTypeEnum.page,
           pages: [
@@ -191,7 +191,7 @@ TestPageModel part3Data(TestModel model) {
             value: """● Management of Major/life -threatening bleeding
 OR
 ●  Need to undergo urgent surgery""",
-            appbarTitle: "Management of Major Bleeding while on Warfarin",
+            appbarTitle: "Management of Major Bleeding while on DOAC",
             helpDesc: "Major bleeding: We define serious/major bleeding as bleeding that is associated with a risk of blood transfusion or bleeding into a critical closed space (eg, intracranial bleeding, compartment syndrome). Major bleeding may also include bleeding requiring intervention for management (e.g., surgery, interventional radiology procedures, endoscopic treatments). Major bleeding has a significant risk of immediate morbidity, regardless of the cause. Some major bleeding may be life-threatening and patients with major bleeding events are at high risk of death during the hospitalization prompted by that bleeding.",
             type: TestPageTypeEnum.page,
             pages: [

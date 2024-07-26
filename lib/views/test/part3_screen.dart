@@ -68,16 +68,21 @@ class Part3Screen extends StatelessWidget {
                       title: item.value,
                       bgColor: item.isMarked
                           ? AppColors.buttonBackground
-                          : AppColors.darkGray,
+                          : AppColors.buttonBackground2,
+                      textColor: AppColors.textColor2,
                       trailing: IconButton(
                           onPressed: () =>
                               testMessage(item.helpDesc!, Get.back),
                           icon: const Icon(Icons.help)));
                 }
-                return testButton(item.value, () => itemClicked(item),
-                    color: item.isMarked
-                        ? AppColors.buttonBackground
-                        : AppColors.darkGray);
+                return testButton(
+                  item.value,
+                  () => itemClicked(item),
+                  color: item.isMarked
+                      ? AppColors.buttonBackground
+                      : AppColors.buttonBackground2,
+                  textColor: AppColors.textColor2,
+                );
               }),
           if (model.type == TestPageTypeEnum.end)
             testButton("Done", () {

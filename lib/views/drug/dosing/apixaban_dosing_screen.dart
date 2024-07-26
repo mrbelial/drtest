@@ -31,6 +31,16 @@ class ApixabanDosingScreen extends StatelessWidget {
                     title: item.title,
                     checked: item.checked,
                     onChange: (i, b) {
+                      if (b) {
+                        if (item.id == 5) {
+                          model.list.firstWhere((x) => x.id == 6).checked = false;
+                        }
+
+                        if (item.id == 6) {
+                          model.list.firstWhere((x) => x.id == 5).checked = false;
+                        }
+                      }
+
                       item.checked = b;
                       _controller.apixabanLoading = false;
                     },

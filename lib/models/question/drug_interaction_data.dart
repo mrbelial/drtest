@@ -15,7 +15,7 @@ List<DrugInteractionRowModel> drugInteractionData = [
     id: 1,
   ),
   DrugInteractionRowModel(
-    "HIV protease inhibitors (e.g., ritonavir)",
+    "HIV protease inhibitors",
     [
       DrugInteractionWithType(6, DrugInteractionEnum.red),
       DrugInteractionWithType(4, DrugInteractionEnum.red),
@@ -45,6 +45,8 @@ List<DrugInteractionRowModel> drugInteractionData = [
       DrugInteractionWithType(4, DrugInteractionEnum.red,
           calcType: DrugInteractionCalcType.singleRed),
       DrugInteractionWithType(7, DrugInteractionEnum.red),
+      DrugInteractionWithType(5, DrugInteractionEnum.purple,
+          desc: "Ketoconazole 30 mg QD"),
     ],
     id: 4,
   ),
@@ -140,7 +142,7 @@ List<DrugInteractionRowModel> drugInteractionData = [
       DrugInteractionWithType(6, DrugInteractionEnum.darkBlue),
       DrugInteractionWithType(4, DrugInteractionEnum.darkBlue),
       DrugInteractionWithType(7, DrugInteractionEnum.darkBlue),
-      DrugInteractionWithType(5, DrugInteractionEnum.purple),
+      DrugInteractionWithType(5, DrugInteractionEnum.lightBlue),
     ],
   ),
   DrugInteractionRowModel(
@@ -185,7 +187,7 @@ List<DrugInteractionRowModel> drugInteractionData = [
       DrugInteractionWithType(6, DrugInteractionEnum.darkBlue),
       DrugInteractionWithType(4, DrugInteractionEnum.darkBlue),
       DrugInteractionWithType(7, DrugInteractionEnum.darkBlue),
-      DrugInteractionWithType(5, DrugInteractionEnum.purple),
+      DrugInteractionWithType(5, DrugInteractionEnum.lightBlue),
     ],
   ),
   DrugInteractionRowModel(
@@ -485,7 +487,7 @@ List<DrugInteractionRowModel> drugInteractionData = [
       DrugInteractionWithType(6, DrugInteractionEnum.lightBlue),
       DrugInteractionWithType(4, DrugInteractionEnum.lightBlue),
       DrugInteractionWithType(7, DrugInteractionEnum.lightBlue),
-      DrugInteractionWithType(5, DrugInteractionEnum.purple),
+      DrugInteractionWithType(5, DrugInteractionEnum.lightBlue),
     ],
   ),
   DrugInteractionRowModel(
@@ -494,7 +496,7 @@ List<DrugInteractionRowModel> drugInteractionData = [
       DrugInteractionWithType(6, DrugInteractionEnum.lightBlue),
       DrugInteractionWithType(4, DrugInteractionEnum.lightBlue),
       DrugInteractionWithType(7, DrugInteractionEnum.darkBlue),
-      DrugInteractionWithType(5, DrugInteractionEnum.purple),
+      DrugInteractionWithType(5, DrugInteractionEnum.lightBlue),
     ],
   ),
   DrugInteractionRowModel(

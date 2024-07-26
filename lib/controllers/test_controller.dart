@@ -498,11 +498,11 @@ Patients with AF at intermediate annual risk of thromboembolic events by risk sc
         response.color = AppColors.red;
         // response.color = AppColors.blue;
         response.isAllowed = false;
-      } else if (yellowInteractions > 1) {
+      } else if (yellowInteractions > 0) {
         response.message = model.drugInteractions.yellowMessage;
         response.color = AppColors.yellow;
         response.isAllowed = true;
-      } else if (lightBlueInteractions > 1) {
+      } else if (lightBlueInteractions > 0) {
         response.message = model.drugInteractions.lightBlueMessage;
         response.color = AppColors.yellow;
         // response.color = AppColors.blue2;
@@ -519,13 +519,21 @@ Patients with AF at intermediate annual risk of thromboembolic events by risk sc
 
   bool isDrugAllowedToContinue(int drugId) {
     if (drugId == 4) {
-      var selectedInteractionDrugs = drugsInteraction
-          .where((e) =>
-              e.isChecked && e.drugInteractions.any((x) => x.drugId == drugId))
-          .map((e) => e.id);
-      for (var id in selectedInteractionDrugs) {
-        if (![4, 3, 13].contains(id)) {
-          return false;
+      var selectedInteractionDrugs = drugsInteraction.where((e) =>
+          e.isChecked && e.drugInteractions.any((x) => x.drugId == drugId));
+
+      // var selectedIds = selectedInteractionDrugs.map((e) => e.id);
+
+      for (var item in selectedInteractionDrugs) {
+        var di =
+            item.drugInteractions.firstWhereOrNull((x) => x.drugId == drugId);
+
+        if (di != null) {
+          if (![4, 3, 13].contains(item.id) &&
+              [DrugInteractionEnum.red, DrugInteractionEnum.darkBlue]
+                  .contains(di.type)) {
+            return false;
+          }
         }
       }
       return true;
@@ -816,7 +824,7 @@ Repeat assay 6 hours after restarting the infusion.""",
         CheckBoxModel(
             "Concomitant use of strong P-Gp inhibitor (e.g verapamil, quinidine, or dronedarone)?",
             3,
-            false,
+            isSelectedDrugInterActions([10, 11, 1]),
             desc: "30 mg daily or 15 mg daily. (ESC AF 2020)"),
         CheckBoxModel(
             "Disproportionate and non-modifiable bleeding risk?", 2, false,
@@ -900,13 +908,12 @@ Repeat assay 6 hours after restarting the infusion.""",
         CheckBoxModel(
             "Concomitant therapy of dronedarone or ketoconazole for patients with CrCl ≥ 50 mL/min?",
             6,
-            (model.cgAnswer >= 30 && model.cgAnswer <= 50) &&
-                isSelectedDrugInterActions([1, 4]),
+            (model.cgAnswer >= 50) && isSelectedDrugInterActions([1, 4]),
             desc: "110 mg twice daily.\n(AF ESC 2020)\n(ESC ACS 2023 IIa B)"),
         CheckBoxModel(
             "Concomitant therapy of dronedarone or ketoconazole for patients with CrCl 30 to 50 mL/min?",
             4,
-            (model.cgAnswer >= 30 && model.cgAnswer <= 50) &&
+            (model.cgAnswer >= 30 && model.cgAnswer <= 49) &&
                 isSelectedDrugInterActions([1, 4]),
             desc: "75 mg twice daily.\n(AHA ACC ACCP HRS 2023)"),
         CheckBoxModel("CrCl 15 to 30 mL/min?", 3,
@@ -988,6 +995,7 @@ Repeat assay 6 hours after restarting the infusion.""",
           false,
           desc:
               "2.5 or 5 mg twice daily. (AF ESC 2020), (AHA/ACC/ACCP HRS 2023)",
+          id: 5,
         ),
         CheckBoxModel(
           "CrCl 15-29 ml/min",
@@ -995,6 +1003,7 @@ Repeat assay 6 hours after restarting the infusion.""",
           model.cgAnswer >= 15 && model.cgAnswer <= 29,
           desc:
               "5 mg twice daily.\n(AHA ACC ACCP HRS 2023)\n2.5 mg twice daily.\n(AHA ACC ACCP HRS 2023)\n(EHRA NOAC AF 2021)",
+          id: 6,
         ),
         CheckBoxModel(
           "Platelet count: 25000-50000 Cell/ µL",
@@ -1037,12 +1046,6 @@ Repeat assay 6 hours after restarting the infusion.""",
     if (rivaroxabanDosingModel.list.isEmpty) {
       rivaroxabanDosingModel.list = [
         CheckBoxModel(
-          "Post ACS / PCI receiving triple therapy with CrCl 30-49 ml/min?",
-          10,
-          model.cgAnswer >= 30 && model.cgAnswer <= 49,
-          desc: "10 mg once daily.",
-        ),
-        CheckBoxModel(
           """•	CrCl 50 ≤ mL/min based on the Cockcroft-Gault equation or on dialysis? (AHA/ACC/ACCP/ HRS 2023)
 OR
 •	Post ACS / PCI receiving concurrent single antiplatelet therapy or dual antiplatelet therapy? (EHRA/NOAC AF 2021), (ESC/ACS 2023 IIa B) 
@@ -1053,6 +1056,12 @@ OR
           0,
           model.cgAnswer <= 50,
           desc: "15 mg once daily with food.",
+        ),
+        CheckBoxModel(
+          "Post ACS / PCI receiving triple therapy with CrCl 30-49 ml/min?",
+          10,
+          model.cgAnswer >= 30 && model.cgAnswer <= 49,
+          desc: "10 mg once daily.",
         ),
         CheckBoxModel(
           "CrCl > 50 mL/min based on the Cockcroft-Gault equation?",
