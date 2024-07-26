@@ -898,7 +898,8 @@ Repeat assay 6 hours after restarting the infusion.""",
             0,
             false,
             desc: "110 mg twice daily. (AF/ESC 2020), (ESC/ACS 2023 IIa B)"),
-        CheckBoxModel("High bleeding risk (HAS-BLED >_3)", 0, false,
+        CheckBoxModel(
+            "High bleeding risk (HAS-BLED ≥ 3)", 0, model.hbPoint >= 3,
             desc: "110 mg twice daily. (AF/ESC 2020), (ESC/ACS 2023 IIa B)"),
         CheckBoxModel(
             "Concomitant single or Dual antiplatelet therapy ? (IIa B)",
@@ -1052,7 +1053,7 @@ OR
 OR
 •	Patients with a CHA2DS2VASc risk score of 2 or greater who have undergone PCI with stenting for ACS receiving concurrent P2Y12 inhibitors. (AHA/ACC/ HRS 2019 IIa B-R)
 OR
-•	High bleeding risk (HAS-BLED >_3) during concomitant single or DAPT? (AF/ESC 2020 IIa B)""",
+•	High bleeding risk (HAS-BLED ≥ 3) during concomitant single or DAPT? (AF/ESC 2020 IIa B)""",
           0,
           model.cgAnswer <= 50,
           desc: "15 mg once daily with food.",

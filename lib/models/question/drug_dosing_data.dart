@@ -137,8 +137,6 @@ List<DrugDosingModel> drugDosing(TestModel model) {
   var extra1Msg =
       """Consider Platelet count monitoring every 2 to 3 days from day 0 through day 14.
 (Ref: Cuker A, Arepally GM, Chong BH, et al. American Society of Hematology 2018 guidelines for management of venous thromboembolism: heparin-induced thrombocytopenia. Blood Advances 2018; 2:3360., UpToDate)
-
-Baseline platelet count and a repeat platelet count within 24 to 48 hours is recommended.
 """;
 
   var extra1 = DrugDosingParams(
