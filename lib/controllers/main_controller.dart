@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:drtest/service/service_generator.dart';
 import 'package:drtest/tools/core.dart';
 import 'package:drtest/views/public/toc_screen.dart';
 import 'package:flutter/foundation.dart';
@@ -9,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/public/login_model.dart';
 import '../models/public/main_model.dart';
+import '../models/public/response_model.dart';
 import '../models/user/user_model.dart';
 import '../response/public/dashboard_response.dart';
 import '../response/public/main_response.dart';
@@ -29,6 +31,7 @@ class MainController extends GetxController {
   late SharedPreferences prefs;
 
   // double spScale = 1.3333333333;
+  late ServiceGenerator apiService;
 
   var headers = {
     "accept": 'application/json',
@@ -39,7 +42,6 @@ class MainController extends GetxController {
   @override
   onInit() async {
     super.onInit();
-
     await init();
   }
 
@@ -67,13 +69,12 @@ class MainController extends GetxController {
     prefs = await SharedPreferences.getInstance();
     await prefs.reload();
 
-    // apiService = ServiceGenerator();
-    // apiService.updateDio(headers);
-
     fillUserToken();
 
-    mainResponse.content =
-        MainModel(user: UserModel(token: token), aboutus: "");
+    mainResponse.content = MainModel(user: UserModel(token: token));
+
+    apiService = ServiceGenerator();
+    apiService.updateDio(headers);
 
     packageInfo = await PackageInfo.fromPlatform();
 
@@ -83,8 +84,8 @@ class MainController extends GetxController {
     termsChecked = prefs.getBool("termsChecked") ?? false;
 
     if (kIsWeb) {
-      var localVersion = prefs.getString("appVersion");
-      if (localVersion != null && localVersion != appVersion) {
+      var localVersion = prefs.getString("buildVersion");
+      if (localVersion != null && localVersion != buildVersion) {
         // Clear cache
         html.window.localStorage.clear();
         html.window.sessionStorage.clear();
@@ -100,26 +101,27 @@ class MainController extends GetxController {
     return true;
   }
 
-  // Future<BaseModel<LoginModel>> getSplash() async {
-  //   isloading = true;
-  //   await init();
-  //   var response = await apiService.splash();
-  //   if (response.statusCode == 401) {
-  //     clearUser();
-  //   } else if (response.isSuccess && response.content != null) {
-  //     fillData(response.content!);
-  //   }
-  //   isloading = false;
-  //   return response;
-  // }
+  Future<BaseModel<LoginModel>> getSplash() async {
+    isloading = true;
+    // await init();
+    var response = await apiService.splash();
+    if (response.statusCode == 401) {
+      clearUser();
+    } else if (response.isSuccess && response.content != null) {
+      fillData(response.content!);
+      termsChecked = prefs.getBool("termsChecked") ?? false;
+    }
+    isloading = false;
+    return response;
+  }
 
   bool isUserLogin() {
     return token.isNotEmpty;
   }
 
   String? getToken() {
-    return "";
-    // return prefs.getString("token");
+    // return "";
+    return prefs.getString("token");
   }
 
   updateToken(String? t) {
@@ -127,7 +129,7 @@ class MainController extends GetxController {
       t ??= '';
       t = t.replaceAll("Bearer ", "");
       headers["authorization"] = "Bearer $t";
-      // prefs.setString("token", t);
+      prefs.setString("token", t);
       token = t;
     } catch (e) {
       // loggerNoStack.e(e);
@@ -144,13 +146,13 @@ class MainController extends GetxController {
   }
 
   void doneIntro() {
-    // prefs.setBool("intro", true);
+    prefs.setBool("intro", true);
   }
 
-  // bool showIntro() {
-  //   var intro = prefs.getBool("intro");
-  //   return intro ?? false;
-  // }
+  bool showIntro() {
+    var intro = prefs.getBool("intro");
+    return intro ?? false;
+  }
 
   bool isUserFilledProfile() {
     if (user.name == "") return false;
@@ -173,7 +175,6 @@ class MainController extends GetxController {
           phone: data.phoneNumber,
           token: data.token,
         ),
-        aboutus: data.aboutus,
       );
     });
     if (data.token != "") updateToken(data.token);
@@ -191,6 +192,7 @@ class MainController extends GetxController {
   // }
 
   final _pages = PageIndexResponse().obs;
+
   List<PageIndexModel> get pages => _pages.value.pages;
   PageIndexModel get currentPage => _pages.value.current;
   int get tabIndex => _pages.value.selectedIndex;

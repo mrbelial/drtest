@@ -43,9 +43,8 @@ class TermsScreen extends StatelessWidget {
                 title: "Continue",
                 onTap: !_controller.termsChecked
                     ? null
-                    : () {
-                        _controller.prefs
-                            .setBool("termsChecked", _controller.termsChecked);
+                    : () async {
+                        await _controller.prefs.setBool("termsChecked", true);
                         toMain();
                       }),
           ],

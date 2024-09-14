@@ -16,6 +16,7 @@ class TestModel {
   int height = 0;
   double serumCreatinine = 0;
   int? ul;
+  int get ulValue => ul ?? 0;
 
   List<DrugDosingModel> drugDosing = [];
   int selectedDrugDosing = 0;
@@ -23,7 +24,6 @@ class TestModel {
   String q1Desc =
       """For patients with atrial flutter, anticoagulant therapy is recommended according to the same risk profile used for AF.(AHA/ACC/HRS 2019, I C)""";
 
-  int get ulValue => ul ?? 0;
   double bmi = 0;
   int aptt = 0;
   double xaActivity = 0;

@@ -39,6 +39,9 @@ dependencies:
   universal_html: ^2.2.4
   package_info_plus: ^8.0.2
   shared_preferences: ^2.3.2
+  dio: ^5.7.0
+  logger: ^2.4.0
+  toastification: ^2.2.0
 
 dev_dependencies:
   flutter_test:

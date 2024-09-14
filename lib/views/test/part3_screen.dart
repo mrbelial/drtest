@@ -36,6 +36,7 @@ class Part3Screen extends StatelessWidget {
             _controller.selectDrugDosing(item.id);
             page = "/drug_dosing";
             Get.toNamed(page, preventDuplicates: false);
+            break;
           default:
             Get.toNamed(page, arguments: item, preventDuplicates: false);
         }

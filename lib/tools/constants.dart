@@ -30,25 +30,7 @@ String _getAppName() {
   // }
 }
 
-String get urlBaseApi => "https://${getApiHost()}/api/admin";
-
-String getApiHost() {
-  return "localhost:7214";
-  // switch (_currentApp) {
-  //   case AppConfig.ryanex:
-  //     return "panel.ryanex.ae";
-  //   case AppConfig.alshams:
-  //     return "panel.alshams.co";
-  //   case AppConfig.tabdil:
-  //     return "panel.tabdil.co";
-  //   case AppConfig.demo:
-  //     return "panel.tabdil.co";
-  //   case AppConfig.demo2:
-  //     return "panel2.tabdil.co";
-  //   default:
-  //     return "localhost:7264";
-  // }
-}
+String get urlBaseApi => "https://localhost:7204/api/v1";
 
 // final MainController _mainController = Get.find();
 
@@ -236,7 +218,7 @@ class AppTextStyles {
       fontSize: 13.toPx,
       color: AppColors.titleColor4,
       fontWeight: FontWeight.w300);
-      
+
   static TextStyle subtitleSmallLight = base.copyWith(
     color: AppColors.gray,
     fontSize: 10.toPx,

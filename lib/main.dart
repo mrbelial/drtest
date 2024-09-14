@@ -11,14 +11,19 @@ import 'package:get/get.dart';
 
 import 'views/drug/drug_dosing_screen.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  final mainController = Get.put(MainController());
+  await mainController.init();
+  // await _mainController.initFireBase();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+  //     overlays: [SystemUiOverlay.bottom]);
   final runnableApp = _buildRunnableApp(
     isWeb: kIsWeb,
     webAppWidth: 800,
-    app: MyApp(),
+    app: const MyApp(),
   );
   runApp(runnableApp);
 }
@@ -29,25 +34,24 @@ Widget _buildRunnableApp({
   required Widget app,
 }) {
   if (!isWeb) {
-    // return app;
+    return app;
   }
 
   return Center(
     child: ClipRect(
       child: Container(
         color: AppColors.background,
-        width: webAppWidth,
-        child: app,
+        child: SizedBox(
+          width: webAppWidth,
+          child: app,
+        ),
       ),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
-
-  // ignore: unused_field
-  final _controller = Get.put(MainController());
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +67,7 @@ class MyApp extends StatelessWidget {
       fallbackLocale: const Locale('en', 'US'),
       getPages: [
         GetPage(name: '/', page: () => SplashScreen()),
-        // GetPage(name: '/login', page: () => LoginScreen()),
+        GetPage(name: '/login', page: () => LoginScreen()),
         GetPage(name: '/home', page: () => HomeScreen()),
         GetPage(name: '/terms', page: () => TermsScreen()),
         GetPage(name: '/profile', page: () => ProfileScreen()),
@@ -92,8 +96,12 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/drugs', page: () => DrugsScreen()),
         GetPage(name: '/drug_dosing', page: () => DrugDosingScreen()),
         GetPage(name: '/drug_interaction', page: () => DrugInteractionScreen()),
-        GetPage(name: '/drug_interaction_description', page: () => const DrugInteractionDescScreen()),
-        GetPage(name: '/drug_interaction_description2', page: () => const DrugInteractionDesc2Screen()),
+        GetPage(
+            name: '/drug_interaction_description',
+            page: () => const DrugInteractionDescScreen()),
+        GetPage(
+            name: '/drug_interaction_description2',
+            page: () => const DrugInteractionDesc2Screen()),
 
         //test_situations_page
         GetPage(

@@ -34,9 +34,9 @@ toMain({bool isIntro = false, bool isForce = false}) {
   // if (!mainController.showIntro()) {
   //   page = "/intro";
   // } else
-  // if (!mainController.isUserLogin()) {
-  // page = "/login";
-  // }
+  if (!mainController.isUserLogin()) {
+    page = "/login";
+  }
   // } catch (e) {
   // page = "/login";
   // }
@@ -142,7 +142,7 @@ extension MyStringExtension on String {
 extension MyIntExtension on int {
   String get toCurrency {
     if (this == 0) return "";
-    var cf = NumberFormat('###,###', 'en_US');
+    var cf = intl.NumberFormat('###,###', 'en_US');
     return cf.format(this);
   }
 }
@@ -152,7 +152,7 @@ extension MyDoubleExtension on double {
     if (this == 0) return "";
     // var cf = NumberFormat('###,###', 'en_US');
     // return cf.format(this);
-    return NumberFormat().format(this);
+    return intl.NumberFormat().format(this);
   }
 }
 
@@ -170,42 +170,43 @@ String t1tl(String t, int l) {
 }
 
 class ShowMSG {
-  static error(String title, String msg) {
-    Get.snackbar(
-      title,
-      msg,
-      animationDuration: const Duration(milliseconds: 400),
-      duration: const Duration(seconds: 3),
-      backgroundColor: Colors.red,
+  static show(Widget title, Widget desc, Color color, ToastificationType type) {
+    toastification.show(
+      context: Get.overlayContext!,
+      type: type,
+      style: ToastificationStyle.minimal,
+      title: title,
+      description: desc,
+      alignment: Alignment.bottomRight,
+      autoCloseDuration: const Duration(seconds: 5),
+      primaryColor: color,
+      borderRadius: BorderRadius.circular(12.0),
+      boxShadow: lowModeShadow,
+      showProgressBar: true,
+      direction: TextDirection.rtl,
     );
+  }
+
+  static error(String title, String msg) {
+    show(Text(title), Text(msg), AppColors.red, ToastificationType.error);
   }
 
   static warning(String title, String msg) {
-    Get.snackbar(
-      title,
-      msg,
-      animationDuration: const Duration(milliseconds: 400),
-      duration: const Duration(seconds: 3),
-      backgroundColor: Colors.orange,
-    );
+    show(Text(title), Text(msg), AppColors.yellow, ToastificationType.warning);
   }
 
   static info(String title, String msg) {
-    Get.snackbar(
-      title,
-      msg,
-      animationDuration: const Duration(milliseconds: 400),
-      duration: const Duration(seconds: 3),
-    );
+    show(Text(title), Text(msg), AppColors.success, ToastificationType.success);
   }
 
   static fromResponse(ResponseModel response) {
-    Get.snackbar(
-      response.isSuccess ? "موفق" : "خطا",
-      response.message,
-      animationDuration: const Duration(milliseconds: 400),
-      duration: const Duration(seconds: 3),
-    );
+    show(
+        Text(response.isSuccess ? "موفق" : "خطا"),
+        Text(response.message),
+        response.isSuccess ? AppColors.green : AppColors.red,
+        response.isSuccess
+            ? ToastificationType.success
+            : ToastificationType.error);
   }
 
   static errorWithButton(
@@ -253,7 +254,7 @@ class ShowMSG {
   }
 }
 
-final DateFormat dateTimeFormatter = DateFormat('yyyy-MM-dd');
+final intl.DateFormat dateTimeFormatter = intl.DateFormat('yyyy-MM-dd');
 
 Widget simpleLoading([Color color = AppColors.primary]) {
   return Center(
@@ -465,7 +466,7 @@ String toCurrency(number) {
   if (number is double) {
     // return NumberFormat.decimalPattern().format(number);
   }
-  return NumberFormat().format(number);
+  return intl.NumberFormat().format(number);
 }
 
 int selectionIndexFromTheRight(int nvLength, int nvOffset, int nsLength) =>

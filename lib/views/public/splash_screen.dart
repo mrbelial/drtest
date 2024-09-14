@@ -9,28 +9,17 @@ class SplashScreen extends StatelessWidget {
   final MainController _controller = Get.find();
 
   init() async {
-    await Future.delayed(
-      const Duration(seconds: 2),
-      () {
-        _controller.updateToken("ss");
-        toMain();
-      },
-    );
-    return;
-    // var response = await _controller.getSplash();
-    // if ((response.statusCode == 401 || response.isSuccess)) {
-    //   toMain();
-    // } else {
-    //   ShowMSG.errorWithButton(
-    //       msg: response.message,
-    //       onClose: init,
-    //       title: "بروز خطا",
-    //       btn:
-    //           IconButton(onPressed: Get.back, icon: const Icon(Icons.refresh)));
-    // }
-
-    // await Future.delayed(const Duration(seconds: 3));
-    // toMain();
+    var response = await _controller.getSplash();
+    if ((response.statusCode == 401 || response.isSuccess)) {
+      toMain();
+    } else {
+      ShowMSG.errorWithButton(
+          msg: response.message,
+          onClose: init,
+          title: "بروز خطا",
+          btn:
+              IconButton(onPressed: Get.back, icon: const Icon(Icons.refresh)));
+    }
   }
 
   @override
