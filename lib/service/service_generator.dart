@@ -87,14 +87,14 @@ class ServiceGenerator {
     }
   }
 
-  Future<ResponseModel> updateTest(param) async {
+  Future<BaseModel<TestDataModel>> updateTest(param) async {
     try {
       Response response =
-          await _dio.post(ServerConfig.urlGetTests, data: param);
-      return ResponseModel.fromJson(response.data);
+          await _dio.post(ServerConfig.urlUpdateTest, data: param);
+      return TestUpdateResponse.fromJson(response.data);
     } catch (error, stacktrace) {
       loggerNoStack.e("Exception occured: $error stackTrace: $stacktrace");
-      return _getErrorFromResponse(error);
+      return _getError<TestDataModel>(error, TestUpdateResponse());
     }
   }
 }

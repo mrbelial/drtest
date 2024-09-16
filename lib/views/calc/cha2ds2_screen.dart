@@ -8,9 +8,12 @@ class CHA2DS2Screen extends StatelessWidget {
   CHA2DS2Screen({super.key});
   final TestController _controller = Get.find();
   final FocusNode _ageFocusNode = FocusNode();
+  final TextEditingController _ageController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    _ageController.text = _controller.age.toString();
+    
     return Scaffold(
         appBar: AppBar(
           title: const Text("CHA2DS2-VASc Calculator"),

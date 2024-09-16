@@ -12,12 +12,17 @@ class TestSituationsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // _controller.isloading = true;
     _controller.initStack();
+    _controller.updateTestModel();
     return Scaffold(
       appBar: AppBar(
         title: Text(model.value),
         actions: [
           Obx(() {
+            if (_controller.isloading) {
+              return Container();
+            }
             if (_controller.stackCount > 0) {
               return textButton(
                   title: "Next",
@@ -37,16 +42,19 @@ class TestSituationsScreen extends StatelessWidget {
           })
         ],
       ),
-      body: ListView(
-        padding: AppConst.defaultPadding,
-        children: [
-          if (model.title.isNotEmpty) testTitle(model.title),
-          ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: model.pages.length,
-              itemBuilder: (c, i) {
-                return Obx(() {
+      body: Obx(() {
+        if (_controller.isloading) {
+          return Container();
+        }
+        return ListView(
+          padding: AppConst.defaultPadding,
+          children: [
+            if (model.title.isNotEmpty) testTitle(model.title),
+            ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: model.pages.length,
+                itemBuilder: (c, i) {
                   var item = model.pages[i];
                   return Row(
                     children: [
@@ -69,10 +77,10 @@ class TestSituationsScreen extends StatelessWidget {
                         )
                     ],
                   );
-                });
-              }),
-        ],
-      ),
+                }),
+          ],
+        );
+      }),
     );
   }
 }

@@ -34,6 +34,7 @@ toMain({bool isIntro = false, bool isForce = false}) {
   // if (!mainController.showIntro()) {
   //   page = "/intro";
   // } else
+
   if (!mainController.isUserLogin()) {
     page = "/login";
   }

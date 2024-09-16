@@ -9,9 +9,13 @@ class PlateletCountScreen extends StatelessWidget {
   final TestController _controller = Get.find();
 
   final FocusNode _ulFocusNode = FocusNode();
+  final TextEditingController _ulController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    if (_controller.model.ulValue > 0) {
+      _ulController.text = _controller.model.ulValue.toString();
+    }
     return Scaffold(
         appBar: AppBar(
           title: const Text("Platelet Count"),
@@ -30,6 +34,7 @@ class PlateletCountScreen extends StatelessWidget {
               hint: "µL",
               label: "µL",
               focusNode: _ulFocusNode,
+              controller: _ulController,
               onChanged: (v) => _controller.ul = int.tryParse(v),
             ),
             const SizedBox(height: 15),

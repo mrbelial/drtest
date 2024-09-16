@@ -14,12 +14,20 @@ class TestController extends GetxController {
 
   final MainController _mainController = Get.find();
   ServiceGenerator get apiService => _mainController.apiService;
+
   Future updateTestModel() async {
-    isloading = true;
     var data = TestDataModel.fromTestModel(model);
     var response = await apiService.updateTest(data.toJson());
-    ShowMSG.fromResponse(response);
-    isloading = false;
+
+    if (response.isSuccess) {
+      ShowMSG.info("موفق", response.message);
+      model.id = response.content!.id;
+      _mainController.updateTests(model);
+    } else {
+      ShowMSG.error("خطا", response.message);
+    }
+
+    // isloading = false;
   }
 
   final _responseObs = QuestionResponse().obs;

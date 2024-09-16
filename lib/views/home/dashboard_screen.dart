@@ -38,7 +38,12 @@ class DashboardScreen extends StatelessWidget {
                       itemCount: tests.length,
                       itemBuilder: (context, index) {
                         var item = tests[index];
-                        return listTile(title: "سن: ${item.age}");
+                        return listTile(
+                          title: "سن: ${item.age}",
+                          onTap: () {
+                            Get.toNamed("/test", arguments: item.toTestModel());
+                          },
+                        );
                       },
                     ),
                   ),

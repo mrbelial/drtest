@@ -47,7 +47,7 @@ class TestModel {
 
   //Question 2
   String q2Title = "Any of the following indications for OACs present?";
-  int q2Answer = 0;
+  int q2Answer = -1;
   List<IDTitleModel> qa2 = [
     IDTitleModel(10, "Cardiac Amyloidosis (ACC Cardiac Amyloidosis 2023)",
         """● Guidelines recommend anticoagulation when AF is present, regardless of the CHA2DS2-VASc risk score. (2023 ACC Expert Consensus Decision Pathway on Comprehensive Multidisciplinary Care for the Patient With Cardiac Amyloidosis)

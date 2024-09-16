@@ -50,6 +50,9 @@ class Test2Screen extends StatelessWidget {
                 return testListTile(
                     ontap: () => answer(item),
                     title: item.title,
+                    bgColor: item.id == _controller.model.q2Answer
+                        ? AppColors.green
+                        : AppColors.buttonBackground2,
                     trailing: IconButton(
                         onPressed: () => testMessage(item.desc, Get.back),
                         icon: const Icon(

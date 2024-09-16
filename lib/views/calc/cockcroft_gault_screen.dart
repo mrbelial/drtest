@@ -11,10 +11,14 @@ class CockcroftGaultScreen extends StatelessWidget {
   final FocusNode _scFocusNode = FocusNode();
   final FocusNode _weightFocusNode = FocusNode();
   final TextEditingController _ageController = TextEditingController();
+  final TextEditingController _scController = TextEditingController();
+  final TextEditingController _weightController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     _ageController.text = _controller.age.toString();
+    _weightController.text = _controller.weight.toString();
+    _scController.text = _controller.serumCreatinine.toString();
 
     return Scaffold(
       appBar: AppBar(
@@ -79,6 +83,7 @@ class CockcroftGaultScreen extends StatelessWidget {
             hint: "mg/dL",
             label: "Serum creatinine",
             focusNode: _scFocusNode,
+            controller: _scController,
             onChanged: (sc) {
               _controller.serumCreatinine = double.tryParse(sc) ?? 0;
               _controller.calcCG();
@@ -91,6 +96,7 @@ class CockcroftGaultScreen extends StatelessWidget {
             hint: "kg",
             label: "Weight",
             focusNode: _weightFocusNode,
+            controller: _weightController,
             onChanged: (weight) {
               _controller.weight = int.tryParse(weight) ?? 0;
               _controller.calcCG();

@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:drtest/response/test/test_response.dart';
+import 'package:drtest/models/models.dart';
 import 'package:drtest/service/service_generator.dart';
 import 'package:drtest/tools/core.dart';
 import 'package:drtest/views/public/toc_screen.dart';
@@ -9,9 +9,7 @@ import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../models/public/login_model.dart';
 import '../models/public/main_model.dart';
-import '../models/public/response_model.dart';
 import '../models/user/user_model.dart';
 import '../response/public/dashboard_response.dart';
 import '../response/public/main_response.dart';
@@ -43,7 +41,10 @@ class MainController extends GetxController {
   @override
   onInit() async {
     super.onInit();
-    await init();
+
+    ever(headers, (Map<String, String> val) {
+      apiService.updateDio(val);
+    });
   }
 
   bool get termsChecked => mainResponse.content!.termsChecked;
@@ -70,12 +71,12 @@ class MainController extends GetxController {
     prefs = await SharedPreferences.getInstance();
     await prefs.reload();
 
+    apiService = ServiceGenerator();
+    apiService.updateDio(headers);
+
     fillUserToken();
 
     mainResponse.content = MainModel(user: UserModel(token: token));
-
-    apiService = ServiceGenerator();
-    apiService.updateDio(headers);
 
     packageInfo = await PackageInfo.fromPlatform();
 
@@ -121,7 +122,6 @@ class MainController extends GetxController {
   }
 
   String? getToken() {
-    // return "";
     return prefs.getString("token");
   }
 
@@ -133,9 +133,14 @@ class MainController extends GetxController {
       prefs.setString("token", t);
       token = t;
     } catch (e) {
-      // loggerNoStack.e(e);
+      // printError(e.toString());
     }
   }
+
+  // fillUserData(UserModel userdata, String t) {
+  //   updateToken(t);
+  //   _mainResponseObs.update((val) => val!.data!.user = userdata);
+  // }
 
   fillUserToken() {
     updateToken(getToken());
@@ -144,21 +149,7 @@ class MainController extends GetxController {
   clearUser() {
     updateToken('');
     _mainResponseObs.update((val) => val!.content!.user = UserModel());
-  }
-
-  void doneIntro() {
-    prefs.setBool("intro", true);
-  }
-
-  bool showIntro() {
-    var intro = prefs.getBool("intro");
-    return intro ?? false;
-  }
-
-  bool isUserFilledProfile() {
-    if (user.name == "") return false;
-
-    return true;
+    // cancel socket_
   }
 
   //Change Localization
@@ -260,6 +251,18 @@ class MainController extends GetxController {
     var response = await apiService.getTests();
     testsResponse.content = response.content ?? [];
 
+    isloadingTest = false;
+  }
+
+  void updateTests(TestModel model) {
+    var data = TestDataModel.fromTestModel(model);
+    var index = testsResponse.content!.indexWhere((e) => e.id == model.id);
+    print(index);
+    if (index > -1) {
+      testsResponse.content![index] = data;
+    } else {
+      testsResponse.content!.add(data);
+    }
     isloadingTest = false;
   }
 }
