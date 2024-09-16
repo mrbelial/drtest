@@ -1,7 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:drtest/models/public/login_model.dart';
-import 'package:drtest/models/public/response_model.dart';
-import 'package:drtest/response/public/login_response.dart';
+import 'package:drtest/models/models.dart';
 import 'package:drtest/tools/core.dart';
 import 'package:drtest/tools/logger.dart';
 
@@ -76,6 +74,27 @@ class ServiceGenerator {
     } catch (error, stacktrace) {
       loggerNoStack.e("Exception occured: $error stackTrace: $stacktrace");
       return _getError<LoginModel>(error, LoginResponse());
+    }
+  }
+
+  Future<BaseModel<List<TestDataModel>>> getTests() async {
+    try {
+      Response response = await _dio.get(ServerConfig.urlGetTests);
+      return TestResponse.fromJson(response.data);
+    } catch (error, stacktrace) {
+      loggerNoStack.e("Exception occured: $error stackTrace: $stacktrace");
+      return _getError<List<TestDataModel>>(error, TestResponse());
+    }
+  }
+
+  Future<ResponseModel> updateTest(param) async {
+    try {
+      Response response =
+          await _dio.post(ServerConfig.urlGetTests, data: param);
+      return ResponseModel.fromJson(response.data);
+    } catch (error, stacktrace) {
+      loggerNoStack.e("Exception occured: $error stackTrace: $stacktrace");
+      return _getErrorFromResponse(error);
     }
   }
 }

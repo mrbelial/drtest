@@ -99,10 +99,13 @@ class DrugsScreen extends StatelessWidget {
 """, style: AppTextStyles.title3.apply(color: AppColors.black)))
                 ]
               : [
-                  ...model.titles.map((e) => cardBox(
+                  ...model.titles.map(
+                    (e) => cardBox(
                       child: Text(e,
                           style: AppTextStyles.title3
-                              .apply(color: AppColors.black)))),
+                              .apply(color: AppColors.black)),
+                    ),
+                  ),
                   ...model.drugs.map((e) => _drugBox(e)),
                   testButton("Consider DOACs Drug Interaction", () {
                     Get.toNamed("/drug_interaction");

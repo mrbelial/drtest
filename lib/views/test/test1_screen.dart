@@ -1,4 +1,5 @@
 import 'package:drtest/controllers/test_controller.dart';
+import 'package:drtest/models/models.dart';
 import 'package:drtest/tools/core.dart';
 import 'package:drtest/ui/test/test_widget.dart';
 import 'package:flutter/material.dart';
@@ -7,10 +8,11 @@ import 'package:get/get.dart';
 class TestScreen extends StatelessWidget {
   TestScreen({super.key});
   final _controller = Get.put(TestController());
+  final TestModel selectedTest = Get.arguments ?? TestModel();
 
   @override
   Widget build(BuildContext context) {
-    _controller.newTest();
+    _controller.newTest(selectedTest);
 
     return Scaffold(
       appBar: AppBar(

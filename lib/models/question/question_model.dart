@@ -424,7 +424,8 @@ Moderate or severe forms of congenital heart disease including:
 valve, DOACs are recommended over Warfarin to reduce the risk of mortality, stroke, systemic
 embolism, and ICH. (AHA/ACC/ACCP/HRS AF 2023, 1 A), (ESC 2020 1A), (AHA/ACC/HRS
 AF 2019 1 A)
-● NOACs are preferred over VKAs in all NOAC-eligible AF patients. (EHRA NOAC AF 2021)""", [1, 2, 3, 4, 5, 6, 7]),
+● NOACs are preferred over VKAs in all NOAC-eligible AF patients. (EHRA NOAC AF 2021)""",
+                        [1, 2, 3, 4, 5, 6, 7]),
                   ]),
               TestPageModel(
                   title: "",

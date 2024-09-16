@@ -1,4 +1,6 @@
+import 'package:drtest/controllers/main_controller.dart';
 import 'package:drtest/response/question/question_response.dart';
+import 'package:drtest/service/service_generator.dart';
 import 'package:drtest/tools/core.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -10,6 +12,16 @@ class TestController extends GetxController {
     Get.offNamedUntil("/drugs", ModalRoute.withName("/drug_dosing"));
   }
 
+  final MainController _mainController = Get.find();
+  ServiceGenerator get apiService => _mainController.apiService;
+  Future updateTestModel() async {
+    isloading = true;
+    var data = TestDataModel.fromTestModel(model);
+    var response = await apiService.updateTest(data.toJson());
+    ShowMSG.fromResponse(response);
+    isloading = false;
+  }
+
   final _responseObs = QuestionResponse().obs;
   QuestionResponse get responseModel => _responseObs.value;
 
@@ -19,8 +31,11 @@ class TestController extends GetxController {
 
   TestModel get model => _responseObs.value.content!;
 
-  void newTest() {
+  void newTest(TestModel selectedTest) {
     _responseObs.value = QuestionResponse();
+
+    responseModel.content = selectedTest;
+
     // initDrugInteraction();
     // initDrugDosing();
     // initStack();

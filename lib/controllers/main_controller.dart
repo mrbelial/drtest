@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:drtest/response/test/test_response.dart';
 import 'package:drtest/service/service_generator.dart';
 import 'package:drtest/tools/core.dart';
 import 'package:drtest/views/public/toc_screen.dart';
@@ -244,5 +245,21 @@ class MainController extends GetxController {
         count: 0,
       ),
     ]);
+  }
+
+  final _testsResponse = TestResponse().obs;
+  TestResponse get testsResponse => _testsResponse.value;
+  List<TestDataModel> get tests => testsResponse.content ?? [];
+  bool get isloadingTest => testsResponse.isLoading;
+  set isloadingTest(bool v) =>
+      _testsResponse.update((val) => val!.isLoading = v);
+
+  void getTests() async {
+    isloadingTest = true;
+
+    var response = await apiService.getTests();
+    testsResponse.content = response.content ?? [];
+
+    isloadingTest = false;
   }
 }
