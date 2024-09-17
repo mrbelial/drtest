@@ -257,7 +257,6 @@ class MainController extends GetxController {
   void updateTests(TestModel model) {
     var data = TestDataModel.fromTestModel(model);
     var index = testsResponse.content!.indexWhere((e) => e.id == model.id);
-    print(index);
     if (index > -1) {
       testsResponse.content![index] = data;
     } else {

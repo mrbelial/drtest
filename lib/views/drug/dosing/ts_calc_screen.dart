@@ -41,7 +41,6 @@ class TsScoreScreen extends StatelessWidget {
                           groupValue: item.selectedID,
                           onChanged: (v) {
                             _controller.tsAnswer(i, r.id, r.point);
-                            print(item.selectedID);
                           }),
                   ],
                 );

@@ -30,7 +30,8 @@ String _getAppName() {
   // }
 }
 
-String get urlBaseApi => "https://localhost:7204/api/v1";
+// String get urlBaseApi => "https://localhost:7204/api/v1";
+String get urlBaseApi => "https://acafib.ir/api/v1";
 
 // final MainController _mainController = Get.find();
 
