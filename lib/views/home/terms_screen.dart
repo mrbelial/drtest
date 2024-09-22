@@ -33,6 +33,7 @@ class TermsScreen extends StatelessWidget {
 4-	We suggest using ACAFiB App as an assistant to review the latest clinical recommendations and combine the information with clinical judgment before making clinical decisions.
 """,
               style: AppTextStyles.text1.apply(color: AppColors.textColor2),
+              textAlign: TextAlign.justify,
             ),
             checkBox(
                 id: 0,

@@ -42,6 +42,7 @@ Widget checkBox({
             child: Text(
               title,
               style: AppTextStyles.text1.apply(color: AppColors.textColor1),
+              textAlign: TextAlign.justify,
             ),
           ),
         ],

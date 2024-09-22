@@ -69,8 +69,8 @@ class Part3Screen extends StatelessWidget {
                       title: item.value,
                       bgColor: item.isMarked
                           ? AppColors.buttonBackground
-                          : AppColors.buttonBackground2,
-                      textColor: AppColors.textColor2,
+                          : AppColors.white,
+                      textColor: AppColors.black,
                       trailing: IconButton(
                           onPressed: () =>
                               testMessage(item.helpDesc!, Get.back),
@@ -81,8 +81,8 @@ class Part3Screen extends StatelessWidget {
                   () => itemClicked(item),
                   color: item.isMarked
                       ? AppColors.buttonBackground
-                      : AppColors.buttonBackground2,
-                  textColor: AppColors.textColor2,
+                      : AppColors.white,
+                  textColor: AppColors.black,
                 );
               }),
           if (model.type == TestPageTypeEnum.end)

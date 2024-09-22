@@ -287,7 +287,11 @@ Patients with AF at intermediate annual risk of thromboembolic events by risk sc
 
   void addToDrugs(TestPageModel item, String title) {
     for (var item in item.drugs) {
-      item.title = "$title\n ${item.title}";
+      if (title.isNotEmpty) {
+        item.title = "$title\n ${item.title}";
+      } else {
+        item.title = item.title;
+      }
     }
     stacks.last.drugs.addAll(item.drugs);
   }
@@ -364,7 +368,9 @@ Patients with AF at intermediate annual risk of thromboembolic events by risk sc
       var v2 = v.pages.firstWhereOrNull((x) => x.id == 4);
       if (v2 != null) {
         if (v2.isMarked) {
-          model.testFilteredDrug.titles.add("${v.value} ${v2.title}");
+          if (v.value.isNotEmpty || v2.title.isNotEmpty) {
+            model.testFilteredDrug.titles.add("${v.value} ${v2.title}");
+          }
           return;
         }
       }
@@ -385,8 +391,9 @@ Patients with AF at intermediate annual risk of thromboembolic events by risk sc
         model.testFilteredDrug.drugIds.add(tempDrugId);
       }
     }
-    model.testFilteredDrug.titles
-        .addAll(selectedStackDrugs.map((x) => x.title));
+    model.testFilteredDrug.titles.addAll(selectedStackDrugs
+        .where((x) => x.title.isNotEmpty)
+        .map((x) => x.title));
 
     // for (var item in selectedStackDrugs) {
     //   model.testFilteredDrug.titles.add(item.title);

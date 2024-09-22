@@ -14,7 +14,7 @@ class TestSituationsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // _controller.isloading = true;
     _controller.initStack();
-    _controller.updateTestModel();
+    // _controller.updateTestModel();
     return Scaffold(
       appBar: AppBar(
         title: Text(model.value),

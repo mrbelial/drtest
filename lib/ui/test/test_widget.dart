@@ -8,7 +8,7 @@ Widget testTitle(String title) {
       padding: AppConst.widgetPadding,
       child: Text(
         title,
-        textAlign: TextAlign.left,
+        textAlign: TextAlign.justify,
         style: AppTextStyles.text1,
       ));
 }
@@ -44,10 +44,12 @@ Widget testListTile({
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-                child: Text(
-              title,
-              style: AppTextStyles.text2.apply(color: textColor),
-            )),
+              child: Text(
+                title,
+                textAlign: TextAlign.justify,
+                style: AppTextStyles.text2.apply(color: textColor),
+              ),
+            ),
             const SizedBox(width: 10),
             trailing ?? Container()
           ],
@@ -96,7 +98,8 @@ void testMessage(
                       textAlign: TextAlign.center,
                     ),
                     Text(message,
-                        style: AppTextStyles.text2, textAlign: TextAlign.left),
+                        style: AppTextStyles.text2,
+                        textAlign: TextAlign.justify),
                   ],
                 ),
               ),

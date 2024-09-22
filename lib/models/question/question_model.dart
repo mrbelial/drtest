@@ -22,7 +22,8 @@ class TestModel {
   int selectedDrugDosing = 0;
 
   String q1Desc =
-      """For patients with atrial flutter, anticoagulant therapy is recommended according to the same risk profile used for AF.(AHA/ACC/HRS 2019, I C)""";
+      """● For patients with atrial flutter, anticoagulant therapy is recommended according to the same risk profile used for AF.(AHA/ACC/HRS 2019, I C)
+● Oral anticoagulation is recommended in patients with atrial flutter at elevated thromboembolic risk to prevent ischemic stroke and thromboembolism. (ESC/EACTS/AF 2024 I B)""";
 
   double bmi = 0;
   int aptt = 0;
@@ -49,8 +50,9 @@ class TestModel {
   String q2Title = "Any of the following indications for OACs present?";
   int q2Answer = -1;
   List<IDTitleModel> qa2 = [
-    IDTitleModel(10, "Cardiac Amyloidosis (ACC Cardiac Amyloidosis 2023)",
-        """● Guidelines recommend anticoagulation when AF is present, regardless of the CHA2DS2-VASc risk score. (2023 ACC Expert Consensus Decision Pathway on Comprehensive Multidisciplinary Care for the Patient With Cardiac Amyloidosis)
+    IDTitleModel(10, "Cardiac Amyloidosis (ESC/EACTS/AF 2024), (ACC Cardiac Amyloidosis 2023)",
+        """● Oral anticoagulation is recommended in all patients with AF and hypertrophic cardiomyopathy or cardiac amyloidosis, regardless of CHA2DS2-VA score, to prevent ischemic stroke and thromboembolism. (ESC/EACTS/AF 2024 I B)
+● Guidelines recommend anticoagulation when AF is present, regardless of the CHA2DS2-VASc risk score. (2023 ACC Expert Consensus Decision Pathway on Comprehensive Multidisciplinary Care for the Patient With Cardiac Amyloidosis)
 ● Anticoagulation in cardiac amyloidosis is currently recommended for stroke prophylaxis in AF, regardless of the CHA2DS2Vasc score, after careful assessment of bleeding risk. 
 ● Patients with cardiac amyloidosis have been found to have higher thromboembolic rates despite having a lower CHA2DS2Vasc score when compared with nonamyloid patients.
 ● The CHA2DS2Vasc score has shown a limited ability to identify patients at risk of thromboembolism, and it should not be used for the thromboembolic risk assessment or decision-making for anticoagulation initiation. (Bukhari S, Khan SZ, Bashir Z. Atrial fibrillation, thromboembolic risk, and anticoagulation in cardiac amyloidosis: a review. Journal of Cardiac Failure. 2023 Jan 1;29(1):76-86.)"""),
@@ -64,10 +66,11 @@ class TestModel {
         "Mechanical heart valve implementation (ESC VHD 2021), (ESC VHD 2020)",
         """● OAC using a VKA is recommended lifelong for all patients with a MHV prosthesis. \n(ESC/VHD 2021 I B)\n
 ● In patients with a mechanical prosthetic valve, anticoagulation with a VKA is recommended.\n(ACC/AHA/VHD 2020 1 A)"""),
-    IDTitleModel(
+IDTitleModel(
         2,
-        "Hypertrophic Cardiomyopathy (AHA/ACC/ACCP/HRS AF 2023), (EHRA/NOAC AF 2021)",
-        """● In patients with HCM and clinical AF, anticoagulation is recommended with direct-acting oral anticoagulants (DOACs) as first-line option and vitamin K antagonists as second-line option, independent of CHA2DS2-VASc score. (2024 AHA/ACC/AMSSM/HRS/PACES/SCMR Guideline for the Management of Hypertrophic Cardiomyopathy)
+        "Hypertrophic Cardiomyopathy (ESC/EACTS/AF 2024), (AHA/ACC/ACCP/HRS AF 2023), (EHRA/NOAC AF 2021)",
+        """● Oral anticoagulation is recommended in all patients with AF and hypertrophic cardiomyopathy or cardiac amyloidosis, regardless of CHA2DS2-VA score, to prevent ischemic stroke and thromboembolism. (ESC/EACTS/AF 2024 I B)
+● In patients with HCM and clinical AF, anticoagulation is recommended with direct-acting oral anticoagulants (DOACs) as first-line option and vitamin K antagonists as second-line option, independent of CHA2DS2-VASc score. (2024 AHA/ACC/AMSSM/HRS/PACES/SCMR Guideline for the Management of Hypertrophic Cardiomyopathy)
 ● In hypertrophic cardiomyopathy, the risk of stroke is high enough independent of risk score to indicate anticoagulation. (AHA/ACC/ACCP/HRS AF 2023)
 ● Hypertrophic cardiomyopathy  have roughly an equivalent risk to a CHADsVASc of 3. (AHA/ACC/ACCP/HRS AF 2023)
 ● In both obstructive and non-obstructive hypertrophic cardiomyopathy, AF is associated with a high rate of thromboembolism. (EHRA/NOAC AF 2021)
@@ -82,11 +85,14 @@ Moderate or severe forms of congenital heart disease including:
 ● low-flow states such as Fontan circulation, blind-ending cardiac chambers, and cyanosis. (AHA/ACC/ACCP/HRS AF 2023)
 ● Intracardiac repair, cyanosis, Fontan palliation, or systemic right ventricle and a history of AF, AFL, or intra-atrial re-entrant tachycardia. (AF/ESC 2020)""",
         """● It may be reasonable to treat with anticoagulation independent of conventional risk score to reduce risk of thromboembolic events. (AHA/ACC/ACCP/HRS AF 2023, 2b C-LD)
+● Oral anticoagulation should be considered in all adult congenital heart disease patients with AF/AFL and intracardiac repair, cyanosis, Fontan palliation, or systemic right ventricle to prevent ischaemic stroke and thromboembolism, regardless of other thromboembolic risk factors. (ESC/EACTS/AF 2024)
 ● Oral anticoagulation should be considered in all adult patients with intracardiac repair, cyanosis, Fontan palliation, or systemic right ventricle and a history of AF, AFL, or intra-atrial re-entrant tachycardia. (AF/ESC 2020 IIa C)"""),
     IDTitleModel(5, """Cardioversion
 ● 3 weeks before elective cardioversion when AF duration is ≥ 48 hours or unknown without imaging evaluation. (AHA/ACC/ACCP/HRS AF 2023), (AHA/ACC/HRS 2019), (EHRA/NOAC AF 2021).
 ● Cardioversion during the last 4 weeks when AF duration of ≥24 hours (AF/ESC 2020), or ≥ 48 hours (AHA/ACC/HRS 2019), or regardless of duration. (AHA/ACC/ACCP/HRS AF 2023)""",
         """● In patients with AFL who undergo successful cardioversion or ablation resulting in restoration of sinus rhythm, anticoagulation should be continued for at least 4 weeks post procedure. (AHA/ACC/ACCP/HRS AF 2023, 1 C-LD)
+● Therapeutic oral anticoagulation for at least 3 weeks (adherence to DOACs or INR ≥2.0 for VKAs) is recommended before scheduled cardioversion of AF and atrial flutter to prevent procedure-related thromboembolism. (ESC/EACTS/AF 2024 I B)
+● Oral anticoagulation is recommended to continue for at least 4 weeks in all patients after cardioversion and long-term in patients with thromboembolic risk factor(s) irrespective of whether sinus rhythm is achieved, to prevent thromboembolism.(ESC/EACTS/AF 2024 I B)
 ● In patients with AF duration of ≥48 hours, a 3-week duration of uninterrupted therapeutic anticoagulation or imaging evaluation to exclude intracardiac thrombus is recommended before elective cardioversion. (AHA/ACC/ACCP/HRS AF 2023, 1 B-R) 
 ● In patients with AF undergoing cardioversion, therapeutic anticoagulation should be established before cardioversion and continued for at least 4 weeks afterwards without interruption to prevent thromboembolism. (AHA/ACC/ACCP/HRS AF 2023, 1 B-NR)
 ● For patients with AF or atrial flutter of 48 hours duration or longer, or when the duration of AF is unknown, anticoagulation with warfarin (INR 2.0 to 3.0), a factor Xa inhibitor, or direct thrombin inhibitor is recommended for at least 3 weeks before and at least 4 weeks after cardioversion, regardless of the CHA2DS2-VASc score or the method (electrical or pharmacological) used to restore sinus rhythm. (AHA/ACC/HRS 2019 I B-R)
@@ -98,21 +104,26 @@ Moderate or severe forms of congenital heart disease including:
     IDTitleModel(6, """Ablation
 ● Catheter ablation during the last 3 months. (AHA/ACC/ACCP/HRS AF 2023)
 ● Surgical ablation during the last 3 months. (AHA/ACC/ACCP/HRS AF 2023)
-● Catheter ablation during the last 2 months. (AF/ESC 2020)
+● Catheter ablation during the last 2 months. (ESC/EACTS/AF 2024), (AF/ESC 2020)
 ● Planning for catheter ablation in the next 3 weeks without imaging. (AF/ESC 2020)""",
         """● In patients who have undergone catheter ablation of AF, oral anticoagulation should be continued for at least 3 months after the procedure with a longer duration determined by underlying risk. (AHA/ACC/ACCP/HRS AF 2023, 1 B-NR)
 ● In patients undergoing surgical ablation, anticoagulation therapy is reasonable for at least 3 months after the procedure to reduce the risk of stroke or systemic embolism.(AHA/ACC/ACCP/HRS AF 2023, 2a B-NR)
+● Initiation of oral anticoagulation is recommended at least 3 weeks prior to catheter-based ablation in AF patients at elevated thromboembolic risk, to prevent peri-procedural ischaemic stroke and thromboembolism. (ESC/EACTS/AF 2024 I C)
+● Continuation of oral anticoagulation is recommended for at least 2 months after AF ablation in all patients, irrespective of rhythm outcome or CHA2DS2-VA score, to reduce the risk of 
+peri-procedural ischaemic stroke and thromboembolism. (ESC/EACTS/AF 2024 I C)
 ● In AF patients with stroke risk factors not taking OAC before ablation, it is recommended that pre-procedural management of stroke risk includes initiation of anticoagulation and preferably, therapeutic OAC for at least 3 weeks before ablation (I C), or alternatively, the use of TOE to exclude LA thrombus before ablation ( IIa C). (AF/ESC 2020)
 ● In patients undergoing LA surgical ablation of atrial arrhythmias and or LA appendage ligation/excision, anticoagulation therapy is reasonable for at least 3 months after the procedure.
 (ACC/AHA/VHD 2020, 2a B-NR)"""),
     IDTitleModel(
         7,
         "CHA2DS2-VASc Score of ≥ 2 in men and ≥ 3 in women (Estimated annual thromboembolic risk of ≥ 2% per year)",
-        """Anticoagulation is recommended to prevent stroke and systemic thromboembolism. (AHA/ACC/ACCP/HRS AF 2023, 1 A), (AF/ESC 2020 1A), (AHA/ACC/HRS AF 2019 1 A)"""),
+        """● Anticoagulation is recommended to prevent stroke and systemic thromboembolism. (AHA/ACC/ACCP/HRS AF 2023, 1 A), (AF/ESC 2020 1A), (AHA/ACC/HRS AF 2019 1 A)
+● A CHA2DS2-VA score of 2 or more is recommended as an indicator of elevated thromboembolic risk for decisions on initiating oral anticoagulation. (ESC/EACTS/AF 2024 I C)"""),
     IDTitleModel(
         8,
         "CHA2DS2-VASc of 1 point in male or 2 points in female (Estimated annual thromboembolic risk of ≥ 1% but <2% per year)",
-        """● Anticoagulation is reasonable to prevent stroke and systemic thromboembolism. (AHA/ACC/ACCP/HRS AF 2023, 2a A), (AF/ESC 2020 IIa B)
+        """● A CHA2DS2-VA score of 1 should be considered an indicator of elevated thromboembolic risk for decisions on initiating oral anticoagulation. (ESC/EACTS/AF 2024 IIa C)
+● Anticoagulation is reasonable to prevent stroke and systemic thromboembolism. (AHA/ACC/ACCP/HRS AF 2023, 2a A), (AF/ESC 2020 IIa B)
 ● Prescribing an oral anticoagulant to reduce thromboembolic stroke risk may be considered. (AHA/ACC/HRS AF 2019 IIb C-LD)
 ● Patients with AF at intermediate annual risk of thromboembolic events by risk scores (eg, equivalent to CHA2DS2-VASc score of 1 in men or 2 in women), who remain uncertain about the benefit of anticoagulation, can benefit from consideration of factors that might modify their risk of stroke to help inform the decision. (AHA/ACC/ACCP/HRS AF 2023, 2a C-LD)"""),
     IDTitleModel(9, "Don’t know the CHA2DS2-VASc Score?"),
@@ -124,7 +135,9 @@ Moderate or severe forms of congenital heart disease including:
   String q3Desc =
       """● For stroke risk assessment, a risk-factor-based approach is recommended, using the CHA2DS2-VASc clinical stroke risk score to initially identify patients at ‘low stroke risk’ (CHA2DS2-VASc score = 0 in men, or 1 in women) who should not be offered antithrombotic therapy. (AF/ESC 2020, I A)
 ● Patients with AF should be evaluated for their annual risk of thromboembolic events using a validated clinical risk score, such as CHA2DS2-VASc. (AHA/ACC/ACCP/HRS AF 2023, 1 B-NR)
+● Oral anticoagulation is recommended in patients with clinical AF at elevated thromboembolic risk to prevent ischemic stroke and thromboembolism. (ESC/EACTS/AF 2024 I A)
 ● In patients with AF at risk for stroke, reevaluation of the need for and choice of stroke risk reduction therapy at periodic intervals is recommended to reassess stroke and bleeding risk, net clinical benefit, and proper dosing. (AHA/ACC/ACCP/HRS AF 2023)
+● Individualized reassessment of thromboembolic risk is recommended at periodic intervals in patients with AF to ensure anticoagulation is started in appropriate patients. (ESC EACTS AF 2024 I B)
 ● Typically, periodic assessment should be performed once a year but might need to be performed more frequently in the context of changes in clinical status, such as reduction in renal function or development of additional risk factors. (AHA/ACC/ACCP/HRS AF 2023, 1 B-NR)
 ● In patients with AF (except with moderate to-severe mitral stenosis or a mechanical heart valve), the CHA2DS2-VASc score is recommended for assessment of stroke risk. (AHA/ACC/HRS 2019, I B)""";
   int q3Point = 0;
@@ -153,17 +166,21 @@ Moderate or severe forms of congenital heart disease including:
 2- Spontaneous intracranial/intraspinal bleeding due to a nonreversible cause? 
 3- Serious bleeding related to recurrent falls when cause of falls is not felt to be treatable? 
 4- High risk of major bleeding on oral anticoagulation and patient preference? 
-5-Severe thrombocytopenia (<50000 platelets/µL), or severe anemia under investigation?""";
+5-Severe thrombocytopenia (<25000-50000 platelets/µL), or severe anemia under investigation?""";
 
   String q4Yes =
       """● Percutaneous LAAO is reasonable. (AHA/ACC/ACCP/HRS AF 2023, 2a B-NR)
+● Percutaneous LAA occlusion may be considered in patients with AF and contraindications for long-term anticoagulant treatment to prevent ischaemic stroke and thromboembolism. (ESC/EACTS/AF 2024 IIb C)
 ● LAA occlusion may be considered. (AF/ESC 2020 IIb B)
+● Stand-alone endoscopic surgical closure of the left atrial appendage may be considered in patients with AF and contraindications for long-term anticoagulant treatment to prevent ischemic stroke and thromboembolism. (ESC EACTS AF 2024 II C)
 ● Percutaneous LAA occlusion may be considered in patients with AF at increased risk of stroke who have contraindications to long-term anticoagulation. (AHA/ACC/HRS AF 2019, IIb B-NR)
 ● In patients with AF, a moderate to high risk of stroke (CHA2DS2-VASc score ≥ 2), and a contraindication to long-term oral anticoagulation due to a nonreversible cause, percutaneous LAAO (pLAAO) is reasonable. (AHA/ACC/ACCP/HRS AF 2023, 2a  B-NR)
 ● In patients with AF and a moderate to high risk of stroke and a high risk of major bleeding on oral anticoagulation, pLAAO may be a reasonable alternative to oral anticoagulation based on patient preference, with careful consideration of procedural risk and with the understanding that the evidence for oral anticoagulation is more extensive. (AHA/ACC/ACCP/HRS AF 2023, 2b  B-R)""";
 
   String q4No =
       """● In the absence of history of moderate to severe rheumatic mitral stenosis or a mechanical heart valve, DOACs are recommended over Warfarin to reduce the risk of mortality, stroke, systemic embolism, and ICH. (AHA/ACC/ACCP/HRS AF 2023, 1 A), (AF/ESC 2020 1A), (AHA/ACC/HRS AF 2019 1 A)
+● Direct oral anticoagulants are recommended in preference to VKAs to prevent ischaemic stroke and thromboembolism, except in patients with mechanical heart valves or moderate-to-severe 
+mitral stenosis. (ESC/EACTS/AF 2024).
 ● NOACs are preferred over VKAs in all NOAC eligible AF patients. (EHRA/NOAC AF 2021)""";
 
   //Has_Bled
@@ -171,6 +188,8 @@ Moderate or severe forms of congenital heart disease including:
   String hbDesc =
       """● For a formal risk-score-based assessment of bleeding risk, the HAS-BLED score should be considered to help address modifiable bleeding risk factors and to identify patients at high risk of bleeding (HAS-BLED score >_3) for early and more frequent clinical review and follow-up. (ESC/AF 2020 IIa B)
 ● Patients with AF should be evaluated for factors that specifically indicate a higher risk of bleeding, such as previous bleeding and use of drugs that increase bleeding risk, in order to identify possible interventions to prevent bleeding on anticoagulation. (AHA/ACC/ACCP/HRS 2023)
+● Assessment and management of modifiable bleeding risk factors is recommended in all patients eligible for oral anticoagulation, as part of shared decision-making to ensure safety and prevent bleeding. (ESC/EACTS/AF 2024 I B)
+● Use of bleeding risk scores to decide on starting or withdrawing oral anticoagulation is not recommended in patients with AF to avoid under-use of anticoagulation. (ESC/EACTS/AF 2024 III B)
 ● Reevaluation of the need for and choice of anticoagulant therapy at periodic intervals is recommended to reassess stroke and bleeding risks. (AHA/ACC/HRS 2019, I C)""";
   List<CheckBoxModel> hbAnswer = [
     CheckBoxModel(
@@ -420,12 +439,10 @@ Moderate or severe forms of congenital heart disease including:
                   isMarked: cgAnswer >= 60 && cgAnswer < 90,
                   drugs: [
                     TestDrugPageModel("""Stage 2 (CrCl 60-90 mL/ min):
-● In the absence of a history of moderate to severe rheumatic mitral stenosis or a mechanical heart
-valve, DOACs are recommended over Warfarin to reduce the risk of mortality, stroke, systemic
-embolism, and ICH. (AHA/ACC/ACCP/HRS AF 2023, 1 A), (ESC 2020 1A), (AHA/ACC/HRS
-AF 2019 1 A)
-● NOACs are preferred over VKAs in all NOAC-eligible AF patients. (EHRA NOAC AF 2021)""",
-                        [1, 2, 3, 4, 5, 6, 7]),
+● In the absence of a history of moderate to severe rheumatic mitral stenosis or a mechanical heart valve, DOACs are recommended over Warfarin to reduce the risk of mortality, stroke, systemic embolism, and ICH. (AHA/ACC/ACCP/HRS AF 2023, 1 A), (ESC 2020 1A), (AHA/ACC/HRS AF 2019 1 A)
+● Direct oral anticoagulants are recommended in preference to VKAs to prevent ischaemic stroke and thromboembolism, except in patients with mechanical heart valves or moderate-to-severe 
+mitral stenosis. (ESC EACTS AF 2024).
+● NOACs are preferred over VKAs in all NOAC-eligible AF patients. (EHRA NOAC AF 2021)""", [1, 2, 3, 4, 5, 6, 7]),
                   ]),
               TestPageModel(
                   title: "",
@@ -1106,6 +1123,7 @@ to UFH (with an aPTT 2 times control) at least 36 hours before planned delivery.
             type: TestPageTypeEnum.drug,
             helpDesc:
                 """● NOACs are recommended with at least similar efficacy and safety as warfarin. (ESC/ AF 2020 I A)
+● Direct oral anticoagulants are recommended in preference to VKAs in eligible patients with AF undergoing cardioversion for thromboembolic risk reduction. (ESC EACTS AF 2024 I A)
 ● For patients with AF or atrial flutter of less than 48 hours duration with a CHA2DS2-VASc score of 2 or greater in men and 3 or greater in women, administration of heparin, a factor Xa inhibitor, or a direct thrombin inhibitor is reasonable as soon as possible before cardioversion, followed by long-term anticoagulation therapy. (AHA/ACC/HRS 2019, IIa B-NR)
 """,
             id: 13,
@@ -1176,12 +1194,14 @@ to UFH (with an aPTT 2 times control) at least 36 hours before planned delivery.
             type: TestPageTypeEnum.drug,
             helpDesc:
                 """● It may be reasonable to treat with anticoagulation independent of conventional risk score to reduce risk of thromboembolic events. (AHA/ACC/ACCP/HRS AF 2023, 2b C-LD)
+● Oral anticoagulation should be considered in all adult congenital heart disease patients with AF/AFL and intracardiac repair, cyanosis, Fontan palliation, or systemic right ventricle to prevent ischaemic stroke and thromboembolism, regardless of other thromboembolic risk factors. (ESC/EACTS/AF 2024 IIa C)
 ● Oral anticoagulation should be considered in all adult patients with intracardiac repair, cyanosis, Fontan palliation, or systemic right ventricle and a history of AF, AFL, or intra-atrial re-entrant tachycardia. (ESC/ AF 2020 IIa C)
 """,
             id: 16,
             drugs: [
               TestDrugPageModel(
                   """● It may be reasonable to treat with anticoagulation independent of conventional risk score to reduce risk of thromboembolic events. (AHA/ACC/ACCP/HRS AF 2023, 2b C-LD)
+● Oral anticoagulation should be considered in all adult congenital heart disease patients with AF/AFL and intracardiac repair, cyanosis, Fontan palliation, or systemic right ventricle to prevent ischaemic stroke and thromboembolism, regardless of other thromboembolic risk factors. (ESC/EACTS/AF 2024 IIa C)
 ● Oral anticoagulation should be considered in all adult patients with intracardiac repair, cyanosis, Fontan palliation, or systemic right ventricle and a history of AF, AFL, or intra-atrial re-entrant tachycardia. (ESC/ AF 2020 IIa C)""",
                   [1, 2, 3, 4, 5, 6, 7])
             ],

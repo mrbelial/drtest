@@ -114,7 +114,8 @@ TestPageModel part3Data(TestModel model) {
               value:
                   "Management of Minor/ Non-life -threatening bleeding while on anticoagulant",
               appbarTitle: "Management of Minor Bleeding while on Warfarin",
-              helpDesc : """Minor bleeding: (e.g., epistaxis, bruising, slow gastrointestinal bleeding) can be managed conservatively using local hemostatic measures (e.g., mechanical pressure, and without anticoagulant reversal). Decisions to temporarily discontinue the anticoagulant must balance bleeding and thrombotic risks for each patient on a case-by-case basis.""",
+              helpDesc:
+                  """Minor bleeding: (e.g., epistaxis, bruising, slow gastrointestinal bleeding) can be managed conservatively using local hemostatic measures (e.g., mechanical pressure, and without anticoagulant reversal). Decisions to temporarily discontinue the anticoagulant must balance bleeding and thrombotic risks for each patient on a case-by-case basis.""",
               type: TestPageTypeEnum.page,
               pages: [
                 TestPageModel(
@@ -134,12 +135,14 @@ TestPageModel part3Data(TestModel model) {
 ● For patients with mechanical valves and uncontrollable bleeding who have received  4-factor prothrombin concentrate complex,  adjunctive use of intravenous vitamin K is  reasonable if resumption of VKA therapy is not anticipated for 7 days. (ACC/AHA/VHD 2020, 2a C-LD)
 ● A 10-mg intravenous dose is recommended for life-threatening bleeding when there is no concern for restarting the VKA within the next week. (ACC/AHA/VHD 2020)
 ● Warfarin should be discontinued and 10 mg vitamin K should be administrated by slow i.v. infusion and repeated every 12 h if needed. Until the anticoagulation effect is reversed, administration of prothrombin complex concentration (PCC) and/or fresh frozen plasma (FFP) therapy should be initiated. (ESC/VHD 2021)
+● Prothrombin complex concentrates should be considered in AF patients on VKAs who develop a life-threatening bleed, or bleed into a critical site, to reverse the antithrombotic effect. (ESC EACTS AF 2024)
 ● Four-factor prothrombin complex concentrates should be considered in AF patients on VKA who develop a severe bleeding complication. (ESC/AF 2020, IIa C)
 ● Consider FFP. (ESC/AF 2020)""",
             value:
                 "● Management of Major/life -threatening bleeding\nOR\n●  Need to undergo urgent surgery",
             appbarTitle: "Management of Major Bleeding while on Warfarin",
-            helpDesc: "Major bleeding: We define serious/major bleeding as bleeding that is associated with a risk of blood transfusion or bleeding into a critical closed space (eg, intracranial bleeding, compartment syndrome). Major bleeding may also include bleeding requiring intervention for management (e.g., surgery, interventional radiology procedures, endoscopic treatments). Major bleeding has a significant risk of immediate morbidity, regardless of the cause. Some major bleeding may be life-threatening and patients with major bleeding events are at high risk of death during the hospitalization prompted by that bleeding.",
+            helpDesc:
+                "Major bleeding: We define serious/major bleeding as bleeding that is associated with a risk of blood transfusion or bleeding into a critical closed space (eg, intracranial bleeding, compartment syndrome). Major bleeding may also include bleeding requiring intervention for management (e.g., surgery, interventional radiology procedures, endoscopic treatments). Major bleeding has a significant risk of immediate morbidity, regardless of the cause. Some major bleeding may be life-threatening and patients with major bleeding events are at high risk of death during the hospitalization prompted by that bleeding.",
             type: TestPageTypeEnum.page,
             pages: [
               f4Dosing,
@@ -169,12 +172,15 @@ TestPageModel part3Data(TestModel model) {
 ● Hold an anticoagulant until hemostasis is achieved. (EHRA/NOAC AF 2021)
 ● Consider hemodialysis (Dabigatran). (EHRA/NOAC AF 2021)
 ● Mechanical compression. (EHRA/NOAC AF 2021)
+● Interrupting anticoagulation and performing diagnostic or treatment interventions is recommended in AF patients with active bleeding until the cause of bleeding is identified and resolved. (ESC/EACTS/AF 2024 I C)
+● Specific antidotes should be considered in AF patients on a DOAC who develop a life-threatening bleed or bleed into a critical site, to reverse the antithrombotic effect. (ESC EACTS AF 2024 IIa B)
 ● Delay or discontinue next dose. (EHRA/NOAC AF 2021)
 ● Reconsider concomitant medication. (EHRA/NOAC AF 2021)""",
           value:
               "Management of Minor/ Non-life -threatening bleeding while on anticoagulant",
           appbarTitle: "Management of Minor Bleeding while on DOAC",
-          helpDesc: "Minor bleeding: (e.g., epistaxis, bruising, slow gastrointestinal bleeding) can be managed conservatively using local hemostatic measures (e.g., mechanical pressure, and without anticoagulant reversal). Decisions to temporarily discontinue the anticoagulant must balance bleeding and thrombotic risks for each patient on a case-by-case basis.",
+          helpDesc:
+              "Minor bleeding: (e.g., epistaxis, bruising, slow gastrointestinal bleeding) can be managed conservatively using local hemostatic measures (e.g., mechanical pressure, and without anticoagulant reversal). Decisions to temporarily discontinue the anticoagulant must balance bleeding and thrombotic risks for each patient on a case-by-case basis.",
           type: TestPageTypeEnum.page,
           pages: [
             TestPageModel(
@@ -192,13 +198,15 @@ TestPageModel part3Data(TestModel model) {
 OR
 ●  Need to undergo urgent surgery""",
             appbarTitle: "Management of Major Bleeding while on DOAC",
-            helpDesc: "Major bleeding: We define serious/major bleeding as bleeding that is associated with a risk of blood transfusion or bleeding into a critical closed space (eg, intracranial bleeding, compartment syndrome). Major bleeding may also include bleeding requiring intervention for management (e.g., surgery, interventional radiology procedures, endoscopic treatments). Major bleeding has a significant risk of immediate morbidity, regardless of the cause. Some major bleeding may be life-threatening and patients with major bleeding events are at high risk of death during the hospitalization prompted by that bleeding.",
+            helpDesc:
+                "Major bleeding: We define serious/major bleeding as bleeding that is associated with a risk of blood transfusion or bleeding into a critical closed space (eg, intracranial bleeding, compartment syndrome). Major bleeding may also include bleeding requiring intervention for management (e.g., surgery, interventional radiology procedures, endoscopic treatments). Major bleeding has a significant risk of immediate morbidity, regardless of the cause. Some major bleeding may be life-threatening and patients with major bleeding events are at high risk of death during the hospitalization prompted by that bleeding.",
             type: TestPageTypeEnum.page,
             pages: [
               TestPageModel(
                 title:
                     """● Consider fluid replacement, blood transfusion, platelet replacement when indicated. (ESC/AF 2020)
 ● In patients with AF receiving dabigatran who develop life-threatening bleeding, treatment with idarucizumab is recommended to rapidly reverse dabigatran’s anticoagulation effect. (AHA/ ACC/ACCP/HRS 2023, 1 B-NR)
+● Specific antidotes should be considered in AF patients on a DOAC who develop a life-threatening bleed or bleed into a critical site, to reverse the antithrombotic effect. (ESC EACTS AF 2024 IIa B)
 ● In patients with AF receiving dabigatran who develop life-threatening bleeding, treatment with activated prothrombin complex concentrate (PCC) is reasonable to reverse dabigatran’s anticoagulation effect if idarucizumab is unavailable. (AHA/ACC/ACCP/HRS 2023, 2a C-LD)
 ● Activated charcoal may be administered up to 6 to 8 hours after the last dose of an OAC. (AHA/ACC/ACCP/HRS 2023)
 ● Hemodialysis may be also considered to eliminate dabigatran but may be challenging and impractical due to coagulopathy and hemodynamic instability. (AHA/ACC/ACCP/HRS 2023)
@@ -283,6 +291,8 @@ OR
     title: """What is the duration of anticoagulant therapy?
 ● In patients who develop postoperative AF after cardiac surgery, it is reasonable to administer anticoagulation when deemed safe in regard to surgical bleeding for 60 days after surgery unless complications develop and to reevaluate the need for longer term anticoagulation. (AHA/ACC/ACCP/HRS 2023 2a, B-NR)
 ● Long-term OAC therapy to prevent thromboembolic events should be considered in patients at risk for stroke with postoperative AF after non-cardiac surgery, considering the anticipated net clinical benefit of OAC therapy and informed patient preferences. (ESC AF 2020, IIa B)
+Long-term oral anticoagulation should be considered in patients with post-operative AF after cardiac and non-cardiac surgery at elevated thromboembolic risk, to prevent ischaemic stroke and 
+thromboembolism. (ESC/EACTS/AF 2024 IIa B)
 ● Long-term OAC therapy to prevent thromboembolic events may be considered in patients at risk for stroke with postoperative AF after cardiac surgery, considering the anticipated net clinical benefit of OAC therapy and informed patient preferences. (ESC AF 2020, IIb B)""",
     value: "Post-operative AF",
     type: TestPageTypeEnum.end,
@@ -582,7 +592,12 @@ OR
     pages: [
       TestPageModel(
         title:
-            """In patients with AF who are overweight or obese (with body mass index [BMI] >27 kg/m2), weight loss is recommended, with an ideal target of at least 10% weight loss to reduce AF symptoms, burden, recurrence, and progression to persistent. (AHA/ACC/ACCP/HRS 2023 I B-R)""",
+            """● In patients with AF who are overweight or obese (with body mass index [BMI] >27 kg/m2), weight loss is recommended, with an ideal target of at least 10% weight loss to reduce AF symptoms, burden, recurrence, and progression to persistent. (AHA/ACC/ACCP/HRS 2023 I B-R)
+● Bariatric surgery may be considered in conjunction with lifestyle changes and medical management in individuals with AF and body mass index ≥40 kg/m2 c where a rhythm control strategy is planned, to reduce the recurrence and progression of AF. (ESC/EACTS/AF 2024 IIb C)
+● Maintaining normal weight (BMI 20–25 kg/m2) is recommended for the general population to prevent AF. (ESC/EACTS/AF 2024 I B)
+● Weight reduction should be considered in obese individuals to prevent AF. (ESC/EACTS/AF 2024 IIa B)
+● Weight loss is recommended as part of comprehensive risk factor management in overweight and obese individuals with AF to reduce symptoms and AF burden, with a target of 10% or more reduction in body weight. (ESC/EACTS/AF 2024 I B)
+""",
         value:
             "What is the recommendation for overweight or obese patients with AF?",
         appbarTitle: "Recommendations for Obesity",
@@ -591,7 +606,9 @@ OR
       ),
       TestPageModel(
         title:
-            """● In individuals with AF, moderate-to-vigorous exercise training to a target of 210 minutes per week is recommended to reduce AF symptoms and burden, increase maintenance of sinus rhythm, increase functional capacity, and improve QOL. (AHA/ACC/ACCP/HRS 2023 I B-R)""",
+            """● In individuals with AF, moderate-to-vigorous exercise training to a target of 210 minutes per week is recommended to reduce AF symptoms and burden, increase maintenance of sinus rhythm, increase functional capacity, and improve QOL. (AHA/ACC/ACCP/HRS 2023 I B-R)
+● Maintaining an active lifestyle is recommended to prevent AF, with the equivalent of 150–300 min per week of moderate intensity or 75–150 min per week of vigorous intensity aerobic physical activity. (ECS/EACTS/AF 2024 I B)
+● A tailored exercise programme is recommended in individuals with paroxysmal or persistent AF to improve cardiorespiratory fitness and reduce AF recurrence. (ESC/EACTS/AF 2024 I B)""",
         value:
             "What is the recommendation regarding exercise in patients with AF?",
         appbarTitle: "Recommendations for Exercise",
@@ -608,7 +625,10 @@ OR
       ),
       TestPageModel(
         title:
-            """● Patients with AF seeking a rhythm-control strategy should minimize or eliminate alcohol consumption to reduce AF recurrence and burden. (AHA/ACC/ACCP/HRS 2023 I B-R)""",
+            """● Patients with AF seeking a rhythm-control strategy should minimize or eliminate alcohol consumption to reduce AF recurrence and burden. (AHA/ACC/ACCP/HRS 2023 I B-R)
+● Avoidance of binge drinking and alcohol excess is recommended in the general population to prevent AF. (ESC/EACTS/AF 2024 I B)
+● Reducing alcohol consumption to ≤3 standard drinks (≤30 grams of alcohol) per week is recommended as part of comprehensive risk factor management to reduce AF recurrence. (ESC/EACTS/AF 2024 I B)
+""",
         value:
             "What is the recommendation regarding alcohol consumption in patients with AF?",
         appbarTitle: "Recommendations for Alcohol consumption",
@@ -624,7 +644,8 @@ OR
       ),
       TestPageModel(
         title:
-            """● For patients with AF and hypertension, optimal BP control is recommended to reduce AF recurrence and AF-related cardiovascular events. (AHA/ACC/ACCP/HRS 2023 I B-NR)""",
+            """● For patients with AF and hypertension, optimal BP control is recommended to reduce AF recurrence and AF-related cardiovascular events. (AHA/ACC/ACCP/HRS 2023 I B-NR)
+● Blood pressure lowering treatment is recommended in patients with AF and hypertension to reduce recurrence and progression of AF and prevent adverse cardiovascular events. (ESC/EACTS/AF 2024 I B)""",
         value:
             "What is the recommendation regarding the management of hypertension in patients with AF?",
         appbarTitle: "Recommendations for Hypertension management",
@@ -632,7 +653,10 @@ OR
       ),
       TestPageModel(
         title:
-            """● Among patients with AF, it may be reasonable to screen for obstructive sleep apnea, given its high prevalence in patients with AF, although the role of treatment of sleep-disordered breathing (SDB) to maintain sinus rhythm is uncertain. (AHA/ACC/ACCP/HRS 2023 2b B-NR)""",
+            """● Among patients with AF, it may be reasonable to screen for obstructive sleep apnea, given its high prevalence in patients with AF, although the role of treatment of sleep-disordered breathing (SDB) to maintain sinus rhythm is uncertain. (AHA/ACC/ACCP/HRS 2023 2b B-NR)
+● Management of obstructive sleep apnea may be considered as part of a comprehensive management of risk factors in individuals with AF to reduce recurrence and progression. (ESC/EACTS/AF 2024 IIb B)
+● When screening for obstructive sleep apnea in individuals with AF, using only symptom-based questionnaires is not recommended. (ESC/EACTS/AF 2024 III B)
+""",
         value:
             "What is the recommendation regarding the obstructive sleep apnea  in patients with AF?",
         appbarTitle: "Recommendations for OSA",
@@ -758,10 +782,11 @@ OR
     title:
         """What is the antithrombotic plan in AF patient with an indication for anticoagulant with concurrent CCS?
 ● In patients with CCD who have undergone elective PCI and who require oral anticoagulant therapy, DAPT for 1 to 4 weeks followed by clopidogrel alone for 6 months should be administered in addition to DOAC. (AHA/ACC/ACCP/ASPC/NLA/PCNA CCD 2023 I B-R)
+● Antiplatelet therapy beyond 12 months is not recommended in stable patients with chronic coronary or vascular disease treated with oral anticoagulation, due to lack of efficacy and to avoid major bleeding. (ESC/EACTS/AF 2024 III B)
 ● In patients with CCD who have undergone PCI and who require oral anticoagulant therapy, continuing aspirin in addition to clopidogrel for up to 1 month is reasonable if the patient has a high thrombotic risk (Complex lesions, previous MI, extensive CVD, cardiovascular risk factors) and low bleeding risk. (AHA/ACC/ACCP/ASPC/NLA/PCNA CCD 2023 2a B-R)
 ● In patients with CCD who require oral anticoagulation and have a low atherothrombotic risk, discontinuation of aspirin therapy with continuation of DOAC alone may be considered 1 year after PCI to reduce bleeding risk. (AHA/ACC/ACCP/ASPC/NLA/PCNA CCD 2023 2b B-R)
 ● In patients with CCD who require oral anticoagulation, DOAC monotherapy may be considered if there is no acute indication for concomitant antiplatelet therapy. (AHA/ACC/ACCP/ASPC/NLA/PCNA CCD 2023 2b C-LD)
-● In patients with AF and CCD (beyond 1 year after revascularization or CAD not requiring coronary revascularization) without history of stent thrombosis, oral anticoagulation monotherapy is recommended over the combination therapy of OAC and single APT (aspirin or P2Y12 inhibitor) to decrease the risk of major bleeding. (AHA ACC ACCP HRS 2023 1, B-R)""",
+● In patients with AF and CCD (beyond 1 year after revascularization or CAD not requiring coronary revascularization) without history of stent thrombosis, oral anticoagulation monotherapy is recommended over the combination therapy of OAC and single APT (aspirin or P2Y12 inhibitor) to decrease the risk of major bleeding. (AHA/ACC/ACCP/HRS 2023 1, B-R)""",
     value: "AF + CCS",
     type: TestPageTypeEnum.end,
   );
@@ -774,6 +799,8 @@ OR
       TestPageModel(
         title:
             """● After up to 1 week of triple antithrombotic therapy following the ACS event, dual antithrombotic therapy using a NOAC at the recommended dose for stroke prevention and a single oral antiplatelet agent (preferably clopidogrel) for up to 12 months is recommended. (ESC/ACS 2023 I A)
+● Early cessation (≤1 week) of aspirin and continuation of an oral anticoagulant (preferably DOAC) with a P2Y12 inhibitor (preferably clopidogrel) for up to 12 months is recommended in AF patients with ACS undergoing an uncomplicated PCI to avoid major bleeding, if the risk of thrombosis is low or bleeding risk is high. (ESC/EACTS/AF 2024 I A)
+● Triple therapy with aspirin, clopidogrel, and oral anticoagulation for longer than 1 week after an ACS should be considered in patients with AF when ischaemic risk outweighs the bleeding risk, with the total duration (≤1 month) decided according to assessment of these risks and clear documentation of the discharge treatment plan. (ESC/EACTS/AF 2024 IIa C)
 ● In patients treated with an OAC, aspirin plus clopidogrel for longer than 1 week and up to 1 month should be considered in those with high ischemic risk or with other anatomical/procedural characteristics that are judged to outweigh the bleeding risk. (ESC/ACS 2023 II C)
 ● In patients requiring OAC, withdrawing antiplatelet therapy at 6 months while continuing OAC may be considered. (ESC/ACS 2023 IIb B)
 ● In patients requiring anticoagulation and treated medically, a single antiplatelet agent in addition to an OAC should be considered for up to 1 year. (ESC/ACS 2023 IIa B)
@@ -923,7 +950,8 @@ Minor criteria: (ESC ACS 2023)
           TestPageModel(
             title:
                 """● During the ablation, intravenous heparin should be administered to achieve an activated clotting time (ACT) of 300 – 350 seconds. (EHRA/NOAC/AF 2021)
-● All patients undergoing catheter ablation require intraprocedural intravenous anticoagulation with heparin or direct thrombin inhibitors in those with heparin allergies. (AHA/ACC/ACCP/HRS 2023)""",
+● All patients undergoing catheter ablation require intraprocedural intravenous anticoagulation with heparin or direct thrombin inhibitors in those with heparin allergies. (AHA/ACC/ACCP/HRS 2023)
+● Uninterrupted oral anticoagulation is recommended in patients undergoing AF catheter ablation to prevent peri-procedural ischemic stroke and thromboembolism. (ESC/EACTS/AF 2024 I A)""",
             value: "What is the antithrombotic plan during ablation?",
             type: TestPageTypeEnum.end,
           ),
@@ -948,6 +976,7 @@ Minor criteria: (ESC ACS 2023)
 ● There is no reason to recommend omitting one or two NOAC doses before ablation. (ESC/AF 2020)
 After the procedure, administration of the first dose the evening after ablation or the next morning appears to be safe. (ESC/AF 2020)
 ● For patients undergoing AF catheter ablation who have been therapeutically anticoagulated with warfarin, dabigatran, rivaroxaban, apixaban, or edoxaban, performance of the ablation procedure without OAC interruption is recommended. (ESC/AF 2020, I A)
+● Continuation of oral anticoagulation is recommended in patients with AF at elevated thromboembolic risk after concomitant, endoscopic, or hybrid AF ablation, independent of rhythm outcome or LAA exclusion, to prevent ischemic stroke and thromboembolism. (ESC/EACTS/AF 2024 I A)
 ● Performing left atrial catheter ablation under uninterrupted anticoagulant treatment with VKA (target INR 2.0-2.5 if on VKAs) and uninterrupted NOAC therapy can be considered safe and effective in AF ablation and should likely be the preferred mode of anticoagulation for patients undergoing this procedure. (EHRA/NOAC/AF 2021)
 ● NOAC interruption might be considered 12 hours before ablation. (Shorter interruption period may be considered if High CHA2DS2VASc Score≥ 4). (EHRA/NOAC/AF 2021)
 ● The last dose of once-daily based NOACs were recommended (rivaroxaban) or mandated (edoxaban) to be administered in the evening before the procedure whereas twice-daily dosed NOACs(apixaban, dabigatran) were administered in the morning of the procedure. (EHRA/NOAC/AF 2021)""",
@@ -974,6 +1003,7 @@ After the procedure, administration of the first dose the evening after ablation
               TestPageModel(
                 title:
                     """●  In patients who have undergone catheter ablation of AF, oral anticoagulation should be continued for at least 3 months after the procedure with a longer duration determined by underlying risk. (AHA/ACC/ACCP/HRS 2023 1, B-NR)
+● Initiation of oral anticoagulation is recommended at least 3 weeks prior to catheter-based ablation in AF patients at elevated thromboembolic risk, to prevent peri-procedural ischaemic stroke and thromboembolism. (ESC/EACTS/AF 2024 I C)
 ● In AF patients with stroke risk factors not taking OAC before ablation, it is recommended that pre-procedural management of stroke risk includes initiation of anticoagulation and preferably, therapeutic OAC for at least 3 weeks before ablation (I C), or alternatively, the use of TOE to exclude LA thrombus before ablation (II C). (AF/ESC 2020)""",
                 value: "During the first 3 months",
                 type: TestPageTypeEnum.end,
@@ -981,6 +1011,8 @@ After the procedure, administration of the first dose the evening after ablation
               TestPageModel(
                 title:
                     """● In patients who have undergone catheter ablation of AF, continuation of longer-term oral anticoagulation should be dictated according to the patients’ stroke risk (eg, CHA2DS2-VAScscore ≥ 2). (AHA/ACC/ACCP/HRS 2023 1, B-NR)
+● Continuation of oral anticoagulation is recommended for at least 2 months after AF ablation in all patients, irrespective of rhythm outcome or CHA2DS2-VA score, to reduce the risk of peri-procedural ischaemic stroke and thromboembolism.(ESC/EACTS/AF 2024 I C)
+● Continuation of oral anticoagulation is recommended after AF ablation according to the patient’s CHA2DS2-VA score, and not the perceived success of the ablation procedure, to prevent ischaemic stroke and thromboembolism. (ESC/EACTS/AF 2024 I C)
 ● Systemic anticoagulation with warfarin or a NOAC is continued for at least 2 (AF ESC 2020, I C) or 3 months (AHA ACC ACCP HRS 2023 1, B-NR) post ablation, and Long-term continuation of systemic anticoagulation beyond 2 months post ablation is based on the patient’s stroke risk profile and not on the apparent success or failure of the ablation procedure. (AF/ESC 2020, I C), (AHA/ACC/ACCP/HRS 2023 1, B-NR)""",
                 value: "After the first 3 months",
                 type: TestPageTypeEnum.end,
@@ -1497,7 +1529,7 @@ surgery/procedure over administering the full dose of LMWH the day prior. (CHEST
         ],
       ),
       TestPageModel(
-        title: "Elective surgery/procedure,",
+        title: "Elective surgery/procedure",
         value: "DOACs",
         type: TestPageTypeEnum.page,
         pages: [
@@ -1789,9 +1821,9 @@ resuming DOACs within 24 hours. (CHEST 2022, Conditional Recommendation, Very Lo
   //   pages: [],
   // );
 
-  return TestPageModel(
+  var list = TestPageModel(
     title: "",
-    value: "Part 3",
+    value: "Considerations",
     type: TestPageTypeEnum.page,
     pages: [
       inr,
@@ -1818,4 +1850,10 @@ resuming DOACs within 24 hours. (CHEST 2022, Conditional Recommendation, Very Lo
       targetINR,
     ],
   );
+
+  for (var item in list.pages) {
+    item.isMarked = true;
+  }
+
+  return list;
 }
