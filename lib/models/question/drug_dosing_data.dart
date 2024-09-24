@@ -140,6 +140,7 @@ List<DrugDosingModel> drugDosing(TestModel model) {
 """;
 
   var extra1 = DrugDosingParams(
+    title: "Need for platelet count monitoring",
     desc: "Any of the following scenarios present?",
     params: [
       DrugDosingParams(
@@ -300,8 +301,7 @@ List<DrugDosingModel> drugDosing(TestModel model) {
                             msg: "Continue with current dose.",
                             desc: extra1.desc,
                             params: extra1.params,
-                            title:
-                                "Is there a need for platelet count monitoring during UFH treatment?",
+                            title: extra1.title,
                           ),
                           DrugDosingParams(
                             buttonTitle: "No",
@@ -311,8 +311,7 @@ List<DrugDosingModel> drugDosing(TestModel model) {
 (UpToDate)""",
                             desc: extra1.desc,
                             params: extra1.params,
-                            title:
-                                "Is there a need for platelet count monitoring during UFH treatment?",
+                            title: extra1.title,
                           ),
                         ],
                       ),
@@ -320,8 +319,7 @@ List<DrugDosingModel> drugDosing(TestModel model) {
                         buttonTitle: "No",
                         desc: extra1.desc,
                         params: extra1.params,
-                        title:
-                            "Is there a need for platelet count monitoring during UFH treatment?",
+                        title: extra1.title,
                       ),
                     ],
                   )

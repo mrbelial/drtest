@@ -852,9 +852,9 @@ Repeat assay 6 hours after restarting the infusion.""",
         CheckBoxModel("Body weight ≤ 60 kg?", 1, model.weight <= 60,
             desc: "30 mg daily or 15 mg daily. (ESC AF 2020)"),
         CheckBoxModel(
-            "Concomitant use of strong P-Gp inhibitor (e.g verapamil, quinidine, or dronedarone)?",
+            "Concomitant use of strong P-Gp inhibitor (e.g verapamil, quinidine, dronedarone, cyclosporine, erythromycin, ketoconazole)?",
             3,
-            isSelectedDrugInterActions([10, 11, 1]),
+            isSelectedDrugInterActions([10, 11, 1, 8, 12, 4]),
             desc: "30 mg daily or 15 mg daily. (ESC AF 2020)"),
         CheckBoxModel(
             "Disproportionate and non-modifiable bleeding risk?", 2, false,

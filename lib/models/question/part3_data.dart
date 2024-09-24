@@ -1175,6 +1175,7 @@ After the procedure, administration of the first dose the evening after ablation
 ● Bronchoscopy ± biopsy""",
     value:
         """See the complete list of Low-to-moderate-bleed-risk surgery/procedure""",
+    appbarTitle: "See the list of low to moderate-bleed-risk surgeries",
     type: TestPageTypeEnum.end,
   );
 
@@ -1198,6 +1199,7 @@ After the procedure, administration of the first dose the evening after ablation
 ● Neuraxial anesthesia (Includes spinal and epidural anesthesia or any other neuraxial e.g., pain management intervention)
 ● Epidural injections""",
     value: """See the complete list of high-bleed-risk surgery/procedure""",
+    appbarTitle: "See the list of high-bleed-risk surgeries",
     type: TestPageTypeEnum.end,
   );
   var prePostOperativeManagementOfOACs = TestPageModel(
@@ -1268,6 +1270,7 @@ Low-to-moderate-bleed-risk surgery/procedures (30-d risk of major bleed 0%-2%):
 ● Pacemaker or cardioverter-defibrillator device implantation""",
                 value:
                     "Minor/Minimal Procedures?\nSee the complete list of minor procedures",
+                appbarTitle: "Minimal/Minor procedures? See complete list",
                 type: TestPageTypeEnum.page,
                 pages: [
                   TestPageModel(
@@ -1303,6 +1306,7 @@ Low Certainty of Evidence)
 OR
 Annual predicted risk of thromboembolism of ≥ 5% + 
 undergoing pacemaker or defibrillator implantation or generator change?""",
+                    appbarTitle: "Pacemaker or ICD implementation",
                     type: TestPageTypeEnum.end,
                   ),
                 ],
@@ -1320,6 +1324,7 @@ undergoing pacemaker or defibrillator implantation or generator change?""",
 ● It is recommended that VKAs are timely discontinued (<_5 days for warfarin) prior to elective surgery to aim for an INR <1.5. (ESC/VHD 2021, I C)""",
                 value:
                     "When to interrupt Warfarin pre elective procedure?\n(Low-to-moderate-bleed-risk, and High-bleed-risk)",
+                appbarTitle: "When to interrupt warfarin?",
                 type: TestPageTypeEnum.page,
                 pages: [
                   TestPageModel(
@@ -1331,6 +1336,7 @@ undergoing pacemaker or defibrillator implantation or generator change?""",
 ● It is recommended that VKAs are timely discontinued prior to elective surgery to aim for an INR <1.5. (ESC/VHD 2021, I C)""",
                     value: """Low/ Moderate Bleeding Risk Procedure?
 (including: Endoscopic, dental extraction, many ophthalmologic procedures, and percutaneous vascular access, such as cardiac catheterization.)""",
+                    appbarTitle: "Low to moderate-risk bleeding risk procedure",
                     type: TestPageTypeEnum.end,
                   ),
                   lowToModerateBleedRisk,
@@ -1341,6 +1347,7 @@ bleeding risk procedures.
 ● It is recommended that VKAs are timely discontinued prior to elective surgery to aim for an INR <1.5. (ESC/VHD 2021, I C)""",
                     value: """High Bleeding Risk Procedure?
 (including: Intra-abdominal, pelvic, orthopedic, neurosurgical, cardiac, and transvenous lead extraction procedures neuraxial anesthesia, and spinal surgery)""",
+                    appbarTitle: "High bleeding risk procedure?",
                     type: TestPageTypeEnum.end,
                   ),
                   highToModerateBleedRisk,
@@ -1352,6 +1359,7 @@ bleeding risk procedures.
 suggest against routine use of pre-operative vitamin K. (CHEST 2022, Conditional Recommendation, Very Low Certainty of Evidence).""",
                 value:
                     "Is there a role for vitamin K if the INR≥ 1.5 1-2 days before elective procedure?",
+                appbarTitle: "Role of vitamin K",
                 type: TestPageTypeEnum.end,
               ),
               TestPageModel(
@@ -1374,6 +1382,7 @@ suggest against routine use of pre-operative vitamin K. (CHEST 2022, Conditional
                 title: "",
                 value:
                     "Is there a need for bridging when planning to interrupt Warfarin pre elective surgery?",
+                appbarTitle: "Need for Bridging",
                 type: TestPageTypeEnum.page,
                 pages: [
                   TestPageModel(
@@ -1433,6 +1442,7 @@ heparin bridging. (CHEST 2022, Conditional Recommendation, Very Low Certainty of
 ● History of LV apex thrombus, antithrombin 3 deficasy, proteins C and/or S deficasy. (ESC/VHD 2021)
 ● Rheumatic valvular heart disease (CHEST 2022)
 ● AF with significant mitral stenosis (ESC/VHD 2021)""",
+                    appbarTitle: "High risk for thromboembolism",
                     type: TestPageTypeEnum.end,
                   ),
                   TestPageModel(
@@ -1441,6 +1451,7 @@ heparin bridging. (CHEST 2022, Conditional Recommendation, Very Low Certainty of
 procedure, we suggest against heparin bridging. (CHEST 2022, Conditional Recommendation, Very Low Certainty of Evidence)""",
                     value:
                         "Is the patient classified as classified as low-to-moderate-risk for thromboembolism or CHA2DS2VASc score between 1-6?",
+                    appbarTitle: "Low to moderate risk for thromboembolism",
                     type: TestPageTypeEnum.end,
                   ),
                   TestPageModel(
@@ -1506,6 +1517,8 @@ over resuming UFH within 24 hours after a surgery/Procedure. (CHEST 2022, Condit
 surgery/procedure over administering the full dose of LMWH the day prior. (CHEST 2022, Conditional Recommendation, Very Low Certainty of Evidence).""",
                         value:
                             "What is the optimum dose of LMWH the day before the surgery/procedure?",
+                        appbarTitle:
+                            "What is the optimum dose of LMWH the day before surgery?",
                         type: TestPageTypeEnum.end,
                       ),
                       TestPageModel(
@@ -1555,6 +1568,7 @@ over apixaban continuation. (CHEST 2022, Conditional Recommendation, Very Low Ce
                     value:
                         """Is the surgery/procedure low-to-moderate-bleed-risk?
 + (CrCl >25 mL/min)""",
+                    appbarTitle: "Low to moderate bleed risk + CrCl> 25 ",
                     type: TestPageTypeEnum.end,
                   ),
                   lowToModerateBleedRisk,
@@ -1653,6 +1667,7 @@ When to interrupt Edoxaban preprocedural?""",
 ● For patients on DOAC with creatinine clearance lower than the values in the table, few clinical data exist. Consider holding for an additional 1 to 3 days, especially for high bleeding risk procedures. (CHEST 2022, AHA/ACC/ACCP/HRS 2023)""",
                     value:
                         "Low-to-moderate-bleed-risk surgery/procedure? + (CrCl >15 mL/min)",
+                    appbarTitle: "Low to moderate bleed risk + CrCl>15",
                     type: TestPageTypeEnum.end,
                   ),
                   lowToModerateBleedRisk,
@@ -1687,6 +1702,7 @@ When to interrupt rivaroxaban preprocedural?""",
 ● For patients on DOAC with creatinine clearance lower than the values in the table, few clinical data exist. Consider holding for an additional 1 to 3 days, especially for high bleeding risk procedures. (CHEST 2022, AHA/ACC/ACCP/HRS 2023)""",
                     value:
                         "Low-to-moderate-bleed-risk surgery/procedure? + (CrCl > 30 mL/min)",
+                    appbarTitle: "Low to moderate bleed risk + CrCl> 30",
                     type: TestPageTypeEnum.end,
                   ),
                   lowToModerateBleedRisk,
@@ -1707,7 +1723,8 @@ When to interrupt rivaroxaban preprocedural?""",
                 """● In patients who require DOAC interruption for an elective surgery/procedure, we suggest against perioperative heparin bridging. (CHEST 2022, Conditional Recommendation, Very Low Certainty of Evidence).
 ● Pre-operative bridging with low-molecular weight (LMWH) or unfractionated heparin (UFH) is not recommended in NOAC-treated patients. (EHRA/NOAC/AF 2021)""",
             value:
-                "Is there a need  for heparin bridging in patients on DOACs before elective surgery/procedure?",
+                "Is there a need for heparin bridging in patients on DOACs before elective surgery/procedure?",
+            appbarTitle: "Need for Heparin bridging",
             type: TestPageTypeEnum.end,
           ),
           TestPageModel(
@@ -1781,6 +1798,7 @@ resuming DOACs within 24 hours. (CHEST 2022, Conditional Recommendation, Very Lo
           ),
           TestPageModel(
             title: targetINRExtra,
+            appbarTitle: "Mechanical bileaflet or current-generation",
             value:
                 "Mechanical bileaflet or current-generation single-tilting disk aortic valve replacement?",
             type: TestPageTypeEnum.end,
@@ -1794,18 +1812,21 @@ resuming DOACs within 24 hours. (CHEST 2022, Conditional Recommendation, Very Lo
         pages: [
           TestPageModel(
             title: "Target INR is 3.",
+            appbarTitle: "ESC VHD 2021",
             value:
                 "Carbomedics, Medtronic Hall, ATS, Medtronic Open-Pivot, St Jude Medical, Sorin BicarboN?",
             type: TestPageTypeEnum.end,
           ),
           TestPageModel(
             title: "Target INR is 4.",
+            appbarTitle: "ESC VHD 2021",
             value:
                 "Lillehei-Kaster, Omniscience, Starr-Edwards (ball-cage), Bjork-Shiley and other tilting-disc valves?",
             type: TestPageTypeEnum.end,
           ),
           TestPageModel(
             title: "Target INR is 3.5.",
+            appbarTitle: "ESC VHD 2021",
             value: "Other bileaflet valves with insufficient data?",
             type: TestPageTypeEnum.end,
           ),

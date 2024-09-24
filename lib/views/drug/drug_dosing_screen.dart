@@ -41,7 +41,10 @@ class DrugDosingScreen extends StatelessWidget {
       body: ListView(
         padding: AppConst.defaultPadding,
         children: [
-          Text(model.desc),
+          Text(
+            model.desc,
+            textAlign: TextAlign.justify,
+          ),
           ListView.builder(
             itemCount: model.params.length,
             shrinkWrap: true,
