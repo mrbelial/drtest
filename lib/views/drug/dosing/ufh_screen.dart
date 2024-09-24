@@ -35,7 +35,10 @@ Adjust subsequent doses to attain a goal aPTT based on the institution- specific
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(_getDosing()),
+        Text(
+          _getDosing(),
+          textAlign: TextAlign.justify,
+        ),
         testButton("Ok", () {
           Get.toNamed("/drug_dosing",
               arguments: item, preventDuplicates: false);
