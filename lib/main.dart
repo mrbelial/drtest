@@ -3,6 +3,7 @@ import 'package:drtest/tools/core.dart';
 import 'package:drtest/views/drug/drug_interaction_desc2_screen.dart';
 import 'package:drtest/views/drug/drug_interaction_desc_screen.dart';
 import 'package:drtest/views/home/terms_screen.dart';
+import 'package:drtest/views/public/intro_screen.dart';
 import 'package:drtest/views/test/part3_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -109,6 +110,9 @@ class MyApp extends StatelessWidget {
 
         //Part 3
         GetPage(name: "/part3", page: () => Part3Screen()),
+        
+        //Intro
+        GetPage(name: "/intro", page: () => const IntroScreen()),
       ],
       theme: AppThemes.defaultTheme,
       home: SplashScreen(),

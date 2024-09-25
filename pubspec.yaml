@@ -42,6 +42,7 @@ dependencies:
   dio: ^5.7.0
   logger: ^2.4.0
   toastification: ^2.2.0
+  video_player: ^2.9.1
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +65,7 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/fonts/
+    - assets/video/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
