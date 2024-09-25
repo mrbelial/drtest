@@ -65,13 +65,13 @@ class TestController extends GetxController {
 
   set weight(int v) => _responseObs.update((val) {
         val!.content!.weight = v;
-        val.content!.bmi = calcBMI();
+        calcBMI();
       });
   int get weight => model.weight;
 
   set height(int v) => _responseObs.update((val) {
         val!.content!.height = v;
-        val.content!.bmi = calcBMI();
+        calcBMI();
       });
   int get height => model.height;
 
@@ -240,7 +240,8 @@ Patients with AF at intermediate annual risk of thromboembolic events by risk sc
   //BMI
   double calcBMI() {
     var h = height / 100;
-    return double.tryParse((weight / (h * h)).toStringAsFixed(2)) ?? 0;
+    model.bmi = double.tryParse((weight / (h * h)).toStringAsFixed(2)) ?? 0;
+    return model.bmi;
   }
 
   List<TestDrugModel> getDrugsByIDs(List<int> ids) {
