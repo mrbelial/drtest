@@ -14,7 +14,7 @@ class VideoApp extends StatefulWidget {
 
 class VideoAppState extends State<VideoApp> {
   late VideoPlayerController _controller;
-
+  bool isInitialized = false;
   @override
   void initState() {
     super.initState();
@@ -23,7 +23,9 @@ class VideoAppState extends State<VideoApp> {
         _controller.setLooping(true);
         _controller.play();
         // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
-        setState(() {});
+        setState(() {
+          isInitialized = true;
+        });
       });
   }
 
@@ -31,7 +33,7 @@ class VideoAppState extends State<VideoApp> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-      child: _controller.value.isInitialized
+      child: isInitialized
           ? AspectRatio(
               aspectRatio: _controller.value.aspectRatio,
               child: VideoPlayer(_controller),
