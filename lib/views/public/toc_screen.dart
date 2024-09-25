@@ -56,8 +56,8 @@ class TocScreen extends StatelessWidget {
         ], () {
           _testController.initAll();
           _testController.model.ul = 250000;
-          _testController.model.age = 35;
-          _testController.model.weight = 70;
+          _testController.model.age = 25;
+          _testController.model.weight = 65;
           _testController.model.height = 180;
           _testController.model.serumCreatinine = 1.2;
 
@@ -68,8 +68,10 @@ class TocScreen extends StatelessWidget {
               drugs: [
                 TestDrugPageModel("", [1, 2, 3, 4, 5, 6, 7]),
               ]));
+
           _testController.model.testFilteredDrug.drugs =
               _testController.model.drugs;
+
           Get.toNamed("/drugs");
         }),
         TocModel(

@@ -109,7 +109,7 @@ class DrugsScreen extends StatelessWidget {
                   ...model.drugs.map((e) => _drugBox(e)),
                   testButton("Consider DOACs Drug Interaction", () {
                     Get.toNamed("/drug_interaction");
-                  }, color: AppColors.red),
+                  }, color: AppColors.blue),
                   testButton(
                     "Continue",
                     () => Get.toNamed(

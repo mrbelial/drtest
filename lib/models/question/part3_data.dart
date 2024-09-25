@@ -678,12 +678,14 @@ thromboembolism. (ESC/EACTS/AF 2024 IIa B)
             """● Typically, periodic assessment should be performed once a year but might need to be performed more frequently in the context of changes in clinical status, such as reduction in renal function or development of additional risk factors. (AHA/ACC/ACCP/HRS 2023)""",
         value:
             "What is the minimum interval for Stroke risk assessment in patients with AF?",
+        appbarTitle: "Stroke Risk Assessment",
         type: TestPageTypeEnum.end,
       ),
       TestPageModel(
         title: "",
         value:
             "What is the minimum interval for evaluating bleeding risk using HAS-BLED score in patients with AF?",
+        appbarTitle: "Bleeding Risk Assessment",
         type: TestPageTypeEnum.page,
         pages: [
           TestPageModel(
@@ -706,6 +708,7 @@ thromboembolism. (ESC/EACTS/AF 2024 IIa B)
         title: "",
         value:
             "What is the minimum interval for evaluating renal function in patients with AF?",
+        appbarTitle: "Renal Function Assessment",
         type: TestPageTypeEnum.page,
         pages: [
           TestPageModel(
@@ -735,6 +738,7 @@ thromboembolism. (ESC/EACTS/AF 2024 IIa B)
         title: "What is the Child-Pugh score?",
         value:
             "What is the minimum interval for evaluating liver function in patients with AF?",
+            appbarTitle: "Liver Function Assessment",
         type: TestPageTypeEnum.page,
         pages: [
           TestPageModel(

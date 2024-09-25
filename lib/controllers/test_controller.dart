@@ -51,9 +51,9 @@ class TestController extends GetxController {
 
   void initAll() {
     _responseObs.value = QuestionResponse();
+    initStack();
     initDrugInteraction();
     initDrugDosing();
-    initStack();
   }
 
   set isFemale(bool v) =>
@@ -862,11 +862,11 @@ Repeat assay 6 hours after restarting the infusion.""",
         CheckBoxModel("Platelet count: 25000-50000 Cell/ µL", 0,
             model.ulValue >= 25000 && model.ulValue <= 50000,
             desc: "30 mg once daily.  (UpToDate), (EHRA NOAC AF 2021)"),
-        CheckBoxModel(
-            "Concomitant use of Cyclosporine, Itraconazole, Ketoconazole, Erythromycin?",
-            4,
-            isSelectedDrugInterActions([8, 3, 4, 12]),
-            desc: "30 mg QD. (EHRA 2021)"),
+        // CheckBoxModel(
+        //     "Concomitant use of Cyclosporine, Itraconazole, Ketoconazole, Erythromycin?",
+        //     4,
+        //     isSelectedDrugInterActions([8, 3, 4, 12]),
+        //     desc: "30 mg QD. (EHRA 2021)"),
       ];
     }
   }
