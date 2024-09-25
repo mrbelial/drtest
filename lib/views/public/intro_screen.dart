@@ -4,14 +4,17 @@ import 'package:flutter/material.dart';
 class IntroScreen extends StatelessWidget {
   const IntroScreen({super.key});
 
+  final videoUrl = "https://acafib.ir/app/assets/assets/video/intro.mp4";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Intro"),
       ),
-      body: const VideoApp(
-          video: "https://acafib.ir/app/assets/assets/video/intro.mp4"),
+      body: Center(
+        child: MyVideoPlayer(url: videoUrl),
+      ),
     );
   }
 }

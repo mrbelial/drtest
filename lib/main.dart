@@ -110,7 +110,7 @@ class MyApp extends StatelessWidget {
 
         //Part 3
         GetPage(name: "/part3", page: () => Part3Screen()),
-        
+
         //Intro
         GetPage(name: "/intro", page: () => const IntroScreen()),
       ],

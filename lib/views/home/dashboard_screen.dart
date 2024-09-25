@@ -30,7 +30,7 @@ class DashboardScreen extends StatelessWidget {
               title: "Start",
               onTap: () => Get.toNamed("/test"),
             ),
-            appButton(title: "Intro", onTap: () => Get.toNamed("/intro")),
+            appButton(title: "Guide to use ACAFiB", onTap: () => Get.toNamed("/intro")),
             const SizedBox(height: 100),
           ],
         ),

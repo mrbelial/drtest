@@ -1,50 +1,47 @@
-import 'package:drtest/tools/core.dart';
+import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
-/// Stateful widget to fetch and then display video content.
-class VideoApp extends StatefulWidget {
-  const VideoApp({super.key, required this.video});
-
-  final String video;
+class MyVideoPlayer extends StatefulWidget {
+  const MyVideoPlayer({super.key, required this.url});
+  final String url;
 
   @override
-  VideoAppState createState() => VideoAppState();
+  MyVideoPlayerState createState() => MyVideoPlayerState();
 }
 
-class VideoAppState extends State<VideoApp> {
-  late VideoPlayerController _controller;
-  bool isInitialized = false;
+class MyVideoPlayerState extends State<MyVideoPlayer> {
+  late FlickManager flickManager;
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.networkUrl(Uri.parse(widget.video))
-      ..initialize().then((_) {
-        _controller.setLooping(true);
-        _controller.play();
-        // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
-        setState(() {
-          isInitialized = true;
-        });
-      });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        body: Center(
-      child: isInitialized
-          ? AspectRatio(
-              aspectRatio: _controller.value.aspectRatio,
-              child: VideoPlayer(_controller),
-            )
-          : simpleLoading(),
-    ));
+    Uri uri = Uri.parse(widget.url);
+    flickManager = FlickManager(
+      videoPlayerController: VideoPlayerController.networkUrl(uri),
+    );
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    flickManager.dispose();
     super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: FlickVideoPlayer(
+        flickManager: flickManager,
+        flickVideoWithControls: const FlickVideoWithControls(
+          // closedCaptionTextStyle: TextStyle(fontSize: 8),
+          videoFit: BoxFit.contain,
+          controls: FlickPortraitControls(),
+        ),
+        flickVideoWithControlsFullscreen: const FlickVideoWithControls(
+          controls: FlickLandscapeControls(),
+        ),
+      ),
+    );
   }
 }
