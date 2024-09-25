@@ -1150,4 +1150,13 @@ OR
 
     return msg;
   }
+
+  void calcAll() {
+    calcBMI();
+    calcCG();
+    calcCP();
+    calcHB();
+    calcTS();
+    calcq3();
+  }
 }

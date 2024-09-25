@@ -61,6 +61,8 @@ class TocScreen extends StatelessWidget {
           _testController.model.height = 180;
           _testController.model.serumCreatinine = 1.2;
 
+          _testController.calcAll();
+
           _testController.stacks.add(TestPageModel(
               title: "",
               value: "",
