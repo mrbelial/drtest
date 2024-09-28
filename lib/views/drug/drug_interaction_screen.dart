@@ -105,7 +105,10 @@ class DrugInteractionScreen extends StatelessWidget {
                                   textButton(onTap: Get.back, title: "Close"),
                                 ]);
                           },
-                          icon: const Icon(Icons.info_outline)),
+                          icon: const Icon(
+                            Icons.info_outline,
+                            color: AppColors.green,
+                          )),
                       leading: checkBox2(
                         id: index,
                         title: drug.drugName,

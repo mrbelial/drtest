@@ -73,7 +73,10 @@ class TestSituationsScreen extends StatelessWidget {
                         IconButton(
                           onPressed: () =>
                               testMessage(item.helpDesc!, Get.back),
-                          icon: const Icon(Icons.help),
+                          icon: const Icon(
+                            Icons.help,
+                            color: AppColors.green,
+                          ),
                         )
                     ],
                   );

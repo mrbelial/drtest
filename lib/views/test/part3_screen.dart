@@ -87,7 +87,8 @@ class Part3Screen extends StatelessWidget {
               }),
           if (model.type == TestPageTypeEnum.end)
             testButton("Done", () {
-              Get.offNamedUntil("/drugs", ModalRoute.withName("/part3"));
+              // Get.offNamedUntil("/drugs", ModalRoute.withName("/part3"));
+              Navigator.popUntil(context, (route) => route.settings.name != '/part3');
               // Get.offNamedUntil(
               //     "/home", (route) => route.settings.name != '/part3');
             })
