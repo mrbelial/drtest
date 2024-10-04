@@ -15,7 +15,7 @@ class AboutUsScreen extends StatelessWidget {
         children: [
           const SizedBox(height: 20),
           Image.asset(
-            imagePath("TUMS_v03.png"),
+            imagePath("logo2.png"),
             height: 250,
           ),
           const SizedBox(height: 20),
@@ -26,7 +26,7 @@ class AboutUsScreen extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           Image.asset(
-            imagePath("Research_Center_v03.png"),
+            imagePath("logo1.png"),
             height: 250,
           ),
           // Text(
