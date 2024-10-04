@@ -57,7 +57,7 @@ class Test2Screen extends StatelessWidget {
                         onPressed: () => testMessage(item.desc, Get.back),
                         icon: const Icon(
                           Icons.help_outline,
-                          color: AppColors.textColor2,
+                          color: AppColors.green,
                           size: 35,
                         )));
                 // return Row(
