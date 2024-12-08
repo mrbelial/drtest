@@ -39,8 +39,8 @@ class PTTCalcScreen extends StatelessWidget {
           label: "Anti factor Xa activity",
           hint: "... (IU/ml)",
           controller: _xaActivityController,
+          type: TextInputType.numberWithOptions(decimal: true),
           formatter: [DecimalTextInputFormatter(decimalRange: 2)],
-          type: TextInputType.number,
           onChanged: (s) {
             _pttController.text = "";
             _controller.aptt = 0;

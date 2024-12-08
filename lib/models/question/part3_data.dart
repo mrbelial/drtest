@@ -1811,7 +1811,7 @@ resuming DOACs within 24 hours. (CHEST 2022, Conditional Recommendation, Very Lo
       ),
       TestPageModel(
         title: "",
-        value: "(ESC VHD 2021)",
+        value: "ESC VHD 2021",
         type: TestPageTypeEnum.page,
         pages: [
           TestPageModel(

@@ -13,26 +13,31 @@ class TocModel {
 }
 
 class TocScreen extends StatelessWidget {
-  TocScreen({super.key});
-  final _testController = Get.put(TestController());
+  const TocScreen({super.key});
 
   List<TocModel> get tableOfContent => [
-        TocModel(
-            "Anticoagulant Selection",
-            [
-              'Confirm Diagnosis',
-              'Evaluate Indications',
-              'CHA2DS2-VASc Calculator',
-              'Consider Contraindications',
-              'HAS-BLED Calculator',
-              'Cockcroft-Gault Calculator',
-              'Child-Pugh Calculator',
-              'Platelet Count',
-              'BMI Calculator',
-              'Clinical Scenarios for Anticoagulant Selection',
-              'DOAC Drug Interactions',
-            ],
-            () => Get.toNamed("/test")),
+        TocModel("Anticoagulant Selection", [
+          'Confirm Diagnosis',
+          'Evaluate Indications',
+          'CHA2DS2-VASc Calculator',
+          'Consider Contraindications',
+          'HAS-BLED Calculator',
+          'Cockcroft-Gault Calculator',
+          'Child-Pugh Calculator',
+          'Platelet Count',
+          'BMI Calculator',
+          'Clinical Scenarios for Anticoagulant Selection',
+          'DOAC Drug Interactions',
+        ], () {
+          final testController = Get.put(TestController());
+          testController.initAll();
+          Get.toNamed("/test");
+        }),
+        TocModel("Clinical Scenarios", [], () {
+          final testController = Get.put(TestController());
+          testController.initAll();
+          Get.toNamed("/test_situations_page");
+        }),
         TocModel("Anticoagulant Dosing", [
           'Warfarin Dosing/ Need for Bridging',
           'Warfarin Dosing/ Initial dose, Maintenance Dose',
@@ -54,16 +59,17 @@ class TocScreen extends StatelessWidget {
           'Rivaroxaban Dosing',
           'Dabigatran Dosing',
         ], () {
-          _testController.initAll();
-          _testController.model.ul = 250000;
-          _testController.model.age = 25;
-          _testController.model.weight = 65;
-          _testController.model.height = 180;
-          _testController.model.serumCreatinine = 1.2;
+          final testController = Get.put(TestController());
+          testController.initAll();
+          testController.model.ul = 250000;
+          testController.model.age = 25;
+          testController.model.weight = 65;
+          testController.model.height = 180;
+          testController.model.serumCreatinine = 1.2;
 
-          _testController.calcAll();
+          testController.calcAll();
 
-          _testController.stacks.add(TestPageModel(
+          testController.stacks.add(TestPageModel(
               title: "",
               value: "",
               type: TestPageTypeEnum.drug,
@@ -71,8 +77,8 @@ class TocScreen extends StatelessWidget {
                 TestDrugPageModel("", [1, 2, 3, 4, 5, 6, 7]),
               ]));
 
-          _testController.model.testFilteredDrug.drugs =
-              _testController.model.drugs;
+          testController.model.testFilteredDrug.drugs =
+              testController.model.drugs;
 
           Get.toNamed("/drugs");
         }),
@@ -106,7 +112,8 @@ class TocScreen extends StatelessWidget {
             'Target INR in Patients with Mechanical Heart Valve',
           ],
           () {
-            _testController.initAll();
+            final testController = Get.put(TestController());
+            testController.initAll();
             Get.toNamed("/part3", arguments: part3Data(TestModel()));
           },
         ),

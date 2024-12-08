@@ -39,22 +39,22 @@ class ServiceGenerator {
     return response;
   }
 
-  ResponseModel _getErrorFromResponse(dynamic error) {
-    ResponseModel response = ResponseModel();
-    if (error is DioException) {
-      DioException e = error;
-      response.content = null;
-      response.isSuccess = false;
-      response.statusCode = e.response?.statusCode ?? 0;
-      response.message = handleError(error);
-    } else {
-      response.content = null;
-      response.isSuccess = false;
-      response.statusCode = 0;
-      response.message = msg;
-    }
-    return response;
-  }
+  // ResponseModel _getErrorFromResponse(dynamic error) {
+  //   ResponseModel response = ResponseModel();
+  //   if (error is DioException) {
+  //     DioException e = error;
+  //     response.content = null;
+  //     response.isSuccess = false;
+  //     response.statusCode = e.response?.statusCode ?? 0;
+  //     response.message = handleError(error);
+  //   } else {
+  //     response.content = null;
+  //     response.isSuccess = false;
+  //     response.statusCode = 0;
+  //     response.message = msg;
+  //   }
+  //   return response;
+  // }
 
   Future<BaseModel<LoginModel>> splash() async {
     try {

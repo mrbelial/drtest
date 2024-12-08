@@ -16,7 +16,7 @@ class CHA2DS2Screen extends StatelessWidget {
     
     return Scaffold(
         appBar: AppBar(
-          title: const Text("CHA2DS2-VASc Calculator"),
+          title: const Text("CHA2DS2-VA Calculator"),
           actions: [
             IconButton(
                 onPressed: () =>
@@ -49,32 +49,32 @@ class CHA2DS2Screen extends StatelessWidget {
                     );
                   });
             }),
-            Obx(() {
-              return Row(
-                children: [
-                  Expanded(
-                    child: radioButton(
-                        title: "Male (0)",
-                        value: _controller.isFemale ? 0 : 1,
-                        groupValue: 1,
-                        onChanged: (i) {
-                          _controller.isFemale = false;
-                          _controller.calcq3();
-                        }),
-                  ),
-                  Expanded(
-                    child: radioButton(
-                        title: "Female (1)",
-                        value: _controller.isFemale ? 1 : 0,
-                        groupValue: 1,
-                        onChanged: (i) {
-                          _controller.isFemale = true;
-                          _controller.calcq3();
-                        }),
-                  ),
-                ],
-              );
-            }),
+            // Obx(() {
+            //   return Row(
+            //     children: [
+            //       Expanded(
+            //         child: radioButton(
+            //             title: "Male (0)",
+            //             value: _controller.isFemale ? 0 : 1,
+            //             groupValue: 1,
+            //             onChanged: (i) {
+            //               _controller.isFemale = false;
+            //               _controller.calcq3();
+            //             }),
+            //       ),
+            //       Expanded(
+            //         child: radioButton(
+            //             title: "Female (1)",
+            //             value: _controller.isFemale ? 1 : 0,
+            //             groupValue: 1,
+            //             onChanged: (i) {
+            //               _controller.isFemale = true;
+            //               _controller.calcq3();
+            //             }),
+            //       ),
+            //     ],
+            //   );
+            // }),
             textField(
               maxLength: 3,
               type: TextInputType.number,

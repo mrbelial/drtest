@@ -15,7 +15,7 @@ List<DrugInteractionRowModel> drugInteractionData = [
     id: 1,
   ),
   DrugInteractionRowModel(
-    "HIV protease inhibitors",
+    "HIV Protease Inhibitors (including Darunavir, Lopinavir, Ritonavir, Atazanavir, etc.)",
     [
       DrugInteractionWithType(6, DrugInteractionEnum.red),
       DrugInteractionWithType(4, DrugInteractionEnum.red),
@@ -25,7 +25,7 @@ List<DrugInteractionRowModel> drugInteractionData = [
     id: 2,
   ),
   DrugInteractionRowModel(
-    "Itraconazole",
+    "Itraconazole (Systemic)",
     [
       DrugInteractionWithType(6, DrugInteractionEnum.red),
       DrugInteractionWithType(4, DrugInteractionEnum.red,
@@ -110,39 +110,39 @@ List<DrugInteractionRowModel> drugInteractionData = [
     ],
     id: 9,
   ),
+  // DrugInteractionRowModel(
+  //   "Darunavir / Cobicistat",
+  //   [
+  //     DrugInteractionWithType(6, DrugInteractionEnum.red),
+  //     DrugInteractionWithType(4, DrugInteractionEnum.red),
+  //     DrugInteractionWithType(7, DrugInteractionEnum.red),
+  //     DrugInteractionWithType(5, DrugInteractionEnum.red),
+  //   ],
+  // ),
+  // DrugInteractionRowModel(
+  //   "Cobicistat",
+  //   [
+  //     DrugInteractionWithType(7, DrugInteractionEnum.red),
+  //   ],
+  // ),
+  // DrugInteractionRowModel(
+  //   "Lopinavir / Ritonavir",
+  //   [
+  //     DrugInteractionWithType(6, DrugInteractionEnum.red),
+  //     DrugInteractionWithType(4, DrugInteractionEnum.red,
+  //         calcType: DrugInteractionCalcType.singleRed),
+  //     DrugInteractionWithType(7, DrugInteractionEnum.red),
+  //     DrugInteractionWithType(5, DrugInteractionEnum.red),
+  //   ],
+  //   id: 13,
+  // ),
   DrugInteractionRowModel(
-    "Darunavir / Cobicistat",
-    [
-      DrugInteractionWithType(6, DrugInteractionEnum.red),
-      DrugInteractionWithType(4, DrugInteractionEnum.red),
-      DrugInteractionWithType(7, DrugInteractionEnum.red),
-      DrugInteractionWithType(5, DrugInteractionEnum.red),
-    ],
-  ),
-  DrugInteractionRowModel(
-    "Cobicistat",
-    [
-      DrugInteractionWithType(7, DrugInteractionEnum.red),
-    ],
-  ),
-  DrugInteractionRowModel(
-    "Lopinavir / Ritonavir",
-    [
-      DrugInteractionWithType(6, DrugInteractionEnum.red),
-      DrugInteractionWithType(4, DrugInteractionEnum.red,
-          calcType: DrugInteractionCalcType.singleRed),
-      DrugInteractionWithType(7, DrugInteractionEnum.red),
-      DrugInteractionWithType(5, DrugInteractionEnum.red),
-    ],
-    id: 13,
-  ),
-  DrugInteractionRowModel(
-    "Rifampicin",
+    "Rifampin / Rifampicin",
     [
       DrugInteractionWithType(6, DrugInteractionEnum.darkBlue),
       DrugInteractionWithType(4, DrugInteractionEnum.darkBlue),
       DrugInteractionWithType(7, DrugInteractionEnum.darkBlue),
-      DrugInteractionWithType(5, DrugInteractionEnum.lightBlue),
+      DrugInteractionWithType(5, DrugInteractionEnum.darkBlue),
     ],
   ),
   DrugInteractionRowModel(
@@ -199,18 +199,18 @@ List<DrugInteractionRowModel> drugInteractionData = [
       DrugInteractionWithType(5, DrugInteractionEnum.darkBlue),
     ],
   ),
-  DrugInteractionRowModel(
-    "Carbamazepine",
-    [
-      DrugInteractionWithType(6, DrugInteractionEnum.darkBlue),
-    ],
-  ),
-  DrugInteractionRowModel(
-    "Carbamazepine",
-    [
-      DrugInteractionWithType(6, DrugInteractionEnum.darkBlue),
-    ],
-  ),
+  // DrugInteractionRowModel(
+  //   "Carbamazepine",
+  //   [
+  //     DrugInteractionWithType(6, DrugInteractionEnum.darkBlue),
+  //   ],
+  // ),
+  // DrugInteractionRowModel(
+  //   "Carbamazepine",
+  //   [
+  //     DrugInteractionWithType(6, DrugInteractionEnum.darkBlue),
+  //   ],
+  // ),
   DrugInteractionRowModel(
     "Amiodarone",
     [
@@ -229,15 +229,15 @@ List<DrugInteractionRowModel> drugInteractionData = [
     ],
     id: 11,
   ),
-  DrugInteractionRowModel(
-    "Ticagrelor",
-    [
-      DrugInteractionWithType(6, DrugInteractionEnum.yellow),
-      DrugInteractionWithType(4, DrugInteractionEnum.yellow),
-      DrugInteractionWithType(7, DrugInteractionEnum.yellow),
-      DrugInteractionWithType(5, DrugInteractionEnum.yellow),
-    ],
-  ),
+  // DrugInteractionRowModel(
+  //   "Ticagrelor",
+  //   [
+  //     DrugInteractionWithType(6, DrugInteractionEnum.yellow),
+  //     DrugInteractionWithType(4, DrugInteractionEnum.yellow),
+  //     DrugInteractionWithType(7, DrugInteractionEnum.yellow),
+  //     DrugInteractionWithType(5, DrugInteractionEnum.yellow),
+  //   ],
+  // ),
   DrugInteractionRowModel(
     "Clarithromycin",
     [
@@ -266,17 +266,17 @@ List<DrugInteractionRowModel> drugInteractionData = [
       DrugInteractionWithType(5, DrugInteractionEnum.yellow),
     ],
   ),
+  // DrugInteractionRowModel(
+  //   "Naproxen",
+  //   [
+  //     DrugInteractionWithType(6, DrugInteractionEnum.yellow),
+  //     DrugInteractionWithType(4, DrugInteractionEnum.yellow),
+  //     DrugInteractionWithType(7, DrugInteractionEnum.yellow),
+  //     DrugInteractionWithType(5, DrugInteractionEnum.yellow),
+  //   ],
+  // ),
   DrugInteractionRowModel(
-    "Naproxen",
-    [
-      DrugInteractionWithType(6, DrugInteractionEnum.yellow),
-      DrugInteractionWithType(4, DrugInteractionEnum.yellow),
-      DrugInteractionWithType(7, DrugInteractionEnum.yellow),
-      DrugInteractionWithType(5, DrugInteractionEnum.yellow),
-    ],
-  ),
-  DrugInteractionRowModel(
-    "SSRIs; SNRIs",
+    "SSRIs, SNRIs (including Fluoxetine, Citalopram, Escitalopram, Paroxetine, Sertraline, Venlafaxine, Duloxetine, etc.)",
     [
       DrugInteractionWithType(6, DrugInteractionEnum.yellow),
       DrugInteractionWithType(4, DrugInteractionEnum.yellow),
@@ -346,7 +346,7 @@ List<DrugInteractionRowModel> drugInteractionData = [
     ],
   ),
   DrugInteractionRowModel(
-    "Antiplatelet drugs",
+    "Antiplatelet (including Aspirin, Clopidogrel, Ticagrelor, Prasugrel, etc.)",
     [
       DrugInteractionWithType(6, DrugInteractionEnum.yellow),
       DrugInteractionWithType(4, DrugInteractionEnum.yellow),
@@ -355,7 +355,7 @@ List<DrugInteractionRowModel> drugInteractionData = [
     ],
   ),
   DrugInteractionRowModel(
-    "NSAID",
+    "NSAID (including Naproxen, Diclofenac, Mefenamic Acid, Piroxicam, Meloxicam, Celecoxib, etc.)",
     [
       DrugInteractionWithType(6, DrugInteractionEnum.yellow),
       DrugInteractionWithType(4, DrugInteractionEnum.yellow),
@@ -364,7 +364,7 @@ List<DrugInteractionRowModel> drugInteractionData = [
     ],
   ),
   DrugInteractionRowModel(
-    "Systemic steroid therapy",
+    "Systemic Corticosteroids (including Dexamethasone, Betamethasone, Prednisolone, Prednisone, Methyl Prednisolone, Hydrocortisone, etc.)",
     [
       DrugInteractionWithType(6, DrugInteractionEnum.yellow),
       DrugInteractionWithType(4, DrugInteractionEnum.yellow),
@@ -606,13 +606,13 @@ List<DrugInteractionRowModel> drugInteractionData = [
       DrugInteractionWithType(7, DrugInteractionEnum.yellow),
     ],
   ),
-  DrugInteractionRowModel(
-    "Dexamethasone",
-    [
-      DrugInteractionWithType(4, DrugInteractionEnum.yellow),
-      DrugInteractionWithType(7, DrugInteractionEnum.yellow),
-    ],
-  ),
+  // DrugInteractionRowModel(
+  //   "Dexamethasone",
+  //   [
+  //     DrugInteractionWithType(4, DrugInteractionEnum.yellow),
+  //     DrugInteractionWithType(7, DrugInteractionEnum.yellow),
+  //   ],
+  // ),
   DrugInteractionRowModel(
     "Green Tea",
     [
@@ -635,13 +635,13 @@ List<DrugInteractionRowModel> drugInteractionData = [
       DrugInteractionWithType(7, DrugInteractionEnum.lightBlue),
     ],
   ),
-  DrugInteractionRowModel(
-    "Prednisone",
-    [
-      DrugInteractionWithType(4, DrugInteractionEnum.lightBlue),
-      DrugInteractionWithType(7, DrugInteractionEnum.lightBlue),
-    ],
-  ),
+  // DrugInteractionRowModel(
+  //   "Prednisone",
+  //   [
+  //     DrugInteractionWithType(4, DrugInteractionEnum.lightBlue),
+  //     DrugInteractionWithType(7, DrugInteractionEnum.lightBlue),
+  //   ],
+  // ),
   DrugInteractionRowModel(
     "Oxcarbazepine",
     [
@@ -811,10 +811,10 @@ List<DrugInteractionRowModel> drugInteractionData = [
       DrugInteractionWithType(7, DrugInteractionEnum.red),
     ],
   ),
-  DrugInteractionRowModel(
-    "Rifampin",
-    [
-      DrugInteractionWithType(5, DrugInteractionEnum.darkBlue),
-    ],
-  ),
+  // DrugInteractionRowModel(
+  //   "Rifampin",
+  //   [
+  //     DrugInteractionWithType(5, DrugInteractionEnum.darkBlue),
+  //   ],
+  // ),
 ];

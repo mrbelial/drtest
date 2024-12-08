@@ -96,16 +96,10 @@ class DrugsScreen extends StatelessWidget {
 •	Avoid anticoagulation therapy due to the high risk of spontaneous Bleeding. (EHRA/NOAC/AF 2021)
 •	Absolute contraindications to OACs. (AF ESC 2020)
 •	Temporarily hold anticoagulant until platelet count increases above 25000 / µl. (UpToDate)
-""", style: AppTextStyles.title3.apply(color: AppColors.black)))
+""", style: AppTextStyles.title3.apply(color: AppColors.black))),
+                  appButton(title: "End", onTap: toMain),
                 ]
               : [
-                  ...model.titles.map(
-                    (e) => cardBox(
-                      child: Text(e,
-                          style: AppTextStyles.title3
-                              .apply(color: AppColors.black)),
-                    ),
-                  ),
                   ...model.drugs.map((e) => _drugBox(e)),
                   testButton("Consider DOACs Drug Interaction", () {
                     Get.toNamed("/drug_interaction");
@@ -117,6 +111,13 @@ class DrugsScreen extends StatelessWidget {
                       arguments: part3Data(_controller.model),
                     ),
                     color: AppColors.grayPrimary,
+                  ),
+                  ...model.titles.map(
+                    (e) => cardBox(
+                      child: Text(e,
+                          style: AppTextStyles.title3
+                              .apply(color: AppColors.black)),
+                    ),
                   ),
                 ],
         );

@@ -50,6 +50,19 @@ class TestModel {
   String q2Title = "Any of the following indications for OACs present?";
   int q2Answer = -1;
   List<IDTitleModel> qa2 = [
+    IDTitleModel(
+        7,
+        "CHA2DS2-VA Score ≥ 2",
+        """● Anticoagulation is recommended to prevent stroke and systemic thromboembolism. (AHA/ACC/ACCP/HRS AF 2023, 1 A), (AF/ESC 2020 1A), (AHA/ACC/HRS AF 2019 1 A)
+● A CHA2DS2-VA score of 2 or more is recommended as an indicator of elevated thromboembolic risk for decisions on initiating oral anticoagulation. (ESC/EACTS/AF 2024 I C)"""),
+    IDTitleModel(
+        8,
+        "CHA2DS2-VA Score = 1",
+        """● A CHA2DS2-VA score of 1 should be considered an indicator of elevated thromboembolic risk for decisions on initiating oral anticoagulation. (ESC/EACTS/AF 2024 IIa C)
+● Anticoagulation is reasonable to prevent stroke and systemic thromboembolism. (AHA/ACC/ACCP/HRS AF 2023, 2a A), (AF/ESC 2020 IIa B)
+● Prescribing an oral anticoagulant to reduce thromboembolic stroke risk may be considered. (AHA/ACC/HRS AF 2019 IIb C-LD)
+● Patients with AF at intermediate annual risk of thromboembolic events by risk scores (eg, equivalent to CHA2DS2-VASc score of 1 in men or 2 in women), who remain uncertain about the benefit of anticoagulation, can benefit from consideration of factors that might modify their risk of stroke to help inform the decision. (AHA/ACC/ACCP/HRS AF 2023, 2a C-LD)"""),
+    IDTitleModel(9, "Don’t know the CHA2DS2-VA Score"),
     IDTitleModel(10, "Cardiac Amyloidosis (ESC/EACTS/AF 2024), (ACC Cardiac Amyloidosis 2023)",
         """● Oral anticoagulation is recommended in all patients with AF and hypertrophic cardiomyopathy or cardiac amyloidosis, regardless of CHA2DS2-VA score, to prevent ischemic stroke and thromboembolism. (ESC/EACTS/AF 2024 I B)
 ● Guidelines recommend anticoagulation when AF is present, regardless of the CHA2DS2-VASc risk score. (2023 ACC Expert Consensus Decision Pathway on Comprehensive Multidisciplinary Care for the Patient With Cardiac Amyloidosis)
@@ -58,7 +71,7 @@ class TestModel {
 ● The CHA2DS2Vasc score has shown a limited ability to identify patients at risk of thromboembolism, and it should not be used for the thromboembolic risk assessment or decision-making for anticoagulation initiation. (Bukhari S, Khan SZ, Bashir Z. Atrial fibrillation, thromboembolic risk, and anticoagulation in cardiac amyloidosis: a review. Journal of Cardiac Failure. 2023 Jan 1;29(1):76-86.)"""),
     IDTitleModel(
         0,
-        "Moderate to severe mitral stenosis or Rheumatic MS (AHA/ACC/ACCP/HRS AF 2023)",
+        "Rheumatic Mitral Stenosis",
         """● In patients with mitral stenosis of moderate or greater severity and history of AF, long-term anticoagulation with warfarin is recommended over DOACs, independent of the CHA2DS2- VASc score to prevent cardiovascular events, including stroke or death. (AHA/ACC/ACCP/HRS AF 2023, 1 B-R)
 ● For patients with AF and rheumatic MS, long-term VKA oral anticoagulation is recommended. (ACC/AHA/VHD 2020, 1 C-EO)"""),
     IDTitleModel(
@@ -114,19 +127,6 @@ peri-procedural ischaemic stroke and thromboembolism. (ESC/EACTS/AF 2024 I C)
 ● In AF patients with stroke risk factors not taking OAC before ablation, it is recommended that pre-procedural management of stroke risk includes initiation of anticoagulation and preferably, therapeutic OAC for at least 3 weeks before ablation (I C), or alternatively, the use of TOE to exclude LA thrombus before ablation ( IIa C). (AF/ESC 2020)
 ● In patients undergoing LA surgical ablation of atrial arrhythmias and or LA appendage ligation/excision, anticoagulation therapy is reasonable for at least 3 months after the procedure.
 (ACC/AHA/VHD 2020, 2a B-NR)"""),
-    IDTitleModel(
-        7,
-        "CHA2DS2-VASc Score of ≥ 2 in men and ≥ 3 in women (Estimated annual thromboembolic risk of ≥ 2% per year)",
-        """● Anticoagulation is recommended to prevent stroke and systemic thromboembolism. (AHA/ACC/ACCP/HRS AF 2023, 1 A), (AF/ESC 2020 1A), (AHA/ACC/HRS AF 2019 1 A)
-● A CHA2DS2-VA score of 2 or more is recommended as an indicator of elevated thromboembolic risk for decisions on initiating oral anticoagulation. (ESC/EACTS/AF 2024 I C)"""),
-    IDTitleModel(
-        8,
-        "CHA2DS2-VASc of 1 point in male or 2 points in female (Estimated annual thromboembolic risk of ≥ 1% but <2% per year)",
-        """● A CHA2DS2-VA score of 1 should be considered an indicator of elevated thromboembolic risk for decisions on initiating oral anticoagulation. (ESC/EACTS/AF 2024 IIa C)
-● Anticoagulation is reasonable to prevent stroke and systemic thromboembolism. (AHA/ACC/ACCP/HRS AF 2023, 2a A), (AF/ESC 2020 IIa B)
-● Prescribing an oral anticoagulant to reduce thromboembolic stroke risk may be considered. (AHA/ACC/HRS AF 2019 IIb C-LD)
-● Patients with AF at intermediate annual risk of thromboembolic events by risk scores (eg, equivalent to CHA2DS2-VASc score of 1 in men or 2 in women), who remain uncertain about the benefit of anticoagulation, can benefit from consideration of factors that might modify their risk of stroke to help inform the decision. (AHA/ACC/ACCP/HRS AF 2023, 2a C-LD)"""),
-    IDTitleModel(9, "Don’t know the CHA2DS2-VASc Score?"),
   ];
 
   //Question 3
@@ -195,7 +195,7 @@ mitral stenosis. (ESC/EACTS/AF 2024).
     CheckBoxModel(
         "Uncontrolled hypertension (SBP >160 mmHg) [1 point]", 1, false),
     CheckBoxModel(
-        "Abnormal renal function (Dialysis, transplant, serum creatinine >200 mmol/L) [1 point]",
+        "Abnormal renal function (Dialysis, transplant, serum creatinine >200 mmol/L) (≥2.3 mg/dl) [1 point]",
         1,
         false),
     CheckBoxModel(
@@ -392,7 +392,7 @@ mitral stenosis. (ESC/EACTS/AF 2024).
   initPages() {
     tempPages = TestPageModel(
         title: "Any of the following clinical scenarios present?",
-        value: "",
+        value: "Clinical Scenarios",
         type: TestPageTypeEnum.page,
         pages: [
           TestPageModel(
@@ -424,7 +424,7 @@ mitral stenosis. (ESC/EACTS/AF 2024).
             pages: [
               TestPageModel(
                   title: "",
-                  value: "Stage 1 (CrCl ≥ 90 mL/min)",
+                  value: "CrCl ≥ 90 mL/min",
                   type: TestPageTypeEnum.drug,
                   isMarked: cgAnswer >= 90,
                   drugs: [
@@ -434,7 +434,7 @@ mitral stenosis. (ESC/EACTS/AF 2024).
                   ]),
               TestPageModel(
                   title: "",
-                  value: "Stage 2 (CrCl 60-90  mL/ min)",
+                  value: "CrCl 60-90  mL/ min",
                   type: TestPageTypeEnum.drug,
                   isMarked: cgAnswer >= 60 && cgAnswer < 90,
                   drugs: [
@@ -446,9 +446,9 @@ mitral stenosis. (ESC EACTS AF 2024).
                   ]),
               TestPageModel(
                   title: "",
-                  value: "Stage 3 (CrCl 30-59 mL/min)",
+                  value: "CrCl 30-59 mL/min",
                   type: TestPageTypeEnum.drug,
-                  isMarked: cgAnswer >= 30 && cgAnswer <= 59,
+                  isMarked: cgAnswer >= 30 && cgAnswer < 60,
                   drugs: [
                     TestDrugPageModel(
                         """● Treatment with warfarin or, preferably, evidence-based doses of direct thrombin or factor Xa inhibitors is recommended. (AHA/ACC/ACCP/HRS AF 2023, 1 B-R)
@@ -457,9 +457,9 @@ mitral stenosis. (ESC EACTS AF 2024).
                   ]),
               TestPageModel(
                   title: "",
-                  value: "Stage 4 (CrCl 15-29 mL/min)",
+                  value: "CrCl 15-29 mL/min",
                   type: TestPageTypeEnum.drug,
-                  isMarked: cgAnswer >= 15 && cgAnswer <= 29,
+                  isMarked: cgAnswer >= 15 && cgAnswer < 30,
                   drugs: [
                     TestDrugPageModel(
                         """● Treatment with warfarin or labeled doses of DOACs is reasonable to reduce the risk of stroke. (AHA/ACC/ACCP/HRS AF 2023, 2a B-NR)

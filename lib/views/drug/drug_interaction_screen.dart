@@ -16,7 +16,7 @@ class DrugInteractionScreen extends StatelessWidget {
     _controller.initDrugInteraction();
     return Scaffold(
       appBar: AppBar(
-        title: const Text("DOAC Drug Interaction (EHRA 2021, Lexi Comp)"),
+        title: const Text("DOAC Drug Interaction (EHRA 2021, Lexi Comp, ESC AF 2024)"),
         elevation: 0,
         backgroundColor: Colors.transparent,
         actions: [

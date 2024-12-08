@@ -97,9 +97,9 @@ class TestController extends GetxController {
 
   IDTitleModel calcq3() {
     int point = 0;
-    if (isFemale) {
-      point++;
-    }
+    // if (isFemale) {
+    //   point++;
+    // }
 
     if (age >= 75) {
       point += 2;
@@ -113,20 +113,22 @@ class TestController extends GetxController {
 
     _responseObs.update((val) => val!.content!.q3Point = point);
 
-    var tp = isFemale ? point - 1 : point;
+    var tp = point;
     var msg =
-        "0 point in male or 1 point in female (Estimated annual thromboembolic risk of <  1%)\nIt is reasonable to omit anticoagulant therapy. (AHA/ACC/HRS AF 2019 IIa B)\nShould not be offered antithrombotic therapy. (ESC 2020 1 A)";
+        "• It is reasonable to omit anticoagulant therapy. (AHA/ACC/HRS AF 2019 IIa B)\n• Should not be offered antithrombotic therapy. (ESC 2020 1 A)";
 
-    if (tp > 1) {
+    if (tp == 1) {
       msg =
-          "CHA2DS2-VASc Score of ≥ 2 in men and ≥ 3 in women (Estimated annual thromboembolic risk of ≥ 2% per year)\nAnticoagulation is recommended to prevent stroke and systemic thromboembolism.\n(AHA/ACC/ACCP/HRS AF 2023, 1 A)\n(ESC 2020 AF 1A)\n(AHA/ACC/HRS AF 2019 1 A)";
-    } else if (tp > 0) {
+          """• A CHA2DS2-VA score of 1 should be considered an indicator of elevated thromboembolic risk for decisions on initiating oral anticoagulation. (ESC AF 2024 IIa C)
+• Anticoagulation is reasonable to prevent stroke and systemic thromboembolism. (AHA/ACC/ACCP/HRS AF 2023, 2a A), (ESC 2020 AF IIa B)
+• Prescribing an oral anticoagulant to reduce thromboembolic stroke risk may be considered. (AHA/ACC/HRS AF 2019 IIb C-LD)
+• Patients with AF at intermediate annual risk of thromboembolic events by risk scores (e.g., equivalent to CHA2DS2-VASc score of 1 in men or 2 in women), who remain uncertain about the benefit of anticoagulation, can benefit from consideration of factors that might modify their risk of stroke to help inform the decision. (AHA/ACC/ACCP/HRS AF 2023, 2a C-LD)
+""";
+    } else if (tp > 1) {
       msg =
-          """CHA2DS2-VASc of 1 point in male or 2 points in female (Estimated annual thromboembolic risk of ≥ 1% but <2% per year)
-Anticoagulation is reasonable to prevent stroke and systemic thromboembolism.
-(AHA/ACC/ACCP/HRS AF 2023, 2a  A), (ESC 2020 AF IIa B)
-Prescribing an oral anticoagulant to reduce thromboembolic stroke risk may be considered. (AHA/ACC/HRS AF 2019 IIb C-LD)
-Patients with AF at intermediate annual risk of thromboembolic events by risk scores (eg, equivalent to CHA2DS2-VASc score of 1 in men or 2 in women), who remain uncertain about the benefit of anticoagulation, can benefit from consideration of factors that might modify their risk of stroke to help inform the decision. (AHA/ACC/ACCP/HRS AF 2023, 2a  C-LD)""";
+          """• A CHA2DS2-VA score of 2 or more is recommended as an indicator of elevated thromboembolic risk for decisions on initiating oral anticoagulation. (ESC AF 2024 I C)
+• Anticoagulation is recommended to prevent stroke and systemic thromboembolism. (AHA/ACC/ACCP/HRS AF 2023, 1 A), (ESC 2020 AF 1A), (AHA/ACC/HRS AF 2019 1 A)
+""";
     }
     return IDTitleModel(tp, msg);
   }
@@ -889,7 +891,7 @@ Repeat assay 6 hours after restarting the infusion.""",
     if (item == null) {
       return "60 mg daily.\n(AF ESC 2020)";
     }
-    return item.desc;
+    return "${item.desc}\n (ESC AF 2024)";
     // if (item.id == 5) {}
     // edoxabanDosingModel.getByPoint(2).checked
     //   ? getDrugInteractions(5).purpleMessage
@@ -970,10 +972,10 @@ Repeat assay 6 hours after restarting the infusion.""",
     list.sort((a, b) => a.point.compareTo(b.point));
     var item = list.lastOrNull;
     if (item != null) {
-      return item.desc;
+      return "${item.desc}\n(ESC AF 2024)";
     }
 
-    return "150 mg twice daily.\n(AF ESC 2020)";
+    return "150 mg twice daily.\n(AF ESC 2020)\n(ESC AF 2024)";
 
     // => dabigatranDosingModel.totalRedChecked > 0
     //   ? "75 mg twice daily.\n(AHA ACC ACCP HRS 2023)"
@@ -1054,15 +1056,15 @@ Repeat assay 6 hours after restarting the infusion.""",
     var item = list.lastOrNull;
     if (item != null) {
       if (item.point == 3 && list.length > 1) {
-        return "Contraindicated. (AF/ESC 2020), (AHA/ACC/ACCP HRS 2023)";
+        return "Contraindicated. (AF/ESC 2020), (AHA/ACC/ACCP HRS 2023)\n(ESC AF 2024)";
       }
       if (item.point == 0 && list.where((x) => x.id == 1).length > 1) {
-        return "2.5 mg twice daily.\n(AF ESC 2020)";
+        return "2.5 mg twice daily.\n(AF ESC 2020)\n(ESC AF 2024)";
       }
-      return item.desc;
+      return "${item.desc}\n(ESC AF 2024)";
     }
 
-    return "5 mg twice daily.\n(AF ESC 2020)";
+    return "5 mg twice daily.\n(AF ESC 2020)\n(ESC AF 2024)";
   }
 
   //Rivaroxaban
@@ -1082,7 +1084,7 @@ Repeat assay 6 hours after restarting the infusion.""",
 OR
 •	Post ACS / PCI receiving concurrent single antiplatelet therapy or dual antiplatelet therapy? (EHRA/NOAC AF 2021), (ESC/ACS 2023 IIa B) 
 OR
-•	Patients with a CHA2DS2VASc risk score of 2 or greater who have undergone PCI with stenting for ACS receiving concurrent P2Y12 inhibitors. (AHA/ACC/ HRS 2019 IIa B-R)
+•	Patients with a CHA2DS2VA risk score of 2 or greater who have undergone PCI with stenting for ACS receiving concurrent P2Y12 inhibitors. (AHA/ACC/ HRS 2019 IIa B-R)
 OR
 •	High bleeding risk (HAS-BLED ≥ 3) during concomitant single or DAPT? (AF/ESC 2020 IIa B)""",
           0,
@@ -1123,7 +1125,7 @@ OR
     list.sort((a, b) => a.point.compareTo(b.point));
     var item = list.lastOrNull;
     if (item != null) {
-      return item.desc;
+      return "${item.desc}\n(ESC AF 2024)";
     }
 
     return "";

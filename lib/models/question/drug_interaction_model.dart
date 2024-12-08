@@ -157,7 +157,8 @@ class DrugInteractionModel {
 
   // List<dynamic> drugsJson = jsonDecode(await DefaultAssetBundle.of(context)
   //     .loadString('assets/data/drug_interaction.json'));
-  factory DrugInteractionModel.fromList(List<DrugInteractionRowModel> d) {
+  factory DrugInteractionModel.fromList(List<DrugInteractionRowModel> list) {
+    list.sort((a, b) => a.drugName.compareTo(b.drugName));
     return DrugInteractionModel(
         redMessage:
             "Contraindicated / not advisable due to increased plasma levels or increase in the risk of bleeding",
@@ -168,7 +169,7 @@ class DrugInteractionModel {
         lightBlueMessage:
             "Caution required, especially in case of polypharmacy or in the presence of ≥2 light blue interactions due to reduced NOAC plasma levels.)",
         purpleMessage: "Lower dose recommended",
-        drugs: d);
+        drugs: list);
   }
 
   // factory DrugInteractionModel.fromJson(List<dynamic> drugsJson) {

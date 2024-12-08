@@ -71,14 +71,14 @@ class CockcroftGaultScreen extends StatelessWidget {
             label: "Age",
             focusNode: _ageFocusNode,
             controller: _ageController,
-            onChanged: (age) {
-              _controller.age = int.tryParse(age) ?? 0;
+            onChanged: (v) {
+              _controller.age = int.tryParse(v) ?? 0;
               _controller.calcCG();
             },
           ),
           textField(
             maxLength: 50,
-            type: TextInputType.number,
+            type: TextInputType.numberWithOptions(decimal: true),
             formatter: [DecimalTextInputFormatter(decimalRange: 5)],
             hint: "mg/dL",
             label: "Serum creatinine",
@@ -111,8 +111,8 @@ class CockcroftGaultScreen extends StatelessWidget {
           testButton("Done", () {
             _controller.calcCG();
 
-            if (_controller.age == 0) {
-              ShowMSG.error("Error", "Please Enter Age.");
+            if (_controller.age < 18) {
+              ShowMSG.error("Error", "Please Valid Enter Age.");
               _ageFocusNode.requestFocus();
               return;
             }
