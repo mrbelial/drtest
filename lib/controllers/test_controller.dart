@@ -407,6 +407,10 @@ class TestController extends GetxController {
     //   }
     // }
 
+    if (model.cgAnswer >= 90) {
+      model.testFilteredDrug.drugIds.removeWhere((id) => id == 5);
+    }
+
     model.testFilteredDrug.drugs =
         getDrugsByIDs(model.testFilteredDrug.drugIds.toList());
   }
