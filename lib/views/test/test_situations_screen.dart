@@ -23,22 +23,32 @@ class TestSituationsScreen extends StatelessWidget {
             if (_controller.isloading) {
               return Container();
             }
-            if (_controller.stackCount > 0) {
-              return textButton(
-                  title: "Next",
-                  onTap: () {
-                    _controller.fillStack();
+            // if (_controller.stackCount > 0) {
+            return textButton(
+                title: "Next",
+                onTap: () {
+                  _controller.fillStack();
 
-                    if (_controller.stacks.isEmpty) {
-                      ShowMSG.error("Error", "Select Situations");
-                      return;
-                    }
+                  if (_controller.stacks.isEmpty) {
+                    _controller.stacks.add(TestPageModel(
+                        title: "",
+                        value: "",
+                        type: TestPageTypeEnum.drug,
+                        drugs: [
+                          TestDrugPageModel("", [1, 2, 3, 4, 5, 6, 7]),
+                        ]));
 
-                    Get.toNamed("/test_page",
-                        arguments: _controller.stacks.first);
-                  });
-            }
-            return Container();
+                    _controller.model.testFilteredDrug.drugs =
+                        _controller.model.drugs;
+                    Get.toNamed("/drugs");
+                    return;
+                  }
+
+                  Get.toNamed("/test_page",
+                      arguments: _controller.stacks.first);
+                });
+            // }
+            // return Container();
           })
         ],
       ),

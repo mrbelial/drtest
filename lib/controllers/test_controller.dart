@@ -303,7 +303,7 @@ class TestController extends GetxController {
     model.stacks = [];
     model.initPages();
 
-    if (model.cgAnswer > -1) {
+    if (model.cgAnswer >= 0 && model.cgAnswer < 90) {
       model.pages.pages.firstWhere((x) => x.id == 1).isMarked = true;
       // stacks.add(model.pages.pages.firstWhere((x) => x.id == 1));
     }
@@ -1017,7 +1017,7 @@ Repeat assay 6 hours after restarting the infusion.""",
           id: 1,
         ),
         CheckBoxModel(
-          "Concomitant ketoconazole, itraconazole, or ritonavir?",
+          "Concomitant ketoconazole or itraconazole?",
           3,
           isSelectedDrugInterActions([4, 3, 13]),
           desc: """•	2.5 mg twice daily. (AF/ESC 2020), (AHA/ACC/ACCP HRS 2023)

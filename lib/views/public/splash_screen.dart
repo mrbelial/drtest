@@ -41,7 +41,7 @@ class SplashScreen extends StatelessWidget {
             ),
             const Spacer(),
             Text(
-              "© 2024, Tehran University of Medical Science",
+              "© 2024 (${_controller.appVersion}), Tehran University of Medical Science",
               style: AppTextStyles.title4,
               textAlign: TextAlign.center,
             ),

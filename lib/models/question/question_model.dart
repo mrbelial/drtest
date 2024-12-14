@@ -71,7 +71,7 @@ class TestModel {
 ● The CHA2DS2Vasc score has shown a limited ability to identify patients at risk of thromboembolism, and it should not be used for the thromboembolic risk assessment or decision-making for anticoagulation initiation. (Bukhari S, Khan SZ, Bashir Z. Atrial fibrillation, thromboembolic risk, and anticoagulation in cardiac amyloidosis: a review. Journal of Cardiac Failure. 2023 Jan 1;29(1):76-86.)"""),
     IDTitleModel(
         0,
-        "Rheumatic Mitral Stenosis",
+        "Rheumatic Mitral Stenosis (AHA/ACC/ACCP/HRS AF 2023)",
         """● In patients with mitral stenosis of moderate or greater severity and history of AF, long-term anticoagulation with warfarin is recommended over DOACs, independent of the CHA2DS2- VASc score to prevent cardiovascular events, including stroke or death. (AHA/ACC/ACCP/HRS AF 2023, 1 B-R)
 ● For patients with AF and rheumatic MS, long-term VKA oral anticoagulation is recommended. (ACC/AHA/VHD 2020, 1 C-EO)"""),
     IDTitleModel(
@@ -131,7 +131,7 @@ peri-procedural ischaemic stroke and thromboembolism. (ESC/EACTS/AF 2024 I C)
 
   //Question 3
   String q3Title =
-      "CHA2DS2-VASc Calculator (AHA/ACC/ACCP/HRS AF 2023, 1 B-NR), (AHA/ACC/HRS AF 2019 1 B), (AF/ESC 2020, I A)";
+      "CHA2DS2-VA Calculator (ESC/EACTS/AF 2024)";
   String q3Desc =
       """● For stroke risk assessment, a risk-factor-based approach is recommended, using the CHA2DS2-VASc clinical stroke risk score to initially identify patients at ‘low stroke risk’ (CHA2DS2-VASc score = 0 in men, or 1 in women) who should not be offered antithrombotic therapy. (AF/ESC 2020, I A)
 ● Patients with AF should be evaluated for their annual risk of thromboembolic events using a validated clinical risk score, such as CHA2DS2-VASc. (AHA/ACC/ACCP/HRS AF 2023, 1 B-NR)
@@ -426,7 +426,7 @@ mitral stenosis. (ESC/EACTS/AF 2024).
                   title: "",
                   value: "CrCl ≥ 90 mL/min",
                   type: TestPageTypeEnum.drug,
-                  isMarked: cgAnswer >= 90,
+                  // isMarked: cgAnswer >= 90,
                   drugs: [
                     TestDrugPageModel(
                         """Edoxaban is contraindicated in CrCl≥ 90. (AHA/ACC/ACCP/HRS 2023)""",

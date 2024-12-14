@@ -36,6 +36,13 @@ class TocScreen extends StatelessWidget {
         TocModel("Clinical Scenarios", [], () {
           final testController = Get.put(TestController());
           testController.initAll();
+          testController.model.ul = 250000;
+          testController.model.age = 25;
+          testController.model.weight = 65;
+          testController.model.height = 180;
+          testController.model.serumCreatinine = 0.7;
+
+          testController.calcAll();
           Get.toNamed("/test_situations_page");
         }),
         TocModel("Anticoagulant Dosing", [
