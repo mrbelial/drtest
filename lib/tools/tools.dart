@@ -1,25 +1,25 @@
 part of 'core.dart';
 
-toRPage(String name, {dynamic argument, bool preventDuplicates = true}) {
+void toRPage(String name, {dynamic argument, bool preventDuplicates = true}) {
   route.navigateToPushReplacement(name, argument,
       preventDuplicates: preventDuplicates);
 }
 
-toCPage(String name, {dynamic argument}) {
+void toCPage(String name, {dynamic argument}) {
   route.navigateToPushAndRemoveUntil(name, argument);
 }
 
-toPage(String name,
+void toPage(String name,
     {dynamic argument, Function? then, bool preventDuplicates = true}) {
   route.navigateToPush(name, argument, then,
       preventDuplicates: preventDuplicates);
 }
 
-pop([dynamic data]) {
+void pop([dynamic data]) {
   route.navigatePop(data);
 }
 
-toMain({bool isIntro = false, bool isForce = false}) {
+void toMain({bool isIntro = false, bool isForce = false}) {
   var page = "/home";
 
   final MainController mainController = Get.find();
@@ -131,7 +131,7 @@ extension MyStringExtension on String {
   int toNumber(String seprator) => int.parse(replaceAll(seprator, ""));
   Color get statusColor => this == "success"
       ? AppColors.success
-      : AppColors.warning.withOpacity(this == "secondary" ? .5 : 1);
+      : AppColors.warning.withValues(alpha:this == "secondary" ? .5 : 1);
   String get toCurrency {
     var n = int.tryParse(this) ?? 0;
     return n.toCurrency;
@@ -162,7 +162,7 @@ extension MyDoubleExtension on double {
 //   return Jalali(s[0], s[1], s[2]);
 // }
 
-wrapWB(void Function(Duration) f) {
+void wrapWB(void Function(Duration) f) {
   WidgetsBinding.instance.addPostFrameCallback(f);
 }
 
@@ -171,7 +171,8 @@ String t1tl(String t, int l) {
 }
 
 class ShowMSG {
-  static show(Widget title, Widget desc, Color color, ToastificationType type) {
+  static void show(
+      Widget title, Widget desc, Color color, ToastificationType type) {
     toastification.show(
       context: Get.overlayContext!,
       type: type,
@@ -188,19 +189,19 @@ class ShowMSG {
     );
   }
 
-  static error(String title, String msg) {
+  static void error(String title, String msg) {
     show(Text(title), Text(msg), AppColors.red, ToastificationType.error);
   }
 
-  static warning(String title, String msg) {
+  static void warning(String title, String msg) {
     show(Text(title), Text(msg), AppColors.yellow, ToastificationType.warning);
   }
 
-  static info(String title, String msg) {
+  static void info(String title, String msg) {
     show(Text(title), Text(msg), AppColors.success, ToastificationType.success);
   }
 
-  static fromResponse(ResponseModel response) {
+  static void fromResponse(ResponseModel response) {
     show(
         Text(response.isSuccess ? "موفق" : "خطا"),
         Text(response.message),
@@ -210,7 +211,7 @@ class ShowMSG {
             : ToastificationType.error);
   }
 
-  static errorWithButton(
+  static void errorWithButton(
       {String title = "",
       String msg = "",
       required Widget btn,
@@ -238,7 +239,7 @@ class ShowMSG {
     // );
   }
 
-  static showBar(GetSnackBar bar) {
+  static void showBar(GetSnackBar bar) {
     Get.showSnackbar(bar);
   }
 
@@ -346,11 +347,11 @@ Future<Uri> getUriFromString(String html) async {
       mimeType: 'text/html', encoding: Encoding.getByName('utf-8'));
 }
 
-lostFocus(BuildContext context) {
+void lostFocus(BuildContext context) {
   FocusScope.of(context).requestFocus(FocusNode());
 }
 
-launchURL(String url) async {
+void launchURL(String url) async {
   Uri uri = Uri.parse(url);
   if (await canLaunchUrl(uri)) {
     await launchUrl(uri, mode: LaunchMode.externalApplication);
@@ -359,14 +360,14 @@ launchURL(String url) async {
   }
 }
 
-openGoogleDirection(
+void openGoogleDirection(
     {required String mapx, required String mapy, required String title}) {
   var uri =
       Uri.parse("https://maps.google.com/maps?f=s&hl=fa&daddr=$mapx,$mapy");
   launchURL(uri.toString());
 }
 
-openGoogleMap({
+void openGoogleMap({
   required double latitude,
   required double longitude,
   required String title,
@@ -463,7 +464,7 @@ DateTime dateZeroTime(DateTime date) {
   return DateTime(date.year, date.month, date.day);
 }
 
-String toCurrency(number) {
+String toCurrency(dynamic number) {
   if (number is double) {
     // return NumberFormat.decimalPattern().format(number);
   }

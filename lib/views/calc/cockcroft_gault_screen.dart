@@ -37,29 +37,28 @@ class CockcroftGaultScreen extends StatelessWidget {
           testTitle(
               "Cockcroft-Gault Calculator (AHA/ACC/ACCP/HRS AF 2023) (ESC NOAC 2021)"),
           Obx(() {
-            return Row(
-              children: [
-                Expanded(
-                  child: radioButton(
+            return RadioGroup<int>(
+              groupValue: _controller.isFemale ? 1 : 0,
+              onChanged: (i) {
+                _controller.isFemale = (i == 1);
+                _controller.calcCG();
+              },
+              child: Row(
+                children: [
+                  Expanded(
+                    child: radioButton(
                       title: "Male",
-                      value: _controller.isFemale ? 0 : 1,
-                      groupValue: 1,
-                      onChanged: (i) {
-                        _controller.isFemale = false;
-                        _controller.calcCG();
-                      }),
-                ),
-                Expanded(
-                  child: radioButton(
+                      value: 0,
+                    ),
+                  ),
+                  Expanded(
+                    child: radioButton(
                       title: "Female",
-                      value: _controller.isFemale ? 1 : 0,
-                      groupValue: 1,
-                      onChanged: (i) {
-                        _controller.isFemale = true;
-                        _controller.calcCG();
-                      }),
-                ),
-              ],
+                      value: 1,
+                    ),
+                  ),
+                ],
+              ),
             );
           }),
           textField(

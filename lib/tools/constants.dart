@@ -164,8 +164,8 @@ class AppThemes {
       style: ElevatedButton.styleFrom(
         foregroundColor: AppColors.secondary,
         backgroundColor: AppColors.primary,
-        disabledForegroundColor: AppColors.primary.withOpacity(.5),
-        disabledBackgroundColor: AppColors.secondary.withOpacity(.5),
+        disabledForegroundColor: AppColors.primary.withValues(alpha:.5),
+        disabledBackgroundColor: AppColors.secondary.withValues(alpha:.5),
         padding: AppConst.buttonPadding,
         textStyle: AppTextStyles.title3,
         shape: AppConst.buttonShape2,

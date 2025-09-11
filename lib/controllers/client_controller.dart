@@ -63,7 +63,7 @@ class ClientController extends GetxController {
 
   //Movement
 
-  addMovement(MovementModel v) => _clientObs.update((val) => val!
+  void addMovement(MovementModel v) => _clientObs.update((val) => val!
       .content![selectedClient]
       .programs[selectedProgram]
       .days[selectedDay]

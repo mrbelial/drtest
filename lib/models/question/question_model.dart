@@ -389,7 +389,7 @@ mitral stenosis. (ESC/EACTS/AF 2024).
   //Test Page Model
   TestPageModel get pages => tempPages!;
   TestPageModel? tempPages;
-  initPages() {
+  void initPages() {
     tempPages = TestPageModel(
         title: "Any of the following clinical scenarios present?",
         value: "Clinical Scenarios",

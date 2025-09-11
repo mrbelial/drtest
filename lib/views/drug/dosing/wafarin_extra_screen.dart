@@ -7,7 +7,7 @@ class WafarinExtraScreen extends StatelessWidget {
   WafarinExtraScreen({super.key});
   final TestController _controller = Get.find();
 
-  toDosingPage(int id) {
+  void toDosingPage(int id) {
     _controller.closeDosing();
 
     _controller.selectDrugDosing(id);

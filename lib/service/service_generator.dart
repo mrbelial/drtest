@@ -11,7 +11,7 @@ class ServiceGenerator {
   late Dio _dio;
   var msg = "بروز خطا";
 
-  updateDio(Map<String, String> header) {
+  void updateDio(Map<String, String> header) {
     BaseOptions options = BaseOptions(
       headers: header,
       baseUrl: urlBaseApi,
@@ -66,7 +66,7 @@ class ServiceGenerator {
     }
   }
 
-  Future<BaseModel<LoginModel>> authenticate(params) async {
+  Future<BaseModel<LoginModel>> authenticate(Map<String, dynamic>params) async {
     try {
       Response response =
           await _dio.post(ServerConfig.urlAuthenticate, data: params);
@@ -87,7 +87,7 @@ class ServiceGenerator {
     }
   }
 
-  Future<BaseModel<TestDataModel>> updateTest(param) async {
+  Future<BaseModel<TestDataModel>> updateTest(Map<String, dynamic>param) async {
     try {
       Response response =
           await _dio.post(ServerConfig.urlUpdateTest, data: param);

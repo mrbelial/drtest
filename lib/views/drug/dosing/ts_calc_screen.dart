@@ -34,14 +34,24 @@ class TsScoreScreen extends StatelessWidget {
                         textAlign: TextAlign.start,
                       ),
                     ),
-                    for (var r in item.radios)
-                      radioButton(
-                          title: r.title,
-                          value: r.id,
-                          groupValue: item.selectedID,
-                          onChanged: (v) {
-                            _controller.tsAnswer(i, r.id, r.point);
-                          }),
+                    RadioGroup<int>(
+                      groupValue: item.selectedID,
+                      onChanged: (v) {
+                        var selectedRadio =
+                            item.radios.firstWhere((r) => r.id == v);
+                        _controller.tsAnswer(
+                            i, selectedRadio.id, selectedRadio.point);
+                      },
+                      child: Column(
+                        children: [
+                          for (var r in item.radios)
+                            radioButton(
+                              title: r.title,
+                              value: r.id,
+                            ),
+                        ],
+                      ),
+                    ),
                   ],
                 );
               });

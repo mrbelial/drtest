@@ -125,7 +125,7 @@ class MainController extends GetxController {
     return prefs.getString("token");
   }
 
-  updateToken(String? t) {
+  void updateToken(String? t) {
     try {
       t ??= '';
       t = t.replaceAll("Bearer ", "");
@@ -142,11 +142,11 @@ class MainController extends GetxController {
   //   _mainResponseObs.update((val) => val!.data!.user = userdata);
   // }
 
-  fillUserToken() {
+  void fillUserToken() {
     updateToken(getToken());
   }
 
-  clearUser() {
+  void clearUser() {
     updateToken('');
     _mainResponseObs.update((val) => val!.content!.user = UserModel());
     // cancel socket_

@@ -8,7 +8,7 @@ class SplashScreen extends StatelessWidget {
   SplashScreen({super.key});
   final MainController _controller = Get.find();
 
-  init() async {
+  void init() async {
     var response = await _controller.getSplash();
     if ((response.statusCode == 401 || response.isSuccess)) {
       toMain();

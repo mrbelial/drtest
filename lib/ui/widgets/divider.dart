@@ -20,7 +20,7 @@ class CustomDivider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: margin ?? const EdgeInsets.symmetric(vertical: 10),
-      color: color ?? AppColors.gray.withOpacity(.2),
+      color: color ?? AppColors.gray.withValues(alpha:.2),
       height: height,
     );
   }

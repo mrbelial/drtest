@@ -92,7 +92,7 @@ class TestController extends GetxController {
   set qa2(int v) => _responseObs.update((val) => val!.content!.q2Answer = v);
 
   //CHA2DS2-VASc Calculator
-  q3Answer(int i, bool v) =>
+  void q3Answer(int i, bool v) =>
       _responseObs.update((val) => val!.content!.q3Answer[i].checked = v);
 
   IDTitleModel calcq3() {
@@ -134,7 +134,7 @@ class TestController extends GetxController {
   }
 
   //HAS-BLED Calculator
-  hbAnswer(int i, bool v) =>
+  void hbAnswer(int i, bool v) =>
       _responseObs.update((val) => val!.content!.hbAnswer[i].checked = v);
 
   IDTitleModel calcHB() {

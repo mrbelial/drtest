@@ -36,7 +36,7 @@ Widget cardBox({
         borderRadius: borderRadius ?? BorderRadius.circular(5),
         boxShadow: [
           BoxShadow(
-            color: shadowColor ?? AppColors.lightGray.withOpacity(0.2),
+            color: shadowColor ?? AppColors.lightGray.withValues(alpha: 0.2),
             spreadRadius: 3,
             blurRadius: 5,
             offset: const Offset(0, 3),
@@ -85,7 +85,7 @@ Widget title(String title) => Text(
 //       child: Center(child: widget),
 //     );
 
-exitDialog() => Container(
+void exitDialog() => Container(
       height: screenSize.height * 0.3,
       padding: const EdgeInsets.all(24),
       child: Column(
@@ -142,7 +142,7 @@ Widget sepratedDiv(double space) {
   );
 }
 
-listTile({
+Widget listTile({
   required String title,
   Widget? leading,
   Widget? trailing,
@@ -184,8 +184,7 @@ listTile({
                         child: Text(
                           title,
                           style: textStyle ??
-                              AppTextStyles.text2
-                                  .copyWith(color: titleColor),
+                              AppTextStyles.text2.copyWith(color: titleColor),
                         ),
                       ),
                     ],
