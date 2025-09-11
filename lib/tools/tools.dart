@@ -36,7 +36,7 @@ toMain({bool isIntro = false, bool isForce = false}) {
   // } else
 
   if (!mainController.isUserLogin()) {
-    page = "/login";
+    page = "/prelogin";
   }
   // } catch (e) {
   // page = "/login";

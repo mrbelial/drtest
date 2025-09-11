@@ -11,6 +11,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import 'views/drug/drug_dosing_screen.dart';
+import 'views/login/prelogin_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -69,6 +70,7 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(name: '/', page: () => SplashScreen()),
         GetPage(name: '/login', page: () => LoginScreen()),
+        GetPage(name: '/prelogin', page: () => const PreloginScreen()),
         GetPage(name: '/home', page: () => HomeScreen()),
         GetPage(name: '/terms', page: () => TermsScreen()),
         GetPage(name: '/profile', page: () => ProfileScreen()),
